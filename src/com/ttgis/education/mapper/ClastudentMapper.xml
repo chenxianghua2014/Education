@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.ClastudentMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Clastudent" >
+    <id column="CLASTUDENT_ID" property="clastudentId" jdbcType="VARCHAR" />
+    <result column="STUDENT_ID" property="studentId" jdbcType="VARCHAR" />
+    <result column="TRANCLASS_ID" property="tranclassId" jdbcType="VARCHAR" />
+    <result column="CLASTUDENT_NAME" property="clastudentName" jdbcType="VARCHAR" />
+    <result column="CLASTUDENT_TYPE" property="clastudentType" jdbcType="INTEGER" />
+    <result column="CLASTUDENT_PASSWORD" property="clastudentPassword" jdbcType="VARCHAR" />
+    <result column="CLASTUDENT_AT" property="clastudentAt" jdbcType="TIMESTAMP" />
+    <result column="CLASTUDENT_DEL" property="clastudentDel" jdbcType="INTEGER" />
+    <result column="CLASTUDENT_STARTIME" property="clastudentStartime" jdbcType="VARCHAR" />
+    <result column="CLASTUDENT_ENDTIME" property="clastudentEndtime" jdbcType="VARCHAR" />
+    <result column="CLASTUDENT_ALLTIME" property="clastudentAlltime" jdbcType="NUMERIC" />
+    <result column="CLASTUDENT_NOWTIME" property="clastudentNowtime" jdbcType="NUMERIC" />
+    <result column="CLASTUDENT_PLAN" property="clastudentPlan" jdbcType="VARCHAR" />
+    <result column="CLASTUDENT_CATALOG" property="clastudentCatalog" jdbcType="VARCHAR" />
+    <result column="CLASTUDENT_RESULY" property="clastudentResuly" jdbcType="VARCHAR" />
+     <collection property="tranclass" column="TRANCLASS_ID" ofType="com.ttgis.education.entity.Tranclass">
+     <id column="TRANCLASS_ID" jdbcType="VARCHAR" property="tranclassId" />
+    <result column="CLASSRESOURCE_ID" jdbcType="VARCHAR" property="classresourceId" />
+    <result column="TRANCLASS_CATEGROY" jdbcType="VARCHAR" property="tranclassCategroy" />
+    <result column="TRANCLASS_NAME" jdbcType="VARCHAR" property="tranclassName" />
+    <result column="TRANCLASS_NUMBER" jdbcType="INTEGER" property="tranclassNumber" />
+    <result column="TRANCLASS_TEACHER" jdbcType="VARCHAR" property="tranclassTeacher" />
+    <result column="TRANCLASS_CATALOG" jdbcType="VARCHAR" property="tranclassCatalog" />
+    <result column="TRANCLASS_RANK" jdbcType="VARCHAR" property="tranclassRank" />
+    <result column="TRANCLASS_INCLUDE" jdbcType="VARCHAR" property="tranclassInclude" />
+    <result column="TRANCLASS_DETAILS" jdbcType="VARCHAR" property="tranclassDetails" />
+    <result column="TRANCLASS_FILE" jdbcType="VARCHAR" property="tranclassFile" />
+    <result column="TRANCLASS_STUDENT" jdbcType="VARCHAR" property="tranclassStudent" />
+    <result column="TRANCLASS_FACE" jdbcType="VARCHAR" property="tranclassFace" />
+    <result column="TRANCLASS_CONDITION" jdbcType="VARCHAR" property="tranclassCondition" />
+    <result column="TRANCLASS_AT" jdbcType="TIMESTAMP" property="tranclassAt" />
+    <result column="TRANCLASS_DEL" jdbcType="INTEGER" property="tranclassDel" />
+    <result column="TRANCLASS_TYPE" jdbcType="VARCHAR" property="tranclassType" />
+    <result column="TRANCLASS_SETUPTIME" jdbcType="VARCHAR" property="tranclassSetuptime" />
+    <result column="TRANCLASS_ENDTIME" jdbcType="VARCHAR" property="tranclassEndtime" />
+    <result column="TRANCLASS_APPLYTIME" jdbcType="VARCHAR" property="tranclassApplytime" />
+    <result column="TRANCLASS_APPLYENDTIME" jdbcType="VARCHAR" property="tranclassApplyendtime" />
+    </collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CLASTUDENT_ID, STUDENT_ID, TRANCLASS_ID, CLASTUDENT_NAME, CLASTUDENT_TYPE, CLASTUDENT_PASSWORD, 
+    CLASTUDENT_AT, CLASTUDENT_DEL, CLASTUDENT_STARTIME, CLASTUDENT_ENDTIME, CLASTUDENT_ALLTIME, 
+    CLASTUDENT_NOWTIME, CLASTUDENT_PLAN, CLASTUDENT_CATALOG, CLASTUDENT_RESULY
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CLASTUDENT
+    where CLASTUDENT_ID = #{clastudentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CLASTUDENT
+    where CLASTUDENT_ID = #{clastudentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Clastudent" >
+    insert into CLASTUDENT (CLASTUDENT_ID, STUDENT_ID, TRANCLASS_ID, 
+      CLASTUDENT_NAME, CLASTUDENT_TYPE, CLASTUDENT_PASSWORD, 
+      CLASTUDENT_AT, CLASTUDENT_DEL, CLASTUDENT_STARTIME, 
+      CLASTUDENT_ENDTIME, CLASTUDENT_ALLTIME, CLASTUDENT_NOWTIME, 
+      CLASTUDENT_PLAN, CLASTUDENT_CATALOG, CLASTUDENT_RESULY
+      )
+    values (#{clastudentId,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, #{tranclassId,jdbcType=VARCHAR}, 
+      #{clastudentName,jdbcType=VARCHAR}, #{clastudentType,jdbcType=INTEGER}, #{clastudentPassword,jdbcType=VARCHAR}, 
+      #{clastudentAt,jdbcType=TIMESTAMP}, #{clastudentDel,jdbcType=INTEGER}, #{clastudentStartime,jdbcType=VARCHAR}, 
+      #{clastudentEndtime,jdbcType=VARCHAR}, #{clastudentAlltime,jdbcType=NUMERIC}, #{clastudentNowtime,jdbcType=NUMERIC}, 
+      #{clastudentPlan,jdbcType=VARCHAR}, #{clastudentCatalog,jdbcType=VARCHAR}, #{clastudentResuly,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Clastudent" >
+    insert into CLASTUDENT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clastudentId != null" >
+        CLASTUDENT_ID,
+      </if>
+      <if test="studentId != null" >
+        STUDENT_ID,
+      </if>
+      <if test="tranclassId != null" >
+        TRANCLASS_ID,
+      </if>
+      <if test="clastudentName != null" >
+        CLASTUDENT_NAME,
+      </if>
+      <if test="clastudentType != null" >
+        CLASTUDENT_TYPE,
+      </if>
+      <if test="clastudentPassword != null" >
+        CLASTUDENT_PASSWORD,
+      </if>
+      <if test="clastudentAt != null" >
+        CLASTUDENT_AT,
+      </if>
+      <if test="clastudentDel != null" >
+        CLASTUDENT_DEL,
+      </if>
+      <if test="clastudentStartime != null" >
+        CLASTUDENT_STARTIME,
+      </if>
+      <if test="clastudentEndtime != null" >
+        CLASTUDENT_ENDTIME,
+      </if>
+      <if test="clastudentAlltime != null" >
+        CLASTUDENT_ALLTIME,
+      </if>
+      <if test="clastudentNowtime != null" >
+        CLASTUDENT_NOWTIME,
+      </if>
+      <if test="clastudentPlan != null" >
+        CLASTUDENT_PLAN,
+      </if>
+      <if test="clastudentCatalog != null" >
+        CLASTUDENT_CATALOG,
+      </if>
+      <if test="clastudentResuly != null" >
+        CLASTUDENT_RESULY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clastudentId != null" >
+        #{clastudentId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassId != null" >
+        #{tranclassId,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentName != null" >
+        #{clastudentName,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentType != null" >
+        #{clastudentType,jdbcType=INTEGER},
+      </if>
+      <if test="clastudentPassword != null" >
+        #{clastudentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentAt != null" >
+        #{clastudentAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clastudentDel != null" >
+        #{clastudentDel,jdbcType=INTEGER},
+      </if>
+      <if test="clastudentStartime != null" >
+        #{clastudentStartime,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentEndtime != null" >
+        #{clastudentEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentAlltime != null" >
+        #{clastudentAlltime,jdbcType=NUMERIC},
+      </if>
+      <if test="clastudentNowtime != null" >
+        #{clastudentNowtime,jdbcType=NUMERIC},
+      </if>
+      <if test="clastudentPlan != null" >
+        #{clastudentPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentCatalog != null" >
+        #{clastudentCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentResuly != null" >
+        #{clastudentResuly,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Clastudent" >
+    update CLASTUDENT
+    <set >
+      <if test="studentId != null" >
+        STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassId != null" >
+        TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentName != null" >
+        CLASTUDENT_NAME = #{clastudentName,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentType != null" >
+        CLASTUDENT_TYPE = #{clastudentType,jdbcType=INTEGER},
+      </if>
+      <if test="clastudentPassword != null" >
+        CLASTUDENT_PASSWORD = #{clastudentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentAt != null" >
+        CLASTUDENT_AT = #{clastudentAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clastudentDel != null" >
+        CLASTUDENT_DEL = #{clastudentDel,jdbcType=INTEGER},
+      </if>
+      <if test="clastudentStartime != null" >
+        CLASTUDENT_STARTIME = #{clastudentStartime,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentEndtime != null" >
+        CLASTUDENT_ENDTIME = #{clastudentEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentAlltime != null" >
+        CLASTUDENT_ALLTIME = #{clastudentAlltime,jdbcType=NUMERIC},
+      </if>
+      <if test="clastudentNowtime != null" >
+        CLASTUDENT_NOWTIME = #{clastudentNowtime,jdbcType=NUMERIC},
+      </if>
+      <if test="clastudentPlan != null" >
+        CLASTUDENT_PLAN = #{clastudentPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentCatalog != null" >
+        CLASTUDENT_CATALOG = #{clastudentCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="clastudentResuly != null" >
+        CLASTUDENT_RESULY = #{clastudentResuly,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CLASTUDENT_ID = #{clastudentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Clastudent" >
+    update CLASTUDENT
+    set STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR},
+      CLASTUDENT_NAME = #{clastudentName,jdbcType=VARCHAR},
+      CLASTUDENT_TYPE = #{clastudentType,jdbcType=INTEGER},
+      CLASTUDENT_PASSWORD = #{clastudentPassword,jdbcType=VARCHAR},
+      CLASTUDENT_AT = #{clastudentAt,jdbcType=TIMESTAMP},
+      CLASTUDENT_DEL = #{clastudentDel,jdbcType=INTEGER},
+      CLASTUDENT_STARTIME = #{clastudentStartime,jdbcType=VARCHAR},
+      CLASTUDENT_ENDTIME = #{clastudentEndtime,jdbcType=VARCHAR},
+      CLASTUDENT_ALLTIME = #{clastudentAlltime,jdbcType=NUMERIC},
+      CLASTUDENT_NOWTIME = #{clastudentNowtime,jdbcType=NUMERIC},
+      CLASTUDENT_PLAN = #{clastudentPlan,jdbcType=VARCHAR},
+      CLASTUDENT_CATALOG = #{clastudentCatalog,jdbcType=VARCHAR},
+      CLASTUDENT_RESULY = #{clastudentResuly,jdbcType=VARCHAR}
+    where CLASTUDENT_ID = #{clastudentId,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据培训班Id查审核通过的培训班学生 -->
+       <select id="selectClasId" resultMap="BaseResultMap" parameterType="java.lang.String">
+	  	select 
+	    <include refid="Base_Column_List" />
+	    from CLASTUDENT
+	    where CLASTUDENT_DEL = 1 and CLASTUDENT_TYPE = 1 
+			and TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR}
+	
+	    
+	  </select>
+  <!-- 根据学生Id查培训班次 -->
+     <select id="selectStudentClaId" resultMap="BaseResultMap" parameterType="java.lang.String">
+	  	select 
+	    <include refid="Base_Column_List" />
+	    from CLASTUDENT
+	    where CLASTUDENT_DEL = 1 and CLASTUDENT_TYPE = 1 
+	    <if test="studentId != null and studentId != ''">
+	 <![CDATA[  
+			and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+	    
+	  </select>
+  
+  <!--前台我的课程  培训班 -->
+  <select id="selectAllKey" resultMap="BaseResultMap" parameterType="com.ttgis.education.entity.Clastudent" >
+   select * from TRANCLASS t 
+    left join CLASTUDENT c 
+    on t.TRANCLASS_ID=c.TRANCLASS_ID
+    where c.STUDENT_ID=#{studentId,jdbcType=VARCHAR} and CLASTUDENT_DEL=1
+  </select>
+  <!--前台我的课程  培训班        条数 -->
+  <select id="selectAllInKey" resultType="int" parameterType="com.ttgis.education.entity.Clastudent" >
+   select  count(*) from TRANCLASS t 
+    inner join CLASTUDENT c 
+    on t.TRANCLASS_ID=c.TRANCLASS_ID  inner join CLASSRESOURCE r on t.CLASSRESOURCE_ID=r.CLASSRESOURCE_ID
+    where c.STUDENT_ID=#{studentId,jdbcType=VARCHAR} 
+    and CLASTUDENT_DEL=1
+     and CLASSRESOURCE_UPNAME=#{classresourceUpname,jdbcType=VARCHAR}
+      <if test="clastudentType != null and clastudentType != ''">
+	 <![CDATA[  
+			and CLASTUDENT_TYPE = #{clastudentType}
+			 ]]>  
+	 </if> 
+  </select>
+  
+      <!--前台我的课程  培训班  分页显示 -->
+<select id="classStudentPageAllIn" parameterType="com.ttgis.education.entity.Clastudent"   resultMap="BaseResultMap">
+select top ${size}  *
+from TRANCLASS t 
+    inner join CLASTUDENT c 
+    on t.TRANCLASS_ID=c.TRANCLASS_ID  inner join CLASSRESOURCE r on t.CLASSRESOURCE_ID=r.CLASSRESOURCE_ID
+where   CLASTUDENT_ID not in
+(
+ select top ${page} CLASTUDENT_ID from TRANCLASS t 
+    inner join CLASTUDENT c 
+    on t.TRANCLASS_ID=c.TRANCLASS_ID  inner join CLASSRESOURCE r on t.CLASSRESOURCE_ID=r.CLASSRESOURCE_ID
+ where   CLASTUDENT_DEL = 1  
+ and c.STUDENT_ID=#{studentId,jdbcType=VARCHAR}
+ and CLASSRESOURCE_UPNAME=#{classresourceUpname,jdbcType=VARCHAR}
+ <if test="clastudentType != null and clastudentType != ''">
+	 <![CDATA[  
+			and CLASTUDENT_TYPE = #{clastudentType}
+			 ]]>  
+	 </if> 
+    order by   CLASTUDENT_AT 
+) 
+  and   CLASTUDENT_DEL = 1 
+ and c.STUDENT_ID=#{studentId,jdbcType=VARCHAR}
+  and CLASSRESOURCE_UPNAME=#{classresourceUpname,jdbcType=VARCHAR} 
+  <if test="clastudentType != null and clastudentType != ''">
+	 <![CDATA[  
+			and CLASTUDENT_TYPE = #{clastudentType}
+			 ]]>  
+	 </if> 
+ order by   CLASTUDENT_AT 
+
+
+ </select>
+  
+  
+  
+  <!-- 判断是否重复  -->
+   <select id="selectByCourseId" resultMap="BaseResultMap" parameterType="com.ttgis.education.entity.Clastudent">
+	  	select 
+	    <include refid="Base_Column_List" />
+	    from CLASTUDENT
+	    where TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR} 
+	    and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+	  </select>
+	  
+	  
+	    <!-- 分页显示 -->
+<select id="classStudentPageAll" parameterType="com.ttgis.education.entity.Clastudent"   resultMap="BaseResultMap">
+select top ${size}  *
+from CLASTUDENT 
+where   CLASTUDENT_ID not in
+(
+ select top ${page} CLASTUDENT_ID from CLASTUDENT 
+ where   CLASTUDENT_DEL = 1  
+  <if test="type !=1 ">
+	 <![CDATA[  
+			and CLASTUDENT_TYPE = 0
+			 ]]>  
+	 </if> 
+	    <if test="type ==1 ">
+	 <![CDATA[  
+			and CLASTUDENT_TYPE = 1
+			 ]]>  
+	 </if> 
+ <if test="tranclassId != null and tranclassId != ''">
+	 <![CDATA[  
+			and TRANCLASS_ID = #{tranclassId}
+			 ]]>  
+	 </if> 
+    order by   CLASTUDENT_AT 
+   
+    
+) 
+  and   CLASTUDENT_DEL = 1 
+   <if test="type !=1 ">
+	 <![CDATA[  
+			and CLASTUDENT_TYPE = 0
+			 ]]>  
+	 </if> 
+	    <if test="type ==1 ">
+	 <![CDATA[  
+			and CLASTUDENT_TYPE = 1
+			 ]]>  
+	 </if> 
+    <if test="tranclassId != null and tranclassId != ''">
+	 <![CDATA[  
+			and TRANCLASS_ID = #{tranclassId}
+			 ]]>  
+	 </if> 
+   
+   
+     
+ order by   CLASTUDENT_AT 
+
+
+ </select>
+  
+  
+    <!--总条数 -->
+ <select id="classStudentCount"  parameterType="com.ttgis.education.entity.Clastudent"  resultType="int">
+  	select  count(*)
+    from CLASTUDENT 
+    where   
+     CLASTUDENT_DEL = 1 
+     
+       <if test="type !=1 ">
+	 <![CDATA[  
+			and CLASTUDENT_TYPE = 0
+			 ]]>  
+	 </if> 
+	    <if test="type ==1 ">
+	 <![CDATA[  
+			and CLASTUDENT_TYPE = 1
+			 ]]>  
+	 </if> 
+     
+     <if test="tranclassId != null and tranclassId != ''">
+	 <![CDATA[  
+			and TRANCLASS_ID = #{tranclassId}
+			 ]]>  
+	 </if> 
+	 
+    
+    
+
+    
+  </select>
+  
+    <!--查询置顶数据 -->
+ <select id="webNewsTOP"  parameterType="com.ttgis.education.entity.News"  resultMap="BaseResultMap">
+  	select  *
+    from NEWS 
+    where  ORGANIZATION_ID = #{organizationId}  
+     and NEWS_TYPE = '可用' 
+     and NEWS_DEL = 1 
+     and NEWS_TOP = 1
+     and NEWS_SORT = #{newsSort,jdbcType=VARCHAR}
+     and CONVERT(varchar(100), GETDATE(), 23) > NEWS_TOPTIME
+
+    
+  </select>
+  
+</mapper>

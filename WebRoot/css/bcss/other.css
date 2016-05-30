@@ -1,0 +1,153 @@
+@charset "utf-8";
+/* other CSS Document */
+.header_other{ background:url(../../images/header_other.png) no-repeat; background-size:cover;}
+.main{background:#e5f3fd; width:100%; padding:20px 0;}
+.training_dynamic{height:29px; border:1px solid #cccccc; border-bottom:none; background:#fff; padding:15px 17px;}
+.training_title{ padding:0 20px; line-height:30px; background:#f6f5f5; font-size:14px; color:#666666;}
+
+.trainiing_news{border:1px solid #cccccc; background:#fff; margin-bottom:20px; padding-bottom:10px;}
+.trainiing_title{ padding-left:17px; padding-top:15px; position:relative;}
+.trainiing_title h2{height:45px; line-height:45px; font-size:24px; color:#000; border-bottom:1px solid #c3c3c3; padding-left:10px;}
+.trainiing_title .more{ position:absolute; right:25px; top:30px; color:#666; background:url(../../images/more_img.png) no-repeat right center; padding-right:15px;}
+.trainiing_title .more:hover{background:url(../../images/more_img_pre.png) no-repeat right center; color:#CCC;}
+.trainiing_news ul li{ line-height:40px; padding:0px 17px; position:relative;font-size:14px;}
+.trainiing_news ul li a{  color:#666666;}
+.trainiing_news ul li:hover{ background:#d5ebff;}
+.trainiing_news ul li b { background:url(../../images/new_bg.png) no-repeat center; padding:0px 10px;}
+.trainiing_news ul li .time{ position:absolute; right:40px; color:#666666;}
+
+.my_synopsis{ width:250px; height:250px; border:1px solid #ccc; background:#fff; padding:20px 10px; margin-bottom:20px;}
+.my_synopsis_img{ border-bottom:1px solid #c1c1c1; text-align:center; padding:5px 0px;}
+.my_synopsis_img p{ line-height:30px; font-size:14px; color:#666;}
+.my_synopsis_table{ padding:15px 0px 0px 20px; color:#000; font-size:14px;}
+.my_synopsis_table table td{ line-height:24px;}
+
+/* my course */
+.clearfix:after {
+content: "." ;
+display: block ;
+height: 0 ;
+clear: both ;
+visibility: hidden ;
+}
+.clearfix{ display: inline-block; }
+
+*html .clearfix{ height:1%; }
+.clearfix{ display:block; }
+.my_courses_left{ width:270px; padding-bottom:200px; float: left;}
+.my_synopsis_2{ width:270px; height:500px; border:1px solid #ccc; background:#fff;}
+.my_courses_right{ width:885px; border:1px solid #ccc; background:#fff; padding:20px 10px 200px 10px; float:right;}
+.training_title_right{ padding:20px 20px 0px 20px; line-height:50px; font-size:18px; color:#000000;}
+.training_title_text{ padding:0 20px; line-height:30px; font-size:14px; color:#666666;}
+
+/* news details*/
+.trainiing_news div img {
+  max-width: 700px;
+}
+.news_details_title{ padding:20px 20px 0px 20px; line-height:50px; font-size:18px; color:#000000; text-align:center;}
+.news_details_text{ padding:0 80px; line-height:30px; font-size:14px; color:#666666; padding-bottom:100px;}
+.news_details_time{ padding:0 20px; line-height:40px; font-size:14px; color:#666666; text-align:center;}
+.news_details_img{ padding:20px 20px; line-height:40px; font-size:14px; color:#666666; text-align:center;}
+
+
+/* course list*/
+.course_box{ padding-top:20px;}
+.font_white03 {color: #fff; font-family: 黑体; font-weight: normal; font-size: 14px; text-align: center; line-height:20px; padding:0px 5px 0px 5px;}
+.font_black02 {color: #333333;font-family: 黑体;font-weight: normal; font-size: 12px; text-align: center; line-height:20px;}
+
+
+/***************************侧边菜单****************************/
+
+#bg{/*background-image:url(images/content/dotted.png);*/}
+.container{width:100%;height:100%;margin-left:12px;}
+.leftsidebar_box{width:270px;
+				overflow:visible !important;
+				position:absolute; !important;
+				/*background-color:#3992d0;*/
+				}
+.leftsidebar_box dt{padding-left:20px;
+					padding-right:10px;
+					background-repeat:no-repeat;
+					background-position:10px center;
+					color:#666666;
+					font-size:14px;
+					position:relative;
+					line-height:48px;
+					border-bottom:1px solid #cccccc;
+					cursor:pointer;}
+.leftsidebar_box dd{background-color:#edf3f7; border-bottom:1px solid #cccccc; padding-left:40px;padding-top:6px; }
+.leftsidebar_box dd a{color:#666666;line-height:30px;}
+.leftsidebar_box dt img{position:absolute;right:10px;top:20px; }
+.leftsidebar_box dl dd:last-child{padding-bottom:10px;}
+
+/***************************课程目录 侧边菜单****************************/
+*,body,ul,li,h1,h2{ margin:0; padding:0; list-style:none;} 
+body{font:12px "宋体";} 
+.tree_box{;width: 270px;overflow: hidden;}
+.tree_box h3,.tree_one h4,.tree_two li{cursor: pointer;}
+.tree_one,.tree_two{display: none;overflow: hidden;}
+.tree_box h3{background-color:#ffffff;line-height:40px;color:#666666;padding-left:10px;border-bottom:1px solid #cccccc}
+.tree_one h4{background-color:#edf3f7;line-height:35px;color:#617b93;padding-left:20px;border-bottom:1px solid #bdc9d3}
+.tree_two li{background-color:#0c5daa;line-height:30px;color:#ffffff;padding-left:30px;border-bottom:1px solid #62a3e1}
+
+.video_page{border:1px solid #cccccc; background:#fff; margin-bottom:20px; overflow:hidden;}
+.video_img{ padding:18px; float:left;}
+.video_img img{ width:605px; height:273px;}
+.video_xiangQ{ float:left; width:474px; padding:18px 15px;}
+.video_xiangQ h2{ font-size:18px; color:#000; font-weight:bold; line-height:48px;}
+.video_xiangQ p{ padding:10px 0; font-size:14px; color:#666; line-height:28px; text-indent:2em;}
+.video_page_dagang,.video_page_daoshi{ float:left;}
+.video_page_dagang h2,.video_page_daoshi h2{font-size:18px; color:#000; font-weight:bold; line-height:48px;}
+.video_page_dagang{ padding:18px; width:800px;}
+.video_page_dagang li{ border-bottom:1px dashed #c3c3c3; line-height:40px;}
+.video_page_dagang li:hover{ background:#cce6ff;}
+.video_page_dagang li a{ color:#666;}
+.video_page_dagang li span,.video_page_dagang div span{ display:inline-block;}
+.dagang_title01{ width:570px;}
+.dagang_title02{ width:170px;}
+.dagang_title03{ background:url(../images/dagang_img_03.png) no-repeat left center; padding-left:30px;}
+.video_page_dagang li:hover .dagang_title03{background:url(../images/dagang_img_06.png) no-repeat left center;} 
+.dagang_title{ background:#fafafa; padding-left:10px; line-height:40px;}
+.video_page_daoshi{padding:18px 30px; }
+.video_page_daoshi_neirong{text-align:center;}
+.video_page_daoshi_neirong img{ width:255px; height:255px;}
+.video_page_daoshi_neirong h3{ color:#000; line-height:30px;}
+.video_page_daoshi_neirong p{ color:#9f9999;}
+
+
+/* course list*/
+
+
+/*.course_head p{line-height:50px; margin-left:30px; float:left;}
+.course_head div{float:right;}
+.course_head div select{margin:10px 0; height:30px;}
+.course_head div input{height:26px;}
+.course_head div a{width:60px; height:30px; border-radius:6px; display:inline-block; background-color:#005bac;text-align:center;line-height:30px; color:#fff; margin:0 10px 0 20px;}
+.course_head div a:hover{width:58px; height:30px;background-color:#3e8cd0; border:1px solid #005bac;}
+.course_rcontent{margin-left:160px;}
+.course_rcontent_head .fl_left span a{margin-left:16px;}
+.course_rcontent_head_la{border:1px solid #004888; padding:0 6px; line-height:20px; height:18px; background-color:#005bac; color:#fff;margin-left:10px; display:inline-block;}
+.course_rcontent_head .fl_right a{float:left;margin-left:12px;color:#333;}
+.course_rcontent_head .fl_right a:hover{text-decoration:underline;}
+.course_rcontent_head .fl_right span{float:left}
+.course_rcontent_nav{margin-top:10px;}
+.course_rcontent_nav li{float:left;}
+.course_rcontent_nav a{color:#333;}
+.course_rcontent_nav a:hover{text-decoration:underline;}
+.course_rcontent_nav1{width:30px;}
+.course_rcontent_nav2{width:50px;}
+.course_rcontent_nav3{width:75px;}
+.course_rcontent_nav4{width:100px;}
+.course_rcontent_nav5{width:125px;}
+.cnavsx{line-height:20px;text-align:center;padding:5px 0;border-right:1px solid #fff;}
+.cnavbg{background-color:#005bac; color:#fff;}
+.course_rcontent_fany{margin-left:190px; padding:45px 0;}
+.course_rcontent_fany1{margin-left:288px;}
+.course_rcontent_fany span a{margin-left:16px;}
+.course_rcontent_fany a{float:left;margin-left:12px;color:#333;}
+.course_rcontent_fany a:hover{text-decoration:underline;}
+.course_rcontent_fany span{float:left}*/
+
+.peixunban_new{position:relative; padding-top:10px;}
+.peixunban_new  select{border: 1px solid #aaa;  height:30px; width:185px; padding-top:5px;}
+.peixunban_new  input{ width:60px; height:30px; background:#0c5daa;  position:absolute;  left:200px; top:10px; color:#ffffff;}

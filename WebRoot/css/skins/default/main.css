@@ -1,0 +1,453 @@
+@charset "utf-8";
+
+@import url("datepicker.css");
+
+@import url("common.css");
+/*common*/
+* {
+	font-size: 12px;
+	*font-size: 11px;
+	font-family: Verdana, Arial,, Helvetica, sans-serif;
+	scrollbar-face-color: #dff9fe;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-3dlight-color: #9adae7;
+	scrollbar-darkshadow-color: #9adae7;
+	scrollbar-Shadow-color: #FFFFFF;
+	scrollbar-arrow-color: #006498;
+	scrollbar-track-color: #fff;
+}
+
+body {
+	margin: 6px;
+	background: #fff;
+	border: 0;
+	color: #333;
+	magin-bottom: 40px
+}
+
+a {
+	color: #005edf;
+}
+
+img {
+	vertical-align: middle
+}
+
+textarea {
+	border-top: 1px solid #999;
+	border-left: 1px solid #999;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 2px;
+	color: #339900;
+}
+
+select {
+	background: #fff;
+	border: 1px solid #7898b8;
+	vertical-align: middle;
+}
+
+.inputText {
+	border-top: 1px solid #999;
+	border-left: 1px solid #999;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	height: 20px;
+	padding-left: 2px;
+	line-height: 20px;
+	color: #339900;
+	vertical-align: middle;
+}
+
+.inputButton {
+	background: #0067b6 url(images/button_bg.jpg) repeat-x center;
+	border: 1px solid #0067b6;
+	color: #fff;
+	cursor: pointer;
+	overflow: visible;
+	width: auto;
+	padding: 4px 10px;
+	vertical-align: middle;
+}
+
+.inputButtonDisable {
+	background: #AFB8C0 url(images/button_bg.jpg) repeat-x center;
+	border: 1px solid #AFB8C0;
+	color: #fff;
+	cursor: pointer;
+	overflow: visible;
+	width: auto;
+	padding: 4px 10px;
+	vertical-align: middle;
+}
+/*title*/
+.title {
+	text-align: left;
+	COLOR: #ccc;
+	height: 26px;
+	line-height: 16px;
+}
+
+.title span {
+	color: #ccc;
+}
+
+.btnBar {
+	text-align: left
+}
+
+.subtitle
+,
+th
+,
+h2
+
+
+ 
+
+
+span
+,
+{
+color
+
+
+
+
+:
+
+
+
+
+#333
+
+
+
+
+;
+}
+.dataGrid table caption,.editBlock .subtitle {
+	color: #999;
+	background: #eee url(../common/arrow_up1.gif) no-repeat 6px 4px;
+	border-bottom: 1px solid #ddd;
+}
+
+.dataGrid table {
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+/*bordercolor*/
+.dataGrid,.editBlock {
+	border: 1px solid #ddd;
+}
+
+/*margin;padding*/
+.toolbar,.dataGrid,.editBlock,.btnBar {
+	margin-bottom: 8px;
+}
+/* toolbar */
+.toolbar {
+	text-align: center;
+}
+/*editBlock*/
+.editBlock1 {
+	display: block;
+	background: #F7F7F7;
+	height: 640px;
+	width: 120px;
+	position: relative;
+	list-style-type: none;
+	float: left;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.editBlock1 a {
+	font-size: 14px;
+	color: #000;
+}
+
+.editBlock1 a:hover {
+	font-size: 14px;
+	color: #0081cc;
+}
+
+.editBlock2 {
+	display: block;
+	height: 640px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.editBlock table {
+	width: 100%;
+}
+
+.editBlock th {
+	text-align: right;
+	font-weight: normal;
+	padding: 4px;
+	padding-top: 8px;
+	border: 1px solid #eee;
+	background: #f7f7f7;
+	vertical-align: top;
+}
+
+.editBlock td {
+	border: 1px solid #eee;
+	padding: 4px;
+	background: #fff;
+	vertical-align: middle
+}
+
+.editBlock .subtitle {
+	height: 26px;
+	padding: 0 0 0 24px;
+	line-height: 26px;
+	text-align: left;
+}
+
+.editBlock .subtitle {
+	
+}
+
+input.onFocus,textarea.onFocus {
+	background-color: #effcec;
+	border: 1px solid #57b840;
+}
+
+.editBlock .toolbar {
+	background: #f7f7f7
+}
+/* dataGrid */
+.dataGrid table caption {
+	height: 26px;
+	padding: 0 0 0 24px;
+	line-height: 26px;
+	text-align: left;
+}
+
+.dataGrid table {
+	width: 100%;
+	background: #fff;
+}
+
+.dataGrid th {
+	height: 24px;
+	font-weight: bold;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	background: #fff url(images/thBg.gif) repeat-x;
+	text-align: left;
+	padding: 2px 4px;
+	vertical-align: middle;
+	color: #666
+}
+
+.dataGrid td {
+	border-bottom: 1px solid #eee;
+	border-right: 1px solid #eee;
+	height: 24px;
+	text-align: left;
+	padding: 2px 4px;
+}
+
+.dataGrid tr.odd {
+	background: #f7f7f7
+}
+
+.dataGrid .page {
+	padding: 4px;
+	/* 	width: 100%; */
+	background-color: #f4f4f4
+}
+
+.dataGrid .page td {
+	border: 0;
+}
+
+.dataGrid .page #pleft {
+	padding-left: 5px;
+	text-align: left;
+}
+
+.dataGrid .page #pright {
+	padding-right: 5px;
+	text-align: right;
+}
+
+.dataGrid .page #pright img {
+	margin: 0 4px;
+}
+
+.dataGrid .nodata {
+	background: #fff;
+	color: #ff0000;
+	border-top: 0;
+	padding: 4px;
+	text-align: center;
+}
+
+.over td {
+	background: #e2ffdb;
+	color: #098b14;
+}
+
+.dataGrid .alignCenter {
+	text-align: center;
+}
+
+.dataGrid li:hover {
+	background: #fff
+}
+/**/
+.note {
+	color: #999;
+	padding: 4px 0;
+}
+
+.info {
+	margin: 8px 0;
+	padding: 8px;
+	line-height: 180%;
+	color: #666;
+	padding-left: 40px;
+	background: #fff url(../common/icon_info.gif) no-repeat 12px 12px;
+}
+
+.warning {
+	color: #ff6600;
+}
+/*remain words*/
+.remain {
+	height: 20px;
+	line-height: 20px;
+	color: #999;
+	text-align: left;
+}
+
+.remain span {
+	color: #f00;
+}
+/*special*/
+.green {
+	color: #008000;
+}
+
+.red {
+	color: #f00;
+}
+
+.yellow {
+	color: #F60;
+}
+
+.grey {
+	color: #999
+}
+
+.excelModel a {
+	text-decoration: none;
+	color: #FF5F5F;
+}
+
+.excelModel a:hover {
+	color: #607B8B;
+}
+
+.neirong p {
+	font-family: '微软雅黑';
+	font-size: 18px;
+	line-height: 2em;
+	color: #006AB8;
+	display: inline;
+}
+
+.neirong span {
+	font-family: '微软雅黑';
+	font-size: 18px;
+	line-height: 2em;
+}
+
+.publish {
+	width: 792px;
+	min-height: 190px;
+	overflow: hidden;
+	border: 1px solid #999;
+	position: relative;
+}
+
+.pubfb {
+	width: 792px;
+	height: 33px;
+	border-top: 1px solid #cccccc;
+	background-color: #edf1f4;
+	position: absolute;
+	bottom: 4px;
+	z-index: 999;
+}
+
+.pubright {
+	text-align: right;
+	font-size: 14px;
+	line-height: 33px;
+	color: #6d6d6d;
+	padding-right: 100px;
+}
+
+.pubright span {
+	font-size: 16px;
+	font-weight: bold;
+	color: #0081cc;
+}
+
+.pubright a {
+	display: block;
+	width: 90px;
+	height: 26px;
+	border: 1px solid #d1e4ef;
+	background-color: #0081cc;
+	position: absolute;
+	top: 5px;
+	right: 2px;
+	text-align: center;
+	line-height: 26px;
+	color: #FFF;
+	text-decoration: none;
+}
+
+/*==========以下部分是Validform必须的===========*/
+.Validform_checktip{
+	margin-left:8px;
+	line-height:20px;
+	height:20px;
+	overflow:hidden;
+	color:#999;
+	font-size:12px;
+}
+.Validform_right{
+	color:#71b83d;
+	padding-left:20px;
+	background:url(../images/right.png) no-repeat left center;
+}
+.Validform_wrong{
+	color:red;
+	padding-left:20px;
+	white-space:nowrap;
+	background:url(../images/error.png) no-repeat left center;
+}
+.Validform_loading{
+	padding-left:20px;
+	background:url(../images/onLoad.gif) no-repeat left center;
+}
+.Validform_error{
+	background-color:#ffe7e7;
+}
+#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999');}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#000;}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#cc0;}
+#Validform_msg .Validform_info{padding:8px;border:1px solid #000; border-top:none; text-align:left;}

@@ -1,0 +1,25 @@
+
+*,body,ul,li,h1,h2{ margin:0; padding:0; list-style:none;} 
+body{font:12px "宋体";}
+.tree{display:inline-block;float:left;margin-right:50px;}
+.tree_box{;width: 130px;overflow: hidden;}
+.tree_box h3,.tree_one h4,.tree_two li{cursor: pointer;}
+.tree_one,.tree_two{display: none;overflow: hidden;}
+.tree_box h3{background-color:#005bac;line-height:40px;color:#fff;padding-left:10px;border-bottom:1px solid #1c7ace}
+.tree_one h4{background-color:#1c7ace;line-height:28px;color:#fff;padding:0 10px 0 10px;border-bottom:1px solid #348cda;text-align:center;}
+.tree_two li{background-color:#348cda;line-height:24px;color:#fff;padding-left:0 10px 0 10px;border-bottom:1px solid #4094df;text-align:center;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.VideotimeMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Videotime" >
+    <id column="VIDEOTIME_ID" property="videotimeId" jdbcType="VARCHAR" />
+    <result column="COURSERESOURCE_ID" property="courseresourceId" jdbcType="VARCHAR" />
+    <result column="STUDENT_ID" property="studentId" jdbcType="VARCHAR" />
+    <result column="VIDEOTIME_AT" property="videotimeAt" jdbcType="VARCHAR" />
+    <result column="VIDEOTIME_DEL" property="videotimeDel" jdbcType="INTEGER" />
+    <result column="VIDEOTIME_MARK" property="videotimeMark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    VIDEOTIME_ID, COURSERESOURCE_ID, STUDENT_ID, VIDEOTIME_AT, VIDEOTIME_DEL, VIDEOTIME_MARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from VIDEOTIME
+    where VIDEOTIME_ID = #{videotimeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from VIDEOTIME
+    where VIDEOTIME_ID = #{videotimeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Videotime" >
+    insert into VIDEOTIME (VIDEOTIME_ID, COURSERESOURCE_ID, STUDENT_ID, 
+      VIDEOTIME_AT, VIDEOTIME_DEL, VIDEOTIME_MARK
+      )
+    values (#{videotimeId,jdbcType=VARCHAR}, #{courseresourceId,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, 
+      #{videotimeAt,jdbcType=VARCHAR}, #{videotimeDel,jdbcType=INTEGER}, #{videotimeMark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Videotime" >
+    insert into VIDEOTIME
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="videotimeId != null" >
+        VIDEOTIME_ID,
+      </if>
+      <if test="courseresourceId != null" >
+        COURSERESOURCE_ID,
+      </if>
+      <if test="studentId != null" >
+        STUDENT_ID,
+      </if>
+      <if test="videotimeAt != null" >
+        VIDEOTIME_AT,
+      </if>
+      <if test="videotimeDel != null" >
+        VIDEOTIME_DEL,
+      </if>
+      <if test="videotimeMark != null" >
+        VIDEOTIME_MARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="videotimeId != null" >
+        #{videotimeId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseresourceId != null" >
+        #{courseresourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="videotimeAt != null" >
+        #{videotimeAt,jdbcType=VARCHAR},
+      </if>
+      <if test="videotimeDel != null" >
+        #{videotimeDel,jdbcType=INTEGER},
+      </if>
+      <if test="videotimeMark != null" >
+        #{videotimeMark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Videotime" >
+    update VIDEOTIME
+    <set >
+      <if test="courseresourceId != null" >
+        COURSERESOURCE_ID = #{courseresourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="videotimeAt != null" >
+        VIDEOTIME_AT = #{videotimeAt,jdbcType=VARCHAR},
+      </if>
+      <if test="videotimeDel != null" >
+        VIDEOTIME_DEL = #{videotimeDel,jdbcType=INTEGER},
+      </if>
+      <if test="videotimeMark != null" >
+        VIDEOTIME_MARK = #{videotimeMark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where VIDEOTIME_ID = #{videotimeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Videotime" >
+    update VIDEOTIME
+    set COURSERESOURCE_ID = #{courseresourceId,jdbcType=VARCHAR},
+      STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      VIDEOTIME_AT = #{videotimeAt,jdbcType=VARCHAR},
+      VIDEOTIME_DEL = #{videotimeDel,jdbcType=INTEGER},
+      VIDEOTIME_MARK = #{videotimeMark,jdbcType=VARCHAR}
+    where VIDEOTIME_ID = #{videotimeId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <!-- 通过学员ID、视频ID查询出观看次数 -->
+  <select id="videtimeByCIdSId" parameterType="com.ttgis.education.entity.Videotime" resultMap="BaseResultMap">
+    select VIDEOTIME_MARK from VIDEOTIME 
+    where  STUDENT_ID = #{studentId,jdbcType=VARCHAR} 
+    and COURSERESOURCE_ID = #{courseresourceId,jdbcType=VARCHAR}
+    and VIDEOTIME_DEL = 1
+    group by VIDEOTIME_MARK
+  </select>
+  
+  <!-- 通过标记查询访问次数 -->
+  <select id="videtimeByMark" parameterType="com.ttgis.education.entity.Videotime" resultType="int">
+    select count(*) from VIDEOTIME 
+    where VIDEOTIME_DEL = 1 
+    <if test="courseresourceId != null and courseresourceId != ''">
+      <![CDATA[  
+				 and COURSERESOURCE_ID = #{courseresourceId,jdbcType=VARCHAR}
+	   ]]>  
+	</if>
+	<if test="studentId != null and studentId != ''">
+      <![CDATA[  
+			 and STUDENT_ID = #{studentId,jdbcType=VARCHAR} 
+	   ]]>  
+	</if>
+	<if test="videotimeMark != null and videotimeMark != ''">
+      <![CDATA[  
+			and VIDEOTIME_MARK !=0 
+	   ]]>  
+	</if>
+   
+   
+  </select>
+  
+   <!-- 通过标记查询访问 -->
+  <select id="videtimeByMarkList" parameterType="com.ttgis.education.entity.Videotime" resultMap="BaseResultMap">
+    select * from VIDEOTIME 
+    where VIDEOTIME_DEL = 1 
+    <if test="courseresourceId != null and courseresourceId != ''">
+      <![CDATA[  
+				 and COURSERESOURCE_ID = #{courseresourceId,jdbcType=VARCHAR}
+	   ]]>  
+	</if>
+	<if test="studentId != null and studentId != ''">
+      <![CDATA[  
+			 and STUDENT_ID = #{studentId,jdbcType=VARCHAR} 
+	   ]]>  
+	</if>
+	   order by  VIDEOTIME_MARK desc 
+	 
+  </select>
+  
+  <!-- 通过使用标记修改使用完成后的删除标记 -->
+  <update id="updateByMark" parameterType="com.ttgis.education.entity.Videotime">
+    update VIDEOTIME
+    set
+  	 VIDEOTIME_DEL = #{videotimeDel,jdbcType=INTEGER}
+    where VIDEOTIME_MARK = #{videotimeMark,jdbcType=VARCHAR}
+  </update>
+  
+    <!-- 记录开始时间和结束时间   -->
+  <select id="timeByMark" parameterType="com.ttgis.education.entity.Videotime" resultMap="BaseResultMap">
+    select * from VIDEOTIME v 
+  left join COURSERESOURCE c
+  on v.COURSERESOURCE_ID=c.COURSERESOURCE_ID
+   where VIDEOTIME_DEL = 1
+   	<if test="courseId != null and courseId != ''">
+      <![CDATA[  
+			 and c.COURSE_ID = #{courseId,jdbcType=VARCHAR}
+	   ]]>  
+	</if>
+		<if test="studentId != null and studentId != ''">
+      <![CDATA[  
+			 and v.STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+	   ]]>  
+	</if>
+   order by  VIDEOTIME_AT desc 
+   
+  </select>
+  
+</mapper>

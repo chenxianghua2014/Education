@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.StudenttwoMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Studenttwo" >
+    <id column="STUDENTTWO_ID" property="studenttwoId" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_ZWLB" property="studenttwoZwlb" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_XZZWMC" property="studenttwoXzzwmc" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_DNZWMC" property="studenttwoDnzwmc" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_DYJB" property="studenttwoDyjb" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_ZWSX" property="studenttwoZwsx" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_SFDQZW" property="studenttwoSfdqzw" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_SFZCRTZJ" property="studenttwoSfzcrtzj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_ZYJSZGMC" property="studenttwoZyjszgmc" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_ZYJSRZZG" property="studenttwoZyjsrzzg" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_ZYLB" property="studenttwoZylb" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_PRZYJSZWMC" property="studenttwoPrzyjszwmc" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_SFDQZYJSZW" property="studenttwoSfdqzyjszw" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_GZMC" property="studenttwoGzmc" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_GRJSZG" property="studenttwoGrjszg" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_PRGRJSZW" property="studenttwoPrgrjszw" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_SZDW" property="studenttwoSzdw" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_CSGZHDRZW" property="studenttwoCsgzhdrzw" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_YCLB" property="studenttwoYclb" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_YCYY" property="studenttwoYcyy" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_AT2" property="studenttwoAt2" jdbcType="TIMESTAMP" />
+    <result column="STUDENTTWO_DEL2" property="studenttwoDel2" jdbcType="INTEGER" />
+    <result column="STUDENTTWO_RZSJ" property="studenttwoRzsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_MZSJ" property="studenttwoMzsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_QDSJ" property="studenttwoQdsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_PRQSSJ" property="studenttwoPrqssj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_PRZZSJ" property="studenttwoPrzzsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_QDZGSJ" property="studenttwoQdzgsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_PRSJ" property="studenttwoPrsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_GRJLQSSJ" property="studenttwoGrjlqssj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_GRJLJSSJ" property="studenttwoGrjljssj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_CJDPSJ" property="studenttwoCjdpsj" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STUDENTTWO_ID, STUDENTTWO_ZWLB, STUDENTTWO_XZZWMC, STUDENTTWO_DNZWMC, STUDENTTWO_DYJB, 
+    STUDENTTWO_ZWSX, STUDENTTWO_SFDQZW, STUDENTTWO_SFZCRTZJ, STUDENTTWO_ZYJSZGMC, STUDENTTWO_ZYJSRZZG, 
+    STUDENTTWO_ZYLB, STUDENTTWO_PRZYJSZWMC, STUDENTTWO_SFDQZYJSZW, STUDENTTWO_GZMC, STUDENTTWO_GRJSZG, 
+    STUDENTTWO_PRGRJSZW, STUDENTTWO_SZDW, STUDENTTWO_CSGZHDRZW, STUDENTTWO_YCLB, STUDENTTWO_YCYY, 
+    STUDENTTWO_AT2, STUDENTTWO_DEL2, STUDENTTWO_RZSJ, STUDENTTWO_MZSJ, STUDENTTWO_QDSJ, 
+    STUDENTTWO_PRQSSJ, STUDENTTWO_PRZZSJ, STUDENTTWO_QDZGSJ, STUDENTTWO_PRSJ, STUDENTTWO_GRJLQSSJ, 
+    STUDENTTWO_GRJLJSSJ, STUDENTTWO_CJDPSJ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from STUDENTTWO
+    where STUDENTTWO_ID = #{studenttwoId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from STUDENTTWO
+    where STUDENTTWO_ID = #{studenttwoId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Studenttwo" >
+    insert into STUDENTTWO (STUDENTTWO_ID, STUDENTTWO_ZWLB, STUDENTTWO_XZZWMC, 
+      STUDENTTWO_DNZWMC, STUDENTTWO_DYJB, STUDENTTWO_ZWSX, 
+      STUDENTTWO_SFDQZW, STUDENTTWO_SFZCRTZJ, STUDENTTWO_ZYJSZGMC, 
+      STUDENTTWO_ZYJSRZZG, STUDENTTWO_ZYLB, STUDENTTWO_PRZYJSZWMC, 
+      STUDENTTWO_SFDQZYJSZW, STUDENTTWO_GZMC, STUDENTTWO_GRJSZG, 
+      STUDENTTWO_PRGRJSZW, STUDENTTWO_SZDW, STUDENTTWO_CSGZHDRZW, 
+      STUDENTTWO_YCLB, STUDENTTWO_YCYY, STUDENTTWO_AT2, 
+      STUDENTTWO_DEL2, STUDENTTWO_RZSJ, STUDENTTWO_MZSJ, 
+      STUDENTTWO_QDSJ, STUDENTTWO_PRQSSJ, STUDENTTWO_PRZZSJ, 
+      STUDENTTWO_QDZGSJ, STUDENTTWO_PRSJ, STUDENTTWO_GRJLQSSJ, 
+      STUDENTTWO_GRJLJSSJ, STUDENTTWO_CJDPSJ)
+    values (#{studenttwoId,jdbcType=VARCHAR}, #{studenttwoZwlb,jdbcType=VARCHAR}, #{studenttwoXzzwmc,jdbcType=VARCHAR}, 
+      #{studenttwoDnzwmc,jdbcType=VARCHAR}, #{studenttwoDyjb,jdbcType=VARCHAR}, #{studenttwoZwsx,jdbcType=VARCHAR}, 
+      #{studenttwoSfdqzw,jdbcType=VARCHAR}, #{studenttwoSfzcrtzj,jdbcType=VARCHAR}, #{studenttwoZyjszgmc,jdbcType=VARCHAR}, 
+      #{studenttwoZyjsrzzg,jdbcType=VARCHAR}, #{studenttwoZylb,jdbcType=VARCHAR}, #{studenttwoPrzyjszwmc,jdbcType=VARCHAR}, 
+      #{studenttwoSfdqzyjszw,jdbcType=VARCHAR}, #{studenttwoGzmc,jdbcType=VARCHAR}, #{studenttwoGrjszg,jdbcType=VARCHAR}, 
+      #{studenttwoPrgrjszw,jdbcType=VARCHAR}, #{studenttwoSzdw,jdbcType=VARCHAR}, #{studenttwoCsgzhdrzw,jdbcType=VARCHAR}, 
+      #{studenttwoYclb,jdbcType=VARCHAR}, #{studenttwoYcyy,jdbcType=VARCHAR}, #{studenttwoAt2,jdbcType=TIMESTAMP}, 
+      #{studenttwoDel2,jdbcType=INTEGER}, #{studenttwoRzsj,jdbcType=VARCHAR}, #{studenttwoMzsj,jdbcType=VARCHAR}, 
+      #{studenttwoQdsj,jdbcType=VARCHAR}, #{studenttwoPrqssj,jdbcType=VARCHAR}, #{studenttwoPrzzsj,jdbcType=VARCHAR}, 
+      #{studenttwoQdzgsj,jdbcType=VARCHAR}, #{studenttwoPrsj,jdbcType=VARCHAR}, #{studenttwoGrjlqssj,jdbcType=VARCHAR}, 
+      #{studenttwoGrjljssj,jdbcType=VARCHAR}, #{studenttwoCjdpsj,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Studenttwo" >
+    insert into STUDENTTWO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studenttwoId != null" >
+        STUDENTTWO_ID,
+      </if>
+      <if test="studenttwoZwlb != null" >
+        STUDENTTWO_ZWLB,
+      </if>
+      <if test="studenttwoXzzwmc != null" >
+        STUDENTTWO_XZZWMC,
+      </if>
+      <if test="studenttwoDnzwmc != null" >
+        STUDENTTWO_DNZWMC,
+      </if>
+      <if test="studenttwoDyjb != null" >
+        STUDENTTWO_DYJB,
+      </if>
+      <if test="studenttwoZwsx != null" >
+        STUDENTTWO_ZWSX,
+      </if>
+      <if test="studenttwoSfdqzw != null" >
+        STUDENTTWO_SFDQZW,
+      </if>
+      <if test="studenttwoSfzcrtzj != null" >
+        STUDENTTWO_SFZCRTZJ,
+      </if>
+      <if test="studenttwoZyjszgmc != null" >
+        STUDENTTWO_ZYJSZGMC,
+      </if>
+      <if test="studenttwoZyjsrzzg != null" >
+        STUDENTTWO_ZYJSRZZG,
+      </if>
+      <if test="studenttwoZylb != null" >
+        STUDENTTWO_ZYLB,
+      </if>
+      <if test="studenttwoPrzyjszwmc != null" >
+        STUDENTTWO_PRZYJSZWMC,
+      </if>
+      <if test="studenttwoSfdqzyjszw != null" >
+        STUDENTTWO_SFDQZYJSZW,
+      </if>
+      <if test="studenttwoGzmc != null" >
+        STUDENTTWO_GZMC,
+      </if>
+      <if test="studenttwoGrjszg != null" >
+        STUDENTTWO_GRJSZG,
+      </if>
+      <if test="studenttwoPrgrjszw != null" >
+        STUDENTTWO_PRGRJSZW,
+      </if>
+      <if test="studenttwoSzdw != null" >
+        STUDENTTWO_SZDW,
+      </if>
+      <if test="studenttwoCsgzhdrzw != null" >
+        STUDENTTWO_CSGZHDRZW,
+      </if>
+      <if test="studenttwoYclb != null" >
+        STUDENTTWO_YCLB,
+      </if>
+      <if test="studenttwoYcyy != null" >
+        STUDENTTWO_YCYY,
+      </if>
+      <if test="studenttwoAt2 != null" >
+        STUDENTTWO_AT2,
+      </if>
+      <if test="studenttwoDel2 != null" >
+        STUDENTTWO_DEL2,
+      </if>
+      <if test="studenttwoRzsj != null" >
+        STUDENTTWO_RZSJ,
+      </if>
+      <if test="studenttwoMzsj != null" >
+        STUDENTTWO_MZSJ,
+      </if>
+      <if test="studenttwoQdsj != null" >
+        STUDENTTWO_QDSJ,
+      </if>
+      <if test="studenttwoPrqssj != null" >
+        STUDENTTWO_PRQSSJ,
+      </if>
+      <if test="studenttwoPrzzsj != null" >
+        STUDENTTWO_PRZZSJ,
+      </if>
+      <if test="studenttwoQdzgsj != null" >
+        STUDENTTWO_QDZGSJ,
+      </if>
+      <if test="studenttwoPrsj != null" >
+        STUDENTTWO_PRSJ,
+      </if>
+      <if test="studenttwoGrjlqssj != null" >
+        STUDENTTWO_GRJLQSSJ,
+      </if>
+      <if test="studenttwoGrjljssj != null" >
+        STUDENTTWO_GRJLJSSJ,
+      </if>
+      <if test="studenttwoCjdpsj != null" >
+        STUDENTTWO_CJDPSJ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studenttwoId != null" >
+        #{studenttwoId,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoZwlb != null" >
+        #{studenttwoZwlb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoXzzwmc != null" >
+        #{studenttwoXzzwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoDnzwmc != null" >
+        #{studenttwoDnzwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoDyjb != null" >
+        #{studenttwoDyjb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoZwsx != null" >
+        #{studenttwoZwsx,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoSfdqzw != null" >
+        #{studenttwoSfdqzw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoSfzcrtzj != null" >
+        #{studenttwoSfzcrtzj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoZyjszgmc != null" >
+        #{studenttwoZyjszgmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoZyjsrzzg != null" >
+        #{studenttwoZyjsrzzg,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoZylb != null" >
+        #{studenttwoZylb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoPrzyjszwmc != null" >
+        #{studenttwoPrzyjszwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoSfdqzyjszw != null" >
+        #{studenttwoSfdqzyjszw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoGzmc != null" >
+        #{studenttwoGzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoGrjszg != null" >
+        #{studenttwoGrjszg,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoPrgrjszw != null" >
+        #{studenttwoPrgrjszw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoSzdw != null" >
+        #{studenttwoSzdw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoCsgzhdrzw != null" >
+        #{studenttwoCsgzhdrzw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoYclb != null" >
+        #{studenttwoYclb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoYcyy != null" >
+        #{studenttwoYcyy,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoAt2 != null" >
+        #{studenttwoAt2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studenttwoDel2 != null" >
+        #{studenttwoDel2,jdbcType=INTEGER},
+      </if>
+      <if test="studenttwoRzsj != null" >
+        #{studenttwoRzsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoMzsj != null" >
+        #{studenttwoMzsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoQdsj != null" >
+        #{studenttwoQdsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoPrqssj != null" >
+        #{studenttwoPrqssj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoPrzzsj != null" >
+        #{studenttwoPrzzsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoQdzgsj != null" >
+        #{studenttwoQdzgsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoPrsj != null" >
+        #{studenttwoPrsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoGrjlqssj != null" >
+        #{studenttwoGrjlqssj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoGrjljssj != null" >
+        #{studenttwoGrjljssj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoCjdpsj != null" >
+        #{studenttwoCjdpsj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Studenttwo" >
+    update STUDENTTWO
+    <set >
+      <if test="studenttwoZwlb != null  and  studenttwoZwlb != ''" >
+        STUDENTTWO_ZWLB = #{studenttwoZwlb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoXzzwmc != null  and  studenttwoXzzwmc != ''" >
+        STUDENTTWO_XZZWMC = #{studenttwoXzzwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoDnzwmc != null  and  studenttwoDnzwmc != ''" >
+        STUDENTTWO_DNZWMC = #{studenttwoDnzwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoDyjb != null  and  studenttwoDyjb != ''" >
+        STUDENTTWO_DYJB = #{studenttwoDyjb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoZwsx != null  and  studenttwoZwsx != ''" >
+        STUDENTTWO_ZWSX = #{studenttwoZwsx,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoSfdqzw != null  and  studenttwoSfdqzw != ''" >
+        STUDENTTWO_SFDQZW = #{studenttwoSfdqzw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoSfzcrtzj != null  and  studenttwoSfzcrtzj != ''" >
+        STUDENTTWO_SFZCRTZJ = #{studenttwoSfzcrtzj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoZyjszgmc != null  and  studenttwoZyjszgmc != ''" >
+        STUDENTTWO_ZYJSZGMC = #{studenttwoZyjszgmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoZyjsrzzg != null  and  studenttwoZyjsrzzg != ''" >
+        STUDENTTWO_ZYJSRZZG = #{studenttwoZyjsrzzg,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoZylb != null  and  studenttwoZylb != ''" >
+        STUDENTTWO_ZYLB = #{studenttwoZylb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoPrzyjszwmc != null  and  studenttwoPrzyjszwmc != ''" >
+        STUDENTTWO_PRZYJSZWMC = #{studenttwoPrzyjszwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoSfdqzyjszw != null  and  studenttwoSfdqzyjszw != ''" >
+        STUDENTTWO_SFDQZYJSZW = #{studenttwoSfdqzyjszw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoGzmc != null  and  studenttwoGzmc != ''" >
+        STUDENTTWO_GZMC = #{studenttwoGzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoGrjszg != null  and  studenttwoGrjszg != ''" >
+        STUDENTTWO_GRJSZG = #{studenttwoGrjszg,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoPrgrjszw != null  and  studenttwoPrgrjszw != ''" >
+        STUDENTTWO_PRGRJSZW = #{studenttwoPrgrjszw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoSzdw != null  and  studenttwoSzdw != ''" >
+        STUDENTTWO_SZDW = #{studenttwoSzdw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoCsgzhdrzw != null  and  studenttwoCsgzhdrzw != ''" >
+        STUDENTTWO_CSGZHDRZW = #{studenttwoCsgzhdrzw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoYclb != null  and  studenttwoYclb != ''" >
+        STUDENTTWO_YCLB = #{studenttwoYclb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoYcyy != null  and  studenttwoYcyy != ''" >
+        STUDENTTWO_YCYY = #{studenttwoYcyy,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoAt2 != null  and  studenttwoAt2 != ''" >
+        STUDENTTWO_AT2 = #{studenttwoAt2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studenttwoDel2 != null  and  studenttwoDel2 != ''" >
+        STUDENTTWO_DEL2 = #{studenttwoDel2,jdbcType=INTEGER},
+      </if>
+      <if test="studenttwoRzsj != null  and  studenttwoRzsj != ''" >
+        STUDENTTWO_RZSJ = #{studenttwoRzsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoMzsj != null  and  studenttwoMzsj != ''" >
+        STUDENTTWO_MZSJ = #{studenttwoMzsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoQdsj != null  and  studenttwoQdsj != ''" >
+        STUDENTTWO_QDSJ = #{studenttwoQdsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoPrqssj != null  and  studenttwoPrqssj != ''" >
+        STUDENTTWO_PRQSSJ = #{studenttwoPrqssj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoPrzzsj != null  and  studenttwoPrzzsj != ''" >
+        STUDENTTWO_PRZZSJ = #{studenttwoPrzzsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoQdzgsj != null  and  studenttwoQdzgsj != ''" >
+        STUDENTTWO_QDZGSJ = #{studenttwoQdzgsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoPrsj != null  and  studenttwoPrsj != ''" >
+        STUDENTTWO_PRSJ = #{studenttwoPrsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoGrjlqssj != null  and  studenttwoGrjlqssj != ''" >
+        STUDENTTWO_GRJLQSSJ = #{studenttwoGrjlqssj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoGrjljssj != null  and  studenttwoGrjljssj != ''" >
+        STUDENTTWO_GRJLJSSJ = #{studenttwoGrjljssj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoCjdpsj != null  and  studenttwoCjdpsj != ''" >
+        STUDENTTWO_CJDPSJ = #{studenttwoCjdpsj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STUDENTTWO_ID = #{studenttwoId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Studenttwo" >
+    update STUDENTTWO
+    set STUDENTTWO_ZWLB = #{studenttwoZwlb,jdbcType=VARCHAR},
+      STUDENTTWO_XZZWMC = #{studenttwoXzzwmc,jdbcType=VARCHAR},
+      STUDENTTWO_DNZWMC = #{studenttwoDnzwmc,jdbcType=VARCHAR},
+      STUDENTTWO_DYJB = #{studenttwoDyjb,jdbcType=VARCHAR},
+      STUDENTTWO_ZWSX = #{studenttwoZwsx,jdbcType=VARCHAR},
+      STUDENTTWO_SFDQZW = #{studenttwoSfdqzw,jdbcType=VARCHAR},
+      STUDENTTWO_SFZCRTZJ = #{studenttwoSfzcrtzj,jdbcType=VARCHAR},
+      STUDENTTWO_ZYJSZGMC = #{studenttwoZyjszgmc,jdbcType=VARCHAR},
+      STUDENTTWO_ZYJSRZZG = #{studenttwoZyjsrzzg,jdbcType=VARCHAR},
+      STUDENTTWO_ZYLB = #{studenttwoZylb,jdbcType=VARCHAR},
+      STUDENTTWO_PRZYJSZWMC = #{studenttwoPrzyjszwmc,jdbcType=VARCHAR},
+      STUDENTTWO_SFDQZYJSZW = #{studenttwoSfdqzyjszw,jdbcType=VARCHAR},
+      STUDENTTWO_GZMC = #{studenttwoGzmc,jdbcType=VARCHAR},
+      STUDENTTWO_GRJSZG = #{studenttwoGrjszg,jdbcType=VARCHAR},
+      STUDENTTWO_PRGRJSZW = #{studenttwoPrgrjszw,jdbcType=VARCHAR},
+      STUDENTTWO_SZDW = #{studenttwoSzdw,jdbcType=VARCHAR},
+      STUDENTTWO_CSGZHDRZW = #{studenttwoCsgzhdrzw,jdbcType=VARCHAR},
+      STUDENTTWO_YCLB = #{studenttwoYclb,jdbcType=VARCHAR},
+      STUDENTTWO_YCYY = #{studenttwoYcyy,jdbcType=VARCHAR},
+      STUDENTTWO_AT2 = #{studenttwoAt2,jdbcType=TIMESTAMP},
+      STUDENTTWO_DEL2 = #{studenttwoDel2,jdbcType=INTEGER},
+      STUDENTTWO_RZSJ = #{studenttwoRzsj,jdbcType=VARCHAR},
+      STUDENTTWO_MZSJ = #{studenttwoMzsj,jdbcType=VARCHAR},
+      STUDENTTWO_QDSJ = #{studenttwoQdsj,jdbcType=VARCHAR},
+      STUDENTTWO_PRQSSJ = #{studenttwoPrqssj,jdbcType=VARCHAR},
+      STUDENTTWO_PRZZSJ = #{studenttwoPrzzsj,jdbcType=VARCHAR},
+      STUDENTTWO_QDZGSJ = #{studenttwoQdzgsj,jdbcType=VARCHAR},
+      STUDENTTWO_PRSJ = #{studenttwoPrsj,jdbcType=VARCHAR},
+      STUDENTTWO_GRJLQSSJ = #{studenttwoGrjlqssj,jdbcType=VARCHAR},
+      STUDENTTWO_GRJLJSSJ = #{studenttwoGrjljssj,jdbcType=VARCHAR},
+      STUDENTTWO_CJDPSJ = #{studenttwoCjdpsj,jdbcType=VARCHAR}
+    where STUDENTTWO_ID = #{studenttwoId,jdbcType=VARCHAR}
+  </update>
+  <!--查询人员studenttwoId -->
+ <select id="queryStudentByStudenttwoId" parameterType="com.ttgis.education.entity.Studenttwo" resultType="int">
+    select *  from STUDENTTWO  where STUDENTTWO_ID = #{studenttwoId,jdbcType=VARCHAR}
+  </select>
+</mapper>

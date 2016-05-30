@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttgis.education.mapper.NoticeMapper">
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Notice">
+    <id column="NOTICE_ID" jdbcType="VARCHAR" property="noticeId" />
+    <result column="NOTICE_NAME" jdbcType="VARCHAR" property="noticeName" />
+    <result column="NOTICE_TYPE" jdbcType="VARCHAR" property="noticeType" />
+    <result column="NOTICE_CATALOG" jdbcType="VARCHAR" property="noticeCatalog" />
+    <result column="NOTICE_PRODUCER" jdbcType="VARCHAR" property="noticeProducer" />
+    <result column="NOTICE_RANK" jdbcType="INTEGER" property="noticeRank" />
+    <result column="NOTICE_IMAGE" jdbcType="VARCHAR" property="noticeImage" />
+    <result column="NOTICE_SORT" jdbcType="VARCHAR" property="noticeSort" />
+    <result column="NOTICE_AT" jdbcType="VARCHAR" property="noticeAt" />
+    <result column="NOTICE_DEL" jdbcType="INTEGER" property="noticeDel" />
+    <result column="ORGANIZATION_ID" jdbcType="VARCHAR" property="organizationId" />
+    <result column="NOTICE_TIME" jdbcType="VARCHAR" property="noticeTime" />
+    <result column="NOTICE_TOP" jdbcType="INTEGER" property="noticeTop" />
+    <result column="NOTICE_TOPTIME" jdbcType="VARCHAR" property="noticeToptime" />
+    <collection property="organization" column="accountCatalog" ofType="com.ttgis.education.entity.Organization">    
+            <id property="organizationId" column="ORGANIZATION_ID" />    
+            <result property="organizationDwmc" column="ORGANIZATION_DWMC" />    
+     </collection>
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ttgis.education.entity.Notice">
+    <result column="NOTICE_CONTENT" jdbcType="LONGVARCHAR" property="noticeContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    NOTICE_ID, NOTICE_NAME, NOTICE_TYPE, NOTICE_CATALOG, NOTICE_PRODUCER, NOTICE_RANK, 
+    NOTICE_IMAGE, NOTICE_SORT, NOTICE_AT, NOTICE_DEL, ORGANIZATION_ID, NOTICE_TIME, NOTICE_TOP, 
+    NOTICE_TOPTIME
+  </sql>
+  <sql id="Blob_Column_List">
+    NOTICE_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from NOTICE
+    where NOTICE_ID = #{noticeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from NOTICE
+    where NOTICE_ID = #{noticeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Notice">
+    insert into NOTICE (NOTICE_ID, NOTICE_NAME, NOTICE_TYPE, 
+      NOTICE_CATALOG, NOTICE_PRODUCER, NOTICE_RANK, 
+      NOTICE_IMAGE, NOTICE_SORT, NOTICE_AT, 
+      NOTICE_DEL, ORGANIZATION_ID, NOTICE_TIME, 
+      NOTICE_TOP, NOTICE_TOPTIME, NOTICE_CONTENT
+      )
+    values (#{noticeId,jdbcType=VARCHAR}, #{noticeName,jdbcType=VARCHAR}, #{noticeType,jdbcType=VARCHAR}, 
+      #{noticeCatalog,jdbcType=VARCHAR}, #{noticeProducer,jdbcType=VARCHAR}, #{noticeRank,jdbcType=INTEGER}, 
+      #{noticeImage,jdbcType=VARCHAR}, #{noticeSort,jdbcType=VARCHAR}, #{noticeAt,jdbcType=TIMESTAMP}, 
+      #{noticeDel,jdbcType=INTEGER}, #{organizationId,jdbcType=VARCHAR}, #{noticeTime,jdbcType=VARCHAR}, 
+      #{noticeTop,jdbcType=INTEGER}, #{noticeToptime,jdbcType=VARCHAR}, #{noticeContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Notice">
+    insert into NOTICE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="noticeId != null">
+        NOTICE_ID,
+      </if>
+      <if test="noticeName != null">
+        NOTICE_NAME,
+      </if>
+      <if test="noticeType != null">
+        NOTICE_TYPE,
+      </if>
+      <if test="noticeCatalog != null">
+        NOTICE_CATALOG,
+      </if>
+      <if test="noticeProducer != null">
+        NOTICE_PRODUCER,
+      </if>
+      <if test="noticeRank != null">
+        NOTICE_RANK,
+      </if>
+      <if test="noticeImage != null">
+        NOTICE_IMAGE,
+      </if>
+      <if test="noticeSort != null">
+        NOTICE_SORT,
+      </if>
+      <if test="noticeAt != null">
+        NOTICE_AT,
+      </if>
+      <if test="noticeDel != null">
+        NOTICE_DEL,
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID,
+      </if>
+      <if test="noticeTime != null">
+        NOTICE_TIME,
+      </if>
+      <if test="noticeTop != null">
+        NOTICE_TOP,
+      </if>
+      <if test="noticeToptime != null">
+        NOTICE_TOPTIME,
+      </if>
+      <if test="noticeContent != null">
+        NOTICE_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="noticeId != null">
+        #{noticeId,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeName != null">
+        #{noticeName,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeType != null">
+        #{noticeType,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeCatalog != null">
+        #{noticeCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeProducer != null">
+        #{noticeProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeRank != null">
+        #{noticeRank,jdbcType=INTEGER},
+      </if>
+      <if test="noticeImage != null">
+        #{noticeImage,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeSort != null">
+        #{noticeSort,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeAt != null">
+        #{noticeAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="noticeDel != null">
+        #{noticeDel,jdbcType=INTEGER},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTime != null">
+        #{noticeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTop != null">
+        #{noticeTop,jdbcType=INTEGER},
+      </if>
+      <if test="noticeToptime != null">
+        #{noticeToptime,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeContent != null">
+        #{noticeContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Notice">
+    update NOTICE
+    <set>
+      <if test="noticeName != null">
+        NOTICE_NAME = #{noticeName,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeType != null">
+        NOTICE_TYPE = #{noticeType,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeCatalog != null">
+        NOTICE_CATALOG = #{noticeCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeProducer != null">
+        NOTICE_PRODUCER = #{noticeProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeRank != null">
+        NOTICE_RANK = #{noticeRank,jdbcType=INTEGER},
+      </if>
+      <if test="noticeImage != null">
+        NOTICE_IMAGE = #{noticeImage,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeSort != null">
+        NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeAt != null">
+        NOTICE_AT = #{noticeAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="noticeDel != null">
+        NOTICE_DEL = #{noticeDel,jdbcType=INTEGER},
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTime != null">
+        NOTICE_TIME = #{noticeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTop != null">
+        NOTICE_TOP = #{noticeTop,jdbcType=INTEGER},
+      </if>
+      <if test="noticeToptime != null">
+        NOTICE_TOPTIME = #{noticeToptime,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeContent != null">
+        NOTICE_CONTENT = #{noticeContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where NOTICE_ID = #{noticeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ttgis.education.entity.Notice">
+    update NOTICE
+    set NOTICE_NAME = #{noticeName,jdbcType=VARCHAR},
+      NOTICE_TYPE = #{noticeType,jdbcType=VARCHAR},
+      NOTICE_CATALOG = #{noticeCatalog,jdbcType=VARCHAR},
+      NOTICE_PRODUCER = #{noticeProducer,jdbcType=VARCHAR},
+      NOTICE_RANK = #{noticeRank,jdbcType=INTEGER},
+      NOTICE_IMAGE = #{noticeImage,jdbcType=VARCHAR},
+      NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR},
+      NOTICE_AT = #{noticeAt,jdbcType=TIMESTAMP},
+      NOTICE_DEL = #{noticeDel,jdbcType=INTEGER},
+      ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      NOTICE_TIME = #{noticeTime,jdbcType=VARCHAR},
+      NOTICE_TOP = #{noticeTop,jdbcType=INTEGER},
+      NOTICE_TOPTIME = #{noticeToptime,jdbcType=VARCHAR},
+      NOTICE_CONTENT = #{noticeContent,jdbcType=LONGVARCHAR}
+    where NOTICE_ID = #{noticeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Notice">
+    update NOTICE
+    set NOTICE_NAME = #{noticeName,jdbcType=VARCHAR},
+      NOTICE_TYPE = #{noticeType,jdbcType=VARCHAR},
+      NOTICE_CATALOG = #{noticeCatalog,jdbcType=VARCHAR},
+      NOTICE_PRODUCER = #{noticeProducer,jdbcType=VARCHAR},
+      NOTICE_RANK = #{noticeRank,jdbcType=INTEGER},
+      NOTICE_IMAGE = #{noticeImage,jdbcType=VARCHAR},
+      NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR},
+      NOTICE_AT = #{noticeAt,jdbcType=TIMESTAMP},
+      NOTICE_DEL = #{noticeDel,jdbcType=INTEGER},
+      ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      NOTICE_TIME = #{noticeTime,jdbcType=VARCHAR},
+      NOTICE_TOP = #{noticeTop,jdbcType=INTEGER},
+      NOTICE_TOPTIME = #{noticeToptime,jdbcType=VARCHAR}
+    where NOTICE_ID = #{noticeId,jdbcType=VARCHAR}
+  </update>
+ 
+
+ 
+  <select id="selectNoticeByNumber" parameterType="int" resultMap="BaseResultMap">
+  	select top (#{num})
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from NOTICE
+    where NOTICE_DEL = 1 AND NOTICE_TYPE = '可用' order by NOTICE_AT desc
+  </select>
+  <select id="selectAllNotice" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from NOTICE
+    where NOTICE_DEL = 1 AND NOTICE_TYPE = '可用' order by NOTICE_AT desc
+  </select>
+  
+    <!-- 分页显示 -->
+<select id="selectPageAll" parameterType="com.ttgis.education.entity.Notice"   resultMap="BaseResultMap">
+select top ${size}  *
+from NOTICE n,ORGANIZATION o
+where  o.ORGANIZATION_ID=n.ORGANIZATION_ID 
+and NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR} and NOTICE_ID not in
+(
+ select top ${page} NOTICE_ID from NOTICE n,ORGANIZATION o
+  where  o.ORGANIZATION_ID=n.ORGANIZATION_ID 
+  and NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR}
+  
+  <if test="noticeRank != null and noticeRank != ''">
+      <![CDATA[  
+				and   NOTICE_RANK = #{noticeRank,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	<if test="noticeTime != null and noticeTime != ''">
+	<![CDATA[  
+			and   NOTICE_TIME = #{noticeTime,jdbcType=TIMESTAMP}
+			and NOTICE_TYPE = '可用' 
+			 ]]>  
+	</if>
+	 <if test="noticeCatalog != null and noticeCatalog != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC like '%${noticeCatalog}%'
+			 ]]>  
+	 </if>
+  
+  
+    <if test="type == 1 ">  
+    <if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    </if>  
+    
+    <if test="type == 2 ">  
+      		<if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+            </if>  
+            
+             <if test="cj == 1 ">  
+            <![CDATA[  
+             and (n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId}) or n.ORGANIZATION_ID = 'test001' )
+            ]]>  
+   			 </if>  
+
+    </if>  
+    
+    <if test="type == 3 ">  
+     <if test="cj == 1 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID = 'test001' or n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    <if test="cj == 2 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId}  )
+            ]]>  
+    </if>  
+    <if test="cj == 3 ">  
+            <![CDATA[  
+            and  n.ORGANIZATION_ID=#{organizationId}
+            ]]>  
+    </if>  
+    </if>  
+    
+    
+    
+  order by NOTICE_AT desc
+) 
+ <if test="noticeRank != null and noticeRank != ''">
+      <![CDATA[  
+				and   NOTICE_RANK = #{noticeRank,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	<if test="noticeTime != null and noticeTime != ''">
+	<![CDATA[  
+			and   NOTICE_TIME = #{noticeTime,jdbcType=TIMESTAMP}
+			and NOTICE_TYPE = '可用' 
+			 ]]>  
+	</if>
+	 <if test="noticeCatalog != null and noticeCatalog != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC like '%${noticeCatalog}%'
+			 ]]>  
+	 </if>
+
+
+    <if test="type == 1 ">  
+    <if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    </if>  
+    
+    <if test="type == 2 ">  
+      		<if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+            </if>  
+            
+             <if test="cj == 1 ">  
+            <![CDATA[  
+             and (n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId}) or n.ORGANIZATION_ID = 'test001' )
+            ]]>  
+   			 </if>  
+
+    </if>  
+    
+    <if test="type == 3 ">  
+     <if test="cj == 1 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID = 'test001' or n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    <if test="cj == 2 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId}  )
+            ]]>  
+    </if>  
+    <if test="cj == 3 ">  
+            <![CDATA[  
+            and  n.ORGANIZATION_ID=#{organizationId}
+            ]]>  
+    </if>  
+    </if>  
+    
+order by NOTICE_AT desc
+
+ </select>
+ 
+   <!--总条数 -->
+ <select id="NoticeCount"  parameterType="com.ttgis.education.entity.Notice"  resultType="int">
+  	select  count(*)
+    from NOTICE n,ORGANIZATION o
+    where   o.ORGANIZATION_ID=n.ORGANIZATION_ID 
+    and NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR}
+    
+     <if test="noticeRank != null and noticeRank != ''">
+      <![CDATA[  
+				and   NOTICE_RANK = #{noticeRank,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	<if test="noticeTime != null and noticeTime != ''">
+	<![CDATA[  
+			and   NOTICE_TIME = #{noticeTime,jdbcType=TIMESTAMP}
+			and NOTICE_TYPE = '可用' 
+			 ]]>  
+	</if>
+	 <if test="noticeCatalog != null and noticeCatalog != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC like '%${noticeCatalog}%'
+			 ]]>  
+	 </if>
+    
+    
+    
+    <if test="type == 1 ">  
+    <if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    </if>  
+    
+    <if test="type == 2 ">  
+      		<if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+            </if>  
+            
+             <if test="cj == 1 ">  
+            <![CDATA[  
+             and (n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId}) or n.ORGANIZATION_ID = 'test001' )
+            ]]>  
+   			 </if>  
+
+    </if>  
+    
+    <if test="type == 3 ">  
+     <if test="cj == 1 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID = 'test001' or n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    <if test="cj == 2 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId}  )
+            ]]>  
+    </if>  
+    <if test="cj == 3 ">  
+            <![CDATA[  
+            and  n.ORGANIZATION_ID=#{organizationId}
+            ]]>  
+    </if>  
+    </if>  
+    
+   
+  </select>
+  
+  
+  
+   <!-- 分页显示 -->
+<select id="collectionPageAll" parameterType="com.ttgis.education.entity.Notice"   resultMap="BaseResultMap">
+select top ${size}  *
+from NOTICE n ,SORT s,ORGANIZATION o
+where o.ORGANIZATION_ID=n.ORGANIZATION_ID 
+and NOTICE_ID not in
+(
+ select top ${page} NOTICE_ID from NOTICE n ,SORT s
+  where  n.NOTICE_ID = s. SORT_INFOID 
+    and n.NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR}
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 2
+    order by  SORT_AT desc
+) 
+    and n.NOTICE_ID = s. SORT_INFOID 
+    and n.NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR}
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 2
+    order by  SORT_AT desc
+
+
+ </select>
+  
+  
+    <!--总条数 -->
+ <select id="collectionNoticeCount"  parameterType="com.ttgis.education.entity.Notice"  resultType="int">
+  	select  count(*)
+    from NOTICE n ,SORT s
+    where n.NOTICE_ID = s. SORT_INFOID 
+    and n.NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR}
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 2
+    
+  </select>
+  
+
+   <!--ID处理（组织结构ID查询） -->
+ <select id="NoticeByOId"  parameterType="com.ttgis.education.entity.Notice"  resultMap="BaseResultMap">
+  	select top 1  *
+    from NOTICE
+    where ORGANIZATION_ID=#{organizationId}  order by NOTICE_AT desc  
+  </select>
+  
+  <!--ID查询 -->
+ <select id="NoticeById"  parameterType="com.ttgis.education.entity.Notice"  resultMap="ResultMapWithBLOBs">
+  	select *
+    from NOTICE n,ORGANIZATION o 
+    where o.ORGANIZATION_ID=n.ORGANIZATION_ID
+    and NOTICE_ID=#{noticeId} 
+  </select>
+  
+    <!--  *****************************************前台**********************************************************  -->
+     <!--ID处理（组织结构ID查询） -->
+ <select id="NoticeByIdAll"  parameterType="com.ttgis.education.entity.Notice"  resultMap="BaseResultMap">
+  	select  top 10 *
+    from NOTICE
+    where NOTICE_TYPE = '可用' and NOTICE_DEL = 1 and NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR} and ORGANIZATION_ID=#{organizationId}  order by NOTICE_TIME desc  
+  </select>
+  
+  
+     <!-- 分页显示 -->
+<select id="webPageAll" parameterType="com.ttgis.education.entity.Notice"   resultMap="BaseResultMap">
+select top ${size}  *
+from NOTICE 
+where NOTICE_ID not in
+(
+ select top ${page} NOTICE_ID from NOTICE 
+  where   NOTICE_TYPE = '可用' 
+  <if test="type == 1 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID = #{organizationId}  
+            ]]>  
+    </if>  
+    <if test="type == 2 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in ( #{organizationId} , 'test001') 
+            ]]>  
+    </if>  
+    <if test="type == 3 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in (
+            select ORGANIZATION_ID from ORGANIZATION  where  
+            ORGANIZATION_ID=#{organizationId} 
+            or ORGANIZATION_SJDW=#{organizationId}
+            or ORGANIZATION_ID='test001'
+            ) 
+            ]]>  
+    </if>  
+     and NOTICE_DEL = 1 
+     and NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR}
+    order by  NOTICE_TOP desc , NOTICE_TIME desc
+) 
+   <if test="type == 1 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID = #{organizationId}  
+            ]]>  
+    </if>  
+    <if test="type == 2 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in ( #{organizationId} , 'test001') 
+            ]]>  
+    </if>  
+    <if test="type == 3 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in (
+            select ORGANIZATION_ID from ORGANIZATION  where  
+            ORGANIZATION_ID=#{organizationId} 
+            or ORGANIZATION_SJDW=#{organizationId}
+            or ORGANIZATION_ID='test001'
+            ) 
+            ]]>  
+    </if>  
+     and NOTICE_TYPE = '可用' 
+     and NOTICE_DEL = 1 
+     and NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR}
+ order by  NOTICE_TOP desc , NOTICE_TIME desc
+
+
+ </select>
+  
+  
+    <!--总条数 -->
+ <select id="webNoticeCount"  parameterType="com.ttgis.education.entity.Notice"  resultType="int">
+  	select  count(*)
+    from NOTICE 
+    where  NOTICE_TYPE = '可用' 
+    <if test="type == 1 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID = #{organizationId}  
+            ]]>  
+    </if>  
+    <if test="type == 2 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in ( #{organizationId} , 'test001') 
+            ]]>  
+    </if>  
+    <if test="type == 3 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in (
+            select ORGANIZATION_ID from ORGANIZATION  where  
+            ORGANIZATION_ID=#{organizationId} 
+            or ORGANIZATION_SJDW=#{organizationId}
+            or ORGANIZATION_ID='test001'
+            ) 
+            ]]>  
+    </if>  
+     and NOTICE_DEL = 1 
+     and NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR}
+
+    
+  </select>
+  
+    <!--查询置顶数据 -->
+ <select id="webNoticeTOP"  parameterType="com.ttgis.education.entity.Notice"  resultMap="BaseResultMap">
+  	select  *
+    from NOTICE 
+    where  ORGANIZATION_ID = #{organizationId}  
+     and NOTICE_TYPE = '可用' 
+     and NOTICE_DEL = 1 
+     and NOTICE_TOP = 1
+     and NOTICE_SORT = #{noticeSort,jdbcType=VARCHAR}
+     and CONVERT(varchar(100), GETDATE(), 23) > NOTICE_TOPTIME
+
+    
+  </select>
+  
+    <!-- 站内模糊查询新闻 -->
+  <select id="noticeMyName" parameterType="com.ttgis.education.entity.Notice" resultMap="BaseResultMap">
+    select * from NOTICE where NOTICE_NAME like '%${noticeName}%' and NOTICE_DEL = 1 AND NOTICE_TYPE='可用'  order by NOTICE_AT desc  
+  </select> 
+  
+</mapper>

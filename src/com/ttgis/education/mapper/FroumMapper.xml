@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.FroumMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Froum" >
+    <id column="FROUM_ID" property="froumId" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_ID" property="organizationId" jdbcType="VARCHAR" />
+    <result column="FROUM_NAME" property="froumName" jdbcType="VARCHAR" />
+    <result column="FROUM_RANK" property="froumRank" jdbcType="INTEGER" />
+    <result column="FROUM_CATALOG" property="froumCatalog" jdbcType="VARCHAR" />
+    <result column="FROUM_PRODUCER" property="froumProducer" jdbcType="VARCHAR" />
+    <result column="FROUM_TYPE" property="froumType" jdbcType="INTEGER" />
+    <result column="FROUM_ADMIN" property="froumAdmin" jdbcType="VARCHAR" />
+    <result column="FROUM_CLICK" property="froumClick" jdbcType="INTEGER" />
+    <result column="FROUM_AT" property="froumAt" jdbcType="TIMESTAMP" />
+    <result column="FROUM_DEL" property="froumDel" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ttgis.education.entity.Froum" extends="BaseResultMap" >
+    <result column="FROUM_INFORMATION" property="froumInformation" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FROUM_ID, ORGANIZATION_ID, FROUM_NAME, FROUM_RANK, FROUM_CATALOG, FROUM_PRODUCER, 
+    FROUM_TYPE, FROUM_ADMIN, FROUM_CLICK, FROUM_AT, FROUM_DEL
+  </sql>
+  <sql id="Blob_Column_List" >
+    FROUM_INFORMATION
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from FROUM
+    where FROUM_ID = #{froumId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from FROUM
+    where FROUM_ID = #{froumId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Froum" >
+    insert into FROUM (FROUM_ID, ORGANIZATION_ID, FROUM_NAME, 
+      FROUM_RANK, FROUM_CATALOG, FROUM_PRODUCER, 
+      FROUM_TYPE, FROUM_ADMIN, FROUM_CLICK, 
+      FROUM_AT, FROUM_DEL, FROUM_INFORMATION
+      )
+    values (#{froumId,jdbcType=VARCHAR}, #{organizationId,jdbcType=VARCHAR}, #{froumName,jdbcType=VARCHAR}, 
+      #{froumRank,jdbcType=INTEGER}, #{froumCatalog,jdbcType=VARCHAR}, #{froumProducer,jdbcType=VARCHAR}, 
+      #{froumType,jdbcType=INTEGER}, #{froumAdmin,jdbcType=VARCHAR}, #{froumClick,jdbcType=INTEGER}, 
+      #{froumAt,jdbcType=TIMESTAMP}, #{froumDel,jdbcType=INTEGER}, #{froumInformation,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Froum" >
+    insert into FROUM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="froumId != null" >
+        FROUM_ID,
+      </if>
+      <if test="organizationId != null" >
+        ORGANIZATION_ID,
+      </if>
+      <if test="froumName != null" >
+        FROUM_NAME,
+      </if>
+      <if test="froumRank != null" >
+        FROUM_RANK,
+      </if>
+      <if test="froumCatalog != null" >
+        FROUM_CATALOG,
+      </if>
+      <if test="froumProducer != null" >
+        FROUM_PRODUCER,
+      </if>
+      <if test="froumType != null" >
+        FROUM_TYPE,
+      </if>
+      <if test="froumAdmin != null" >
+        FROUM_ADMIN,
+      </if>
+      <if test="froumClick != null" >
+        FROUM_CLICK,
+      </if>
+      <if test="froumAt != null" >
+        FROUM_AT,
+      </if>
+      <if test="froumDel != null" >
+        FROUM_DEL,
+      </if>
+      <if test="froumInformation != null" >
+        FROUM_INFORMATION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="froumId != null" >
+        #{froumId,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="froumName != null" >
+        #{froumName,jdbcType=VARCHAR},
+      </if>
+      <if test="froumRank != null" >
+        #{froumRank,jdbcType=INTEGER},
+      </if>
+      <if test="froumCatalog != null" >
+        #{froumCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="froumProducer != null" >
+        #{froumProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="froumType != null" >
+        #{froumType,jdbcType=INTEGER},
+      </if>
+      <if test="froumAdmin != null" >
+        #{froumAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="froumClick != null" >
+        #{froumClick,jdbcType=INTEGER},
+      </if>
+      <if test="froumAt != null" >
+        #{froumAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="froumDel != null" >
+        #{froumDel,jdbcType=INTEGER},
+      </if>
+      <if test="froumInformation != null" >
+        #{froumInformation,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Froum" >
+    update FROUM
+    <set >
+      <if test="organizationId != null" >
+        ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="froumName != null" >
+        FROUM_NAME = #{froumName,jdbcType=VARCHAR},
+      </if>
+      <if test="froumRank != null" >
+        FROUM_RANK = #{froumRank,jdbcType=INTEGER},
+      </if>
+      <if test="froumCatalog != null" >
+        FROUM_CATALOG = #{froumCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="froumProducer != null" >
+        FROUM_PRODUCER = #{froumProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="froumType != null" >
+        FROUM_TYPE = #{froumType,jdbcType=INTEGER},
+      </if>
+      <if test="froumAdmin != null" >
+        FROUM_ADMIN = #{froumAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="froumClick != null" >
+        FROUM_CLICK = #{froumClick,jdbcType=INTEGER},
+      </if>
+      <if test="froumAt != null" >
+        FROUM_AT = #{froumAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="froumDel != null" >
+        FROUM_DEL = #{froumDel,jdbcType=INTEGER},
+      </if>
+      <if test="froumInformation != null" >
+        FROUM_INFORMATION = #{froumInformation,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where FROUM_ID = #{froumId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ttgis.education.entity.Froum" >
+    update FROUM
+    set ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      FROUM_NAME = #{froumName,jdbcType=VARCHAR},
+      FROUM_RANK = #{froumRank,jdbcType=INTEGER},
+      FROUM_CATALOG = #{froumCatalog,jdbcType=VARCHAR},
+      FROUM_PRODUCER = #{froumProducer,jdbcType=VARCHAR},
+      FROUM_TYPE = #{froumType,jdbcType=INTEGER},
+      FROUM_ADMIN = #{froumAdmin,jdbcType=VARCHAR},
+      FROUM_CLICK = #{froumClick,jdbcType=INTEGER},
+      FROUM_AT = #{froumAt,jdbcType=TIMESTAMP},
+      FROUM_DEL = #{froumDel,jdbcType=INTEGER},
+      FROUM_INFORMATION = #{froumInformation,jdbcType=LONGVARCHAR}
+    where FROUM_ID = #{froumId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Froum" >
+    update FROUM
+    set ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      FROUM_NAME = #{froumName,jdbcType=VARCHAR},
+      FROUM_RANK = #{froumRank,jdbcType=INTEGER},
+      FROUM_CATALOG = #{froumCatalog,jdbcType=VARCHAR},
+      FROUM_PRODUCER = #{froumProducer,jdbcType=VARCHAR},
+      FROUM_TYPE = #{froumType,jdbcType=INTEGER},
+      FROUM_ADMIN = #{froumAdmin,jdbcType=VARCHAR},
+      FROUM_CLICK = #{froumClick,jdbcType=INTEGER},
+      FROUM_AT = #{froumAt,jdbcType=TIMESTAMP},
+      FROUM_DEL = #{froumDel,jdbcType=INTEGER}
+    where FROUM_ID = #{froumId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.StudenthreeMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Studenthree" >
+    <id column="STUDENTHREE_ID" property="studenthreeId" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LXZT" property="studenthreeLxzt" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_PCDW" property="studenthreePcdw" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_ZY" property="studenthreeZy" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LXSF" property="studenthreeLxsf" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LXGB" property="studenthreeLxgb" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_PXXMMC" property="studenthreePxxmmc" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_PXTS" property="studenthreePxts" jdbcType="NUMERIC" />
+    <result column="STUDENTHREE_PXLX" property="studenthreePxlx" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_PXQD" property="studenthreePxqd" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LTLB" property="studenthreeLtlb" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_GBJDQ" property="studenthreeGbjdq" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_CGSY" property="studenthreeCgsy" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_CGSQDW" property="studenthreeCgsqdw" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_CGPCDW" property="studenthreeCgpcdw" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_BJ" property="studenthreeBj" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LDGBBZ" property="studenthreeLdgbbz" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LDHBBZ" property="studenthreeLdhbbz" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_XHGBBZ" property="studenthreeXhgbbz" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_DJSBZ" property="studenthreeDjsbz" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_AT" property="studenthreeAt" jdbcType="TIMESTAMP" />
+    <result column="STUDENTHREE_DEL" property="studenthreeDel" jdbcType="INTEGER" />
+    <result column="STUDENTHREE_LXSJ" property="studenthreeLxsj" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LTXSJ" property="studenthreeLtxsj" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_CGSJ" property="studenthreeCgsj" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_JHHGSJ" property="studenthreeJhhgsj" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_SJHGSJ" property="studenthreeSjhgsj" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STUDENTHREE_ID, STUDENTHREE_LXZT, STUDENTHREE_PCDW, STUDENTHREE_ZY, STUDENTHREE_LXSF, 
+    STUDENTHREE_LXGB, STUDENTHREE_PXXMMC, STUDENTHREE_PXTS, STUDENTHREE_PXLX, STUDENTHREE_PXQD, 
+    STUDENTHREE_LTLB, STUDENTHREE_GBJDQ, STUDENTHREE_CGSY, STUDENTHREE_CGSQDW, STUDENTHREE_CGPCDW, 
+    STUDENTHREE_BJ, STUDENTHREE_LDGBBZ, STUDENTHREE_LDHBBZ, STUDENTHREE_XHGBBZ, STUDENTHREE_DJSBZ, 
+    STUDENTHREE_AT, STUDENTHREE_DEL, STUDENTHREE_LXSJ, STUDENTHREE_LTXSJ, STUDENTHREE_CGSJ, 
+    STUDENTHREE_JHHGSJ, STUDENTHREE_SJHGSJ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from STUDENTHREE
+    where STUDENTHREE_ID = #{studenthreeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from STUDENTHREE
+    where STUDENTHREE_ID = #{studenthreeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Studenthree" >
+    insert into STUDENTHREE (STUDENTHREE_ID, STUDENTHREE_LXZT, STUDENTHREE_PCDW, 
+      STUDENTHREE_ZY, STUDENTHREE_LXSF, STUDENTHREE_LXGB, 
+      STUDENTHREE_PXXMMC, STUDENTHREE_PXTS, STUDENTHREE_PXLX, 
+      STUDENTHREE_PXQD, STUDENTHREE_LTLB, STUDENTHREE_GBJDQ, 
+      STUDENTHREE_CGSY, STUDENTHREE_CGSQDW, STUDENTHREE_CGPCDW, 
+      STUDENTHREE_BJ, STUDENTHREE_LDGBBZ, STUDENTHREE_LDHBBZ, 
+      STUDENTHREE_XHGBBZ, STUDENTHREE_DJSBZ, STUDENTHREE_AT, 
+      STUDENTHREE_DEL, STUDENTHREE_LXSJ, STUDENTHREE_LTXSJ, 
+      STUDENTHREE_CGSJ, STUDENTHREE_JHHGSJ, STUDENTHREE_SJHGSJ
+      )
+    values (#{studenthreeId,jdbcType=VARCHAR}, #{studenthreeLxzt,jdbcType=VARCHAR}, #{studenthreePcdw,jdbcType=VARCHAR}, 
+      #{studenthreeZy,jdbcType=VARCHAR}, #{studenthreeLxsf,jdbcType=VARCHAR}, #{studenthreeLxgb,jdbcType=VARCHAR}, 
+      #{studenthreePxxmmc,jdbcType=VARCHAR}, #{studenthreePxts,jdbcType=NUMERIC}, #{studenthreePxlx,jdbcType=VARCHAR}, 
+      #{studenthreePxqd,jdbcType=VARCHAR}, #{studenthreeLtlb,jdbcType=VARCHAR}, #{studenthreeGbjdq,jdbcType=VARCHAR}, 
+      #{studenthreeCgsy,jdbcType=VARCHAR}, #{studenthreeCgsqdw,jdbcType=VARCHAR}, #{studenthreeCgpcdw,jdbcType=VARCHAR}, 
+      #{studenthreeBj,jdbcType=VARCHAR}, #{studenthreeLdgbbz,jdbcType=VARCHAR}, #{studenthreeLdhbbz,jdbcType=VARCHAR}, 
+      #{studenthreeXhgbbz,jdbcType=VARCHAR}, #{studenthreeDjsbz,jdbcType=VARCHAR}, #{studenthreeAt,jdbcType=TIMESTAMP}, 
+      #{studenthreeDel,jdbcType=INTEGER}, #{studenthreeLxsj,jdbcType=VARCHAR}, #{studenthreeLtxsj,jdbcType=VARCHAR}, 
+      #{studenthreeCgsj,jdbcType=VARCHAR}, #{studenthreeJhhgsj,jdbcType=VARCHAR}, #{studenthreeSjhgsj,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Studenthree" >
+    insert into STUDENTHREE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studenthreeId != null" >
+        STUDENTHREE_ID,
+      </if>
+      <if test="studenthreeLxzt != null" >
+        STUDENTHREE_LXZT,
+      </if>
+      <if test="studenthreePcdw != null" >
+        STUDENTHREE_PCDW,
+      </if>
+      <if test="studenthreeZy != null" >
+        STUDENTHREE_ZY,
+      </if>
+      <if test="studenthreeLxsf != null" >
+        STUDENTHREE_LXSF,
+      </if>
+      <if test="studenthreeLxgb != null" >
+        STUDENTHREE_LXGB,
+      </if>
+      <if test="studenthreePxxmmc != null" >
+        STUDENTHREE_PXXMMC,
+      </if>
+      <if test="studenthreePxts != null" >
+        STUDENTHREE_PXTS,
+      </if>
+      <if test="studenthreePxlx != null" >
+        STUDENTHREE_PXLX,
+      </if>
+      <if test="studenthreePxqd != null" >
+        STUDENTHREE_PXQD,
+      </if>
+      <if test="studenthreeLtlb != null" >
+        STUDENTHREE_LTLB,
+      </if>
+      <if test="studenthreeGbjdq != null" >
+        STUDENTHREE_GBJDQ,
+      </if>
+      <if test="studenthreeCgsy != null" >
+        STUDENTHREE_CGSY,
+      </if>
+      <if test="studenthreeCgsqdw != null" >
+        STUDENTHREE_CGSQDW,
+      </if>
+      <if test="studenthreeCgpcdw != null" >
+        STUDENTHREE_CGPCDW,
+      </if>
+      <if test="studenthreeBj != null" >
+        STUDENTHREE_BJ,
+      </if>
+      <if test="studenthreeLdgbbz != null" >
+        STUDENTHREE_LDGBBZ,
+      </if>
+      <if test="studenthreeLdhbbz != null" >
+        STUDENTHREE_LDHBBZ,
+      </if>
+      <if test="studenthreeXhgbbz != null" >
+        STUDENTHREE_XHGBBZ,
+      </if>
+      <if test="studenthreeDjsbz != null" >
+        STUDENTHREE_DJSBZ,
+      </if>
+      <if test="studenthreeAt != null" >
+        STUDENTHREE_AT,
+      </if>
+      <if test="studenthreeDel != null" >
+        STUDENTHREE_DEL,
+      </if>
+      <if test="studenthreeLxsj != null" >
+        STUDENTHREE_LXSJ,
+      </if>
+      <if test="studenthreeLtxsj != null" >
+        STUDENTHREE_LTXSJ,
+      </if>
+      <if test="studenthreeCgsj != null" >
+        STUDENTHREE_CGSJ,
+      </if>
+      <if test="studenthreeJhhgsj != null" >
+        STUDENTHREE_JHHGSJ,
+      </if>
+      <if test="studenthreeSjhgsj != null" >
+        STUDENTHREE_SJHGSJ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studenthreeId != null" >
+        #{studenthreeId,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLxzt != null" >
+        #{studenthreeLxzt,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreePcdw != null" >
+        #{studenthreePcdw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeZy != null" >
+        #{studenthreeZy,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLxsf != null" >
+        #{studenthreeLxsf,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLxgb != null" >
+        #{studenthreeLxgb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreePxxmmc != null" >
+        #{studenthreePxxmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreePxts != null" >
+        #{studenthreePxts,jdbcType=NUMERIC},
+      </if>
+      <if test="studenthreePxlx != null" >
+        #{studenthreePxlx,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreePxqd != null" >
+        #{studenthreePxqd,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLtlb != null" >
+        #{studenthreeLtlb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeGbjdq != null" >
+        #{studenthreeGbjdq,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeCgsy != null" >
+        #{studenthreeCgsy,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeCgsqdw != null" >
+        #{studenthreeCgsqdw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeCgpcdw != null" >
+        #{studenthreeCgpcdw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeBj != null" >
+        #{studenthreeBj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLdgbbz != null" >
+        #{studenthreeLdgbbz,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLdhbbz != null" >
+        #{studenthreeLdhbbz,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeXhgbbz != null" >
+        #{studenthreeXhgbbz,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeDjsbz != null" >
+        #{studenthreeDjsbz,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeAt != null" >
+        #{studenthreeAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studenthreeDel != null" >
+        #{studenthreeDel,jdbcType=INTEGER},
+      </if>
+      <if test="studenthreeLxsj != null" >
+        #{studenthreeLxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLtxsj != null" >
+        #{studenthreeLtxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeCgsj != null" >
+        #{studenthreeCgsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeJhhgsj != null" >
+        #{studenthreeJhhgsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeSjhgsj != null" >
+        #{studenthreeSjhgsj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Studenthree" >
+    update STUDENTHREE
+    <set >
+      <if test="studenthreeLxzt != null  and  studenthreeLxzt != ''" >
+        STUDENTHREE_LXZT = #{studenthreeLxzt,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreePcdw != null  and  studenthreePcdw != ''" >
+        STUDENTHREE_PCDW = #{studenthreePcdw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeZy != null  and  studenthreeZy != ''" >
+        STUDENTHREE_ZY = #{studenthreeZy,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLxsf != null  and  studenthreeLxsf != ''" >
+        STUDENTHREE_LXSF = #{studenthreeLxsf,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLxgb != null  and  studenthreeLxgb != ''" >
+        STUDENTHREE_LXGB = #{studenthreeLxgb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreePxxmmc != null  and  studenthreePxxmmc != ''" >
+        STUDENTHREE_PXXMMC = #{studenthreePxxmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreePxts != null  and  studenthreePxts != ''" >
+        STUDENTHREE_PXTS = #{studenthreePxts,jdbcType=NUMERIC},
+      </if>
+      <if test="studenthreePxlx != null  and  studenthreePxlx != ''" >
+        STUDENTHREE_PXLX = #{studenthreePxlx,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreePxqd != null  and  studenthreePxqd != ''" >
+        STUDENTHREE_PXQD = #{studenthreePxqd,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLtlb != null  and  studenthreeLtlb != ''" >
+        STUDENTHREE_LTLB = #{studenthreeLtlb,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeGbjdq != null  and  studenthreeGbjdq != ''" >
+        STUDENTHREE_GBJDQ = #{studenthreeGbjdq,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeCgsy != null  and  studenthreeCgsy != ''" >
+        STUDENTHREE_CGSY = #{studenthreeCgsy,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeCgsqdw != null  and  studenthreeCgsqdw != ''" >
+        STUDENTHREE_CGSQDW = #{studenthreeCgsqdw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeCgpcdw != null  and  studenthreeCgpcdw != ''" >
+        STUDENTHREE_CGPCDW = #{studenthreeCgpcdw,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeBj != null  and  studenthreeBj != ''" >
+        STUDENTHREE_BJ = #{studenthreeBj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLdgbbz != null  and  studenthreeLdgbbz != ''" >
+        STUDENTHREE_LDGBBZ = #{studenthreeLdgbbz,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLdhbbz != null  and  studenthreeLdhbbz != ''" >
+        STUDENTHREE_LDHBBZ = #{studenthreeLdhbbz,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeXhgbbz != null  and  studenthreeXhgbbz != ''" >
+        STUDENTHREE_XHGBBZ = #{studenthreeXhgbbz,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeDjsbz != null  and  studenthreeDjsbz != ''" >
+        STUDENTHREE_DJSBZ = #{studenthreeDjsbz,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeAt != null  and  studenthreeAt != ''" >
+        STUDENTHREE_AT = #{studenthreeAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studenthreeDel != null  and  studenthreeDel != ''" >
+        STUDENTHREE_DEL = #{studenthreeDel,jdbcType=INTEGER},
+      </if>
+      <if test="studenthreeLxsj != null  and  studenthreeLxsj != ''" >
+        STUDENTHREE_LXSJ = #{studenthreeLxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeLtxsj != null  and  studenthreeLtxsj != ''" >
+        STUDENTHREE_LTXSJ = #{studenthreeLtxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeCgsj != null  and  studenthreeCgsj != ''" >
+        STUDENTHREE_CGSJ = #{studenthreeCgsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeJhhgsj != null  and  studenthreeJhhgsj != ''" >
+        STUDENTHREE_JHHGSJ = #{studenthreeJhhgsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeSjhgsj != null  and  studenthreeSjhgsj != ''" >
+        STUDENTHREE_SJHGSJ = #{studenthreeSjhgsj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STUDENTHREE_ID = #{studenthreeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Studenthree" >
+    update STUDENTHREE
+    set STUDENTHREE_LXZT = #{studenthreeLxzt,jdbcType=VARCHAR},
+      STUDENTHREE_PCDW = #{studenthreePcdw,jdbcType=VARCHAR},
+      STUDENTHREE_ZY = #{studenthreeZy,jdbcType=VARCHAR},
+      STUDENTHREE_LXSF = #{studenthreeLxsf,jdbcType=VARCHAR},
+      STUDENTHREE_LXGB = #{studenthreeLxgb,jdbcType=VARCHAR},
+      STUDENTHREE_PXXMMC = #{studenthreePxxmmc,jdbcType=VARCHAR},
+      STUDENTHREE_PXTS = #{studenthreePxts,jdbcType=NUMERIC},
+      STUDENTHREE_PXLX = #{studenthreePxlx,jdbcType=VARCHAR},
+      STUDENTHREE_PXQD = #{studenthreePxqd,jdbcType=VARCHAR},
+      STUDENTHREE_LTLB = #{studenthreeLtlb,jdbcType=VARCHAR},
+      STUDENTHREE_GBJDQ = #{studenthreeGbjdq,jdbcType=VARCHAR},
+      STUDENTHREE_CGSY = #{studenthreeCgsy,jdbcType=VARCHAR},
+      STUDENTHREE_CGSQDW = #{studenthreeCgsqdw,jdbcType=VARCHAR},
+      STUDENTHREE_CGPCDW = #{studenthreeCgpcdw,jdbcType=VARCHAR},
+      STUDENTHREE_BJ = #{studenthreeBj,jdbcType=VARCHAR},
+      STUDENTHREE_LDGBBZ = #{studenthreeLdgbbz,jdbcType=VARCHAR},
+      STUDENTHREE_LDHBBZ = #{studenthreeLdhbbz,jdbcType=VARCHAR},
+      STUDENTHREE_XHGBBZ = #{studenthreeXhgbbz,jdbcType=VARCHAR},
+      STUDENTHREE_DJSBZ = #{studenthreeDjsbz,jdbcType=VARCHAR},
+      STUDENTHREE_AT = #{studenthreeAt,jdbcType=TIMESTAMP},
+      STUDENTHREE_DEL = #{studenthreeDel,jdbcType=INTEGER},
+      STUDENTHREE_LXSJ = #{studenthreeLxsj,jdbcType=VARCHAR},
+      STUDENTHREE_LTXSJ = #{studenthreeLtxsj,jdbcType=VARCHAR},
+      STUDENTHREE_CGSJ = #{studenthreeCgsj,jdbcType=VARCHAR},
+      STUDENTHREE_JHHGSJ = #{studenthreeJhhgsj,jdbcType=VARCHAR},
+      STUDENTHREE_SJHGSJ = #{studenthreeSjhgsj,jdbcType=VARCHAR}
+    where STUDENTHREE_ID = #{studenthreeId,jdbcType=VARCHAR}
+  </update>
+   <!--查询人员studenthreeId -->
+ <select id="queryStudentByStudenthreeId" parameterType="com.ttgis.education.entity.Studenthree" resultType="int">
+    select *  from STUDENTHREE  where STUDENTHREE_ID = #{studenthreeId,jdbcType=VARCHAR}
+  </select>
+</mapper>

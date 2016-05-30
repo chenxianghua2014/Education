@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.LogMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Log" >
+    <id column="LOG_ID" property="logId" jdbcType="VARCHAR" />
+    <result column="LOG_USER" property="logUser" jdbcType="VARCHAR" />
+    <result column="LOG_CONTENT" property="logContent" jdbcType="VARCHAR" />
+    <result column="LOG_AT" property="logAt" jdbcType="VARCHAR" />
+    <result column="LOG_IP" property="logIp" jdbcType="VARCHAR" />
+    <result column="LOG_USERTYPE" property="logUserType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    LOG_ID, LOG_USER, LOG_CONTENT, LOG_AT,LOG_IP,LOG_USERTYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from LOG
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from LOG
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Log" >
+    insert into LOG (LOG_ID, LOG_MANID, LOG_TYPE, 
+      LOG_CON)
+    values (#{logId,jdbcType=VARCHAR}, #{logManid,jdbcType=VARCHAR}, #{logType,jdbcType=VARCHAR}, 
+      #{logCon,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Log" >
+    insert into LOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        LOG_ID,
+      </if>
+      <if test="logUser != null" >
+        LOG_USER,
+      </if>
+      <if test="logContent != null" >
+        LOG_CONTENT,
+      </if>
+      <if test="logAt != null" >
+        LOG_AT,
+      </if>
+      <if test="logIp != null" >
+        LOG_IP,
+      </if>
+      <if test="logUserType != null" >
+        LOG_USERTYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        #{logId,jdbcType=VARCHAR},
+      </if>
+      <if test="logUser != null" >
+        #{logUser,jdbcType=VARCHAR},
+      </if>
+      <if test="logContent != null" >
+        #{logContent,jdbcType=VARCHAR},
+      </if>
+      <if test="logAt != null" >
+        #{logAt,jdbcType=VARCHAR},
+      </if>
+      <if test="logIp != null" >
+        #{logIp,jdbcType=VARCHAR},
+      </if>
+      <if test="logUserType != null" >
+        #{logUserType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Log" >
+    update LOG
+    <set >
+      <if test="logUser != null" >
+        LOG_USER = #{logUser,jdbcType=VARCHAR},
+      </if>
+      <if test="logContent != null" >
+        LOG_CONTENT = #{logContent,jdbcType=VARCHAR},
+      </if>
+      <if test="logAt != null" >
+        LOG_AT = #{logAt,jdbcType=VARCHAR},
+      </if>
+      <if test="logIp != null" >
+        LOG_IP = #{logIp,jdbcType=VARCHAR},
+      </if>
+      <if test="logUserType != null" >
+        LOG_USERTYPE = #{logUserType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Log" >
+    update LOG
+    set LOG_USER = #{logUser,jdbcType=VARCHAR},
+      LOG_CONTENT = #{logContent,jdbcType=VARCHAR},
+      LOG_AT = #{logAt,jdbcType=VARCHAR}
+      LOG_IP = #{logIp,jdbcType=VARCHAR}
+      LOG_USERTYPE = #{logUserType,jdbcType=VARCHAR}
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 分页显示 -->
+<select id="queryLogByPage" parameterType="com.ttgis.education.entity.Log"   resultMap="BaseResultMap">
+	select top ${size}  * from LOG where  
+	 1=1 
+	 <if test="logContent != null and logContent != ''">
+	 <![CDATA[  
+			and LOG_CONTENT like '%${logContent}%'
+			 ]]>  
+	 </if>
+	 <if test="logAt != null and logAt != ''">
+	 <![CDATA[  
+			and LOG_AT like '%${logAt}%'
+			 ]]>  
+	 </if>
+	 <if test="logUser != null and logUser != ''">
+	 <![CDATA[  
+			and LOG_USER =#{logUser}
+			 ]]>  
+	 </if>
+	and LOG_ID not in
+	(
+	 select top ${page} LOG_ID from LOG 
+	 where 1=1 
+	 <if test="logContent != null and logContent != ''">
+	 <![CDATA[  
+			and LOG_CONTENT like '%${logContent}%'
+			 ]]>  
+	 </if>
+	 <if test="logAt != null and logAt != ''">
+	 <![CDATA[  
+	 		and LOG_AT like '%${logAt}%'
+			 ]]>  
+	 </if>
+	 <if test="logUser != null and logUser != ''">
+	 <![CDATA[  
+			and LOG_USER =#{logUser}
+			 ]]>  
+	 </if>
+	 order by LOG_AT desc
+	) 
+	order by LOG_AT desc
+</select>
+  <!--总条数 -->
+ <select id="logCount" parameterType="com.ttgis.education.entity.Log"  resultType="int">
+  	select  count(*) from LOG
+  	 where 1=1 
+	 <if test="logContent != null and logContent != ''">
+	 <![CDATA[  
+			and LOG_CONTENT like '%${logContent}%'
+			 ]]>  
+	 </if>
+	 <if test="logAt != null and logAt != ''">
+	 <![CDATA[  
+			and LOG_AT like '%${logAt}%'
+			 ]]>  
+	 </if>
+	 <if test="logUser != null and logUser != ''">
+	 <![CDATA[  
+			and LOG_USER =#{logUser}
+			 ]]>  
+	 </if>
+  </select>
+   <select id="queryLogList" resultMap="BaseResultMap"
+		parameterType="com.ttgis.education.entity.Log">
+		select * from LOG  where 1 = 1 
+		<if test="startDate != null and startDate != ''">
+		 <![CDATA[  
+				and LOG_AT >= '${startDate} 00:00:00'
+				 ]]>  
+		 </if>
+		 <if test="endDate != null and endDate != ''">
+		 <![CDATA[  
+				and LOG_AT <= '${endDate} 24:00:00'
+				 ]]>  
+		 </if>
+		 <if test="logContent != null and logContent != ''">
+		 <![CDATA[  
+				and LOG_CONTENT like '%${logContent}%'
+				 ]]>  
+		 </if>
+	</select>
+</mapper>

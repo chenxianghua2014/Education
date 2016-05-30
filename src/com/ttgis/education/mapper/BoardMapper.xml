@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.BoardMapper">
+	<resultMap id="BaseResultMap" type="com.ttgis.education.entity.Board">
+		<id column="BOARD_ID" property="boardId" jdbcType="VARCHAR" />
+		<result column="BOARD_NAME" property="boardName" jdbcType="VARCHAR" />
+		<result column="BOARD_TITLE" property="boardTitle" jdbcType="VARCHAR" />
+		<result column="BOARD_MASTER" property="boardMaster" jdbcType="VARCHAR" />
+		<result column="BOARD_CHECKRESULT" property="boardCheckresult"
+			jdbcType="NUMERIC" />
+		<result column="BOARD_CHECKUSER" property="boardCheckuser"
+			jdbcType="VARCHAR" />
+		<result column="BOARD_CHECKCAUSE" property="boardCheckcause"
+			jdbcType="VARCHAR" />
+		<result column="BOARD_AT" property="boardAt" jdbcType="VARCHAR" />
+		<result column="BOARD_DEL" property="boardDel" jdbcType="NUMERIC" />
+		<result column="BOARD_CATALOG" property="boardCatalog"
+			jdbcType="VARCHAR" />
+		<result column="BOARD_EXAMINE" property="boardExamine"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="boardList" type="com.ttgis.education.entity.Board"
+		extends="BaseResultMap">
+		<result column="BBS_COUNT" property="bbsCount" jdbcType="NUMERIC" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		BOARD_ID, BOARD_NAME, BOARD_TITLE, BOARD_MASTER,
+		BOARD_CHECKRESULT,
+		BOARD_CHECKUSER,
+		BOARD_CHECKCAUSE, BOARD_AT,
+		BOARD_DEL
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from BOARD
+		where  BOARD_ID = #{boardId,jdbcType=VARCHAR}
+	</select>
+	<select id="selectByWhere" resultMap="boardList" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		,(select count(*) from BBS where BOARD_ID = T.BOARD_ID) as BBS_COUNT
+		from BOARD T
+		where BOARD_DEL = 1 and BOARD_EXAMINE = 1
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from BOARD
+		where BOARD_ID = #{boardId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.ttgis.education.entity.Board">
+		insert into BOARD (BOARD_ID,
+		BOARD_NAME, BOARD_TITLE,
+		BOARD_MASTER, BOARD_CHECKRESULT,
+		BOARD_CHECKUSER,
+		BOARD_CHECKCAUSE, BOARD_AT, BOARD_DEL
+		)
+		values
+		(#{boardId,jdbcType=VARCHAR}, #{boardName,jdbcType=VARCHAR},
+		#{boardTitle,jdbcType=VARCHAR},
+		#{boardMaster,jdbcType=VARCHAR},
+		#{boardCheckresult,jdbcType=NUMERIC},
+		#{boardCheckuser,jdbcType=VARCHAR},
+		#{boardCheckcause,jdbcType=VARCHAR}, #{boardAt,jdbcType=VARCHAR},
+		#{boardDel,jdbcType=NUMERIC}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.ttgis.education.entity.Board">
+		insert into BOARD
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="boardId != null">
+				BOARD_ID,
+			</if>
+			<if test="boardName != null">
+				BOARD_NAME,
+			</if>
+			<if test="boardTitle != null">
+				BOARD_TITLE,
+			</if>
+			<if test="boardMaster != null">
+				BOARD_MASTER,
+			</if>
+			<if test="boardCheckresult != null">
+				BOARD_CHECKRESULT,
+			</if>
+			<if test="boardCheckuser != null">
+				BOARD_CHECKUSER,
+			</if>
+			<if test="boardCheckcause != null">
+				BOARD_CHECKCAUSE,
+			</if>
+			<if test="boardAt != null">
+				BOARD_AT,
+			</if>
+			<if test="boardDel != null">
+				BOARD_DEL,
+			</if>
+			<if test="boardCatalog != null">
+				BOARD_CATALOG,
+			</if>
+			<if test="boardExamine != null">
+				BOARD_EXAMINE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="boardId != null">
+				#{boardId,jdbcType=VARCHAR},
+			</if>
+			<if test="boardName != null">
+				#{boardName,jdbcType=VARCHAR},
+			</if>
+			<if test="boardTitle != null">
+				#{boardTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="boardMaster != null">
+				#{boardMaster,jdbcType=VARCHAR},
+			</if>
+			<if test="boardCheckresult != null">
+				#{boardCheckresult,jdbcType=NUMERIC},
+			</if>
+			<if test="boardCheckuser != null">
+				#{boardCheckuser,jdbcType=VARCHAR},
+			</if>
+			<if test="boardCheckcause != null">
+				#{boardCheckcause,jdbcType=VARCHAR},
+			</if>
+			<if test="boardAt != null">
+				#{boardAt,jdbcType=VARCHAR},
+			</if>
+			<if test="boardDel != null">
+				#{boardDel,jdbcType=NUMERIC},
+			</if>
+			<if test="boardCatalog != null">
+				#{boardCatalog,jdbcType=VARCHAR},
+			</if>
+			<if test="boardExamine != null">
+				#{boardExamine,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Board">
+		update BOARD
+		<set>
+			<if test="boardName != null">
+				BOARD_NAME = #{boardName,jdbcType=VARCHAR},
+			</if>
+			<if test="boardTitle != null">
+				BOARD_TITLE = #{boardTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="boardMaster != null">
+				BOARD_MASTER = #{boardMaster,jdbcType=VARCHAR},
+			</if>
+			<if test="boardCheckresult != null">
+				BOARD_CHECKRESULT = #{boardCheckresult,jdbcType=NUMERIC},
+			</if>
+			<if test="boardCheckuser != null">
+				BOARD_CHECKUSER = #{boardCheckuser,jdbcType=VARCHAR},
+			</if>
+			<if test="boardCheckcause != null">
+				BOARD_CHECKCAUSE = #{boardCheckcause,jdbcType=VARCHAR},
+			</if>
+			<if test="boardAt != null">
+				BOARD_AT = #{boardAt,jdbcType=VARCHAR},
+			</if>
+			<if test="boardDel != null">
+				BOARD_DEL = #{boardDel,jdbcType=NUMERIC},
+			</if>
+			<if test="boardCatalog != null">
+				BOARD_CATALOG = #{boardCatalog,jdbcType=VARCHAR},
+			</if>
+			<if test="boardExamine != null">
+				BOARD_EXAMINE = #{boardExamine,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where BOARD_ID = #{boardId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Board">
+		update BOARD
+		set
+		BOARD_NAME = #{boardName,jdbcType=VARCHAR},
+		BOARD_TITLE =
+		#{boardTitle,jdbcType=VARCHAR},
+		BOARD_MASTER =
+		#{boardMaster,jdbcType=VARCHAR},
+		BOARD_CHECKRESULT =
+		#{boardCheckresult,jdbcType=NUMERIC},
+		BOARD_CHECKUSER =
+		#{boardCheckuser,jdbcType=VARCHAR},
+		BOARD_CHECKCAUSE =
+		#{boardCheckcause,jdbcType=VARCHAR},
+		BOARD_AT =
+		#{boardAt,jdbcType=VARCHAR},
+		BOARD_DEL = #{boardDel,jdbcType=NUMERIC}
+		where BOARD_ID = #{boardId,jdbcType=VARCHAR}
+	</update>
+	
+	
+	<!-- 分页显示 -->
+<select id="queryBoardByPage" parameterType="com.ttgis.education.entity.Board"   resultMap="BaseResultMap">
+	select top ${size}  * from BOARD where 1=1 
+	<if test="boardCatalog != null">
+	 and BOARD_CATALOG = #{boardCatalog}
+	</if>
+	and BOARD_ID not in
+	(
+	 select top ${page} BOARD_ID from BOARD 
+	  where 1=1 
+	 <if test="boardCatalog != null">
+	  and BOARD_CATALOG = #{boardCatalog}
+	 </if>
+	  order by BOARD_AT desc
+	) 
+	and BOARD_DEL = 1  and BOARD_EXAMINE = #{boardExamine}
+	order by BOARD_AT desc
+</select>
+  <!--总条数 -->
+ <select id="boardCount" parameterType="com.ttgis.education.entity.Board"  resultType="int">
+  	select  count(*) from BOARD where BOARD_CATALOG=#{boardCatalog} and BOARD_DEL = 1 and BOARD_EXAMINE = #{boardExamine}
+  </select>
+</mapper>

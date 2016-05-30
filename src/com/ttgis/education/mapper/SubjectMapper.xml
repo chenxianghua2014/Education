@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.SubjectMapper">
+	<resultMap id="BaseResultMap" type="com.ttgis.education.entity.Subject">
+		<id column="SUBJECT_ID" property="subjectId" jdbcType="VARCHAR" />
+		<result column="COURSE_ID" property="courseId" jdbcType="VARCHAR" />
+		<result column="SUBJECT_NAME" property="subjectName" jdbcType="VARCHAR" />
+		<result column="SUBJECT_STATE" property="subjectState"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_CATALOG" property="subjectCatalog"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_PRODUCER" property="subjectProducer"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_RANK" property="subjectRank" jdbcType="INTEGER" />
+		<result column="SUBJECT_TYPE" property="subjectType" jdbcType="VARCHAR" />
+		<result column="SUBJECT_TOPIC" property="subjectTopic"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_A" property="subjectA" jdbcType="VARCHAR" />
+		<result column="SUBJECT_B" property="subjectB" jdbcType="VARCHAR" />
+		<result column="SUBJECT_C" property="subjectC" jdbcType="VARCHAR" />
+		<result column="SUBJECT_D" property="subjectD" jdbcType="VARCHAR" />
+		<result column="SUBJECT_E" property="subjectE" jdbcType="VARCHAR" />
+		<result column="SUBJECT_F" property="subjectF" jdbcType="VARCHAR" />
+		<result column="SUBJECT_ANSWER" property="subjectAnswer"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_EXPLAIN" property="subjectExplain"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_AT" property="subjectAt" jdbcType="TIMESTAMP" />
+		<result column="SUBJECT_DEL" property="subjectDel" jdbcType="INTEGER" />
+		<result column="SUBJECT_SCORE" property="subjectScore" jdbcType="DOUBLE" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		SUBJECT_ID, COURSE_ID, SUBJECT_NAME, SUBJECT_STATE,
+		SUBJECT_CATALOG,
+		SUBJECT_PRODUCER,
+		SUBJECT_RANK, SUBJECT_TYPE,
+		SUBJECT_TOPIC, SUBJECT_A, SUBJECT_B, SUBJECT_C,
+		SUBJECT_D,SUBJECT_E,SUBJECT_F,
+		SUBJECT_ANSWER, SUBJECT_EXPLAIN, SUBJECT_AT, SUBJECT_DEL, SUBJECT_SCORE
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from SUBJECT
+		where SUBJECT_ID = #{subjectId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		SUBJECT
+		where SUBJECT_ID = #{subjectId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.ttgis.education.entity.Subject">
+		insert into SUBJECT
+		(SUBJECT_ID, COURSE_ID, SUBJECT_NAME,
+		SUBJECT_STATE, SUBJECT_CATALOG,
+		SUBJECT_PRODUCER,
+		SUBJECT_RANK, SUBJECT_TYPE, SUBJECT_TOPIC,
+		SUBJECT_A,
+		SUBJECT_B, SUBJECT_C,
+		SUBJECT_D,SUBJECT_E,SUBJECT_F, SUBJECT_ANSWER, SUBJECT_EXPLAIN,
+		SUBJECT_AT, SUBJECT_DEL, SUBJECT_SCORE)
+		values (#{subjectId,jdbcType=VARCHAR},
+		#{courseId,jdbcType=VARCHAR},
+		#{subjectName,jdbcType=VARCHAR},
+		#{subjectState,jdbcType=VARCHAR}, #{subjectCatalog,jdbcType=VARCHAR},
+		#{subjectProducer,jdbcType=VARCHAR},
+		#{subjectRank,jdbcType=INTEGER},
+		#{subjectType,jdbcType=VARCHAR}, #{subjectTopic,jdbcType=VARCHAR},
+		#{subjectA,jdbcType=VARCHAR}, #{subjectB,jdbcType=VARCHAR},
+		#{subjectC,jdbcType=VARCHAR},
+		#{subjectD,jdbcType=VARCHAR},
+		#{subjectE,jdbcType=VARCHAR},
+		#{subjectF,jdbcType=VARCHAR},
+		#{subjectAnswer,jdbcType=VARCHAR},
+		#{subjectExplain,jdbcType=VARCHAR},
+		#{subjectAt,jdbcType=TIMESTAMP}, #{subjectDel,jdbcType=INTEGER}, #{subjectScore,jdbcType=DOUBLE})
+	</insert>
+	<insert id="insertSelective" parameterType="com.ttgis.education.entity.Subject">
+		insert into SUBJECT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="subjectId != null">
+				SUBJECT_ID,
+			</if>
+			<if test="courseId != null">
+				COURSE_ID,
+			</if>
+			<if test="subjectName != null">
+				SUBJECT_NAME,
+			</if>
+			<if test="subjectState != null">
+				SUBJECT_STATE,
+			</if>
+			<if test="subjectCatalog != null">
+				SUBJECT_CATALOG,
+			</if>
+			<if test="subjectProducer != null">
+				SUBJECT_PRODUCER,
+			</if>
+			<if test="subjectRank != null">
+				SUBJECT_RANK,
+			</if>
+			<if test="subjectType != null">
+				SUBJECT_TYPE,
+			</if>
+			<if test="subjectTopic != null">
+				SUBJECT_TOPIC,
+			</if>
+			<if test="subjectA != null">
+				SUBJECT_A,
+			</if>
+			<if test="subjectB != null">
+				SUBJECT_B,
+			</if>
+			<if test="subjectC != null">
+				SUBJECT_C,
+			</if>
+			<if test="subjectD != null">
+				SUBJECT_D,
+			</if>
+			<if test="subjectE != null">
+				SUBJECT_E,
+			</if>
+			<if test="subjectF != null">
+				SUBJECT_F,
+			</if>
+			<if test="subjectAnswer != null">
+				SUBJECT_ANSWER,
+			</if>
+			<if test="subjectExplain != null">
+				SUBJECT_EXPLAIN,
+			</if>
+			<if test="subjectAt != null">
+				SUBJECT_AT,
+			</if>
+			<if test="subjectDel != null">
+				SUBJECT_DEL,
+			</if>
+			<if test="subjectScore != null">
+				SUBJECT_SCORE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="subjectId != null">
+				#{subjectId,jdbcType=VARCHAR},
+			</if>
+			<if test="courseId != null">
+				#{courseId,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectName != null">
+				#{subjectName,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectState != null">
+				#{subjectState,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectCatalog != null">
+				#{subjectCatalog,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectProducer != null">
+				#{subjectProducer,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectRank != null">
+				#{subjectRank,jdbcType=INTEGER},
+			</if>
+			<if test="subjectType != null">
+				#{subjectType,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectTopic != null">
+				#{subjectTopic,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectA != null">
+				#{subjectA,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectB != null">
+				#{subjectB,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectC != null">
+				#{subjectC,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectD != null">
+				#{subjectD,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectE != null">
+				#{subjectE,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectF != null">
+				#{subjectF,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectAnswer != null">
+				#{subjectAnswer,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectExplain != null">
+				#{subjectExplain,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectAt != null">
+				#{subjectAt,jdbcType=TIMESTAMP},
+			</if>
+			<if test="subjectDel != null">
+				#{subjectDel,jdbcType=INTEGER},
+			</if>
+			<if test="subjectScore != null">
+				#{subjectScore,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Subject">
+		update SUBJECT
+		<set>
+			<if test="courseId != null">
+				COURSE_ID = #{courseId,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectName != null">
+				SUBJECT_NAME = #{subjectName,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectState != null">
+				SUBJECT_STATE = #{subjectState,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectCatalog != null">
+				SUBJECT_CATALOG = #{subjectCatalog,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectProducer != null">
+				SUBJECT_PRODUCER = #{subjectProducer,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectRank != null">
+				SUBJECT_RANK = #{subjectRank,jdbcType=INTEGER},
+			</if>
+			<if test="subjectType != null">
+				SUBJECT_TYPE = #{subjectType,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectTopic != null">
+				SUBJECT_TOPIC = #{subjectTopic,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectA != null">
+				SUBJECT_A = #{subjectA,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectB != null">
+				SUBJECT_B = #{subjectB,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectC != null">
+				SUBJECT_C = #{subjectC,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectD != null">
+				SUBJECT_D = #{subjectD,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectE != null">
+				SUBJECT_E = #{subjectE,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectF != null">
+				SUBJECT_F = #{subjectF,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectAnswer != null">
+				SUBJECT_ANSWER = #{subjectAnswer,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectExplain != null">
+				SUBJECT_EXPLAIN = #{subjectExplain,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectAt != null">
+				SUBJECT_AT = #{subjectAt,jdbcType=TIMESTAMP},
+			</if>
+			<if test="subjectDel != null">
+				SUBJECT_DEL = #{subjectDel,jdbcType=INTEGER},
+			</if>
+			<if test="subjectScore != null">
+				SUBJECT_SCORE = #{subjectScore,jdbcType=DOUBLE},
+			</if>
+		</set>
+		where SUBJECT_ID = #{subjectId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Subject">
+		update SUBJECT
+		set
+		COURSE_ID = #{courseId,jdbcType=VARCHAR},
+		SUBJECT_NAME =
+		#{subjectName,jdbcType=VARCHAR},
+		SUBJECT_STATE =
+		#{subjectState,jdbcType=VARCHAR},
+		SUBJECT_CATALOG =
+		#{subjectCatalog,jdbcType=VARCHAR},
+		SUBJECT_PRODUCER =
+		#{subjectProducer,jdbcType=VARCHAR},
+		SUBJECT_RANK =
+		#{subjectRank,jdbcType=INTEGER},
+		SUBJECT_TYPE =
+		#{subjectType,jdbcType=VARCHAR},
+		SUBJECT_TOPIC =
+		#{subjectTopic,jdbcType=VARCHAR},
+		SUBJECT_A =
+		#{subjectA,jdbcType=VARCHAR},
+		SUBJECT_B = #{subjectB,jdbcType=VARCHAR},
+		SUBJECT_C = #{subjectC,jdbcType=VARCHAR},
+		SUBJECT_D =
+		#{subjectD,jdbcType=VARCHAR},
+		SUBJECT_E = #{subjectE,jdbcType=VARCHAR},
+		SUBJECT_F = #{subjectF,jdbcType=VARCHAR},
+		SUBJECT_ANSWER =
+		#{subjectAnswer,jdbcType=VARCHAR},
+		SUBJECT_EXPLAIN =
+		#{subjectExplain,jdbcType=VARCHAR},
+		SUBJECT_AT =
+		#{subjectAt,jdbcType=TIMESTAMP},
+		SUBJECT_DEL =
+		#{subjectDel,jdbcType=INTEGER},
+		SUBJECT_SCORE =
+		#{subjectScore,jdbcType=DOUBLE},
+		where SUBJECT_ID =
+		#{subjectId,jdbcType=VARCHAR}
+	</update>
+	<!--总条数 -->
+	<select id="selectCountByWhere" parameterType="com.ttgis.education.entity.page.SelSubject"
+		resultType="int">
+		select count(*)
+		from SUBJECT where SUBJECT_DEL = 1
+		<trim suffixOverrides=",">
+			<if test="courseId != null">
+				and COURSE_ID = #{courseId,jdbcType=VARCHAR}
+			</if>
+			<if test="subjectType != null">
+				and SUBJECT_TYPE = #{subjectType,jdbcType=VARCHAR}
+			</if>
+			<if test="subjectName != null">
+				and SUBJECT_NAME  like '%${subjectName}%'
+			</if>
+		</trim>
+	</select>
+	<!-- 分页显示 -->
+	<select id="selectByWhere" parameterType="com.ttgis.education.entity.page.SelSubject"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from (
+		select *,ROW_NUMBER() OVER (ORDER BY SUBJECT_AT desc) as r from
+		SUBJECT
+		where SUBJECT_DEL = 1
+		<trim suffixOverrides=",">
+			<if test="courseId != null">
+				and COURSE_ID = #{courseId,jdbcType=VARCHAR}
+			</if>
+			<if test="subjectType != null">
+				and SUBJECT_TYPE = #{subjectType,jdbcType=VARCHAR}
+			</if>
+			<if test="subjectName != null">
+				and SUBJECT_NAME  like '%${subjectName}%'
+			</if>
+		</trim>
+		) as t 
+        <![CDATA[
+            where r>#{begin} and r<=#{end}	
+        ]]>
+	</select>
+	<select id="selectByCourseId" parameterType="com.ttgis.education.entity.page.SelSubject"
+		resultMap="BaseResultMap">
+		select top (#{page})
+		<include refid="Base_Column_List" />
+		from SUBJECT where SUBJECT_DEL = 1 and COURSE_ID =
+		#{courseId,jdbcType=VARCHAR} and SUBJECT_TYPE =
+		#{subjectType,jdbcType=VARCHAR} and SUBJECT_STATE = '可用' 
+		order by NEWID()
+	</select>
+</mapper>

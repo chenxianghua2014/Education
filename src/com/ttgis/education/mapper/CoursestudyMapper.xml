@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttgis.education.mapper.CoursestudyMapper">
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Coursestudy">
+    <id column="COURSESTUDY_ID" jdbcType="VARCHAR" property="coursestudyId" />
+    <result column="COURSE_ID" jdbcType="VARCHAR" property="courseId" />
+    <result column="STUDENT_ID" jdbcType="VARCHAR" property="studentId" />
+    <result column="COURSESTUDY_STARTIME" jdbcType="VARCHAR" property="coursestudyStartime" />
+    <result column="COURSESTUDY_ENDTIME" jdbcType="VARCHAR" property="coursestudyEndtime" />
+    <result column="COURSESTUDY_ALLTIME" jdbcType="NUMERIC" property="coursestudyAlltime" />
+    <result column="COURSESTUDY_NOWTIME" jdbcType="NUMERIC" property="coursestudyNowtime" />
+    <result column="COURSESTUDY_PLAN" jdbcType="VARCHAR" property="coursestudyPlan" />
+    <result column="COURSESTUDY_HOMEWORK" jdbcType="VARCHAR" property="coursestudyHomework" />
+    <result column="COURSESTUDY_RESULT" jdbcType="VARCHAR" property="coursestudyResult" />
+    <result column="COURSESTUDY_NOTE" jdbcType="VARCHAR" property="coursestudyNote" />
+    <result column="COURSESTUDY_AT" jdbcType="TIMESTAMP" property="coursestudyAt" />
+    <result column="COURSESTUDY_DEL" jdbcType="INTEGER" property="coursestudyDel" />
+    <result column="COURSESTUDY_TYPE" jdbcType="VARCHAR" property="coursestudyType" />
+    <result column="COURSESTUDY_TRANCLASSID" jdbcType="VARCHAR" property="coursestudyTranclassid" />
+    <collection column="COURSE_ID" ofType="com.ttgis.education.entity.Course" property="course">    
+            <id column="COURSE_ID" jdbcType="VARCHAR" property="courseId" />
+		<result column="SYLLABUS_ID" jdbcType="VARCHAR" property="syllabusId" />
+		<result column="TEACHER_ID" jdbcType="VARCHAR" property="teacherId" />
+		<result column="COURSE_NAME" jdbcType="VARCHAR" property="courseName" />
+		<result column="COURSE_TYPE" jdbcType="VARCHAR" property="courseType" />
+		<result column="COURSE_STATUS" jdbcType="INTEGER" property="courseStatus" />
+		<result column="COURSE_CATALOG" jdbcType="VARCHAR" property="courseCatalog" />
+		<result column="COURSE_PUBMAN" jdbcType="VARCHAR" property="coursePubman" />
+		<result column="COURSE_TEACHER" jdbcType="VARCHAR" property="courseTeacher" />
+		<result column="COURSE_COMPANY" jdbcType="VARCHAR" property="courseCompany" />
+		<result column="COURSE_TIMES" jdbcType="NUMERIC" property="courseTimes" />
+		<result column="COURSE_IMAGE" jdbcType="VARCHAR" property="courseImage" />
+		<result column="COURSE_DESC" jdbcType="VARCHAR" property="courseDesc" />
+		<result column="COURSE_PV" jdbcType="INTEGER" property="coursePv" />
+		<result column="COURSE_COLLECTNUM" jdbcType="INTEGER" property="courseCollectnum" />
+		<result column="COURSE_RES" jdbcType="VARCHAR" property="courseRes" />
+		<result column="COURSE_COIN" jdbcType="INTEGER" property="courseCoin" />
+		<result column="COURSE_QUESTUION" jdbcType="VARCHAR" property="courseQuestuion" />
+		<result column="COURSE_JOBID" jdbcType="VARCHAR" property="courseJobid" />
+		<result column="COURSE_JOBDESC" jdbcType="VARCHAR" property="courseJobdesc" />
+		<result column="COURSE_AT" jdbcType="TIMESTAMP" property="courseAt" />
+		<result column="COURSE_DEL" jdbcType="INTEGER" property="courseDel" />
+		 <collection column="COURSE_CATALOG" ofType="com.ttgis.education.entity.Organization" property="organization">    
+            <id column="ORGANIZATION_ID" property="organizationId" />    
+            <result column="ORGANIZATION_DWMC" property="organizationDwmc" />    
+            <result column="ORGANIZATION_FWQX" property="organizationFwqx" />    
+     </collection>
+     </collection>
+  </resultMap>
+  <sql id="Base_Column_List">
+    COURSESTUDY_ID, COURSE_ID, STUDENT_ID, COURSESTUDY_STARTIME, COURSESTUDY_ENDTIME, 
+    COURSESTUDY_ALLTIME, COURSESTUDY_NOWTIME, COURSESTUDY_PLAN, COURSESTUDY_HOMEWORK, 
+    COURSESTUDY_RESULT, COURSESTUDY_NOTE, COURSESTUDY_AT, COURSESTUDY_DEL, COURSESTUDY_TYPE, 
+    COURSESTUDY_TRANCLASSID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COURSESTUDY
+    where COURSESTUDY_ID = #{coursestudyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from COURSESTUDY
+    where COURSESTUDY_ID = #{coursestudyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Coursestudy">
+    insert into COURSESTUDY (COURSESTUDY_ID, COURSE_ID, STUDENT_ID, 
+      COURSESTUDY_STARTIME, COURSESTUDY_ENDTIME, 
+      COURSESTUDY_ALLTIME, COURSESTUDY_NOWTIME, 
+      COURSESTUDY_PLAN, COURSESTUDY_HOMEWORK, COURSESTUDY_RESULT, 
+      COURSESTUDY_NOTE, COURSESTUDY_AT, COURSESTUDY_DEL, 
+      COURSESTUDY_TYPE, COURSESTUDY_TRANCLASSID
+      )
+    values (#{coursestudyId,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, 
+      #{coursestudyStartime,jdbcType=VARCHAR}, #{coursestudyEndtime,jdbcType=VARCHAR}, 
+      #{coursestudyAlltime,jdbcType=NUMERIC}, #{coursestudyNowtime,jdbcType=NUMERIC}, 
+      #{coursestudyPlan,jdbcType=VARCHAR}, #{coursestudyHomework,jdbcType=VARCHAR}, #{coursestudyResult,jdbcType=VARCHAR}, 
+      #{coursestudyNote,jdbcType=VARCHAR}, #{coursestudyAt,jdbcType=TIMESTAMP}, #{coursestudyDel,jdbcType=INTEGER}, 
+      #{coursestudyType,jdbcType=VARCHAR}, #{coursestudyTranclassid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Coursestudy">
+    insert into COURSESTUDY
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="coursestudyId != null">
+        COURSESTUDY_ID,
+      </if>
+      <if test="courseId != null">
+        COURSE_ID,
+      </if>
+      <if test="studentId != null">
+        STUDENT_ID,
+      </if>
+      <if test="coursestudyStartime != null">
+        COURSESTUDY_STARTIME,
+      </if>
+      <if test="coursestudyEndtime != null">
+        COURSESTUDY_ENDTIME,
+      </if>
+      <if test="coursestudyAlltime != null">
+        COURSESTUDY_ALLTIME,
+      </if>
+      <if test="coursestudyNowtime != null">
+        COURSESTUDY_NOWTIME,
+      </if>
+      <if test="coursestudyPlan != null">
+        COURSESTUDY_PLAN,
+      </if>
+      <if test="coursestudyHomework != null">
+        COURSESTUDY_HOMEWORK,
+      </if>
+      <if test="coursestudyResult != null">
+        COURSESTUDY_RESULT,
+      </if>
+      <if test="coursestudyNote != null">
+        COURSESTUDY_NOTE,
+      </if>
+      <if test="coursestudyAt != null">
+        COURSESTUDY_AT,
+      </if>
+      <if test="coursestudyDel != null">
+        COURSESTUDY_DEL,
+      </if>
+      <if test="coursestudyType != null">
+        COURSESTUDY_TYPE,
+      </if>
+      <if test="coursestudyTranclassid != null">
+        COURSESTUDY_TRANCLASSID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="coursestudyId != null">
+        #{coursestudyId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null">
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyStartime != null">
+        #{coursestudyStartime,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyEndtime != null">
+        #{coursestudyEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyAlltime != null">
+        #{coursestudyAlltime,jdbcType=NUMERIC},
+      </if>
+      <if test="coursestudyNowtime != null">
+        #{coursestudyNowtime,jdbcType=NUMERIC},
+      </if>
+      <if test="coursestudyPlan != null">
+        #{coursestudyPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyHomework != null">
+        #{coursestudyHomework,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyResult != null">
+        #{coursestudyResult,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyNote != null">
+        #{coursestudyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyAt != null">
+        #{coursestudyAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coursestudyDel != null">
+        #{coursestudyDel,jdbcType=INTEGER},
+      </if>
+      <if test="coursestudyType != null">
+        #{coursestudyType,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyTranclassid != null">
+        #{coursestudyTranclassid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Coursestudy">
+    update COURSESTUDY    <set>
+      <if test="courseId != null">
+        COURSE_ID = #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null">
+        STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyStartime != null">
+        COURSESTUDY_STARTIME = #{coursestudyStartime,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyEndtime != null">
+        COURSESTUDY_ENDTIME = #{coursestudyEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyAlltime != null">
+        COURSESTUDY_ALLTIME = #{coursestudyAlltime,jdbcType=NUMERIC},
+      </if>
+      <if test="coursestudyNowtime != null">
+        COURSESTUDY_NOWTIME = #{coursestudyNowtime,jdbcType=NUMERIC},
+      </if>
+      <if test="coursestudyPlan != null">
+        COURSESTUDY_PLAN = #{coursestudyPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyHomework != null">
+        COURSESTUDY_HOMEWORK = #{coursestudyHomework,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyResult != null">
+        COURSESTUDY_RESULT = #{coursestudyResult,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyNote != null">
+        COURSESTUDY_NOTE = #{coursestudyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyAt != null">
+        COURSESTUDY_AT = #{coursestudyAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coursestudyDel != null">
+        COURSESTUDY_DEL = #{coursestudyDel,jdbcType=INTEGER},
+      </if>
+      <if test="coursestudyType != null">
+        COURSESTUDY_TYPE = #{coursestudyType,jdbcType=VARCHAR},
+      </if>
+      <if test="coursestudyTranclassid != null">
+        COURSESTUDY_TRANCLASSID = #{coursestudyTranclassid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COURSESTUDY_ID = #{coursestudyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Coursestudy">
+    update COURSESTUDY
+    set COURSE_ID = #{courseId,jdbcType=VARCHAR},
+      STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      COURSESTUDY_STARTIME = #{coursestudyStartime,jdbcType=VARCHAR},
+      COURSESTUDY_ENDTIME = #{coursestudyEndtime,jdbcType=VARCHAR},
+      COURSESTUDY_ALLTIME = #{coursestudyAlltime,jdbcType=NUMERIC},
+      COURSESTUDY_NOWTIME = #{coursestudyNowtime,jdbcType=NUMERIC},
+      COURSESTUDY_PLAN = #{coursestudyPlan,jdbcType=VARCHAR},
+      COURSESTUDY_HOMEWORK = #{coursestudyHomework,jdbcType=VARCHAR},
+      COURSESTUDY_RESULT = #{coursestudyResult,jdbcType=VARCHAR},
+      COURSESTUDY_NOTE = #{coursestudyNote,jdbcType=VARCHAR},
+      COURSESTUDY_AT = #{coursestudyAt,jdbcType=TIMESTAMP},
+      COURSESTUDY_DEL = #{coursestudyDel,jdbcType=INTEGER},
+      COURSESTUDY_TYPE = #{coursestudyType,jdbcType=VARCHAR},
+      COURSESTUDY_TRANCLASSID = #{coursestudyTranclassid,jdbcType=VARCHAR}
+    where COURSESTUDY_ID = #{coursestudyId,jdbcType=VARCHAR}
+  </update>
+ 
+    <!--判断是否重复  -->
+   <select id="selectPanDuanKey" parameterType="com.ttgis.education.entity.Coursestudy" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COURSESTUDY
+    where COURSESTUDY_DEL=1
+     and COURSE_ID = #{courseId,jdbcType=VARCHAR}
+       and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+  </select>
+     <!--  通过学院查询推送课程 -->
+ <select id="CoursestudyAll" parameterType="com.ttgis.education.entity.Coursestudy" resultMap="BaseResultMap">
+     select  * from COURSESTUDY  s,COURSE c ,ORGANIZATION o
+     where c.COURSE_ID=s.COURSE_ID 
+     and o.ORGANIZATION_ID=c.COURSE_CATALOG 
+     and  STUDENT_ID=#{studentId,jdbcType=VARCHAR} 
+     and COURSESTUDY_DEL=1 
+     and COURSESTUDY_TYPE=1
+  </select>
+  
+  <!--前台总条数 -->
+ <select id="CoursestudyWebCount" parameterType="com.ttgis.education.entity.Coursestudy" resultType="int">
+  	select  count(*)
+    from COURSESTUDY  s,COURSE c ,ORGANIZATION o,CLASSINFO t
+    where
+ c.COURSE_ID=t.COURSE_ID 
+     and     c.COURSE_ID=s.COURSE_ID 
+     and o.ORGANIZATION_ID=c.COURSE_CATALOG 
+     and  STUDENT_ID=#{studentId,jdbcType=VARCHAR} and COURSESTUDY_DEL=1 and COURSESTUDY_TYPE = #{coursestudyType,jdbcType=VARCHAR}
+  and TRANCLASS_ID= #{tranclassId,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 前台分页显示 -->
+<select id="selectPageWebAll" parameterType="com.ttgis.education.entity.Coursestudy" resultMap="BaseResultMap">
+select top ${size}  *
+  from COURSESTUDY  s,COURSE c ,ORGANIZATION o ,CLASSINFO t
+    where c.COURSE_ID=t.COURSE_ID 
+     and c.COURSE_ID=s.COURSE_ID 
+     and o.ORGANIZATION_ID=c.COURSE_CATALOG 
+     and  STUDENT_ID=#{studentId,jdbcType=VARCHAR} 
+     and COURSESTUDY_DEL=1 
+     and COURSESTUDY_TYPE= #{coursestudyType,jdbcType=VARCHAR}
+     and TRANCLASS_ID= #{tranclassId,jdbcType=VARCHAR}
+ and COURSESTUDY_ID not in
+(
+ select top ${page} COURSESTUDY_ID from COURSESTUDY  s,COURSE c ,ORGANIZATION o,CLASSINFO t 
+  where  c.COURSE_ID=t.COURSE_ID 
+     and
+   c.COURSE_ID=s.COURSE_ID 
+     and o.ORGANIZATION_ID=c.COURSE_CATALOG 
+     and  STUDENT_ID=#{studentId,jdbcType=VARCHAR} and COURSESTUDY_DEL=1 and COURSESTUDY_TYPE= #{coursestudyType,jdbcType=VARCHAR}
+      and TRANCLASS_ID= #{tranclassId,jdbcType=VARCHAR}
+ order by COURSESTUDY_AT desc
+) 
+order by COURSESTUDY_AT desc
+
+ </select>
+ 
+ 
+   <!--我的课程前台总条数 -->
+ <select id="CoursestudyWebType" parameterType="com.ttgis.education.entity.Coursestudy" resultType="int">
+  	select  count(*)
+    from COURSESTUDY  s,COURSE c ,ORGANIZATION o
+    where c.COURSE_ID=s.COURSE_ID 
+     and o.ORGANIZATION_ID=c.COURSE_CATALOG 
+     and  STUDENT_ID=#{studentId,jdbcType=VARCHAR} 
+     and COURSE_TYPE=#{coursestudyType,jdbcType=VARCHAR} 
+     and COURSESTUDY_DEL=1 
+     and COURSESTUDY_TYPE = 1
+  </select>
+  
+  <!-- 我的课程前台分页显示 -->
+<select id="selectPageWebTypeAll" parameterType="com.ttgis.education.entity.Coursestudy" resultMap="BaseResultMap">
+select top ${size}  *
+  from COURSESTUDY  s,COURSE c ,ORGANIZATION o 
+    where  c.COURSE_ID=s.COURSE_ID 
+     and o.ORGANIZATION_ID=c.COURSE_CATALOG 
+     and  STUDENT_ID=#{studentId,jdbcType=VARCHAR} 
+     and COURSE_TYPE=#{coursestudyType,jdbcType=VARCHAR} 
+     and COURSESTUDY_DEL=1 
+     and COURSESTUDY_TYPE=1
+ and COURSESTUDY_ID not in
+(
+ select top ${page} COURSESTUDY_ID from COURSESTUDY  s,COURSE c ,ORGANIZATION o
+  where  c.COURSE_ID=s.COURSE_ID 
+     and o.ORGANIZATION_ID=c.COURSE_CATALOG 
+     and  STUDENT_ID=#{studentId,jdbcType=VARCHAR}
+     and COURSE_TYPE=#{coursestudyType,jdbcType=VARCHAR} 
+     and COURSESTUDY_DEL=1 
+     and COURSESTUDY_TYPE= 1
+ order by COURSESTUDY_AT desc
+) 
+order by COURSESTUDY_AT desc
+
+ </select>
+ 
+ 
+   <!--后台培训报告     总条数 -->
+ <select id="TrainingReportTop1" parameterType="com.ttgis.education.entity.Coursestudy" resultType="int">
+  	 select  count(*) from COURSESTUDY c 
+  left join
+  CLASSINFO s 
+ on c.COURSE_ID=s.COURSE_ID left join COURSE e on c.COURSE_ID=e.COURSE_ID
+  left join TRANCLASS t on t.TRANCLASS_ID=s.TRANCLASS_ID
+  where  COURSESTUDY_DEL=1  and  ( c.COURSESTUDY_TRANCLASSID=t.TRANCLASS_ID or c.COURSESTUDY_TRANCLASSID is null )  
+   <if test="studentId != null and studentId != ''">
+      <![CDATA[  
+				 and c.STUDENT_ID = #{studentId,jdbcType=VARCHAR} 
+	   ]]> 
+   </if>
+ 
+   <if test="coursestudyType != null and coursestudyType != ''">
+      <![CDATA[  
+				and c.COURSESTUDY_TYPE = #{coursestudyType,jdbcType=VARCHAR}
+	   ]]> 
+   </if>
+   
+    <if test="courseName != null and courseName != ''">
+      <![CDATA[  
+				 and e.COURSE_NAME like '%${courseName}%'
+	   ]]> 
+   </if>
+   
+  </select>
+  
+  
+   <select id="TrainingReportTop" parameterType="com.ttgis.education.entity.Coursestudy" resultType="int">
+  	 select  count(*) from COURSESTUDY c 
+  left join
+  COURSE e on c.COURSE_ID=e.COURSE_ID
+  where  COURSESTUDY_DEL=1 
+   <if test="studentId != null and studentId != ''">
+      <![CDATA[  
+				 and c.STUDENT_ID = #{studentId,jdbcType=VARCHAR} 
+	   ]]> 
+   </if>
+ 
+   <if test="coursestudyType != null and coursestudyType != ''">
+      <![CDATA[  
+				and c.COURSESTUDY_TYPE = #{coursestudyType,jdbcType=VARCHAR}
+	   ]]> 
+   </if>
+   
+    <if test="courseName != null and courseName != ''">
+      <![CDATA[  
+				 and e.COURSE_NAME like '%${courseName}%'
+	   ]]> 
+   </if>
+   
+  </select>
+  
+  <!-- 后台培训报告   分页显示 -->
+<select id="TrainingReportTopAll1" parameterType="com.ttgis.education.entity.Coursestudy" resultMap="BaseResultMap">
+select top ${size}  *
+ from COURSESTUDY c 
+  left join
+  CLASSINFO s 
+ on c.COURSE_ID=s.COURSE_ID left join COURSE e on c.COURSE_ID=e.COURSE_ID
+  left join TRANCLASS t on t.TRANCLASS_ID=s.TRANCLASS_ID
+  where  COURSESTUDY_DEL=1  and  ( c.COURSESTUDY_TRANCLASSID=t.TRANCLASS_ID or c.COURSESTUDY_TRANCLASSID is null )  
+ and COURSESTUDY_ID not in
+(
+ select top ${page} COURSESTUDY_ID from COURSESTUDY c 
+  left join
+  CLASSINFO s 
+ on c.COURSE_ID=s.COURSE_ID left join COURSE e on c.COURSE_ID=e.COURSE_ID
+  left join TRANCLASS t on t.TRANCLASS_ID=s.TRANCLASS_ID
+  where  COURSESTUDY_DEL=1  and  ( c.COURSESTUDY_TRANCLASSID=t.TRANCLASS_ID or c.COURSESTUDY_TRANCLASSID is null )  
+   <if test="studentId != null and studentId != ''">
+      <![CDATA[  
+				 and c.STUDENT_ID = #{studentId,jdbcType=VARCHAR} 
+	   ]]> 
+	    </if>
+ 
+   <if test="coursestudyType != null and coursestudyType != ''">
+      <![CDATA[  
+				and c.COURSESTUDY_TYPE = #{coursestudyType,jdbcType=VARCHAR}
+	   ]]> 
+	    </if>
+	    
+	    
+    <if test="courseName != null and courseName != ''">
+      <![CDATA[  
+				 and e.COURSE_NAME like '%${courseName}%'
+	   ]]> 
+   </if>
+   
+ order by COURSESTUDY_AT desc
+) 
+
+
+ <if test="studentId != null and studentId != ''">
+      <![CDATA[  
+				 and c.STUDENT_ID = #{studentId,jdbcType=VARCHAR} 
+	   ]]> 
+	    </if>
+ 
+   <if test="coursestudyType != null and coursestudyType != ''">
+      <![CDATA[  
+				and c.COURSESTUDY_TYPE = #{coursestudyType,jdbcType=VARCHAR}
+	   ]]> 
+	    </if>
+	  
+    <if test="courseName != null and courseName != ''">
+      <![CDATA[  
+				 and e.COURSE_NAME like '%${courseName}%'
+	   ]]> 
+   </if>
+     
+	    
+order by COURSESTUDY_AT desc
+
+ </select>
+ 
+ <select id="TrainingReportTopAll" parameterType="com.ttgis.education.entity.Coursestudy" resultMap="BaseResultMap">
+select top ${size}  *
+ from COURSESTUDY c 
+ left join COURSE e on c.COURSE_ID=e.COURSE_ID
+  where  COURSESTUDY_DEL=1 
+ and COURSESTUDY_ID not in
+(
+ select top ${page} COURSESTUDY_ID from COURSESTUDY c 
+  left join
+  COURSE e on c.COURSE_ID=e.COURSE_ID
+  where  COURSESTUDY_DEL=1  
+   <if test="studentId != null and studentId != ''">
+      <![CDATA[  
+				 and c.STUDENT_ID = #{studentId,jdbcType=VARCHAR} 
+	   ]]> 
+	    </if>
+ 
+   <if test="coursestudyType != null and coursestudyType != ''">
+      <![CDATA[  
+				and c.COURSESTUDY_TYPE = #{coursestudyType,jdbcType=VARCHAR}
+	   ]]> 
+	    </if>
+	    
+	    
+    <if test="courseName != null and courseName != ''">
+      <![CDATA[  
+				 and e.COURSE_NAME like '%${courseName}%'
+	   ]]> 
+   </if>
+   
+ order by COURSESTUDY_AT desc
+) 
+
+
+ <if test="studentId != null and studentId != ''">
+      <![CDATA[  
+				 and c.STUDENT_ID = #{studentId,jdbcType=VARCHAR} 
+	   ]]> 
+	    </if>
+ 
+   <if test="coursestudyType != null and coursestudyType != ''">
+      <![CDATA[  
+				and c.COURSESTUDY_TYPE = #{coursestudyType,jdbcType=VARCHAR}
+	   ]]> 
+	    </if>
+	  
+    <if test="courseName != null and courseName != ''">
+      <![CDATA[  
+				 and e.COURSE_NAME like '%${courseName}%'
+	   ]]> 
+   </if>
+     
+	    
+order by COURSESTUDY_AT desc
+
+ </select>
+ 
+	
+ 
+</mapper>

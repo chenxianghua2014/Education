@@ -1,0 +1,12 @@
+@charset "utf-8";
+@import "common.css";
+#menu{ border:1px solid #ddd;padding:8px; background:#fefefe; }
+#menu dl{margin-bottom:2px;}
+#menu dt{padding:5px 0;margin:0; font-weight:bold;color:#666; border-bottom:1px solid #eee}
+#menu dd{line-height:200%;margin:0;padding:0}
+a{ text-decoration:none}
+.back{text-align:left;
+	height:32px;
+	}
+	
+	#menu dd.focus a{color:#f00}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.AccountRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.AccountRoleKey" >
+    <id column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <id column="ACCOUNT_ID" property="accountId" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.ttgis.education.entity.AccountRoleKey" >
+    delete from ACCOUNT-ROLE
+    where ROLE_ID = #{roleId,jdbcType=VARCHAR}
+      and ACCOUNT_ID = #{accountId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.AccountRoleKey" >
+    insert into ACCOUNT-ROLE (ROLE_ID, ACCOUNT_ID)
+    values (#{roleId,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.AccountRoleKey" >
+    insert into ACCOUNT-ROLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="accountId != null" >
+        ACCOUNT_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttgis.education.mapper.ProgrammeMapper">
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Programme">
+    <id column="PROGRAMME_ID" jdbcType="VARCHAR" property="programmeId" />
+    <result column="PROGRAMME_NAME" jdbcType="VARCHAR" property="programmeName" />
+    <result column="PROGRAMME_TYPE" jdbcType="VARCHAR" property="programmeType" />
+    <result column="PROGRAMME_CATALOG" jdbcType="VARCHAR" property="programmeCatalog" />
+    <result column="PROGRAMME_PRODUCER" jdbcType="VARCHAR" property="programmeProducer" />
+    <result column="PROGRAMME_RANK" jdbcType="INTEGER" property="programmeRank" />
+    <result column="PROGRAMME_IMAGE" jdbcType="VARCHAR" property="programmeImage" />
+    <result column="PROGRAMME_SORT" jdbcType="VARCHAR" property="programmeSort" />
+    <result column="PROGRAMME_AT" jdbcType="VARCHAR" property="programmeAt" />
+    <result column="PROGRAMME_DEL" jdbcType="INTEGER" property="programmeDel" />
+    <result column="ORGANIZATION_ID" jdbcType="VARCHAR" property="organizationId" />
+    <result column="PROGRAMME_TIME" jdbcType="VARCHAR" property="programmeTime" />
+    <result column="PROGRAMME_TOP" jdbcType="INTEGER" property="programmeTop" />
+    <result column="PROGRAMME_TOPTIME" jdbcType="VARCHAR" property="programmeToptime" />
+    <result column="page"  property="page" />
+	<result column="size" property="size" />
+	<collection property="organization" column="accountCatalog" ofType="com.ttgis.education.entity.Organization">    
+            <id property="organizationId" column="ORGANIZATION_ID" />    
+            <result property="organizationDwmc" column="ORGANIZATION_DWMC" />    
+     </collection>
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ttgis.education.entity.Programme">
+    <result column="PROGRAMME_CONTENT" jdbcType="LONGVARCHAR" property="programmeContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PROGRAMME_ID, PROGRAMME_NAME, PROGRAMME_TYPE, PROGRAMME_CATALOG, PROGRAMME_PRODUCER, 
+    PROGRAMME_RANK, PROGRAMME_IMAGE, PROGRAMME_SORT, PROGRAMME_AT, PROGRAMME_DEL, ORGANIZATION_ID, 
+    PROGRAMME_TIME, PROGRAMME_TOP, PROGRAMME_TOPTIME
+  </sql>
+  <sql id="Blob_Column_List">
+    PROGRAMME_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select  * from PROGRAMME n,ORGANIZATION o 
+    where o.ORGANIZATION_ID=n.ORGANIZATION_ID
+    and PROGRAMME_ID = #{programmeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PROGRAMME
+    where PROGRAMME_ID = #{programmeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Programme">
+    insert into PROGRAMME (PROGRAMME_ID, PROGRAMME_NAME, PROGRAMME_TYPE, 
+      PROGRAMME_CATALOG, PROGRAMME_PRODUCER, PROGRAMME_RANK, 
+      PROGRAMME_IMAGE, PROGRAMME_SORT, PROGRAMME_AT, 
+      PROGRAMME_DEL, ORGANIZATION_ID, PROGRAMME_TIME, 
+      PROGRAMME_TOP, PROGRAMME_TOPTIME, PROGRAMME_CONTENT
+      )
+    values (#{programmeId,jdbcType=VARCHAR}, #{programmeName,jdbcType=VARCHAR}, #{programmeType,jdbcType=VARCHAR}, 
+      #{programmeCatalog,jdbcType=VARCHAR}, #{programmeProducer,jdbcType=VARCHAR}, #{programmeRank,jdbcType=INTEGER}, 
+      #{programmeImage,jdbcType=VARCHAR}, #{programmeSort,jdbcType=VARCHAR}, #{programmeAt,jdbcType=TIMESTAMP}, 
+      #{programmeDel,jdbcType=INTEGER}, #{organizationId,jdbcType=VARCHAR}, #{programmeTime,jdbcType=VARCHAR}, 
+      #{programmeTop,jdbcType=INTEGER}, #{programmeToptime,jdbcType=VARCHAR}, #{programmeContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Programme">
+    insert into PROGRAMME
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="programmeId != null">
+        PROGRAMME_ID,
+      </if>
+      <if test="programmeName != null">
+        PROGRAMME_NAME,
+      </if>
+      <if test="programmeType != null">
+        PROGRAMME_TYPE,
+      </if>
+      <if test="programmeCatalog != null">
+        PROGRAMME_CATALOG,
+      </if>
+      <if test="programmeProducer != null">
+        PROGRAMME_PRODUCER,
+      </if>
+      <if test="programmeRank != null">
+        PROGRAMME_RANK,
+      </if>
+      <if test="programmeImage != null">
+        PROGRAMME_IMAGE,
+      </if>
+      <if test="programmeSort != null">
+        PROGRAMME_SORT,
+      </if>
+      <if test="programmeAt != null">
+        PROGRAMME_AT,
+      </if>
+      <if test="programmeDel != null">
+        PROGRAMME_DEL,
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID,
+      </if>
+      <if test="programmeTime != null">
+        PROGRAMME_TIME,
+      </if>
+      <if test="programmeTop != null">
+        PROGRAMME_TOP,
+      </if>
+      <if test="programmeToptime != null">
+        PROGRAMME_TOPTIME,
+      </if>
+      <if test="programmeContent != null">
+        PROGRAMME_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="programmeId != null">
+        #{programmeId,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeName != null">
+        #{programmeName,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeType != null">
+        #{programmeType,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeCatalog != null">
+        #{programmeCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeProducer != null">
+        #{programmeProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeRank != null">
+        #{programmeRank,jdbcType=INTEGER},
+      </if>
+      <if test="programmeImage != null">
+        #{programmeImage,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeSort != null">
+        #{programmeSort,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeAt != null">
+        #{programmeAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="programmeDel != null">
+        #{programmeDel,jdbcType=INTEGER},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeTime != null">
+        #{programmeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeTop != null">
+        #{programmeTop,jdbcType=INTEGER},
+      </if>
+      <if test="programmeToptime != null">
+        #{programmeToptime,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeContent != null">
+        #{programmeContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Programme">
+    update PROGRAMME
+    <set>
+      <if test="programmeName != null">
+        PROGRAMME_NAME = #{programmeName,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeType != null">
+        PROGRAMME_TYPE = #{programmeType,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeCatalog != null">
+        PROGRAMME_CATALOG = #{programmeCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeProducer != null">
+        PROGRAMME_PRODUCER = #{programmeProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeRank != null">
+        PROGRAMME_RANK = #{programmeRank,jdbcType=INTEGER},
+      </if>
+      <if test="programmeImage != null">
+        PROGRAMME_IMAGE = #{programmeImage,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeSort != null">
+        PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeAt != null">
+        PROGRAMME_AT = #{programmeAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="programmeDel != null">
+        PROGRAMME_DEL = #{programmeDel,jdbcType=INTEGER},
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeTime != null">
+        PROGRAMME_TIME = #{programmeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeTop != null">
+        PROGRAMME_TOP = #{programmeTop,jdbcType=INTEGER},
+      </if>
+      <if test="programmeToptime != null">
+        PROGRAMME_TOPTIME = #{programmeToptime,jdbcType=VARCHAR},
+      </if>
+      <if test="programmeContent != null">
+        PROGRAMME_CONTENT = #{programmeContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where PROGRAMME_ID = #{programmeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ttgis.education.entity.Programme">
+    update PROGRAMME
+    set PROGRAMME_NAME = #{programmeName,jdbcType=VARCHAR},
+      PROGRAMME_TYPE = #{programmeType,jdbcType=VARCHAR},
+      PROGRAMME_CATALOG = #{programmeCatalog,jdbcType=VARCHAR},
+      PROGRAMME_PRODUCER = #{programmeProducer,jdbcType=VARCHAR},
+      PROGRAMME_RANK = #{programmeRank,jdbcType=INTEGER},
+      PROGRAMME_IMAGE = #{programmeImage,jdbcType=VARCHAR},
+      PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR},
+      PROGRAMME_AT = #{programmeAt,jdbcType=TIMESTAMP},
+      PROGRAMME_DEL = #{programmeDel,jdbcType=INTEGER},
+      ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      PROGRAMME_TIME = #{programmeTime,jdbcType=VARCHAR},
+      PROGRAMME_TOP = #{programmeTop,jdbcType=INTEGER},
+      PROGRAMME_TOPTIME = #{programmeToptime,jdbcType=VARCHAR},
+      PROGRAMME_CONTENT = #{programmeContent,jdbcType=LONGVARCHAR}
+    where PROGRAMME_ID = #{programmeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Programme">
+    update PROGRAMME
+    set PROGRAMME_NAME = #{programmeName,jdbcType=VARCHAR},
+      PROGRAMME_TYPE = #{programmeType,jdbcType=VARCHAR},
+      PROGRAMME_CATALOG = #{programmeCatalog,jdbcType=VARCHAR},
+      PROGRAMME_PRODUCER = #{programmeProducer,jdbcType=VARCHAR},
+      PROGRAMME_RANK = #{programmeRank,jdbcType=INTEGER},
+      PROGRAMME_IMAGE = #{programmeImage,jdbcType=VARCHAR},
+      PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR},
+      PROGRAMME_AT = #{programmeAt,jdbcType=TIMESTAMP},
+      PROGRAMME_DEL = #{programmeDel,jdbcType=INTEGER},
+      ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      PROGRAMME_TIME = #{programmeTime,jdbcType=VARCHAR},
+      PROGRAMME_TOP = #{programmeTop,jdbcType=INTEGER},
+      PROGRAMME_TOPTIME = #{programmeToptime,jdbcType=VARCHAR}
+    where PROGRAMME_ID = #{programmeId,jdbcType=VARCHAR}
+  </update>
+ 
+ 
+    <!-- 查询指定条数计划 --> 
+   <select id="selectProgrammeByNumber" parameterType="int" resultMap="BaseResultMap">
+  	select top (#{num})
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from PROGRAMME
+    where PROGRAMME_DEL = 1 AND PROGRAMME_TYPE='可用' order by PROGRAMME_AT desc
+  </select>
+  <select id="selectAllProgramme" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from PROGRAMME
+     where PROGRAMME_DEL = 1 AND PROGRAMME_TYPE='可用' order by PROGRAMME_AT desc
+  </select>
+  
+  
+  <!-- 分页显示 -->
+<select id="selectPageAll" parameterType="com.ttgis.education.entity.Programme"   resultMap="BaseResultMap">
+select top ${size}  *
+from PROGRAMME n,ORGANIZATION o
+where  o.ORGANIZATION_ID=n.ORGANIZATION_ID  
+and PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR} and PROGRAMME_ID not in
+(
+ select top ${page} PROGRAMME_ID from PROGRAMME n,ORGANIZATION o
+  where  
+   o.ORGANIZATION_ID=n.ORGANIZATION_ID  
+  and PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR}
+   
+    <if test="programmeRank != null and programmeRank != ''">
+      <![CDATA[  
+				and   PROGRAMME_RANK = #{programmeRank,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	<if test="programmeTime != null and programmeTime != ''">
+	<![CDATA[  
+			and   PROGRAMME_TIME = #{programmeTime,jdbcType=TIMESTAMP}
+			and PROGRAMME_TYPE = '可用' 
+			 ]]>  
+	</if>
+	 <if test="programmeCatalog != null and programmeCatalog != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC like '%${programmeCatalog}%'
+			 ]]>  
+	 </if>
+	 
+	 	  <if test="type == 1 ">  
+    <if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    </if>  
+    
+    <if test="type == 2 ">  
+      		<if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+            </if>  
+            
+             <if test="cj == 1 ">  
+            <![CDATA[  
+             and (n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId}) or n.ORGANIZATION_ID = 'test001' )
+            ]]>  
+   			 </if>  
+
+    </if>  
+    
+    <if test="type == 3 ">  
+     <if test="cj == 1 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID = 'test001' or n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    <if test="cj == 2 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId}  )
+            ]]>  
+    </if>  
+    <if test="cj == 3 ">  
+            <![CDATA[  
+            and  n.ORGANIZATION_ID=#{organizationId}
+            ]]>  
+    </if>  
+    </if>  
+  order by PROGRAMME_AT desc
+) 
+
+    <if test="programmeRank != null and programmeRank != ''">
+      <![CDATA[  
+				and   PROGRAMME_RANK = #{programmeRank,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	<if test="programmeTime != null and programmeTime != ''">
+	<![CDATA[  
+			and   PROGRAMME_TIME = #{programmeTime,jdbcType=TIMESTAMP}
+			and PROGRAMME_TYPE = '可用' 
+			 ]]>  
+	</if>
+	 <if test="programmeCatalog != null and programmeCatalog != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC like '%${programmeCatalog}%'
+			 ]]>  
+	 </if>
+	 
+	 	  <if test="type == 1 ">  
+    <if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    </if>  
+    
+    <if test="type == 2 ">  
+      		<if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+            </if>  
+            
+             <if test="cj == 1 ">  
+            <![CDATA[  
+             and (n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId}) or n.ORGANIZATION_ID = 'test001' )
+            ]]>  
+   			 </if>  
+
+    </if>  
+    
+    <if test="type == 3 ">  
+     <if test="cj == 1 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID = 'test001' or n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    <if test="cj == 2 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId}  )
+            ]]>  
+    </if>  
+    <if test="cj == 3 ">  
+            <![CDATA[  
+            and  n.ORGANIZATION_ID=#{organizationId}
+            ]]>  
+    </if>  
+    </if>  
+    
+order by PROGRAMME_AT desc
+
+ </select>
+ 
+   <!--总条数 -->
+ <select id="ProgrammeCount"  parameterType="com.ttgis.education.entity.Programme"  resultType="int">
+  	select  count(*)
+    from PROGRAMME n,ORGANIZATION o
+    where  o.ORGANIZATION_ID=n.ORGANIZATION_ID
+    and  PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR}
+     <if test="programmeRank != null and programmeRank != ''">
+      <![CDATA[  
+				and   PROGRAMME_RANK = #{programmeRank,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	<if test="programmeTime != null and programmeTime != ''">
+	<![CDATA[  
+			and   PROGRAMME_TIME = #{programmeTime,jdbcType=TIMESTAMP}
+			and PROGRAMME_TYPE = '可用' 
+			 ]]>  
+	</if>
+	 <if test="programmeCatalog != null and programmeCatalog != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC like '%${programmeCatalog}%'
+			 ]]>  
+	 </if>
+	 
+	 
+	 
+	 	  <if test="type == 1 ">  
+    <if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    </if>  
+    
+    <if test="type == 2 ">  
+      		<if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+            </if>  
+            
+             <if test="cj == 1 ">  
+            <![CDATA[  
+             and (n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId}) or n.ORGANIZATION_ID = 'test001' )
+            ]]>  
+   			 </if>  
+
+    </if>  
+    
+    <if test="type == 3 ">  
+     <if test="cj == 1 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID = 'test001' or n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    <if test="cj == 2 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId}  )
+            ]]>  
+    </if>  
+    <if test="cj == 3 ">  
+            <![CDATA[  
+            and  n.ORGANIZATION_ID=#{organizationId}
+            ]]>  
+    </if>  
+    </if>  
+  </select>
+  
+  
+  
+  <!-- 分页显示 -->
+<select id="collectionPageAll" parameterType="com.ttgis.education.entity.Programme"   resultMap="BaseResultMap">
+select top ${size}  *
+from PROGRAMME n ,SORT s,ORGANIZATION o
+where  o.ORGANIZATION_ID=n.ORGANIZATION_ID
+ and n.PROGRAMME_ID not in
+(
+ select top ${page} PROGRAMME_ID from PROGRAMME n ,SORT s
+  where  n.PROGRAMME_ID = s. SORT_INFOID 
+  	and n.PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR}
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 3
+    order by  SORT_AT desc
+) 
+    and n.PROGRAMME_ID = s. SORT_INFOID 
+    and n.PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR}
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 3
+    order by  SORT_AT desc
+
+
+ </select>
+  
+  
+    <!--总条数 -->
+ <select id="collectionProgrammeCount"  parameterType="com.ttgis.education.entity.Programme"  resultType="int">
+  	select  count(*)
+    from PROGRAMME n ,SORT s
+    where n.PROGRAMME_ID = s. SORT_INFOID 
+    and n.PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR}
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 3
+    
+  </select>
+  
+
+  
+   <!--ID处理（组织结构ID查询） -->
+ <select id="ProgrammeByOId"  parameterType="com.ttgis.education.entity.Programme"  resultMap="BaseResultMap">
+  	select top 1  *
+    from PROGRAMME
+    where ORGANIZATION_ID=#{organizationId}  order by PROGRAMME_AT desc  
+  </select>
+  
+  <!--ID查询 -->
+ <select id="ProgrammeById"  parameterType="com.ttgis.education.entity.Programme"  resultMap="ResultMapWithBLOBs">
+  	select *
+    from PROGRAMME
+    where PROGRAMME_ID=#{programmeId} 
+  </select>
+  
+  
+  <!--  *****************************************前台**********************************************************  -->
+  <!--ID处理（组织结构ID查询） -->
+ <select id="ProgrammeByOIdAll"  parameterType="com.ttgis.education.entity.Programme"  resultMap="BaseResultMap">
+  	select  top 10 *
+    from PROGRAMME
+    where PROGRAMME_DEL = 1 AND PROGRAMME_TYPE='可用'  and PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR}  and ORGANIZATION_ID=#{organizationId}  order by PROGRAMME_TIME desc  
+  </select>
+  
+  
+      <!-- 分页显示 -->
+<select id="webPageAll" parameterType="com.ttgis.education.entity.Programme"   resultMap="BaseResultMap">
+select top ${size}  *
+from PROGRAMME 
+where PROGRAMME_ID not in
+(
+ select top ${page} PROGRAMME_ID from PROGRAMME 
+  where   PROGRAMME_TYPE = '可用' 
+  <if test="type == 1 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID = #{organizationId}  
+            ]]>  
+    </if>  
+    <if test="type == 2 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in ( #{organizationId} , 'test001') 
+            ]]>  
+    </if>  
+    <if test="type == 3 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in (
+            select ORGANIZATION_ID from ORGANIZATION  where  
+            ORGANIZATION_ID=#{organizationId} 
+            or ORGANIZATION_SJDW=#{organizationId}
+            or ORGANIZATION_ID='test001'
+            ) 
+            ]]>  
+    </if>  
+     and PROGRAMME_DEL = 1 
+     and PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR}
+    order by  PROGRAMME_TOP desc , PROGRAMME_TIME desc
+) 
+   <if test="type == 1 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID = #{organizationId}  
+            ]]>  
+    </if>  
+    <if test="type == 2 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in ( #{organizationId} , 'test001') 
+            ]]>  
+    </if>  
+    <if test="type == 3 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in (
+            select ORGANIZATION_ID from ORGANIZATION  where  
+            ORGANIZATION_ID=#{organizationId} 
+            or ORGANIZATION_SJDW=#{organizationId}
+            or ORGANIZATION_ID='test001'
+            ) 
+            ]]>  
+    </if>  
+     and PROGRAMME_TYPE = '可用' 
+     and PROGRAMME_DEL = 1 
+     and PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR}
+ order by  PROGRAMME_TOP desc , PROGRAMME_TIME desc
+
+
+ </select>
+  
+  
+    <!--总条数 -->
+ <select id="webProgrammeCount"  parameterType="com.ttgis.education.entity.Programme"  resultType="int">
+  	select  count(*)
+    from PROGRAMME 
+    where  PROGRAMME_TYPE = '可用' 
+    <if test="type == 1 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID = #{organizationId}  
+            ]]>  
+    </if>  
+    <if test="type == 2 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in ( #{organizationId} , 'test001') 
+            ]]>  
+    </if>  
+    <if test="type == 3 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in (
+            select ORGANIZATION_ID from ORGANIZATION  where  
+            ORGANIZATION_ID=#{organizationId} 
+            or ORGANIZATION_SJDW=#{organizationId}
+            or ORGANIZATION_ID='test001'
+            ) 
+            ]]>  
+    </if>  
+     and PROGRAMME_DEL = 1 
+     and PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR}
+
+    
+  </select>
+  
+    <!--查询置顶数据 -->
+ <select id="webProgrammeTOP"  parameterType="com.ttgis.education.entity.Programme"  resultMap="BaseResultMap">
+  	select  *
+    from PROGRAMME 
+   where  ORGANIZATION_ID = #{organizationId}  
+     and PROGRAMME_TYPE = '可用' 
+     and PROGRAMME_DEL = 1 
+     and PROGRAMME_TOP = 1
+     and PROGRAMME_SORT = #{programmeSort,jdbcType=VARCHAR}
+     and CONVERT(varchar(100), GETDATE(), 23) > PROGRAMME_TOPTIME
+
+    
+  </select>
+  
+  
+   <!-- 站内模糊查询计划 -->
+  <select id="programmeMyName" parameterType="com.ttgis.education.entity.Programme" resultMap="BaseResultMap">
+    select * from PROGRAMME where PROGRAMME_NAME like '%${programmeName}%' and PROGRAMME_DEL = 1 AND PROGRAMME_TYPE='可用'  order by PROGRAMME_AT desc  
+  </select> 
+</mapper>

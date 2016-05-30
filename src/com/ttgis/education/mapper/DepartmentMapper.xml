@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttgis.education.mapper.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Department">
+    <id column="DEPARTMENT_ID" jdbcType="VARCHAR" property="departmentId" />
+    <result column="ORGANIZATION_ID" jdbcType="VARCHAR" property="organizationId" />
+    <result column="EPARTMENT_NAME" jdbcType="VARCHAR" property="epartmentName" />
+    <result column="EPARTMENT_RANK" jdbcType="VARCHAR" property="epartmentRank" />
+    <result column="EPARTMENT_UPNAME" jdbcType="INTEGER" property="epartmentUpname" />
+    <result column="EPARTMENT_UPID" jdbcType="VARCHAR" property="epartmentUpid" />
+    <result column="EPARTMENT_AT" jdbcType="TIMESTAMP" property="epartmentAt" />
+    <result column="EPARTMENT_DEL" jdbcType="INTEGER" property="epartmentDel" />
+    <collection property="organization" column="organizationId" ofType="com.ttgis.education.entity.Organization">    
+            <id property="organizationId" column="ORGANIZATION_ID" />    
+            <result property="organizationDwmc" column="ORGANIZATION_DWMC" />    
+            <result property="organizationFwqx" column="ORGANIZATION_FWQX" />    
+     </collection>
+  </resultMap>
+  <sql id="Base_Column_List">
+    DEPARTMENT_ID, ORGANIZATION_ID, EPARTMENT_NAME, EPARTMENT_RANK, EPARTMENT_UPNAME, 
+    EPARTMENT_UPID, EPARTMENT_AT, EPARTMENT_DEL
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DEPARTMENT
+    where DEPARTMENT_ID = #{departmentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from DEPARTMENT
+    where DEPARTMENT_ID = #{departmentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Department">
+    insert into DEPARTMENT (DEPARTMENT_ID, ORGANIZATION_ID, EPARTMENT_NAME, 
+      EPARTMENT_RANK, EPARTMENT_UPNAME, EPARTMENT_UPID, 
+      EPARTMENT_AT, EPARTMENT_DEL)
+    values (#{departmentId,jdbcType=VARCHAR}, #{organizationId,jdbcType=VARCHAR}, #{epartmentName,jdbcType=VARCHAR}, 
+      #{epartmentRank,jdbcType=VARCHAR}, #{epartmentUpname,jdbcType=VARCHAR}, #{epartmentUpid,jdbcType=VARCHAR}, 
+      #{epartmentAt,jdbcType=TIMESTAMP}, #{epartmentDel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Department">
+    insert into DEPARTMENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        DEPARTMENT_ID,
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID,
+      </if>
+      <if test="epartmentName != null">
+        EPARTMENT_NAME,
+      </if>
+      <if test="epartmentRank != null">
+        EPARTMENT_RANK,
+      </if>
+      <if test="epartmentUpname != null">
+        EPARTMENT_UPNAME,
+      </if>
+      <if test="epartmentUpid != null">
+        EPARTMENT_UPID,
+      </if>
+      <if test="epartmentAt != null">
+        EPARTMENT_AT,
+      </if>
+      <if test="epartmentDel != null">
+        EPARTMENT_DEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="epartmentName != null">
+        #{epartmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="epartmentRank != null">
+        #{epartmentRank,jdbcType=VARCHAR},
+      </if>
+      <if test="epartmentUpname != null">
+        #{epartmentUpname,jdbcType=VARCHAR},
+      </if>
+      <if test="epartmentUpid != null">
+        #{epartmentUpid,jdbcType=VARCHAR},
+      </if>
+      <if test="epartmentAt != null">
+        #{epartmentAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="epartmentDel != null">
+        #{epartmentDel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Department">
+    update DEPARTMENT
+    <set>
+      <if test="organizationId != null">
+        ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="epartmentName != null">
+        EPARTMENT_NAME = #{epartmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="epartmentRank != null">
+        EPARTMENT_RANK = #{epartmentRank,jdbcType=VARCHAR},
+      </if>
+      <if test="epartmentUpname != null">
+        EPARTMENT_UPNAME = #{epartmentUpname,jdbcType=VARCHAR},
+      </if>
+      <if test="epartmentUpid != null">
+        EPARTMENT_UPID = #{epartmentUpid,jdbcType=VARCHAR},
+      </if>
+      <if test="epartmentAt != null">
+        EPARTMENT_AT = #{epartmentAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="epartmentDel != null">
+        EPARTMENT_DEL = #{epartmentDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where DEPARTMENT_ID = #{departmentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Department">
+    update DEPARTMENT
+    set ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      EPARTMENT_NAME = #{epartmentName,jdbcType=VARCHAR},
+      EPARTMENT_RANK = #{epartmentRank,jdbcType=VARCHAR},
+      EPARTMENT_UPNAME = #{epartmentUpname,jdbcType=VARCHAR},
+      EPARTMENT_UPID = #{epartmentUpid,jdbcType=VARCHAR},
+      EPARTMENT_AT = #{epartmentAt,jdbcType=TIMESTAMP},
+      EPARTMENT_DEL = #{epartmentDel,jdbcType=INTEGER}
+    where DEPARTMENT_ID = #{departmentId,jdbcType=VARCHAR}
+  </update>
+ 
+  <!-- 查看单位部门 -->
+  <select id="selectbmlist" parameterType="com.ttgis.education.entity.Department" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DEPARTMENT
+    where ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR}
+     <if test="epartmentRank != null and epartmentRank != ''">
+      <![CDATA[  
+				and   EPARTMENT_RANK = #{epartmentRank,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+  </select>
+  
+  
+    <!-- 分页显示 -->
+<select id="selectPageAll" parameterType="com.ttgis.education.entity.Department"   resultMap="BaseResultMap">
+select top ${size}  *
+from DEPARTMENT n,ORGANIZATION o
+where  o.ORGANIZATION_ID=n.ORGANIZATION_ID 
+ and DEPARTMENT_ID not in
+(
+ select top ${page} DEPARTMENT_ID from DEPARTMENT n,ORGANIZATION o
+  where  o.ORGANIZATION_ID=n.ORGANIZATION_ID 
+  
+  <if test="epartmentUpid != null and epartmentUpid != ''">
+	 <![CDATA[  
+	and EPARTMENT_UPID=#{epartmentUpid}  
+	 ]]>  
+	 </if>
+	 
+<if test="epartmentRank != null and epartmentRank != ''">
+	 <![CDATA[  
+	and   EPARTMENT_RANK = #{epartmentRank,jdbcType=INTEGER}
+		 ]]>  
+	 </if>
+
+	 <if test="epartmentName != null and epartmentName != ''">
+	 <![CDATA[  
+			and EPARTMENT_NAME like '%${epartmentName}%'
+			 ]]>  
+	 </if>
+ and  n.ORGANIZATION_ID=#{organizationId}
+    
+  order by EPARTMENT_UPNAME ,EPARTMENT_AT
+) 
+<if test="epartmentUpid != null and epartmentUpid != ''">
+	 <![CDATA[  
+	and EPARTMENT_UPID=#{epartmentUpid}  
+	 ]]>  
+	 </if>
+	 
+<if test="epartmentRank != null and epartmentRank != ''">
+	 <![CDATA[  
+	and   EPARTMENT_RANK = #{epartmentRank,jdbcType=INTEGER}
+		 ]]>  
+	 </if>
+	 
+	 <if test="epartmentName != null and epartmentName != ''">
+	 <![CDATA[  
+			and EPARTMENT_NAME like '%${epartmentName}%'
+			 ]]>  
+	 </if>
+	 
+ and  n.ORGANIZATION_ID=#{organizationId}
+    
+order by EPARTMENT_UPNAME ,EPARTMENT_AT
+
+ </select>
+ 
+   <!--总条数 -->
+ <select id="DepartmentCount"  parameterType="com.ttgis.education.entity.Department"  resultType="int">
+  	select  count(*)
+    from DEPARTMENT n,ORGANIZATION o
+    where   o.ORGANIZATION_ID=n.ORGANIZATION_ID 
+	<if test="epartmentUpid != null and epartmentUpid != ''">
+	 <![CDATA[  
+	and EPARTMENT_UPID=#{epartmentUpid}  
+	 ]]>  
+	 </if>
+	 
+	<if test="epartmentRank != null and epartmentRank != ''">
+	 <![CDATA[  
+	and   EPARTMENT_RANK = #{epartmentRank,jdbcType=INTEGER}
+		 ]]>  
+	 </if>
+	 
+	 <if test="epartmentName != null and epartmentName != ''">
+	 <![CDATA[  
+			and EPARTMENT_NAME like '%${epartmentName}%'
+			 ]]>  
+	 </if>
+    
+     and  n.ORGANIZATION_ID=#{organizationId}
+    
+   
+  </select>
+  
+  
+  
+
+  
+  <!--ID处理（组织结构ID查询） -->
+ <select id="DepartmentByOId"  parameterType="com.ttgis.education.entity.Department"  resultMap="BaseResultMap">
+  	select top 1  *
+    from DEPARTMENT
+    where ORGANIZATION_ID=#{organizationId}  order by EPARTMENT_AT   desc
+  </select>
+   <!--查询部门下的子部门 -->
+ <select id="DepartmentUpId"  parameterType="com.ttgis.education.entity.Department"  resultMap="BaseResultMap">
+  	select   *
+    from DEPARTMENT
+    where EPARTMENT_UPID=#{departmentId}  order by EPARTMENT_UPNAME   
+  </select>
+  
+  
+  <!--查询部门下科室（部门ID查询） -->
+ <select id="DepartmentById"  parameterType="com.ttgis.education.entity.Department"  resultMap="BaseResultMap">
+  	select  *
+    from DEPARTMENT
+    where EPARTMENT_UPID=#{epartmentUpid}  
+    order by EPARTMENT_UPNAME   
+  </select>
+  
+   <!--合并联动OID查询 -->
+ <select id="DepartmentHBOId"  parameterType="com.ttgis.education.entity.Department"  resultMap="BaseResultMap">
+  	select  *
+    from DEPARTMENT
+    where  EPARTMENT_RANK =#{epartmentRank}   
+     <if test="organizationId != null and organizationId != ''">
+      <![CDATA[  
+				and ORGANIZATION_ID=#{organizationId} 
+	   ]]>  
+	</if>
+    order by EPARTMENT_UPNAME 
+  </select>
+  
+  
+  
+  
+   <!-- 分页显示 -->
+<select id="collectionPageAll" parameterType="com.ttgis.education.entity.Department"   resultMap="BaseResultMap">
+select top ${size}  *
+from DEPARTMENT n ,SORT s,ORGANIZATION o
+where o.ORGANIZATION_ID=n.ORGANIZATION_ID 
+and DEPARTMENT_ID not in
+(
+ select top ${page} DEPARTMENT_ID from DEPARTMENT n ,SORT s
+  where  n.DEPARTMENT_ID = s. SORT_INFOID 
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 4
+    order by  EPARTMENT_UPNAME ,EPARTMENT_AT
+) 
+    and n.DEPARTMENT_ID = s. SORT_INFOID 
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 4
+    order by  EPARTMENT_UPNAME ,EPARTMENT_AT
+
+
+ </select>
+  
+  
+    <!--总条数 -->
+ <select id="collectionDepartmentCount"  parameterType="com.ttgis.education.entity.Department"  resultType="int">
+  	select  count(*)
+    from DEPARTMENT n ,SORT s
+    where n.DEPARTMENT_ID = s. SORT_INFOID 
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 4
+    
+  </select>
+  
+  
+   <!-- 通过部门ID   修改科室上级部门ID -->
+  <update id="updateByDid" parameterType="com.ttgis.education.entity.Department">
+    update DEPARTMENT
+    set
+  	EPARTMENT_UPID = #{epartmentUpid,jdbcType=VARCHAR}
+    where EPARTMENT_UPID = #{departmentId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <!-- 通过部门ID   修改部门所有科室组织ID -->
+  <update id="updateOidAll" parameterType="com.ttgis.education.entity.Department">
+    update DEPARTMENT
+    set
+  	ORGANIZATION_ID =  #{organizationId,jdbcType=VARCHAR}
+    where DEPARTMENT_ID in (select DEPARTMENT_ID from DEPARTMENT where EPARTMENT_UPID=#{departmentId,jdbcType=VARCHAR})
+  </update>
+  
+  
+  
+   <!-- 合并组织结构，部门修改所属组织ID   -->
+  <update id="updateOid" parameterType="com.ttgis.education.entity.Department">
+    update DEPARTMENT
+    set
+  	ORGANIZATION_ID =  #{organizationId,jdbcType=VARCHAR}
+    where ORGANIZATION_ID =  #{departmentId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+</mapper>

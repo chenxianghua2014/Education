@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.BbsMapper">
+	<resultMap id="BaseResultMap" type="com.ttgis.education.entity.Bbs">
+		<id column="BBS_ID" property="bbsId" jdbcType="VARCHAR" />
+		<result column="BOARD_ID" property="boardId" jdbcType="VARCHAR" />
+		<result column="STUDENT_ID" property="studentId" jdbcType="VARCHAR" />
+		<result column="BBS_TITLE" property="bbsTitle" jdbcType="VARCHAR" />
+		<result column="BBS_COVER" property="bbsCover" jdbcType="VARCHAR" />
+		<result column="BBS_IMGSRC" property="bbsImgsrc" jdbcType="VARCHAR" />
+		<result column="BBS_STATUS" property="bbsStatus" jdbcType="NUMERIC" />
+		<result column="BBS_SET" property="bbsSet" jdbcType="VARCHAR" />
+		<result column="BBS_ISTOP" property="bbsIstop" jdbcType="NUMERIC" />
+		<result column="BBS_SETTOPTIME" property="bbsSettoptime"
+			jdbcType="NVARCHAR" />
+		<result column="BBS_TOPORDER" property="bbsToporder" jdbcType="NUMERIC" />
+		<result column="BBS_ISESSENCE" property="bbsIsessence"
+			jdbcType="NUMERIC" />
+		<result column="BBS_SETESSENCETIME" property="bbsSetessencetime"
+			jdbcType="NVARCHAR" />
+		<result column="BBS_ESSENCEORDER" property="bbsEssenceorder"
+			jdbcType="NUMERIC" />
+		<result column="BBS_ISHOT" property="bbsIshot" jdbcType="NUMERIC" />
+		<result column="BBS_SETHOTTIME" property="bbsSethottime"
+			jdbcType="NVARCHAR" />
+		<result column="BBS_HOTORDER" property="bbsHotorder" jdbcType="NUMERIC" />
+		<result column="BBS_CHECKRESULT" property="bbsCheckresult"
+			jdbcType="NUMERIC" />
+		<result column="BBS_CHECKUSER" property="bbsCheckuser"
+			jdbcType="VARCHAR" />
+		<result column="BBS_CHECKCAUSE" property="bbsCheckcause"
+			jdbcType="VARCHAR" />
+		<result column="BBS_CHECKTIME" property="bbsChecktime"
+			jdbcType="NVARCHAR" />
+		<result column="BBS_AT" property="bbsAt" jdbcType="NVARCHAR" />
+		<result column="BBS_DEL" property="bbsDel" jdbcType="NUMERIC" />
+		<result column="BBS_CONTENT" property="bbsContent" jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<resultMap id="bbsList" type="com.ttgis.education.entity.Bbs"
+		extends="BaseResultMap">
+		<result column="praise" property="praise" jdbcType="NUMERIC" />
+		<result column="praiseFlag" property="praiseFlag" jdbcType="NUMERIC" />
+		<result column="viewCount" property="viewCount" jdbcType="NUMERIC" />
+		<result column="replyCount" property="replyCount" jdbcType="NUMERIC" />
+		<result column="student_name" property="studentName" jdbcType="VARCHAR" />
+		<result column="student_head" property="studentHead" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.ttgis.education.entity.Bbs"
+		extends="BaseResultMap">
+		<result column="BBS_CONTENT" property="bbsContent" jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		BBS_ID, BOARD_ID, STUDENT_ID, BBS_TITLE, BBS_COVER,
+		BBS_IMGSRC, BBS_STATUS,
+		BBS_SET,
+		BBS_ISTOP, BBS_SETTOPTIME,
+		BBS_TOPORDER, BBS_ISESSENCE, BBS_SETESSENCETIME,
+		BBS_ESSENCEORDER,
+		BBS_ISHOT, BBS_SETHOTTIME, BBS_HOTORDER, BBS_CHECKRESULT,
+		BBS_CHECKUSER,
+		BBS_CHECKCAUSE,
+		BBS_CHECKTIME, BBS_AT, BBS_DEL
+	</sql>
+	<sql id="Blob_Column_List">
+		BBS_CONTENT
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from BBS
+		where BBS_ID = #{bbsId,jdbcType=VARCHAR}
+	</select>
+	<select id="selectDetailsByPrimaryKey" resultMap="bbsList"
+		parameterType="map">
+		select *,
+		(select count(*)
+		from statistical
+		where bbs_id =
+		b.bbs_id
+		and statistical_type = 1
+		and statistical_del = 1) as praise,
+		(select count(*)
+		from statistical
+		where bbs_id = b.bbs_id
+		and student_id
+		= #{studentId, jdbcType = VARCHAR}
+		and statistical_type = 1
+		and
+		statistical_del = 1) as praiseFlag,
+		s.student_name,
+		'' student_head,
+		(select count(*)
+		from reply
+		where bbs_id = #{bbsId, jdbcType = VARCHAR})
+		as replyCount,
+		(select count(*)
+		from statistical
+		where bbs_id = #{bbsId,
+		jdbcType = VARCHAR}
+		and statistical_type = 0
+		and statistical_del = 1) as
+		replyCount,
+		(select count(*)
+		from statistical
+		where bbs_id = #{bbsId,
+		jdbcType = VARCHAR}
+		and statistical_type = 0) as viewCount
+		from bbs b
+		left join student s on s.student_id = b.student_id
+		where b.bbs_id =
+		#{bbsId, jdbcType = VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		BBS
+		where BBS_ID = #{bbsId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.ttgis.education.entity.Bbs">
+		insert into BBS
+		(BBS_ID,
+		BOARD_ID, STUDENT_ID,
+		BBS_TITLE, BBS_COVER, BBS_IMGSRC,
+		BBS_STATUS,
+		BBS_SET, BBS_ISTOP,
+		BBS_SETTOPTIME, BBS_TOPORDER,
+		BBS_ISESSENCE,
+		BBS_SETESSENCETIME, BBS_ESSENCEORDER, BBS_ISHOT,
+		BBS_SETHOTTIME,
+		BBS_HOTORDER, BBS_CHECKRESULT,
+		BBS_CHECKUSER,
+		BBS_CHECKCAUSE,
+		BBS_CHECKTIME,
+		BBS_AT, BBS_DEL, BBS_CONTENT
+		)
+		values
+		(#{bbsId,jdbcType=VARCHAR}, #{boardId,jdbcType=VARCHAR},
+		#{studentId,jdbcType=VARCHAR},
+		#{bbsTitle,jdbcType=VARCHAR},
+		#{bbsCover,jdbcType=VARCHAR}, #{bbsImgsrc,jdbcType=VARCHAR},
+		#{bbsStatus,jdbcType=NUMERIC}, #{bbsSet,jdbcType=VARCHAR},
+		#{bbsIstop,jdbcType=NUMERIC},
+		#{bbsSettoptime,jdbcType=NVARCHAR},
+		#{bbsToporder,jdbcType=NUMERIC}, #{bbsIsessence,jdbcType=NUMERIC},
+		#{bbsSetessencetime,jdbcType=NVARCHAR},
+		#{bbsEssenceorder,jdbcType=NUMERIC}, #{bbsIshot,jdbcType=NUMERIC},
+		#{bbsSethottime,jdbcType=NVARCHAR}, #{bbsHotorder,jdbcType=NUMERIC},
+		#{bbsCheckresult,jdbcType=NUMERIC},
+		#{bbsCheckuser,jdbcType=VARCHAR},
+		#{bbsCheckcause,jdbcType=VARCHAR}, #{bbsChecktime,jdbcType=NVARCHAR},
+		#{bbsAt,jdbcType=NVARCHAR}, #{bbsDel,jdbcType=NUMERIC},
+		#{bbsContent,jdbcType=LONGVARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.ttgis.education.entity.Bbs">
+		insert into BBS
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bbsId != null">
+				BBS_ID,
+			</if>
+			<if test="boardId != null">
+				BOARD_ID,
+			</if>
+			<if test="studentId != null">
+				STUDENT_ID,
+			</if>
+			<if test="bbsTitle != null">
+				BBS_TITLE,
+			</if>
+			<if test="bbsCover != null">
+				BBS_COVER,
+			</if>
+			<if test="bbsImgsrc != null">
+				BBS_IMGSRC,
+			</if>
+			<if test="bbsStatus != null">
+				BBS_STATUS,
+			</if>
+			<if test="bbsSet != null">
+				BBS_SET,
+			</if>
+			<if test="bbsIstop != null">
+				BBS_ISTOP,
+			</if>
+			<if test="bbsSettoptime != null">
+				BBS_SETTOPTIME,
+			</if>
+			<if test="bbsToporder != null">
+				BBS_TOPORDER,
+			</if>
+			<if test="bbsIsessence != null">
+				BBS_ISESSENCE,
+			</if>
+			<if test="bbsSetessencetime != null">
+				BBS_SETESSENCETIME,
+			</if>
+			<if test="bbsEssenceorder != null">
+				BBS_ESSENCEORDER,
+			</if>
+			<if test="bbsIshot != null">
+				BBS_ISHOT,
+			</if>
+			<if test="bbsSethottime != null">
+				BBS_SETHOTTIME,
+			</if>
+			<if test="bbsHotorder != null">
+				BBS_HOTORDER,
+			</if>
+			<if test="bbsCheckresult != null">
+				BBS_CHECKRESULT,
+			</if>
+			<if test="bbsCheckuser != null">
+				BBS_CHECKUSER,
+			</if>
+			<if test="bbsCheckcause != null">
+				BBS_CHECKCAUSE,
+			</if>
+			<if test="bbsChecktime != null">
+				BBS_CHECKTIME,
+			</if>
+			<if test="bbsAt != null">
+				BBS_AT,
+			</if>
+			<if test="bbsDel != null">
+				BBS_DEL,
+			</if>
+			<if test="bbsContent != null">
+				BBS_CONTENT,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bbsId != null">
+				#{bbsId,jdbcType=VARCHAR},
+			</if>
+			<if test="boardId != null">
+				#{boardId,jdbcType=VARCHAR},
+			</if>
+			<if test="studentId != null">
+				#{studentId,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsTitle != null">
+				#{bbsTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsCover != null">
+				#{bbsCover,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsImgsrc != null">
+				#{bbsImgsrc,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsStatus != null">
+				#{bbsStatus,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsSet != null">
+				#{bbsSet,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsIstop != null">
+				#{bbsIstop,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsSettoptime != null">
+				#{bbsSettoptime,jdbcType=NVARCHAR},
+			</if>
+			<if test="bbsToporder != null">
+				#{bbsToporder,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsIsessence != null">
+				#{bbsIsessence,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsSetessencetime != null">
+				#{bbsSetessencetime,jdbcType=NVARCHAR},
+			</if>
+			<if test="bbsEssenceorder != null">
+				#{bbsEssenceorder,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsIshot != null">
+				#{bbsIshot,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsSethottime != null">
+				#{bbsSethottime,jdbcType=NVARCHAR},
+			</if>
+			<if test="bbsHotorder != null">
+				#{bbsHotorder,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsCheckresult != null">
+				#{bbsCheckresult,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsCheckuser != null">
+				#{bbsCheckuser,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsCheckcause != null">
+				#{bbsCheckcause,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsChecktime != null">
+				#{bbsChecktime,jdbcType=NVARCHAR},
+			</if>
+			<if test="bbsAt != null">
+				#{bbsAt,jdbcType=NVARCHAR},
+			</if>
+			<if test="bbsDel != null">
+				#{bbsDel,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsContent != null">
+				#{bbsContent,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Bbs">
+		update BBS
+		<set>
+			<if test="boardId != null">
+				BOARD_ID = #{boardId,jdbcType=VARCHAR},
+			</if>
+			<if test="studentId != null">
+				STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsTitle != null">
+				BBS_TITLE = #{bbsTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsCover != null">
+				BBS_COVER = #{bbsCover,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsImgsrc != null">
+				BBS_IMGSRC = #{bbsImgsrc,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsStatus != null">
+				BBS_STATUS = #{bbsStatus,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsSet != null">
+				BBS_SET = #{bbsSet,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsIstop != null">
+				BBS_ISTOP = #{bbsIstop,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsSettoptime != null">
+				BBS_SETTOPTIME = #{bbsSettoptime,jdbcType=NVARCHAR},
+			</if>
+			<if test="bbsToporder != null">
+				BBS_TOPORDER = #{bbsToporder,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsIsessence != null">
+				BBS_ISESSENCE = #{bbsIsessence,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsSetessencetime != null">
+				BBS_SETESSENCETIME =
+				#{bbsSetessencetime,jdbcType=NVARCHAR},
+			</if>
+			<if test="bbsEssenceorder != null">
+				BBS_ESSENCEORDER = #{bbsEssenceorder,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsIshot != null">
+				BBS_ISHOT = #{bbsIshot,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsSethottime != null">
+				BBS_SETHOTTIME = #{bbsSethottime,jdbcType=NVARCHAR},
+			</if>
+			<if test="bbsHotorder != null">
+				BBS_HOTORDER = #{bbsHotorder,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsCheckresult != null">
+				BBS_CHECKRESULT = #{bbsCheckresult,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsCheckuser != null">
+				BBS_CHECKUSER = #{bbsCheckuser,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsCheckcause != null">
+				BBS_CHECKCAUSE = #{bbsCheckcause,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsChecktime != null">
+				BBS_CHECKTIME = #{bbsChecktime,jdbcType=NVARCHAR},
+			</if>
+			<if test="bbsAt != null">
+				BBS_AT = #{bbsAt,jdbcType=NVARCHAR},
+			</if>
+			<if test="bbsDel != null">
+				BBS_DEL = #{bbsDel,jdbcType=NUMERIC},
+			</if>
+			<if test="bbsContent != null">
+				BBS_CONTENT = #{bbsContent,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where BBS_ID = #{bbsId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ttgis.education.entity.Bbs">
+		update
+		BBS
+		set BOARD_ID = #{boardId,jdbcType=VARCHAR},
+		STUDENT_ID
+		=
+		#{studentId,jdbcType=VARCHAR},
+		BBS_TITLE =
+		#{bbsTitle,jdbcType=VARCHAR},
+		BBS_COVER = #{bbsCover,jdbcType=VARCHAR},
+		BBS_IMGSRC = #{bbsImgsrc,jdbcType=VARCHAR},
+		BBS_STATUS =
+		#{bbsStatus,jdbcType=NUMERIC},
+		BBS_SET = #{bbsSet,jdbcType=VARCHAR},
+		BBS_ISTOP = #{bbsIstop,jdbcType=NUMERIC},
+		BBS_SETTOPTIME =
+		#{bbsSettoptime,jdbcType=NVARCHAR},
+		BBS_TOPORDER =
+		#{bbsToporder,jdbcType=NUMERIC},
+		BBS_ISESSENCE =
+		#{bbsIsessence,jdbcType=NUMERIC},
+		BBS_SETESSENCETIME =
+		#{bbsSetessencetime,jdbcType=NVARCHAR},
+		BBS_ESSENCEORDER =
+		#{bbsEssenceorder,jdbcType=NUMERIC},
+		BBS_ISHOT =
+		#{bbsIshot,jdbcType=NUMERIC},
+		BBS_SETHOTTIME =
+		#{bbsSethottime,jdbcType=NVARCHAR},
+		BBS_HOTORDER =
+		#{bbsHotorder,jdbcType=NUMERIC},
+		BBS_CHECKRESULT =
+		#{bbsCheckresult,jdbcType=NUMERIC},
+		BBS_CHECKUSER =
+		#{bbsCheckuser,jdbcType=VARCHAR},
+		BBS_CHECKCAUSE =
+		#{bbsCheckcause,jdbcType=VARCHAR},
+		BBS_CHECKTIME =
+		#{bbsChecktime,jdbcType=NVARCHAR},
+		BBS_AT = #{bbsAt,jdbcType=NVARCHAR},
+		BBS_DEL = #{bbsDel,jdbcType=NUMERIC},
+		BBS_CONTENT =
+		#{bbsContent,jdbcType=LONGVARCHAR}
+		where BBS_ID =
+		#{bbsId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Bbs">
+		update
+		BBS
+		set
+		BOARD_ID = #{boardId,jdbcType=VARCHAR},
+		STUDENT_ID
+		=
+		#{studentId,jdbcType=VARCHAR},
+		BBS_TITLE =
+		#{bbsTitle,jdbcType=VARCHAR},
+		BBS_COVER = #{bbsCover,jdbcType=VARCHAR},
+		BBS_IMGSRC = #{bbsImgsrc,jdbcType=VARCHAR},
+		BBS_STATUS =
+		#{bbsStatus,jdbcType=NUMERIC},
+		BBS_SET = #{bbsSet,jdbcType=VARCHAR},
+		BBS_ISTOP = #{bbsIstop,jdbcType=NUMERIC},
+		BBS_SETTOPTIME =
+		#{bbsSettoptime,jdbcType=NVARCHAR},
+		BBS_TOPORDER =
+		#{bbsToporder,jdbcType=NUMERIC},
+		BBS_ISESSENCE =
+		#{bbsIsessence,jdbcType=NUMERIC},
+		BBS_SETESSENCETIME =
+		#{bbsSetessencetime,jdbcType=NVARCHAR},
+		BBS_ESSENCEORDER =
+		#{bbsEssenceorder,jdbcType=NUMERIC},
+		BBS_ISHOT =
+		#{bbsIshot,jdbcType=NUMERIC},
+		BBS_SETHOTTIME =
+		#{bbsSethottime,jdbcType=NVARCHAR},
+		BBS_HOTORDER =
+		#{bbsHotorder,jdbcType=NUMERIC},
+		BBS_CHECKRESULT =
+		#{bbsCheckresult,jdbcType=NUMERIC},
+		BBS_CHECKUSER =
+		#{bbsCheckuser,jdbcType=VARCHAR},
+		BBS_CHECKCAUSE =
+		#{bbsCheckcause,jdbcType=VARCHAR},
+		BBS_CHECKTIME =
+		#{bbsChecktime,jdbcType=NVARCHAR},
+		BBS_AT = #{bbsAt,jdbcType=NVARCHAR},
+		BBS_DEL = #{bbsDel,jdbcType=NUMERIC}
+		where BBS_ID =
+		#{bbsId,jdbcType=VARCHAR}
+	</update>
+	<select id="listPageInfo" resultMap="bbsList"
+		parameterType="com.ttgis.education.entity.QueryReply">
+		select top 999999999 b.bbs_id,
+		b.student_id,
+		b.board_id,
+		b.bbs_title,
+		b.bbs_cover,
+		b.bbs_istop,
+		b.bbs_settoptime,
+		b.bbs_toporder,
+		b.bbs_isessence,
+		b.bbs_setessencetime,
+		b.bbs_essenceorder,
+		b.bbs_ishot,
+		b.bbs_sethottime,
+		b.bbs_hotorder,
+		b.bbs_content,
+		b.bbs_at,
+		s.student_name,
+		'' student_head,
+		(select count(*)
+		from reply where bbs_id
+		= b.bbs_id) as replycount,
+		(select count(*)
+		from statistical
+		where bbs_id
+		= b.bbs_id
+		and
+		statistical_type = 1
+		and
+		statistical_del = 1) as praise,
+		(select count(*)
+		from statistical
+		where
+		bbs_id = b.bbs_id
+		and
+		statistical_type = 0) as
+		viewcount,
+		row_number() over (
+		<choose>
+			<when test="order == 'reply'">
+				order by b.bbs_at
+			</when>
+			<otherwise>
+				order by b.bbs_at desc
+			</otherwise>
+		</choose>
+		) as rn
+		from bbs b
+		left
+		join
+		student s on s.student_id = b.student_id
+		where b.bbs_del
+		= 1
+		<if test="studentId != null and studentId != ''">
+			and b.student_id = #{studentId,jdbcType=VARCHAR}
+		</if>
+		<if test="type != null and type != ''">
+			and b.board_id = #{type,jdbcType=VARCHAR}
+		</if>
+		<if test="keyword != null and keyword != ''">
+			and b.bbs_content like '%${keyword}%'
+		</if>
+		<choose>
+			<when test="order == 'hot'">
+				and b.bbs_ishot = 1
+				order by b.bbs_sethottime desc
+			</when>
+			<when test="order == 'top'">
+				and b.bbs_istop = 1
+				order by b.bbs_settoptime desc
+			</when>
+			<when test="order == 'essence'">
+				and b.bbs_isessence = 1
+				order by b.bbs_setessencetime
+				desc
+			</when>
+			<when test="order == 'reply'">
+				order by replyCount desc
+			</when>
+			<otherwise>
+				order by b.bbs_at desc
+			</otherwise>
+		</choose>
+	</select>
+	<!-- 分页显示 -->
+<select id="queryBbsByPage" parameterType="com.ttgis.education.entity.Bbs"   resultMap="BaseResultMap">
+	select top ${size}  * ,(select COUNT(*) from REPLY as r where r.BBS_ID = b.BBS_ID) as replyCount 
+	from BBS as b where  BOARD_ID=#{boardId} 
+	and b.BBS_ID not in
+	(
+	 select top ${page} BBS_ID from BBS 
+	  where  BOARD_ID=#{boardId} 
+	  order by BBS_AT desc
+	) 
+	and  b.BBS_DEL = 1 
+	order by b.BBS_AT desc
+</select>
+  <!--总条数 -->
+ <select id="bbsCount" parameterType="com.ttgis.education.entity.Bbs"  resultType="int">
+  	select  count(*) from BBS where BOARD_ID=#{boardId} and BBS_DEL = 1
+  </select>
+</mapper>

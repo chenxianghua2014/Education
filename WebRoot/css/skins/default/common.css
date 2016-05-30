@@ -1,0 +1,25 @@
+* {
+	margin:0;
+	padding:0;
+	font-size:12px;
+	*font-size:11px;
+	font-family:Verdana, Arial, ËÎÌו,Helvetica, sans-serif;
+
+}
+
+img{ border:0; vertical-align:middle}
+
+a{ color:#36C}
+ol {padding-left:24px;}
+.floatRight {
+	float:right;
+}
+.clearFloat {
+	clear:both
+}
+table {
+	border-collapse:collapse;
+}
+td {
+	word-break:break-all;
+}

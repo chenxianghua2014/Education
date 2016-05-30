@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.SortMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Sort" >
+    <result column="SORT_ID" property="sortId" jdbcType="VARCHAR" />
+    <result column="SORT_INFOID" property="sortInfoid" jdbcType="VARCHAR" />
+    <result column="SORT_USERID" property="sortUserid" jdbcType="VARCHAR" />
+    <result column="SORT_INFOSTATE" property="sortInfostate" jdbcType="INTEGER" />
+    <result column="SORT_FIELD" property="sortField" jdbcType="INTEGER" />
+    <result column="SORT_AT" property="sortAt" jdbcType="TIMESTAMP" />
+    <result column="SORT_DEL" property="sortDel" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Sort" >
+    insert into SORT (SORT_ID, SORT_INFOID, SORT_USERID, 
+      SORT_INFOSTATE, SORT_FIELD, SORT_AT, 
+      SORT_DEL)
+    values (#{sortId,jdbcType=VARCHAR}, #{sortInfoid,jdbcType=VARCHAR}, #{sortUserid,jdbcType=VARCHAR}, 
+      #{sortInfostate,jdbcType=INTEGER}, #{sortField,jdbcType=INTEGER}, #{sortAt,jdbcType=TIMESTAMP}, 
+      #{sortDel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Sort" >
+    insert into SORT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sortId != null" >
+        SORT_ID,
+      </if>
+      <if test="sortInfoid != null" >
+        SORT_INFOID,
+      </if>
+      <if test="sortUserid != null" >
+        SORT_USERID,
+      </if>
+      <if test="sortInfostate != null" >
+        SORT_INFOSTATE,
+      </if>
+      <if test="sortField != null" >
+        SORT_FIELD,
+      </if>
+      <if test="sortAt != null" >
+        SORT_AT,
+      </if>
+      <if test="sortDel != null" >
+        SORT_DEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sortId != null" >
+        #{sortId,jdbcType=VARCHAR},
+      </if>
+      <if test="sortInfoid != null" >
+        #{sortInfoid,jdbcType=VARCHAR},
+      </if>
+      <if test="sortUserid != null" >
+        #{sortUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="sortInfostate != null" >
+        #{sortInfostate,jdbcType=INTEGER},
+      </if>
+      <if test="sortField != null" >
+        #{sortField,jdbcType=INTEGER},
+      </if>
+      <if test="sortAt != null" >
+        #{sortAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sortDel != null" >
+        #{sortDel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SORT
+    where SORT_ID = #{sortId,jdbcType=VARCHAR}
+  </delete>
+  
+    <!-- 查询 -->
+  <select id="sortMyID"  resultMap="BaseResultMap" parameterType="com.ttgis.education.entity.Sort">
+  	select  * 
+    from SORT
+    where SORT_DEL = 1  and SORT_INFOSTATE = #{sortInfostate} and SORT_INFOID = #{sortInfoid}  and SORT_USERID = #{sortUserid} order by  SORT_AT desc
+
+  
+  </select>
+  
+  
+</mapper>

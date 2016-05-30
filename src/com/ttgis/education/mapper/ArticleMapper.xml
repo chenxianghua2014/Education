@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Article" >
+    <id column="ARTICLE_ID" property="articleId" jdbcType="VARCHAR" />
+    <result column="LTBQ_ID" property="ltbqId" jdbcType="VARCHAR" />
+    <result column="ARTICLE_NAME" property="articleName" jdbcType="VARCHAR" />
+    <result column="ARTICLE_AUTHOR" property="articleAuthor" jdbcType="VARCHAR" />
+    <result column="ARTICLE_VIEWER" property="articleViewer" jdbcType="INTEGER" />
+    <result column="ARTICLE_TIME" property="articleTime" jdbcType="TIMESTAMP" />
+    <result column="ARTICLE_TYPE" property="articleType" jdbcType="VARCHAR" />
+    <result column="ARTICLE_AT" property="articleAt" jdbcType="TIMESTAMP" />
+    <result column="ARTICLE_DEL" property="articleDel" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ttgis.education.entity.Article" extends="BaseResultMap" >
+    <result column="ARTICLE_CONTENT" property="articleContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ARTICLE_ID, LTBQ_ID, ARTICLE_NAME, ARTICLE_AUTHOR, ARTICLE_VIEWER, ARTICLE_TIME, 
+    ARTICLE_TYPE, ARTICLE_AT, ARTICLE_DEL
+  </sql>
+  <sql id="Blob_Column_List" >
+    ARTICLE_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ARTICLE
+    where ARTICLE_ID = #{articleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ARTICLE
+    where ARTICLE_ID = #{articleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Article" >
+    insert into ARTICLE (ARTICLE_ID, LTBQ_ID, ARTICLE_NAME, 
+      ARTICLE_AUTHOR, ARTICLE_VIEWER, ARTICLE_TIME, 
+      ARTICLE_TYPE, ARTICLE_AT, ARTICLE_DEL, 
+      ARTICLE_CONTENT)
+    values (#{articleId,jdbcType=VARCHAR}, #{ltbqId,jdbcType=VARCHAR}, #{articleName,jdbcType=VARCHAR}, 
+      #{articleAuthor,jdbcType=VARCHAR}, #{articleViewer,jdbcType=INTEGER}, #{articleTime,jdbcType=TIMESTAMP}, 
+      #{articleType,jdbcType=VARCHAR}, #{articleAt,jdbcType=TIMESTAMP}, #{articleDel,jdbcType=INTEGER}, 
+      #{articleContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Article" >
+    insert into ARTICLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        ARTICLE_ID,
+      </if>
+      <if test="ltbqId != null" >
+        LTBQ_ID,
+      </if>
+      <if test="articleName != null" >
+        ARTICLE_NAME,
+      </if>
+      <if test="articleAuthor != null" >
+        ARTICLE_AUTHOR,
+      </if>
+      <if test="articleViewer != null" >
+        ARTICLE_VIEWER,
+      </if>
+      <if test="articleTime != null" >
+        ARTICLE_TIME,
+      </if>
+      <if test="articleType != null" >
+        ARTICLE_TYPE,
+      </if>
+      <if test="articleAt != null" >
+        ARTICLE_AT,
+      </if>
+      <if test="articleDel != null" >
+        ARTICLE_DEL,
+      </if>
+      <if test="articleContent != null" >
+        ARTICLE_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        #{articleId,jdbcType=VARCHAR},
+      </if>
+      <if test="ltbqId != null" >
+        #{ltbqId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleName != null" >
+        #{articleName,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAuthor != null" >
+        #{articleAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="articleViewer != null" >
+        #{articleViewer,jdbcType=INTEGER},
+      </if>
+      <if test="articleTime != null" >
+        #{articleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleType != null" >
+        #{articleType,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAt != null" >
+        #{articleAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleDel != null" >
+        #{articleDel,jdbcType=INTEGER},
+      </if>
+      <if test="articleContent != null" >
+        #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Article" >
+    update ARTICLE
+    <set >
+      <if test="ltbqId != null" >
+        LTBQ_ID = #{ltbqId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleName != null" >
+        ARTICLE_NAME = #{articleName,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAuthor != null" >
+        ARTICLE_AUTHOR = #{articleAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="articleViewer != null" >
+        ARTICLE_VIEWER = #{articleViewer,jdbcType=INTEGER},
+      </if>
+      <if test="articleTime != null" >
+        ARTICLE_TIME = #{articleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleType != null" >
+        ARTICLE_TYPE = #{articleType,jdbcType=VARCHAR},
+      </if>
+      <if test="articleAt != null" >
+        ARTICLE_AT = #{articleAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleDel != null" >
+        ARTICLE_DEL = #{articleDel,jdbcType=INTEGER},
+      </if>
+      <if test="articleContent != null" >
+        ARTICLE_CONTENT = #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ARTICLE_ID = #{articleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ttgis.education.entity.Article" >
+    update ARTICLE
+    set LTBQ_ID = #{ltbqId,jdbcType=VARCHAR},
+      ARTICLE_NAME = #{articleName,jdbcType=VARCHAR},
+      ARTICLE_AUTHOR = #{articleAuthor,jdbcType=VARCHAR},
+      ARTICLE_VIEWER = #{articleViewer,jdbcType=INTEGER},
+      ARTICLE_TIME = #{articleTime,jdbcType=TIMESTAMP},
+      ARTICLE_TYPE = #{articleType,jdbcType=VARCHAR},
+      ARTICLE_AT = #{articleAt,jdbcType=TIMESTAMP},
+      ARTICLE_DEL = #{articleDel,jdbcType=INTEGER},
+      ARTICLE_CONTENT = #{articleContent,jdbcType=LONGVARCHAR}
+    where ARTICLE_ID = #{articleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Article" >
+    update ARTICLE
+    set LTBQ_ID = #{ltbqId,jdbcType=VARCHAR},
+      ARTICLE_NAME = #{articleName,jdbcType=VARCHAR},
+      ARTICLE_AUTHOR = #{articleAuthor,jdbcType=VARCHAR},
+      ARTICLE_VIEWER = #{articleViewer,jdbcType=INTEGER},
+      ARTICLE_TIME = #{articleTime,jdbcType=TIMESTAMP},
+      ARTICLE_TYPE = #{articleType,jdbcType=VARCHAR},
+      ARTICLE_AT = #{articleAt,jdbcType=TIMESTAMP},
+      ARTICLE_DEL = #{articleDel,jdbcType=INTEGER}
+    where ARTICLE_ID = #{articleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttgis.education.mapper.ClassinfoMapper">
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Classinfo">
+    <id column="CLASSINFO_ID" jdbcType="VARCHAR" property="classinfoId" />
+    <result column="TRANCLASS_ID" jdbcType="VARCHAR" property="tranclassId" />
+    <result column="COURSE_ID" jdbcType="VARCHAR" property="courseId" />
+    <result column="CLASSINFO_NAME" jdbcType="VARCHAR" property="classinfoName" />
+    <result column="CLASSINFO_AT" jdbcType="TIMESTAMP" property="classinfoAt" />
+    <result column="CLASSINFO_DEL" jdbcType="INTEGER" property="classinfoDel" />
+    <result column="CLASSINFO_STARTIME" jdbcType="VARCHAR" property="classinfoStartime" />
+    <result column="CLASSINFO_ENDTIME" jdbcType="VARCHAR" property="classinfoEndtime" />
+    
+      <collection property="tranclass" column="TRANCLASS_ID" ofType="com.ttgis.education.entity.Tranclass">    
+       <id column="TRANCLASS_ID" jdbcType="VARCHAR" property="tranclassId" />
+    <result column="CLASSRESOURCE_ID" jdbcType="VARCHAR" property="classresourceId" />
+    <result column="TRANCLASS_CATEGROY" jdbcType="VARCHAR" property="tranclassCategroy" />
+    <result column="TRANCLASS_NAME" jdbcType="VARCHAR" property="tranclassName" />
+    <result column="TRANCLASS_NUMBER" jdbcType="INTEGER" property="tranclassNumber" />
+    <result column="TRANCLASS_TEACHER" jdbcType="VARCHAR" property="tranclassTeacher" />
+    <result column="TRANCLASS_CATALOG" jdbcType="VARCHAR" property="tranclassCatalog" />
+    <result column="TRANCLASS_RANK" jdbcType="VARCHAR" property="tranclassRank" />
+    <result column="TRANCLASS_INCLUDE" jdbcType="VARCHAR" property="tranclassInclude" />
+    <result column="TRANCLASS_DETAILS" jdbcType="VARCHAR" property="tranclassDetails" />
+    <result column="TRANCLASS_FILE" jdbcType="VARCHAR" property="tranclassFile" />
+    <result column="TRANCLASS_STUDENT" jdbcType="VARCHAR" property="tranclassStudent" />
+    <result column="TRANCLASS_FACE" jdbcType="VARCHAR" property="tranclassFace" />
+    <result column="TRANCLASS_CONDITION" jdbcType="VARCHAR" property="tranclassCondition" />
+    <result column="TRANCLASS_AT" jdbcType="TIMESTAMP" property="tranclassAt" />
+    <result column="TRANCLASS_DEL" jdbcType="INTEGER" property="tranclassDel" />
+    <result column="TRANCLASS_TYPE" jdbcType="VARCHAR" property="tranclassType" />
+    <result column="TRANCLASS_SETUPTIME" jdbcType="VARCHAR" property="tranclassSetuptime" />
+    <result column="TRANCLASS_ENDTIME" jdbcType="VARCHAR" property="tranclassEndtime" />
+    <result column="TRANCLASS_APPLYTIME" jdbcType="VARCHAR" property="tranclassApplytime" />
+    <result column="TRANCLASS_APPLYENDTIME" jdbcType="VARCHAR" property="tranclassApplyendtime" />
+    </collection>
+    
+  </resultMap>
+  <sql id="Base_Column_List">
+    CLASSINFO_ID, TRANCLASS_ID, COURSE_ID, CLASSINFO_NAME, CLASSINFO_AT, CLASSINFO_DEL, 
+    CLASSINFO_STARTIME, CLASSINFO_ENDTIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CLASSINFO
+    where CLASSINFO_ID = #{classinfoId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CLASSINFO
+    where CLASSINFO_ID = #{classinfoId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Classinfo">
+    insert into CLASSINFO (CLASSINFO_ID, TRANCLASS_ID, COURSE_ID, 
+      CLASSINFO_NAME, CLASSINFO_AT, CLASSINFO_DEL, 
+      CLASSINFO_STARTIME, CLASSINFO_ENDTIME)
+    values (#{classinfoId,jdbcType=VARCHAR}, #{tranclassId,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, 
+      #{classinfoName,jdbcType=VARCHAR}, #{classinfoAt,jdbcType=TIMESTAMP}, #{classinfoDel,jdbcType=INTEGER}, 
+      #{classinfoStartime,jdbcType=VARCHAR}, #{classinfoEndtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Classinfo">
+    insert into CLASSINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="classinfoId != null">
+        CLASSINFO_ID,
+      </if>
+      <if test="tranclassId != null">
+        TRANCLASS_ID,
+      </if>
+      <if test="courseId != null">
+        COURSE_ID,
+      </if>
+      <if test="classinfoName != null">
+        CLASSINFO_NAME,
+      </if>
+      <if test="classinfoAt != null">
+        CLASSINFO_AT,
+      </if>
+      <if test="classinfoDel != null">
+        CLASSINFO_DEL,
+      </if>
+      <if test="classinfoStartime != null">
+        CLASSINFO_STARTIME,
+      </if>
+      <if test="classinfoEndtime != null">
+        CLASSINFO_ENDTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="classinfoId != null">
+        #{classinfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassId != null">
+        #{tranclassId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="classinfoName != null">
+        #{classinfoName,jdbcType=VARCHAR},
+      </if>
+      <if test="classinfoAt != null">
+        #{classinfoAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classinfoDel != null">
+        #{classinfoDel,jdbcType=INTEGER},
+      </if>
+      <if test="classinfoStartime != null">
+        #{classinfoStartime,jdbcType=VARCHAR},
+      </if>
+      <if test="classinfoEndtime != null">
+        #{classinfoEndtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Classinfo">
+    update CLASSINFO
+    <set>
+      <if test="tranclassId != null">
+        TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        COURSE_ID = #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="classinfoName != null">
+        CLASSINFO_NAME = #{classinfoName,jdbcType=VARCHAR},
+      </if>
+      <if test="classinfoAt != null">
+        CLASSINFO_AT = #{classinfoAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="classinfoDel != null">
+        CLASSINFO_DEL = #{classinfoDel,jdbcType=INTEGER},
+      </if>
+      <if test="classinfoStartime != null">
+        CLASSINFO_STARTIME = #{classinfoStartime,jdbcType=VARCHAR},
+      </if>
+      <if test="classinfoEndtime != null">
+        CLASSINFO_ENDTIME = #{classinfoEndtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CLASSINFO_ID = #{classinfoId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Classinfo">
+    update CLASSINFO
+    set TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR},
+      COURSE_ID = #{courseId,jdbcType=VARCHAR},
+      CLASSINFO_NAME = #{classinfoName,jdbcType=VARCHAR},
+      CLASSINFO_AT = #{classinfoAt,jdbcType=TIMESTAMP},
+      CLASSINFO_DEL = #{classinfoDel,jdbcType=INTEGER},
+      CLASSINFO_STARTIME = #{classinfoStartime,jdbcType=VARCHAR},
+      CLASSINFO_ENDTIME = #{classinfoEndtime,jdbcType=VARCHAR}
+    where CLASSINFO_ID = #{classinfoId,jdbcType=VARCHAR}
+  </update>
+  
+  
+    <select id="selectByXinPanIdKey" parameterType="com.ttgis.education.entity.Classinfo" resultMap="BaseResultMap">
+    select * from CLASSINFO c 
+  inner join TRANCLASS t 
+  on c.TRANCLASS_ID=t.TRANCLASS_ID inner join CLASTUDENT s
+  on s.TRANCLASS_ID=t.TRANCLASS_ID where
+  CLASSINFO_DEL=1 and
+   s.STUDENT_ID = #{studentId,jdbcType=VARCHAR} and COURSE_ID = #{courseId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByTranclassIdKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CLASSINFO
+    where TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR}
+  </select>
+  
+    <!-- 判断是否重复  -->
+   <select id="selectByClasId" resultMap="BaseResultMap" parameterType="com.ttgis.education.entity.Classinfo">
+	  	select 
+	    <include refid="Base_Column_List" />
+	    from CLASSINFO
+	    where COURSE_ID = #{courseId,jdbcType=VARCHAR} 
+	    and TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR}
+	  </select>
+	  
+	  		    <!-- 分页显示 -->
+<select id="classInfoPageAll" parameterType="com.ttgis.education.entity.Classinfo"   resultMap="BaseResultMap">
+select top ${size}  *
+from  
+CLASSINFO 
+where   CLASSINFO_ID not in
+(
+ select top ${page} CLASSINFO_ID 
+ where 
+  CLASSINFO_DEL = 1 
+  
+  <if test="tranclassId != null and tranclassId != ''">
+	 <![CDATA[  
+			and TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if> 
+ 
+
+
+
+  order by   CLASSINFO_AT 
+) 
+and CLASSINFO_DEL = 1 
+   
+   <if test="tranclassId != null and tranclassId != ''">
+	 <![CDATA[  
+			and TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if> 
+     
+  order by   CLASSINFO_AT 
+
+
+ </select>
+  
+  
+    <!--总条数 -->
+ <select id="classInfoCount"  parameterType="com.ttgis.education.entity.Classinfo"  resultType="int">
+     select  count(*) from CLASSINFO
+   where   CLASSINFO_DEL = 1
+   <if test="tranclassId != null and tranclassId != ''">
+	 <![CDATA[  
+			and TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if> 
+  
+  </select>
+	
+	
+	<!--培训报告   培训班名称    可到培训班/班次  -->
+   <select id="selectTrainingName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from  CLASSINFO c 
+  left join TRANCLASS t  
+  on c.TRANCLASS_ID=t.TRANCLASS_ID inner join
+   CLASSRESOURCE e 
+  on e.CLASSRESOURCE_ID=t.CLASSRESOURCE_ID 
+    where c.COURSE_ID = #{courseId,jdbcType=VARCHAR}
+  </select>
+  
+  
+</mapper>

@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttgis.education.mapper.TestMapper">
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Test">
+    <id column="TEST_ID" jdbcType="VARCHAR" property="testId" />
+    <result column="SUBJECT_ID" jdbcType="VARCHAR" property="subjectId" />
+    <result column="STUDENT_ID" jdbcType="VARCHAR" property="studentId" />
+    <result column="TEST_ANSWER" jdbcType="NVARCHAR" property="testAnswer" />
+    <result column="TEST_SCORE" jdbcType="DOUBLE" property="testScore" />
+    <result column="TEST_AT" jdbcType="TIMESTAMP" property="testAt" />
+    <result column="TEST_DEL" jdbcType="INTEGER" property="testDel" />
+    <result column="COURSE_ID" jdbcType="VARCHAR" property="courseId" />
+    <result column="TEST_MARK" jdbcType="INTEGER" property="testMark" />
+    <result column="RULD_ID"   jdbcType="VARCHAR" property="ruldId" />
+    <collection property="ruld" column="ruldId" ofType="com.ttgis.education.entity.Ruld">    
+    	<id column="RULD_ID" property="ruldId" jdbcType="VARCHAR" />
+    <result column="COURSE_ID" property="courseId" jdbcType="VARCHAR" />
+    <result column="RULD_NAME" property="ruldName" jdbcType="VARCHAR" />
+    <result column="RULD_TIME" property="ruldTime" jdbcType="INTEGER" />
+    <result column="RULD_YXTIME" property="ruldYxtime" jdbcType="VARCHAR" />
+    <result column="RULD_BITS" property="ruldBits" jdbcType="INTEGER" />
+    <result column="RULD_ANSWERS" property="ruldAnswers" jdbcType="INTEGER" />
+    <result column="RULD_TOTALSCORE" property="ruldTotalscore" jdbcType="INTEGER" />
+    <result column="RULD_NAME1_3" property="ruldName13" jdbcType="VARCHAR" />
+    <result column="RULD_SCORE1_3" property="ruldScore13" jdbcType="DOUBLE" />
+    <result column="RULD_QUIZNUM1_3" property="ruldQuiznum13" jdbcType="INTEGER" />
+    <result column="RULD_NAME1_4" property="ruldName14" jdbcType="VARCHAR" />
+    <result column="RULD_SCORE1_4" property="ruldScore14" jdbcType="DOUBLE" />
+    <result column="RULD_QUIZNUM1_4" property="ruldQuiznum14" jdbcType="INTEGER" />
+    <result column="RULD_NAME1_M" property="ruldName1M" jdbcType="VARCHAR" />
+    <result column="RULD_SCORE1_M" property="ruldScore1M" jdbcType="DOUBLE" />
+    <result column="RULD_QUIZNUM1_M" property="ruldQuiznum1M" jdbcType="INTEGER" />
+    <result column="RULD_NAME2" property="ruldName2" jdbcType="VARCHAR" />
+    <result column="RULD_SCORE2" property="ruldScore2" jdbcType="DOUBLE" />
+    <result column="RULD_QUIZNUM2" property="ruldQuiznum2" jdbcType="INTEGER" />
+    <result column="RULD_NAME3" property="ruldName3" jdbcType="VARCHAR" />
+    <result column="RULD_SCORE3" property="ruldScore3" jdbcType="DOUBLE" />
+    <result column="RULD_QUIZNUM3" property="ruldQuiznum3" jdbcType="INTEGER" />
+    <result column="RULD_NAME4" property="ruldName4" jdbcType="VARCHAR" />
+    <result column="RULD_SCORE4" property="ruldScore4" jdbcType="DOUBLE" />
+    <result column="RULD_QUIZNUM4" property="ruldQuiznum4" jdbcType="INTEGER" />
+    <result column="RULD_DEL" property="ruldDel" jdbcType="INTEGER" />
+    <result column="RULD_AT" property="ruldAt" jdbcType="TIMESTAMP" />
+    <result column="RULD_NOTE" property="ruldNote" jdbcType="VARCHAR" />
+    </collection>
+    
+    <collection property="subject" column="subjectId" ofType="com.ttgis.education.entity.Subject">    
+            <id column="SUBJECT_ID" property="subjectId" jdbcType="VARCHAR" />
+		<result column="COURSE_ID" property="courseId" jdbcType="VARCHAR" />
+		<result column="SUBJECT_NAME" property="subjectName" jdbcType="VARCHAR" />
+		<result column="SUBJECT_STATE" property="subjectState"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_CATALOG" property="subjectCatalog"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_PRODUCER" property="subjectProducer"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_RANK" property="subjectRank" jdbcType="INTEGER" />
+		<result column="SUBJECT_TYPE" property="subjectType" jdbcType="VARCHAR" />
+		<result column="SUBJECT_TOPIC" property="subjectTopic"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_A" property="subjectA" jdbcType="VARCHAR" />
+		<result column="SUBJECT_B" property="subjectB" jdbcType="VARCHAR" />
+		<result column="SUBJECT_C" property="subjectC" jdbcType="VARCHAR" />
+		<result column="SUBJECT_D" property="subjectD" jdbcType="VARCHAR" />
+		<result column="SUBJECT_ANSWER" property="subjectAnswer"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_EXPLAIN" property="subjectExplain"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_AT" property="subjectAt" jdbcType="TIMESTAMP" />
+		<result column="SUBJECT_DEL" property="subjectDel" jdbcType="INTEGER" />
+		<result column="SUBJECT_SCORE" property="subjectScore" jdbcType="DOUBLE" />
+     </collection>
+  </resultMap>
+  	<resultMap extends="BaseResultMap" id="BaseResultMapAndSubject" type="com.ttgis.education.entity.TestAndSubject">
+		<result column="SUBJECT_TYPE" jdbcType="VARCHAR" property="subjectType" />
+		<result column="SUBJECT_TOPIC" jdbcType="VARCHAR" property="subjectTopic" />
+		<result column="SUBJECT_ANSWER" jdbcType="VARCHAR" property="subjectAnswer" />
+		<result column="SUBJECT_SCORE" jdbcType="DOUBLE" property="subjectScore" />
+	</resultMap>
+  <sql id="Base_Column_List">
+    TEST_ID, SUBJECT_ID, STUDENT_ID, TEST_ANSWER, TEST_SCORE, TEST_AT, TEST_DEL, COURSE_ID, 
+    TEST_MARK, RULD_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    *
+    from TEST t ,RULD r ,SUBJECT s 
+    where TEST_ID = #{testId,jdbcType=VARCHAR}
+    and t.RULD_ID =r.RULD_ID
+    and  s.SUBJECT_ID =t.SUBJECT_ID
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TEST
+    where TEST_ID = #{testId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Test">
+    insert into TEST (TEST_ID, SUBJECT_ID, STUDENT_ID, 
+      TEST_ANSWER, TEST_SCORE, TEST_AT, 
+      TEST_DEL, COURSE_ID, TEST_MARK, RULD_ID
+      )
+    values (#{testId,jdbcType=VARCHAR}, #{subjectId,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, 
+      #{testAnswer,jdbcType=NVARCHAR}, #{testScore,jdbcType=DOUBLE}, #{testAt,jdbcType=TIMESTAMP}, 
+      #{testDel,jdbcType=INTEGER}, #{courseId,jdbcType=VARCHAR}, #{testMark,jdbcType=INTEGER}, #{ruldId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Test">
+    insert into TEST
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="testId != null">
+        TEST_ID,
+      </if>
+      <if test="subjectId != null">
+        SUBJECT_ID,
+      </if>
+      <if test="studentId != null">
+        STUDENT_ID,
+      </if>
+      <if test="testAnswer != null">
+        TEST_ANSWER,
+      </if>
+      <if test="testScore != null">
+        TEST_SCORE,
+      </if>
+      <if test="testAt != null">
+        TEST_AT,
+      </if>
+      <if test="testDel != null">
+        TEST_DEL,
+      </if>
+      <if test="courseId != null">
+        COURSE_ID,
+      </if>
+      <if test="testMark != null">
+        TEST_MARK,
+      </if>
+       <if test="ruldId != null">
+        RULD_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="testId != null">
+        #{testId,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null">
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="testAnswer != null">
+        #{testAnswer,jdbcType=NVARCHAR},
+      </if>
+      <if test="testScore != null">
+        #{testScore,jdbcType=DOUBLE},
+      </if>
+      <if test="testAt != null">
+        #{testAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testDel != null">
+        #{testDel,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="testMark != null">
+        #{testMark,jdbcType=INTEGER},
+      </if>
+       <if test="ruldId != null">
+        #{ruldId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Test">
+    update TEST
+    <set>
+      <if test="subjectId != null">
+        SUBJECT_ID = #{subjectId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null">
+        STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="testAnswer != null">
+        TEST_ANSWER = #{testAnswer,jdbcType=NVARCHAR},
+      </if>
+      <if test="testScore != null">
+        TEST_SCORE = #{testScore,jdbcType=DOUBLE},
+      </if>
+      <if test="testAt != null">
+        TEST_AT = #{testAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testDel != null">
+        TEST_DEL = #{testDel,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        COURSE_ID = #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="testMark != null">
+        TEST_MARK = #{testMark,jdbcType=INTEGER},
+      </if>
+       <if test="ruldId != null">
+        RULD_ID = #{ruldId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TEST_ID = #{testId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Test">
+    update TEST
+    set SUBJECT_ID = #{subjectId,jdbcType=VARCHAR},
+      STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      TEST_ANSWER = #{testAnswer,jdbcType=NVARCHAR},
+      TEST_SCORE = #{testScore,jdbcType=DOUBLE},
+      TEST_AT = #{testAt,jdbcType=TIMESTAMP},
+      TEST_DEL = #{testDel,jdbcType=INTEGER},
+      COURSE_ID = #{courseId,jdbcType=VARCHAR},
+       RULD_ID = #{ruldId,jdbcType=VARCHAR},
+      TEST_MARK = #{testMark,jdbcType=INTEGER}
+    where TEST_ID = #{testId,jdbcType=VARCHAR}
+  </update>
+	
+	<!--总条数 -->
+	<select id="selectCountByWhere" parameterType="com.ttgis.education.entity.page.SelTest" resultType="int">
+		select count(*)
+		from
+		TEST T LEFT JOIN SUBJECT S ON S.SUBJECT_ID =
+		T.SUBJECT_ID
+		where TEST_DEL
+		= 1 and S.SUBJECT_TYPE in('3', '4')
+		<trim suffixOverrides=",">
+			<if test="studentId != null">
+				and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+	<!-- 分页显示 -->
+	<select id="selectByWhere" parameterType="com.ttgis.education.entity.page.SelTest" resultMap="BaseResultMapAndSubject">
+		select * from (
+		select T.*, S.SUBJECT_TOPIC, S.SUBJECT_SCORE,
+		S.SUBJECT_TYPE ,ROW_NUMBER() OVER (ORDER BY T.TEST_AT
+		desc)
+		as r from
+		TEST T LEFT JOIN SUBJECT S ON S.SUBJECT_ID =
+		T.SUBJECT_ID
+		where TEST_DEL
+		= 1 and S.SUBJECT_TYPE in('3', '4')
+		<trim suffixOverrides=",">
+			<if test="studentId != null">
+				and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+			</if>
+		</trim>
+		) as t 
+        <![CDATA[
+            where r>#{begin} and r<=#{end}	
+        ]]>
+	</select>
+	
+	
+	<!--最后一次考试的答案 -->
+	<select id="testBymark" parameterType="com.ttgis.education.entity.Test" resultMap="BaseResultMap">
+		select top 1 *
+		from
+		TEST  
+		where TEST_DEL= 1 
+		and COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+		order by TEST_MARK desc
+
+	</select>
+	
+<!--学生本门课程的成绩 -->
+	<select id="testByscore" parameterType="com.ttgis.education.entity.Test" resultType="int">
+	SELECT
+	isnull(SUM (TEST_SCORE),0)
+FROM
+	TEST
+WHERE
+TEST_DEL = 1
+AND COURSE_ID =#{courseId,jdbcType=VARCHAR}
+AND STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+and TEST_MARK = (
+select top 1 TEST_MARK from TEST 
+where  COURSE_ID =#{courseId,jdbcType=VARCHAR}
+AND STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+ORDER BY TEST_MARK desc
+)
+and TEST_SCORE > 0
+</select>
+
+<!--学员本门课程试题查询 -->
+	<select id="testByS" parameterType="com.ttgis.education.entity.Test" resultMap="BaseResultMap">
+		select *
+		from
+		TEST  t ,SUBJECT s
+		where TEST_DEL= 1 
+		and t.SUBJECT_ID = s.SUBJECT_ID
+		and t.COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+		and TEST_MARK =
+		 (select top 1 TEST_MARK from 
+		 TEST where  
+		 COURSE_ID =#{courseId,jdbcType=VARCHAR} 
+		and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+		order by TEST_MARK desc
+		)
+		order by TEST_MARK desc
+
+	</select>
+	
+	<!--学员考试次数 -->
+	<select id="StudentTextSum" parameterType="com.ttgis.education.entity.Test"
+		resultMap="BaseResultMap">
+		select TEST_MARK
+		from TEST where TEST_DEL = 1 
+		and RULD_ID=#{ruldId,jdbcType=VARCHAR}
+		and COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+		 group by TEST_MARK 
+		  ORDER BY TEST_MARK
+	</select>
+	
+	
+	<!--学生本门课程的成绩 -->
+	<select id="testByscoreManags" parameterType="com.ttgis.education.entity.Test" resultType="int">
+	SELECT
+		COUNT(*)
+FROM
+	TEST
+WHERE
+TEST_DEL = 1
+AND COURSE_ID =#{courseId,jdbcType=VARCHAR}
+AND STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+and TEST_MARK = (
+select top 1 TEST_MARK from TEST 
+where  COURSE_ID =#{courseId,jdbcType=VARCHAR}
+AND STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+ORDER BY TEST_MARK desc
+)
+and TEST_SCORE =-1
+</select>
+
+
+
+<!-- 查询条数 -->
+	<select id="selectTextBysum" resultType="int"
+		parameterType="com.ttgis.education.entity.Test">
+		select
+		count(*)
+		from TEST T LEFT JOIN SUBJECT S ON S.SUBJECT_ID =T.SUBJECT_ID
+		where  TEST_DEL = 1 
+		and S.SUBJECT_TYPE in('3', '4')
+		and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+		and T.COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		and TEST_MARK = (
+		select top 1 TEST_MARK from TEST 
+		where  COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		AND STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+		ORDER BY TEST_MARK desc
+		)
+	</select>
+	
+	     <!-- 分页显示 -->
+<select id="selectPageAll" parameterType="com.ttgis.education.entity.Test"   resultMap="BaseResultMap">
+select top ${size}  *
+from TEST T LEFT JOIN SUBJECT S ON S.SUBJECT_ID =T.SUBJECT_ID
+		where  TEST_DEL = 1 
+		and S.SUBJECT_TYPE in('3', '4')
+		and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+		and T.COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		and TEST_MARK = (
+		select top 1 TEST_MARK from TEST 
+		where  COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		AND STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+		ORDER BY TEST_MARK desc
+		)
+ and TEST_ID not in
+(
+ select top ${page} TEST_ID from TEST T LEFT JOIN SUBJECT S ON S.SUBJECT_ID =T.SUBJECT_ID
+		where  TEST_DEL = 1 
+		and S.SUBJECT_TYPE in('3', '4')
+		and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+		and T.COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		and TEST_MARK = (
+		select top 1 TEST_MARK from TEST 
+		where T.COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		AND STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+		ORDER BY TEST_MARK desc
+		)
+) 
+ </select>
+	
+
+</mapper>

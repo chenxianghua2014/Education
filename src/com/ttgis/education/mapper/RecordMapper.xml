@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.RecordMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Record" >
+    <id column="RECORD_ID" property="recordId" jdbcType="VARCHAR" />
+    <result column="RECORD_CLASS" property="recordClass" jdbcType="VARCHAR" />
+    <result column="RECORD_TYPE" property="recordType" jdbcType="VARCHAR" />
+    <result column="RECORD_CONTENTID" property="recordContentid" jdbcType="VARCHAR" />
+    <result column="STUDENT_ID" property="studentId" jdbcType="VARCHAR" />
+    <result column="RECORD_AT" property="recordAt" jdbcType="TIMESTAMP" />
+    <result column="RECORD_DEL" property="recordDel" jdbcType="INTEGER" />
+    <result column="RECORD_TITLE" property="recordTitle" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ttgis.education.entity.Record" extends="BaseResultMap" >
+    <result column="RECORD_NOTE" property="recordNote" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RECORD_ID, RECORD_CLASS, RECORD_TYPE, RECORD_CONTENTID, STUDENT_ID, RECORD_AT, RECORD_DEL, 
+    RECORD_TITLE
+  </sql>
+  <sql id="Blob_Column_List" >
+    RECORD_NOTE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from RECORD
+    where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from RECORD
+    where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Record" >
+    insert into RECORD (RECORD_ID, RECORD_CLASS, RECORD_TYPE, 
+      RECORD_CONTENTID, STUDENT_ID, RECORD_AT, 
+      RECORD_DEL, RECORD_TITLE, RECORD_NOTE
+      )
+    values (#{recordId,jdbcType=VARCHAR}, #{recordClass,jdbcType=VARCHAR}, #{recordType,jdbcType=VARCHAR}, 
+      #{recordContentid,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, #{recordAt,jdbcType=TIMESTAMP}, 
+      #{recordDel,jdbcType=INTEGER}, #{recordTitle,jdbcType=VARCHAR}, #{recordNote,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Record" >
+    insert into RECORD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        RECORD_ID,
+      </if>
+      <if test="recordClass != null" >
+        RECORD_CLASS,
+      </if>
+      <if test="recordType != null" >
+        RECORD_TYPE,
+      </if>
+      <if test="recordContentid != null" >
+        RECORD_CONTENTID,
+      </if>
+      <if test="studentId != null" >
+        STUDENT_ID,
+      </if>
+      <if test="recordAt != null" >
+        RECORD_AT,
+      </if>
+      <if test="recordDel != null" >
+        RECORD_DEL,
+      </if>
+      <if test="recordTitle != null" >
+        RECORD_TITLE,
+      </if>
+      <if test="recordNote != null" >
+        RECORD_NOTE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=VARCHAR},
+      </if>
+      <if test="recordClass != null" >
+        #{recordClass,jdbcType=VARCHAR},
+      </if>
+      <if test="recordType != null" >
+        #{recordType,jdbcType=VARCHAR},
+      </if>
+      <if test="recordContentid != null" >
+        #{recordContentid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="recordAt != null" >
+        #{recordAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordDel != null" >
+        #{recordDel,jdbcType=INTEGER},
+      </if>
+      <if test="recordTitle != null" >
+        #{recordTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="recordNote != null" >
+        #{recordNote,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Record" >
+    update RECORD
+    <set >
+      <if test="recordClass != null" >
+        RECORD_CLASS = #{recordClass,jdbcType=VARCHAR},
+      </if>
+      <if test="recordType != null" >
+        RECORD_TYPE = #{recordType,jdbcType=VARCHAR},
+      </if>
+      <if test="recordContentid != null" >
+        RECORD_CONTENTID = #{recordContentid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null" >
+        STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="recordAt != null" >
+        RECORD_AT = #{recordAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordDel != null" >
+        RECORD_DEL = #{recordDel,jdbcType=INTEGER},
+      </if>
+      <if test="recordTitle != null" >
+        RECORD_TITLE = #{recordTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="recordNote != null" >
+        RECORD_NOTE = #{recordNote,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ttgis.education.entity.Record" >
+    update RECORD
+    set RECORD_CLASS = #{recordClass,jdbcType=VARCHAR},
+      RECORD_TYPE = #{recordType,jdbcType=VARCHAR},
+      RECORD_CONTENTID = #{recordContentid,jdbcType=VARCHAR},
+      STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      RECORD_AT = #{recordAt,jdbcType=TIMESTAMP},
+      RECORD_DEL = #{recordDel,jdbcType=INTEGER},
+      RECORD_TITLE = #{recordTitle,jdbcType=VARCHAR},
+      RECORD_NOTE = #{recordNote,jdbcType=LONGVARCHAR}
+    where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Record" >
+    update RECORD
+    set RECORD_CLASS = #{recordClass,jdbcType=VARCHAR},
+      RECORD_TYPE = #{recordType,jdbcType=VARCHAR},
+      RECORD_CONTENTID = #{recordContentid,jdbcType=VARCHAR},
+      STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+      RECORD_AT = #{recordAt,jdbcType=TIMESTAMP},
+      RECORD_DEL = #{recordDel,jdbcType=INTEGER},
+      RECORD_TITLE = #{recordTitle,jdbcType=VARCHAR}
+    where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+  </update>
+  
+  
+   <!--后台培训报告     总条数 -->
+ <select id="uploadReportsTop" parameterType="com.ttgis.education.entity.Record" resultType="int">
+  	 select  count(*)  from RECORD r left join ACCOUNT a
+     on r.STUDENT_ID=a.ACCOUNT_ID where RECORD_DEL=1
+   <if test="accountCatalog != null and accountCatalog != ''">
+      <![CDATA[  
+				 and ACCOUNT_CATALOG = #{accountCatalog,jdbcType=VARCHAR} 
+	   ]]> 
+   </if>
+ 
+   <if test="recordType != null and recordType != ''">
+      <![CDATA[  
+				and RECORD_TYPE = #{recordType,jdbcType=VARCHAR}
+	   ]]> 
+   </if>
+   
+    <if test="recordNote != null and recordNote != ''">
+      <![CDATA[  
+				 and RECORD_NOTE like '%${recordNote}%'
+	   ]]> 
+   </if>
+  </select>
+  
+    <!-- 后台培训报告   分页显示 -->
+<select id="uploadReportsTopAll" parameterType="com.ttgis.education.entity.Record" resultMap="ResultMapWithBLOBs">
+select top ${size} *
+  from RECORD r left join ACCOUNT a
+     on r.STUDENT_ID=a.ACCOUNT_ID where RECORD_DEL=1
+ and RECORD_ID not in
+(
+ select top ${page} RECORD_ID  from RECORD r left join ACCOUNT a
+     on r.STUDENT_ID=a.ACCOUNT_ID where RECORD_DEL=1
+  <if test="accountCatalog != null and accountCatalog != ''">
+      <![CDATA[  
+				 and ACCOUNT_CATALOG = #{accountCatalog,jdbcType=VARCHAR} 
+	   ]]> 
+   </if>
+ 
+   <if test="recordType != null and recordType != ''">
+      <![CDATA[  
+				and RECORD_TYPE = #{recordType,jdbcType=VARCHAR}
+	   ]]> 
+   </if>
+   
+    <if test="recordNote != null and recordNote != ''">
+      <![CDATA[  
+				 and RECORD_NOTE like '%${recordNote}%'
+	   ]]> 
+   </if>
+
+order by RECORD_AT desc
+)
+  <if test="accountCatalog != null and accountCatalog != ''">
+      <![CDATA[  
+				 and ACCOUNT_CATALOG = #{accountCatalog,jdbcType=VARCHAR} 
+	   ]]> 
+   </if>
+ 
+   <if test="recordType != null and recordType != ''">
+      <![CDATA[  
+				and RECORD_TYPE = #{recordType,jdbcType=VARCHAR}
+	   ]]> 
+   </if>
+   
+    <if test="recordNote != null and recordNote != ''">
+      <![CDATA[  
+				 and RECORD_NOTE like '%${recordNote}%'
+	   ]]> 
+   </if> 
+order by RECORD_AT desc
+
+ </select>
+  
+  
+  
+</mapper>

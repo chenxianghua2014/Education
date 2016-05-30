@@ -1,0 +1,2045 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttgis.education.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Student">
+    <id column="STUDENT_ID" jdbcType="VARCHAR" property="studentId" />
+    <result column="STUDENT_SEQ" jdbcType="VARCHAR" property="studentSeq" />
+    <result column="STUDENT_NAME" jdbcType="VARCHAR" property="studentName" />
+    <result column="STUDENT_CATEGORY" jdbcType="VARCHAR" property="studentCategory" />
+    <result column="STUDENT_RANK" jdbcType="VARCHAR" property="studentRank" />
+    <result column="STUDENT_TYPE" jdbcType="INTEGER" property="studentType" />
+    <result column="STUDENT_COMPANY" jdbcType="VARCHAR" property="studentCompany" />
+    <result column="STUDENT_COMPANYID" jdbcType="VARCHAR" property="studentCompanyid" />
+    <result column="STUDENT_UPCOMPANYID" jdbcType="VARCHAR" property="studentUpcompanyid" />
+    <result column="STUDENT_DEPARTMENT" jdbcType="VARCHAR" property="studentDepartment" />
+    <result column="STUDENT_COIN" jdbcType="INTEGER" property="studentCoin" />
+    <result column="STUDENT_YEARTIME" jdbcType="NUMERIC" property="studentYeartime" />
+    <result column="STUDENT_TELEPHONE" jdbcType="VARCHAR" property="studentTelephone" />
+    <result column="STUDENT_EMAIL" jdbcType="VARCHAR" property="studentEmail" />
+    <result column="STUDENT_PASSWORD" jdbcType="VARCHAR" property="studentPassword" />
+    <result column="STUDENT_AT" jdbcType="TIMESTAMP" property="studentAt" />
+    <result column="STUDENT_DEL" jdbcType="INTEGER" property="studentDel" />
+    <result column="DEPARTMENT_ID" jdbcType="VARCHAR" property="departmentId" />
+    <result column="STUDENTONE_ID" jdbcType="VARCHAR" property="studentoneId" />
+    <result column="STUDENTTWO_ID" jdbcType="VARCHAR" property="studenttwoId" />
+    <result column="STUDENTHREE_ID" jdbcType="VARCHAR" property="studenthreeId" />
+    <result column="STUDENT_BXYXTIME" jdbcType="NUMERIC" property="studentBxyxtime" />
+    <result column="STUDENT_BXXXTIME" jdbcType="NUMERIC" property="studentBxxxtime" />
+    <result column="STUDENT_YXXXTIME" jdbcType="NUMERIC" property="studentYxxxtime" />
+    <result column="STUDENT_XXXXTIME" jdbcType="NUMERIC" property="studentXxxxtime" />
+
+    
+    <collection property="studentone" column="STUDENTONE_ID" ofType="com.ttgis.education.entity.Studentone">    
+          <id column="STUDENTONE_ID" property="studentoneId" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_NAME" property="studentoneName" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_SFZH" property="studentoneSfzh" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XB" property="studentoneXb" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_AGE" property="studentoneAge" jdbcType="INTEGER" />
+    <result column="STUDENTONE_RYLB" property="studentoneRylb" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XL" property="studentoneXl" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XW" property="studentoneXw" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_ZZMM" property="studentoneZzmm" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_YGXS" property="studentoneYgxs" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XZJB" property="studentoneXzjb" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_ZYJSZW" property="studentoneZyjszw" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_GRJSZW" property="studentoneGrjszw" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_SXZY" property="studentoneSxzy" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_BYY" property="studentoneByy" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_BYYXX" property="studentoneByyxx" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_YX" property="studentoneYx" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XWSYDW" property="studentoneXwsydw" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_QRZHZZ" property="studentoneQrzhzz" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_SFDQXL" property="studentoneSfdqxl" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_SFDQXW" property="studentoneSfdqxw" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_AT" property="studentoneAt" jdbcType="TIMESTAMP" />
+    <result column="STUDENTONE_DEL" property="studentoneDel" jdbcType="INTEGER" />
+    <result column="STUDENTONE_CSRI" property="studentoneCsri" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_CJGZSJ" property="studentoneCjgzsj" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XDWGZSJ" property="studentoneXdwgzsj" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_RXSJ" property="studentoneRxsj" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_BYYSJ" property="studentoneByysj" jdbcType="VARCHAR" />  
+    </collection>
+    
+     <collection property="studenttwo" column="STUDENTTWO_ID" ofType="com.ttgis.education.entity.Studenttwo">    
+           <id column="STUDENTTWO_ID" property="studenttwoId" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_ZWLB" property="studenttwoZwlb" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_XZZWMC" property="studenttwoXzzwmc" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_DNZWMC" property="studenttwoDnzwmc" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_DYJB" property="studenttwoDyjb" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_ZWSX" property="studenttwoZwsx" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_SFDQZW" property="studenttwoSfdqzw" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_SFZCRTZJ" property="studenttwoSfzcrtzj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_ZYJSZGMC" property="studenttwoZyjszgmc" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_ZYJSRZZG" property="studenttwoZyjsrzzg" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_ZYLB" property="studenttwoZylb" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_PRZYJSZWMC" property="studenttwoPrzyjszwmc" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_SFDQZYJSZW" property="studenttwoSfdqzyjszw" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_GZMC" property="studenttwoGzmc" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_GRJSZG" property="studenttwoGrjszg" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_PRGRJSZW" property="studenttwoPrgrjszw" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_SZDW" property="studenttwoSzdw" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_CSGZHDRZW" property="studenttwoCsgzhdrzw" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_YCLB" property="studenttwoYclb" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_YCYY" property="studenttwoYcyy" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_AT2" property="studenttwoAt2" jdbcType="TIMESTAMP" />
+    <result column="STUDENTTWO_DEL2" property="studenttwoDel2" jdbcType="INTEGER" />
+    <result column="STUDENTTWO_RZSJ" property="studenttwoRzsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_MZSJ" property="studenttwoMzsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_QDSJ" property="studenttwoQdsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_PRQSSJ" property="studenttwoPrqssj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_PRZZSJ" property="studenttwoPrzzsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_QDZGSJ" property="studenttwoQdzgsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_PRSJ" property="studenttwoPrsj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_GRJLQSSJ" property="studenttwoGrjlqssj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_GRJLJSSJ" property="studenttwoGrjljssj" jdbcType="VARCHAR" />
+    <result column="STUDENTTWO_CJDPSJ" property="studenttwoCjdpsj" jdbcType="VARCHAR" />
+    </collection>
+    
+     <collection property="studenthree" column="STUDENTHREE_ID" ofType="com.ttgis.education.entity.Studenthree">    
+          <id column="STUDENTHREE_ID" property="studenthreeId" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LXZT" property="studenthreeLxzt" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_PCDW" property="studenthreePcdw" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_ZY" property="studenthreeZy" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LXSF" property="studenthreeLxsf" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LXGB" property="studenthreeLxgb" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_PXXMMC" property="studenthreePxxmmc" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_PXTS" property="studenthreePxts" jdbcType="NUMERIC" />
+    <result column="STUDENTHREE_PXLX" property="studenthreePxlx" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_PXQD" property="studenthreePxqd" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LTLB" property="studenthreeLtlb" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_GBJDQ" property="studenthreeGbjdq" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_CGSY" property="studenthreeCgsy" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_CGSQDW" property="studenthreeCgsqdw" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_CGPCDW" property="studenthreeCgpcdw" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_BJ" property="studenthreeBj" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LDGBBZ" property="studenthreeLdgbbz" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LDHBBZ" property="studenthreeLdhbbz" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_XHGBBZ" property="studenthreeXhgbbz" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_DJSBZ" property="studenthreeDjsbz" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_AT" property="studenthreeAt" jdbcType="TIMESTAMP" />
+    <result column="STUDENTHREE_DEL" property="studenthreeDel" jdbcType="INTEGER" />
+    <result column="STUDENTHREE_LXSJ" property="studenthreeLxsj" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_LTXSJ" property="studenthreeLtxsj" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_CGSJ" property="studenthreeCgsj" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_JHHGSJ" property="studenthreeJhhgsj" jdbcType="VARCHAR" />
+    <result column="STUDENTHREE_SJHGSJ" property="studenthreeSjhgsj" jdbcType="VARCHAR" /> 
+    </collection>
+    <collection property="organization" column="accountCatalog" ofType="com.ttgis.education.entity.Organization">    
+            <id property="organizationId" column="ORGANIZATION_ID" />    
+            <result property="organizationFwqx" column="ORGANIZATION_FWQX" />    
+            <result column="ORGANIZATION_DWMC" property="organizationDwmc" jdbcType="VARCHAR" />
+     </collection>
+     <collection property="department" column="studentDepartment" ofType="com.ttgis.education.entity.Department">    
+            <id column="DEPARTMENT_ID" jdbcType="VARCHAR" property="departmentId" />
+    <result column="ORGANIZATION_ID" jdbcType="VARCHAR" property="organizationId" />
+    <result column="EPARTMENT_NAME" jdbcType="VARCHAR" property="epartmentName" />
+    <result column="EPARTMENT_RANK" jdbcType="VARCHAR" property="epartmentRank" />
+    <result column="EPARTMENT_UPNAME" jdbcType="INTEGER" property="epartmentUpname" />
+    <result column="EPARTMENT_UPID" jdbcType="VARCHAR" property="epartmentUpid" />
+    <result column="EPARTMENT_AT" jdbcType="TIMESTAMP" property="epartmentAt" />
+    <result column="EPARTMENT_DEL" jdbcType="INTEGER" property="epartmentDel" />
+     </collection>
+  </resultMap>
+  <resultMap id="BaseResultMapSelScore" type="com.ttgis.education.entity.Student">
+		<id column="STUDENT_ID" jdbcType="VARCHAR" property="studentId" />
+		<result column="STUDENT_NAME" jdbcType="VARCHAR" property="studentName" />
+		<result column="STUDENT_SCORE" jdbcType="VARCHAR" property="studentScore" />
+		<result column="STUDENT_NOSCORE" jdbcType="VARCHAR" property="studentNoscore" />
+	</resultMap>
+  <sql id="Base_Column_List">
+    STUDENT_ID, STUDENT_SEQ, STUDENT_NAME, STUDENT_CATEGORY, STUDENT_RANK, STUDENT_TYPE, 
+    STUDENT_COMPANY, STUDENT_COMPANYID, STUDENT_UPCOMPANYID, STUDENT_DEPARTMENT, STUDENT_COIN, 
+    STUDENT_YEARTIME, STUDENT_TELEPHONE, STUDENT_EMAIL, STUDENT_PASSWORD, STUDENT_AT, 
+    STUDENT_DEL, DEPARTMENT_ID, STUDENTONE_ID, STUDENTTWO_ID, STUDENTHREE_ID, STUDENT_BXYXTIME, 
+    STUDENT_BXXXTIME, STUDENT_YXXXTIME, STUDENT_XXXXTIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STUDENT
+    where STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from STUDENT
+    where STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Student">
+    insert into STUDENT (STUDENT_ID, STUDENT_SEQ, STUDENT_NAME, 
+      STUDENT_CATEGORY, STUDENT_RANK, STUDENT_TYPE, 
+      STUDENT_COMPANY, STUDENT_COMPANYID, STUDENT_UPCOMPANYID, 
+      STUDENT_DEPARTMENT, STUDENT_COIN, STUDENT_YEARTIME, 
+      STUDENT_TELEPHONE, STUDENT_EMAIL, STUDENT_PASSWORD, 
+      STUDENT_AT, STUDENT_DEL, DEPARTMENT_ID, 
+      STUDENTONE_ID, STUDENTTWO_ID, STUDENTHREE_ID, 
+      STUDENT_BXYXTIME, STUDENT_BXXXTIME, STUDENT_YXXXTIME, 
+      STUDENT_XXXXTIME)
+    values (#{studentId,jdbcType=VARCHAR}, #{studentSeq,jdbcType=VARCHAR}, #{studentName,jdbcType=VARCHAR}, 
+      #{studentCategory,jdbcType=VARCHAR}, #{studentRank,jdbcType=VARCHAR}, #{studentType,jdbcType=INTEGER}, 
+      #{studentCompany,jdbcType=VARCHAR}, #{studentCompanyid,jdbcType=VARCHAR}, #{studentUpcompanyid,jdbcType=VARCHAR}, 
+      #{studentDepartment,jdbcType=VARCHAR}, #{studentCoin,jdbcType=INTEGER}, #{studentYeartime,jdbcType=NUMERIC}, 
+      #{studentTelephone,jdbcType=VARCHAR}, #{studentEmail,jdbcType=VARCHAR}, #{studentPassword,jdbcType=VARCHAR}, 
+      #{studentAt,jdbcType=TIMESTAMP}, #{studentDel,jdbcType=INTEGER}, #{departmentId,jdbcType=VARCHAR}, 
+      #{studentoneId,jdbcType=VARCHAR}, #{studenttwoId,jdbcType=VARCHAR}, #{studenthreeId,jdbcType=VARCHAR}, 
+      #{studentBxyxtime,jdbcType=NUMERIC}, #{studentBxxxtime,jdbcType=NUMERIC}, #{studentYxxxtime,jdbcType=NUMERIC}, 
+      #{studentXxxxtime,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Student">
+    insert into STUDENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        STUDENT_ID,
+      </if>
+      <if test="studentSeq != null">
+        STUDENT_SEQ,
+      </if>
+      <if test="studentName != null">
+        STUDENT_NAME,
+      </if>
+      <if test="studentCategory != null">
+        STUDENT_CATEGORY,
+      </if>
+      <if test="studentRank != null">
+        STUDENT_RANK,
+      </if>
+      <if test="studentType != null">
+        STUDENT_TYPE,
+      </if>
+      <if test="studentCompany != null">
+        STUDENT_COMPANY,
+      </if>
+      <if test="studentCompanyid != null">
+        STUDENT_COMPANYID,
+      </if>
+      <if test="studentUpcompanyid != null">
+        STUDENT_UPCOMPANYID,
+      </if>
+      <if test="studentDepartment != null">
+        STUDENT_DEPARTMENT,
+      </if>
+      <if test="studentCoin != null">
+        STUDENT_COIN,
+      </if>
+      <if test="studentYeartime != null">
+        STUDENT_YEARTIME,
+      </if>
+      <if test="studentTelephone != null">
+        STUDENT_TELEPHONE,
+      </if>
+      <if test="studentEmail != null">
+        STUDENT_EMAIL,
+      </if>
+      <if test="studentPassword != null">
+        STUDENT_PASSWORD,
+      </if>
+      <if test="studentAt != null">
+        STUDENT_AT,
+      </if>
+      <if test="studentDel != null">
+        STUDENT_DEL,
+      </if>
+      <if test="departmentId != null">
+        DEPARTMENT_ID,
+      </if>
+      <if test="studentoneId != null">
+        STUDENTONE_ID,
+      </if>
+      <if test="studenttwoId != null">
+        STUDENTTWO_ID,
+      </if>
+      <if test="studenthreeId != null">
+        STUDENTHREE_ID,
+      </if>
+      <if test="studentBxyxtime != null">
+        STUDENT_BXYXTIME,
+      </if>
+      <if test="studentBxxxtime != null">
+        STUDENT_BXXXTIME,
+      </if>
+      <if test="studentYxxxtime != null">
+        STUDENT_YXXXTIME,
+      </if>
+      <if test="studentXxxxtime != null">
+        STUDENT_XXXXTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="studentId != null">
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentSeq != null">
+        #{studentSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="studentName != null">
+        #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentCategory != null">
+        #{studentCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="studentRank != null">
+        #{studentRank,jdbcType=VARCHAR},
+      </if>
+      <if test="studentType != null">
+        #{studentType,jdbcType=INTEGER},
+      </if>
+      <if test="studentCompany != null">
+        #{studentCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="studentCompanyid != null">
+        #{studentCompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentUpcompanyid != null">
+        #{studentUpcompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentDepartment != null">
+        #{studentDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="studentCoin != null">
+        #{studentCoin,jdbcType=INTEGER},
+      </if>
+      <if test="studentYeartime != null">
+        #{studentYeartime,jdbcType=NUMERIC},
+      </if>
+      <if test="studentTelephone != null">
+        #{studentTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentEmail != null">
+        #{studentEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="studentPassword != null">
+        #{studentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="studentAt != null">
+        #{studentAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studentDel != null">
+        #{studentDel,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneId != null">
+        #{studentoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoId != null">
+        #{studenttwoId,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeId != null">
+        #{studenthreeId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentBxyxtime != null">
+        #{studentBxyxtime,jdbcType=NUMERIC},
+      </if>
+      <if test="studentBxxxtime != null">
+        #{studentBxxxtime,jdbcType=NUMERIC},
+      </if>
+      <if test="studentYxxxtime != null">
+        #{studentYxxxtime,jdbcType=NUMERIC},
+      </if>
+      <if test="studentXxxxtime != null">
+        #{studentXxxxtime,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Student">
+    update STUDENT
+    <set>
+      <if test="studentSeq != null  and  studentSeq != ''">
+        STUDENT_SEQ = #{studentSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="studentName != null  and  studentName != ''">
+        STUDENT_NAME = #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentCategory != null  and  studentCategory != ''">
+        STUDENT_CATEGORY = #{studentCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="studentRank != null  and  studentRank != ''">
+        STUDENT_RANK = #{studentRank,jdbcType=VARCHAR},
+      </if>
+      <if test="studentType != null  and  studentType != ''">
+        STUDENT_TYPE = #{studentType,jdbcType=INTEGER},
+      </if>
+      <if test="studentCompany != null  and  studentCompany != ''">
+        STUDENT_COMPANY = #{studentCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="studentCompanyid != null  and  studentCompanyid != ''">
+        STUDENT_COMPANYID = #{studentCompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentUpcompanyid != null  and  studentUpcompanyid != ''">
+        STUDENT_UPCOMPANYID = #{studentUpcompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentDepartment != null  and  studentDepartment != ''">
+        STUDENT_DEPARTMENT = #{studentDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="studentCoin != null  and  studentCoin != ''">
+        STUDENT_COIN = #{studentCoin,jdbcType=INTEGER},
+      </if>
+      <if test="studentYeartime != null  and  studentYeartime != ''">
+        STUDENT_YEARTIME = #{studentYeartime,jdbcType=NUMERIC},
+      </if>
+      <if test="studentTelephone != null  and  studentTelephone != ''">
+        STUDENT_TELEPHONE = #{studentTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentEmail != null  and  studentEmail != ''">
+        STUDENT_EMAIL = #{studentEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="studentPassword != null  and  studentPassword != ''">
+        STUDENT_PASSWORD = #{studentPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="studentAt != null  and  studentAt != ''">
+        STUDENT_AT = #{studentAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studentDel != null  and  studentDel != ''">
+        STUDENT_DEL = #{studentDel,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null  and  departmentId != ''">
+        DEPARTMENT_ID = #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneId != null  and  studentoneId != ''">
+        STUDENTONE_ID = #{studentoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttwoId != null  and  studenttwoId != ''">
+        STUDENTTWO_ID = #{studenttwoId,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthreeId != null  and  studenthreeId != ''">
+        STUDENTHREE_ID = #{studenthreeId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentBxyxtime != null  and  studentBxyxtime != ''">
+        STUDENT_BXYXTIME = #{studentBxyxtime,jdbcType=NUMERIC},
+      </if>
+      <if test="studentBxxxtime != null  and  studentBxxxtime != ''">
+        STUDENT_BXXXTIME = #{studentBxxxtime,jdbcType=NUMERIC},
+      </if>
+      <if test="studentYxxxtime != null  and  studentYxxxtime != ''">
+        STUDENT_YXXXTIME = #{studentYxxxtime,jdbcType=NUMERIC},
+      </if>
+      <if test="studentXxxxtime != null  and  studentXxxxtime != ''">
+        STUDENT_XXXXTIME = #{studentXxxxtime,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Student">
+    update STUDENT
+    set STUDENT_SEQ = #{studentSeq,jdbcType=VARCHAR},
+      STUDENT_NAME = #{studentName,jdbcType=VARCHAR},
+      STUDENT_CATEGORY = #{studentCategory,jdbcType=VARCHAR},
+      STUDENT_RANK = #{studentRank,jdbcType=VARCHAR},
+      STUDENT_TYPE = #{studentType,jdbcType=INTEGER},
+      STUDENT_COMPANY = #{studentCompany,jdbcType=VARCHAR},
+      STUDENT_COMPANYID = #{studentCompanyid,jdbcType=VARCHAR},
+      STUDENT_UPCOMPANYID = #{studentUpcompanyid,jdbcType=VARCHAR},
+      STUDENT_DEPARTMENT = #{studentDepartment,jdbcType=VARCHAR},
+      STUDENT_COIN = #{studentCoin,jdbcType=INTEGER},
+      STUDENT_YEARTIME = #{studentYeartime,jdbcType=NUMERIC},
+      STUDENT_TELEPHONE = #{studentTelephone,jdbcType=VARCHAR},
+      STUDENT_EMAIL = #{studentEmail,jdbcType=VARCHAR},
+      STUDENT_PASSWORD = #{studentPassword,jdbcType=VARCHAR},
+      STUDENT_AT = #{studentAt,jdbcType=TIMESTAMP},
+      STUDENT_DEL = #{studentDel,jdbcType=INTEGER},
+      DEPARTMENT_ID = #{departmentId,jdbcType=VARCHAR},
+      STUDENTONE_ID = #{studentoneId,jdbcType=VARCHAR},
+      STUDENTTWO_ID = #{studenttwoId,jdbcType=VARCHAR},
+      STUDENTHREE_ID = #{studenthreeId,jdbcType=VARCHAR},
+      STUDENT_BXYXTIME = #{studentBxyxtime,jdbcType=NUMERIC},
+      STUDENT_BXXXTIME = #{studentBxxxtime,jdbcType=NUMERIC},
+      STUDENT_YXXXTIME = #{studentYxxxtime,jdbcType=NUMERIC},
+      STUDENT_XXXXTIME = #{studentXxxxtime,jdbcType=NUMERIC}
+    where STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+  </update>
+ 
+ 
+  <!-- 根据名称和密码登录后台  -->
+   <select id="checkLogin" parameterType="com.ttgis.education.entity.Student" resultMap="BaseResultMap">
+  		select 
+		*
+		from STUDENT s ,ORGANIZATION o ,DEPARTMENT d
+		where  o.ORGANIZATION_ID=s.STUDENT_COMPANYID
+		and d.DEPARTMENT_ID = s.STUDENT_DEPARTMENT
+		and STUDENT_SEQ = #{studentSeq,jdbcType=VARCHAR} 
+		AND STUDENT_PASSWORD = #{studentPassword,jdbcType=VARCHAR}
+		AND STUDENT_DEL = 1
+  </select>
+  
+  
+  
+  
+  <!--查询单条详细信息  -->
+    <select id="selectByOneKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+     from STUDENT z left join STUDENTONE t 
+  on z.STUDENTONE_ID=t.STUDENTONE_ID left join STUDENTTWO tt on z.STUDENTTWO_ID=tt.STUDENTTWO_ID
+  left join STUDENTHREE ttt on z.STUDENTHREE_ID=ttt.STUDENTHREE_ID
+    where z.STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+  </select>
+   <!--查询部门下人员 -->
+ <select id="StudentByDId" parameterType="com.ttgis.education.entity.Student" resultMap="BaseResultMap">
+    select *  from STUDENT  where STUDENT_DEPARTMENT = #{departmentId,jdbcType=VARCHAR}
+  </select>
+  
+
+  
+  <!-- 通过部门ID   修改学员部门ID -->
+  <update id="updateByDid" parameterType="com.ttgis.education.entity.Student">
+    update STUDENT
+    set
+  	STUDENT_DEPARTMENT = #{studentCompany,jdbcType=VARCHAR}
+    where STUDENT_DEPARTMENT = #{departmentId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <!-- 通过部门ID   修改学员组织ID -->
+  <update id="updateOid" parameterType="com.ttgis.education.entity.Student">
+    update STUDENT
+    set
+  	STUDENT_COMPANYID = #{studentCompanyid,jdbcType=VARCHAR}
+    where STUDENT_DEPARTMENT = #{departmentId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <!-- 通过部门ID   修改部门所有科室下学员组织ID -->
+  <update id="updateOidAll" parameterType="com.ttgis.education.entity.Student">
+    update STUDENT
+    set
+  	STUDENT_COMPANYID =  #{studentCompanyid,jdbcType=VARCHAR}
+    where STUDENT_DEPARTMENT in (select STUDENT_DEPARTMENT from DEPARTMENT where EPARTMENT_UPID=#{departmentId,jdbcType=VARCHAR})
+  </update>
+  
+  <!-- 合并组织结构，学员修改组织ID -->
+  <update id="updateHBOid" parameterType="com.ttgis.education.entity.Student">
+    update STUDENT
+    set
+  	STUDENT_COMPANYID = #{studentCompanyid,jdbcType=VARCHAR}
+    where STUDENT_COMPANYID = #{departmentId,jdbcType=VARCHAR}
+  </update>
+  
+  <!--总条数 -->
+	<select id="selectCountByWhere" parameterType="com.ttgis.education.entity.page.SelStudent"
+		resultType="int">
+		select count(*)
+		from STUDENT S where S.STUDENT_DEL = 1 and (select
+		COUNT(*) from TEST T where T.STUDENT_ID = S.STUDENT_ID
+		<if test="courseId != null">
+				and T.COURSE_ID = #{courseId,jdbcType=VARCHAR}
+			</if>
+			) > 0
+		<trim suffixOverrides=",">
+			<if test="studentId != null">
+				and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+	<!-- 分页显示 -->
+	<select id="selectByWhere" parameterType="com.ttgis.education.entity.page.SelStudent"
+		resultMap="BaseResultMapSelScore">
+		select * from (
+		select S.STUDENT_ID,S.STUDENT_NAME,(select sum(TEST_SCORE) from TEST T where
+		T.STUDENT_ID = S.STUDENT_ID and T.TEST_SCORE >=0) AS STUDENT_SCORE, (select count(*) from TEST T where
+		T.STUDENT_ID = S.STUDENT_ID and T.TEST_SCORE = -1) AS STUDENT_NOSCORE, ROW_NUMBER() OVER (ORDER BY STUDENT_AT
+		desc)
+		as r from
+		STUDENT S
+		where S.STUDENT_DEL = 1 and (select COUNT(*)
+		from
+		TEST
+		T where T.STUDENT_ID = S.STUDENT_ID
+		<if test="courseId != null">
+				and T.COURSE_ID = #{courseId,jdbcType=VARCHAR}
+			</if>
+			<if test="studentName != null">
+				and T.RULD_ID = #{studentName,jdbcType=VARCHAR}
+			</if>
+		) > 0
+		<trim suffixOverrides=",">
+			<if test="studentId != null">
+				and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+			</if>
+			
+		</trim>
+		) as t 
+        <![CDATA[
+            where r>#{begin} and r<=#{end}	
+        ]]>
+	</select>
+
+  
+  
+    <!-- 分页显示 -->
+<select id="selectStudentPageAll" parameterType="com.ttgis.education.entity.Student" resultMap="BaseResultMap">
+select top ${size}  *
+from STUDENT z
+left join STUDENTONE t 
+ on z.STUDENTONE_ID=t.STUDENTONE_ID left join STUDENTTWO tt on z.STUDENTTWO_ID=tt.STUDENTTWO_ID
+  left join STUDENTHREE ttt on z.STUDENTHREE_ID=ttt.STUDENTHREE_ID  LEFT JOIN DEPARTMENT d on z.STUDENT_DEPARTMENT=d.DEPARTMENT_ID
+where z.STUDENT_ID not in
+(
+ select top ${page} STUDENT_ID from STUDENT z
+ left join STUDENTONE t 
+  on z.STUDENTONE_ID=t.STUDENTONE_ID left join STUDENTTWO tt on z.STUDENTTWO_ID=tt.STUDENTTWO_ID
+  left join STUDENTHREE ttt on z.STUDENTHREE_ID=ttt.STUDENTHREE_ID  LEFT JOIN DEPARTMENT d on z.STUDENT_DEPARTMENT=d.DEPARTMENT_ID
+ 
+  where  1=1
+         
+		
+      <if test="ys != 1 ">
+       <if test="studentCompanyid != null and studentCompanyid != ''">
+      <![CDATA[  
+			and	z.STUDENT_COMPANYID=#{studentCompanyid,jdbcType=VARCHAR}
+	   ]]>
+	   </if> 
+	</if>
+	  <if test="courseId != null ">
+	      <![CDATA[  
+				and z.STUDENT_ID not in(select STUDENT_ID from
+	   COURSESTUDY where  COURSE_ID=#{courseId,jdbcType=VARCHAR} ) 
+		   ]]>  
+		</if>
+	   <if test="jop != 6 ">
+      <![CDATA[  
+				and STUDENT_TYPE = 1
+	   ]]> 
+	   
+	</if>
+	 <if test="jop == 6 ">
+      <![CDATA[  
+				and STUDENT_TYPE = 2
+	   ]]> 
+	   
+	</if>
+			
+  	
+ 
+   <if test="studentDepartment != null and studentDepartment != ''">
+      <![CDATA[  
+				and   STUDENT_DEPARTMENT = #{studentDepartment,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	 <if test="studentName != null and studentName != ''">
+	 <![CDATA[  
+			and STUDENT_NAME like '%${studentName}%'
+			 ]]>  
+	 </if>
+	 <if test="studentTelephone != null and studentTelephone != ''">
+	 <![CDATA[  
+			and STUDENT_TELEPHONE like '%${studentTelephone}%'
+			 ]]>  
+	 </if>
+	 	<if test="studentEmail != null and studentEmail != ''">
+	 <![CDATA[  
+			and STUDENT_EMAIL like '%${studentEmail}%'
+			 ]]>  
+	 </if>
+
+	<if test="studentCategory != null and studentCategory != ''">
+	 <![CDATA[  
+			and STUDENT_CATEGORY =#{studentCategory,jdbcType=INTEGER}
+			 ]]>  
+	 </if>
+	  <!-- 表1 studentone -->
+	 <if test="studentone != null and studentone.studentoneXb != null and studentone.studentoneXb != ''">
+	 <![CDATA[  
+			and STUDENTONE_XB =#{studentone.studentoneXb}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneSfzh != null and studentone.studentoneSfzh != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SFZH like '%${studentone.studentoneSfzh}%'
+			 ]]>  
+	 </if>
+	<if test="studentone != null and studentone.studentoneAge != null and studentone.studentoneAge != ''">
+	 <![CDATA[  
+	        and STUDENTONE_AGE like '%${studentone.studentoneAge}%'
+			 ]]>  
+	 </if>
+	<if test="studentone != null and studentone.studentoneXl != null and studentone.studentoneXl != ''">
+	 <![CDATA[  
+	       and STUDENTONE_XL =#{studentone.studentoneXl}
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneXw != null and studentone.studentoneXw != ''">
+	 <![CDATA[  
+	       and STUDENTONE_XW =#{studentone.studentoneXw}
+			 ]]>  
+	 </if>
+		 <if test="studentone != null and studentone.studentoneZzmm != null and studentone.studentoneZzmm != ''">
+	 <![CDATA[  
+	       and STUDENTONE_ZZMM =#{studentone.studentoneZzmm}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneYgxs != null and studentone.studentoneYgxs != ''">
+	 <![CDATA[  
+	       and STUDENTONE_YGXS =#{studentone.studentoneYgxs}
+			 ]]>  
+	 </if>
+	   <if test="studentone != null and studentone.studentoneXzjb != null and studentone.studentoneXzjb != ''">
+	 <![CDATA[  
+	        and STUDENTONE_XZJB like '%${studentone.studentoneXzjb}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneZyjszw != null and studentone.studentoneZyjszw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_ZYJSZW like '%${studentone.studentoneZyjszw}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneGrjszw != null and studentone.studentoneGrjszw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_GRJSZW like '%${studentone.studentoneGrjszw}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneSxzy != null and studentone.studentoneSxzy != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SXZY like '%${studentone.studentoneSxzy}%'
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneByy != null and studentone.studentoneByy != ''">
+	 <![CDATA[  
+	       and STUDENTONE_BYY =#{studentone.studentoneByy}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneByyxx != null and studentone.studentoneByyxx != ''">
+	 <![CDATA[  
+	        and STUDENTONE_BYYXX like '%${studentone.studentoneByyxx}%'
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneYx != null and studentone.studentoneYx != ''">
+	 <![CDATA[  
+	        and STUDENTONE_YX like '%${studentone.studentoneYx}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneXwsydw != null and studentone.studentoneXwsydw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_XWSYDW like '%${studentone.studentoneXwsydw}%'
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneQrzhzz != null and studentone.studentoneQrzhzz != ''">
+	 <![CDATA[  
+	        and STUDENTONE_QRZHZZ =#{studentone.studentoneQrzhzz}
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneSfdqxl != null and studentone.studentoneSfdqxl != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SFDQXL =#{studentone.studentoneSfdqxl}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneSfdqxw != null and studentone.studentoneSfdqxw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SFDQXW =#{studentone.studentoneSfdqxw}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneCsri != null and studentone.studentoneCsri != ''">
+	 <![CDATA[  
+	        and STUDENTONE_CSRI =#{studentone.studentoneCsri}
+			 ]]>  
+	 </if>
+	  	  <if test="studentone != null and studentone.studentoneCjgzsj != null and studentone.studentoneCjgzsj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_CJGZSJ =#{studentone.studentoneCjgzsj}
+			 ]]>  
+	 </if>
+	 	  <if test="studentone != null and studentone.studentoneXdwgzsj != null and studentone.studentoneXdwgzsj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_XDWGZSJ =#{studentone.studentoneXdwgzsj}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneRxsj != null and studentone.studentoneRxsj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_RXSJ =#{studentone.studentoneRxsj}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneByysj != null and studentone.studentoneByysj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_BYYSJ =#{studentone.studentoneByysj}
+			 ]]>  
+	 </if>
+	  <!--  表2 studenttwo -->
+	   <if test="studenttwo != null and studenttwo.studenttwoDyjb != null and studenttwo.studenttwoDyjb != ''">
+	 <![CDATA[  
+			and  STUDENTTWO_DYJB = #{studenttwo.studenttwoDyjb,jdbcType=INTEGER}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZwlb != null and studenttwo.studenttwoZwlb != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZWLB =#{studenttwo.studenttwoZwlb}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoXzzwmc != null and studenttwo.studenttwoXzzwmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_XZZWMC =#{studenttwo.studenttwoXzzwmc}
+			 ]]>  
+	 </if>
+	   <if test="studenttwo != null and studenttwo.studenttwoDnzwmc != null and studenttwo.studenttwoDnzwmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_DNZWMC =#{studenttwo.studenttwoDnzwmc}
+			 ]]>  
+	 </if>
+	   <if test="studenttwo != null and studenttwo.studenttwoZwsx != null and studenttwo.studenttwoZwsx != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZWSX =#{studenttwo.studenttwoZwsx}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoSfdqzw != null and studenttwo.studenttwoSfdqzw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_SFDQZW =#{studenttwo.studenttwoSfdqzw}
+			 ]]>  
+	 </if>
+	   <if test="studenttwo != null and studenttwo.studenttwoSfzcrtzj != null and studenttwo.studenttwoSfzcrtzj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_SFZCRTZJ =#{studenttwo.studenttwoSfzcrtzj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZyjszgmc != null and studenttwo.studenttwoZyjszgmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZYJSZGMC like '%${studenttwo.studenttwoZyjszgmc}%'
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoZyjsrzzg != null and studenttwo.studenttwoZyjsrzzg != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZYJSRZZG like '%${studenttwo.studenttwoZyjsrzzg}%'
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZylb != null and studenttwo.studenttwoZylb != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZYLB =#{studenttwo.studenttwoZylb}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoPrzyjszwmc != null and studenttwo.studenttwoPrzyjszwmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRZYJSZWMC like '%${studenttwo.studenttwoPrzyjszwmc}%'
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoSfdqzyjszw != null and studenttwo.studenttwoSfdqzyjszw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_SFDQZYJSZW =#{studenttwo.studenttwoSfdqzyjszw}
+			 ]]>  
+	 </if>
+	 
+	  <if test="studenttwo != null and studenttwo.studenttwoGrjszg != null and studenttwo.studenttwoGrjszg != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GRJSZG =#{studenttwo.studenttwoGrjszg}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoPrgrjszw != null and studenttwo.studenttwoPrgrjszw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRGRJSZW like '%${studenttwo.studenttwoPrgrjszw}%'
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoCsgzhdrzw != null and studenttwo.studenttwoCsgzhdrzw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_CSGZHDRZW like '%${studenttwo.studenttwoCsgzhdrzw}%'
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoYclb != null and studenttwo.studenttwoYclb != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_YCLB =#{studenttwo.studenttwoYclb}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoYcyy != null and studenttwo.studenttwoYcyy != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_YCYY like '%${studenttwo.studenttwoYcyy}%'
+			 ]]>  
+	 </if>
+	   <if test="studenttwo != null and studenttwo.studenttwoRzsj != null and studenttwo.studenttwoRzsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_RZSJ =#{studenttwo.studenttwoRzsj}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoMzsj != null and studenttwo.studenttwoMzsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_MZSJ =#{studenttwo.studenttwoMzsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoQdsj != null and studenttwo.studenttwoQdsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_QDSJ =#{studenttwo.studenttwoQdsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoPrqssj != null and studenttwo.studenttwoPrqssj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRQSSJ =#{studenttwo.studenttwoPrqssj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoPrzzsj != null and studenttwo.studenttwoPrzzsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRZZSJ =#{studenttwo.studenttwoPrzzsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoQdzgsj != null and studenttwo.studenttwoQdzgsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_QDZGSJ =#{studenttwo.studenttwoQdzgsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoPrsj != null and studenttwo.studenttwoPrsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRSJ =#{studenttwo.studenttwoPrsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoGrjlqssj != null and studenttwo.studenttwoGrjlqssj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GRJLQSSJ =#{studenttwo.studenttwoGrjlqssj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoGrjljssj != null and studenttwo.studenttwoGrjljssj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GRJLJSSJ =#{studenttwo.studenttwoGrjljssj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoCjdpsj != null and studenttwo.studenttwoCjdpsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_CJDPSJ =#{studenttwo.studenttwoCjdpsj}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoGzmc != null and studenttwo.studenttwoGzmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GZMC =#{studenttwo.studenttwoGzmc}
+			 ]]>  
+	 </if>
+	  <!--  表3 studenthree -->
+	  <if test="studenthree != null and studenthree.studenthreeLxzt != null and studenthree.studenthreeLxzt != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXZT =#{studenthree.studenthreeLxzt}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePcdw != null and studenthree.studenthreePcdw != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PCDW like '%${studenthree.studenthreePcdw}%'
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeZy != null and studenthree.studenthreeZy != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_ZY like '%${studenthree.studenthreeZy}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLxsf != null and studenthree.studenthreeLxsf != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXSF =#{studenthree.studenthreeLxsf}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeLxgb != null and studenthree.studenthreeLxgb != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXGB =#{studenthree.studenthreeLxgb}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePxxmmc != null and studenthree.studenthreePxxmmc != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXXMMC like '%${studenthree.studenthreePxxmmc}%'
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePxts != null and studenthree.studenthreePxts != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXTS like '%${studenthree.studenthreePxts}%'
+			 ]]>  
+	 </if>
+	   <if test="studenthree != null and studenthree.studenthreePxlx != null and studenthree.studenthreePxlx != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXLX =#{studenthree.studenthreePxlx}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePxqd != null and studenthree.studenthreePxqd != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXQD =#{studenthree.studenthreePxqd}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLtlb != null and studenthree.studenthreeLtlb != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LTLB =#{studenthree.studenthreeLtlb}
+			 ]]>  
+	 </if>
+	 	 <if test="studenthree != null and studenthree.studenthreeGbjdq != null and studenthree.studenthreeGbjdq != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_GBJDQ =#{studenthree.studenthreeGbjdq}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeCgsy != null and studenthree.studenthreeCgsy != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGSY like '%${studenthree.studenthreeCgsy}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeCgsqdw != null and studenthree.studenthreeCgsqdw != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGSQDW like '%${studenthree.studenthreeCgsqdw}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeCgpcdw != null and studenthree.studenthreeCgpcdw != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGPCDW like '%${studenthree.studenthreeCgpcdw}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeBj != null and studenthree.studenthreeBj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_BJ like '%${studenthree.studenthreeBj}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLdgbbz != null and studenthree.studenthreeLdgbbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LDGBBZ =#{studenthree.studenthreeLdgbbz}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLdhbbz != null and studenthree.studenthreeLdhbbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LDHBBZ =#{studenthree.studenthreeLdhbbz}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeXhgbbz != null and studenthree.studenthreeXhgbbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_XHGBBZ =#{studenthree.studenthreeXhgbbz}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeDjsbz != null and studenthree.studenthreeDjsbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_DJSBZ =#{studenthree.studenthreeDjsbz}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeLxsj != null and studenthree.studenthreeLxsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXSJ =#{studenthree.studenthreeLxsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeLtxsj != null and studenthree.studenthreeLtxsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LTXSJ =#{studenthree.studenthreeLtxsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeCgsj != null and studenthree.studenthreeCgsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGSJ =#{studenthree.studenthreeCgsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeJhhgsj != null and studenthree.studenthreeJhhgsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_JHHGSJ =#{studenthree.studenthreeJhhgsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeSjhgsj != null and studenthree.studenthreeSjhgsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_SJHGSJ =#{studenthree.studenthreeSjhgsj}
+			 ]]>  
+	 </if>
+	 
+  
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+ 
+	 
+	 
+	 
+	 
+	
+	
+	
+  order by z.STUDENT_AT desc
+) 
+ and 
+ 
+       1=1
+         
+		
+      <if test="ys != 1 ">
+       <if test="studentCompanyid != null and studentCompanyid != ''">
+      <![CDATA[  
+			and	z.STUDENT_COMPANYID=#{studentCompanyid,jdbcType=VARCHAR}
+	   ]]>
+	   </if> 
+	</if>
+	
+	  <if test="courseId != null ">
+	      <![CDATA[  
+				and z.STUDENT_ID not in(select STUDENT_ID from
+	   COURSESTUDY where  COURSE_ID=#{courseId,jdbcType=VARCHAR} ) 
+		   ]]>  
+		</if>
+	 <if test="jop != 6 ">
+      <![CDATA[  
+				and STUDENT_TYPE = 1
+	   ]]> 
+	   
+	</if>
+	 <if test="jop == 6 ">
+      <![CDATA[  
+				and STUDENT_TYPE = 2
+	   ]]> 
+	   
+	</if>
+			
+    	
+   <if test="studentDepartment != null and studentDepartment != ''">
+      <![CDATA[  
+				and   STUDENT_DEPARTMENT = #{studentDepartment,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	 <if test="studentName != null and studentName != ''">
+	 <![CDATA[  
+			and STUDENT_NAME like '%${studentName}%'
+			 ]]>  
+	 </if>
+	 <if test="studentTelephone != null and studentTelephone != ''">
+	 <![CDATA[  
+			and STUDENT_TELEPHONE like '%${studentTelephone}%'
+			 ]]>  
+	 </if>
+	 	<if test="studentEmail != null and studentEmail != ''">
+	 <![CDATA[  
+			and STUDENT_EMAIL like '%${studentEmail}%'
+			 ]]>  
+	 </if>
+
+	<if test="studentCategory != null and studentCategory != ''">
+	 <![CDATA[  
+			and STUDENT_CATEGORY =#{studentCategory,jdbcType=INTEGER}
+			 ]]>  
+	 </if>
+	 <!-- 表1 studentone -->
+	  <if test="studentone != null and studentone.studentoneXb != null and studentone.studentoneXb != ''">
+	 <![CDATA[  
+			and STUDENTONE_XB =#{studentone.studentoneXb}
+			 ]]>  
+	 </if>
+	<if test="studentone != null and studentone.studentoneSfzh != null and studentone.studentoneSfzh != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SFZH like '%${studentone.studentoneSfzh}%'
+			 ]]>  
+	 </if>
+	<if test="studentone != null and studentone.studentoneAge != null and studentone.studentoneAge != ''">
+	 <![CDATA[  
+	        and STUDENTONE_AGE like '%${studentone.studentoneAge}%'
+			 ]]>  
+	 </if>
+	<if test="studentone != null and studentone.studentoneXl != null and studentone.studentoneXl != ''">
+	 <![CDATA[  
+	       and STUDENTONE_XL =#{studentone.studentoneXl}
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneXw != null and studentone.studentoneXw != ''">
+	 <![CDATA[  
+	       and STUDENTONE_XW =#{studentone.studentoneXw}
+			 ]]>  
+	 </if>
+	 	 <if test="studentone != null and studentone.studentoneZzmm != null and studentone.studentoneZzmm != ''">
+	 <![CDATA[  
+	       and STUDENTONE_ZZMM =#{studentone.studentoneZzmm}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneYgxs != null and studentone.studentoneYgxs != ''">
+	 <![CDATA[  
+	       and STUDENTONE_YGXS =#{studentone.studentoneYgxs}
+			 ]]>  
+	 </if>
+	   <if test="studentone != null and studentone.studentoneXzjb != null and studentone.studentoneXzjb != ''">
+	 <![CDATA[  
+	        and STUDENTONE_XZJB like '%${studentone.studentoneXzjb}%'
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneZyjszw != null and studentone.studentoneZyjszw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_ZYJSZW like '%${studentone.studentoneZyjszw}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneGrjszw != null and studentone.studentoneGrjszw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_GRJSZW like '%${studentone.studentoneGrjszw}%'
+			 ]]>  
+	 </if>
+	<if test="studentone != null and studentone.studentoneSxzy != null and studentone.studentoneSxzy != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SXZY like '%${studentone.studentoneSxzy}%'
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneByy != null and studentone.studentoneByy != ''">
+	 <![CDATA[  
+	       and STUDENTONE_BYY =#{studentone.studentoneByy}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneByyxx != null and studentone.studentoneByyxx != ''">
+	 <![CDATA[  
+	        and STUDENTONE_BYYXX like '%${studentone.studentoneByyxx}%'
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneYx != null and studentone.studentoneYx != ''">
+	 <![CDATA[  
+	        and STUDENTONE_YX like '%${studentone.studentoneYx}%'
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneXwsydw != null and studentone.studentoneXwsydw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_XWSYDW like '%${studentone.studentoneXwsydw}%'
+			 ]]>  
+	 </if> 
+	  <if test="studentone != null and studentone.studentoneQrzhzz != null and studentone.studentoneQrzhzz != ''">
+	 <![CDATA[  
+	        and STUDENTONE_QRZHZZ =#{studentone.studentoneQrzhzz}
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneSfdqxl != null and studentone.studentoneSfdqxl != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SFDQXL =#{studentone.studentoneSfdqxl}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneSfdqxw != null and studentone.studentoneSfdqxw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SFDQXW =#{studentone.studentoneSfdqxw}
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneCsri != null and studentone.studentoneCsri != ''">
+	 <![CDATA[  
+	        and STUDENTONE_CSRI =#{studentone.studentoneCsri}
+			 ]]>  
+	 </if>
+	  	  <if test="studentone != null and studentone.studentoneCjgzsj != null and studentone.studentoneCjgzsj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_CJGZSJ =#{studentone.studentoneCjgzsj}
+			 ]]>  
+	 </if>
+	 	  <if test="studentone != null and studentone.studentoneXdwgzsj != null and studentone.studentoneXdwgzsj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_XDWGZSJ =#{studentone.studentoneXdwgzsj}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneRxsj != null and studentone.studentoneRxsj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_RXSJ =#{studentone.studentoneRxsj}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneByysj != null and studentone.studentoneByysj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_BYYSJ =#{studentone.studentoneByysj}
+			 ]]>  
+	 </if>
+	  <!--  表2 studenttwo -->
+	  <if test="studenttwo != null and studenttwo.studenttwoDyjb != null and studenttwo.studenttwoDyjb != ''">
+	 <![CDATA[  
+			and  STUDENTTWO_DYJB = #{studenttwo.studenttwoDyjb,jdbcType=INTEGER}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZwlb != null and studenttwo.studenttwoZwlb != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZWLB =#{studenttwo.studenttwoZwlb}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoXzzwmc != null and studenttwo.studenttwoXzzwmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_XZZWMC =#{studenttwo.studenttwoXzzwmc}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoDnzwmc != null and studenttwo.studenttwoDnzwmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_DNZWMC =#{studenttwo.studenttwoDnzwmc}
+			 ]]>  
+	 </if>
+	   <if test="studenttwo != null and studenttwo.studenttwoZwsx != null and studenttwo.studenttwoZwsx != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZWSX =#{studenttwo.studenttwoZwsx}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoSfdqzw != null and studenttwo.studenttwoSfdqzw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_SFDQZW =#{studenttwo.studenttwoSfdqzw}
+			 ]]>  
+	 </if>
+	   <if test="studenttwo != null and studenttwo.studenttwoSfzcrtzj != null and studenttwo.studenttwoSfzcrtzj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_SFZCRTZJ =#{studenttwo.studenttwoSfzcrtzj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZyjszgmc != null and studenttwo.studenttwoZyjszgmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZYJSZGMC like '%${studenttwo.studenttwoZyjszgmc}%'
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoZyjsrzzg != null and studenttwo.studenttwoZyjsrzzg != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZYJSRZZG like '%${studenttwo.studenttwoZyjsrzzg}%'
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZylb != null and studenttwo.studenttwoZylb != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZYLB =#{studenttwo.studenttwoZylb}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoPrzyjszwmc != null and studenttwo.studenttwoPrzyjszwmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRZYJSZWMC like '%${studenttwo.studenttwoPrzyjszwmc}%'
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoSfdqzyjszw != null and studenttwo.studenttwoSfdqzyjszw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_SFDQZYJSZW =#{studenttwo.studenttwoSfdqzyjszw}
+			 ]]>  
+	 </if>
+	 
+	 
+	  <if test="studenttwo != null and studenttwo.studenttwoGrjszg != null and studenttwo.studenttwoGrjszg != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GRJSZG =#{studenttwo.studenttwoGrjszg}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoPrgrjszw != null and studenttwo.studenttwoPrgrjszw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRGRJSZW like '%${studenttwo.studenttwoPrgrjszw}%'
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoCsgzhdrzw != null and studenttwo.studenttwoCsgzhdrzw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_CSGZHDRZW like '%${studenttwo.studenttwoCsgzhdrzw}%'
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoYclb != null and studenttwo.studenttwoYclb != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_YCLB =#{studenttwo.studenttwoYclb}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoYcyy != null and studenttwo.studenttwoYcyy != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_YCYY like '%${studenttwo.studenttwoYcyy}%'
+			 ]]>  
+	 </if>
+	   <if test="studenttwo != null and studenttwo.studenttwoRzsj != null and studenttwo.studenttwoRzsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_RZSJ =#{studenttwo.studenttwoRzsj}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoMzsj != null and studenttwo.studenttwoMzsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_MZSJ =#{studenttwo.studenttwoMzsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoQdsj != null and studenttwo.studenttwoQdsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_QDSJ =#{studenttwo.studenttwoQdsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoPrqssj != null and studenttwo.studenttwoPrqssj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRQSSJ =#{studenttwo.studenttwoPrqssj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoPrzzsj != null and studenttwo.studenttwoPrzzsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRZZSJ =#{studenttwo.studenttwoPrzzsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoQdzgsj != null and studenttwo.studenttwoQdzgsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_QDZGSJ =#{studenttwo.studenttwoQdzgsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoPrsj != null and studenttwo.studenttwoPrsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRSJ =#{studenttwo.studenttwoPrsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoGrjlqssj != null and studenttwo.studenttwoGrjlqssj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GRJLQSSJ =#{studenttwo.studenttwoGrjlqssj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoGrjljssj != null and studenttwo.studenttwoGrjljssj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GRJLJSSJ =#{studenttwo.studenttwoGrjljssj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoCjdpsj != null and studenttwo.studenttwoCjdpsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_CJDPSJ =#{studenttwo.studenttwoCjdpsj}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoGzmc != null and studenttwo.studenttwoGzmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GZMC =#{studenttwo.studenttwoGzmc}
+			 ]]>  
+	 </if>
+	  <!--  表3 studenthree -->
+	 
+	  <if test="studenthree != null and studenthree.studenthreeLxzt != null and studenthree.studenthreeLxzt != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXZT =#{studenthree.studenthreeLxzt}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePcdw != null and studenthree.studenthreePcdw != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PCDW like '%${studenthree.studenthreePcdw}%'
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeZy != null and studenthree.studenthreeZy != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_ZY like '%${studenthree.studenthreeZy}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLxsf != null and studenthree.studenthreeLxsf != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXSF =#{studenthree.studenthreeLxsf}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeLxgb != null and studenthree.studenthreeLxgb != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXGB =#{studenthree.studenthreeLxgb}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePxxmmc != null and studenthree.studenthreePxxmmc != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXXMMC like '%${studenthree.studenthreePxxmmc}%'
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePxts != null and studenthree.studenthreePxts != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXTS like '%${studenthree.studenthreePxts}%'
+			 ]]>  
+	 </if>
+	   <if test="studenthree != null and studenthree.studenthreePxlx != null and studenthree.studenthreePxlx != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXLX =#{studenthree.studenthreePxlx}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePxqd != null and studenthree.studenthreePxqd != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXQD =#{studenthree.studenthreePxqd}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLtlb != null and studenthree.studenthreeLtlb != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LTLB =#{studenthree.studenthreeLtlb}
+			 ]]>  
+	 </if>
+	 	 <if test="studenthree != null and studenthree.studenthreeGbjdq != null and studenthree.studenthreeGbjdq != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_GBJDQ =#{studenthree.studenthreeGbjdq}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeCgsy != null and studenthree.studenthreeCgsy != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGSY like '%${studenthree.studenthreeCgsy}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeCgsqdw != null and studenthree.studenthreeCgsqdw != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGSQDW like '%${studenthree.studenthreeCgsqdw}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeCgpcdw != null and studenthree.studenthreeCgpcdw != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGPCDW like '%${studenthree.studenthreeCgpcdw}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeBj != null and studenthree.studenthreeBj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_BJ like '%${studenthree.studenthreeBj}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLdgbbz != null and studenthree.studenthreeLdgbbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LDGBBZ =#{studenthree.studenthreeLdgbbz}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLdhbbz != null and studenthree.studenthreeLdhbbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LDHBBZ =#{studenthree.studenthreeLdhbbz}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeXhgbbz != null and studenthree.studenthreeXhgbbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_XHGBBZ =#{studenthree.studenthreeXhgbbz}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeDjsbz != null and studenthree.studenthreeDjsbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_DJSBZ =#{studenthree.studenthreeDjsbz}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeLxsj != null and studenthree.studenthreeLxsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXSJ =#{studenthree.studenthreeLxsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeLtxsj != null and studenthree.studenthreeLtxsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LTXSJ =#{studenthree.studenthreeLtxsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeCgsj != null and studenthree.studenthreeCgsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGSJ =#{studenthree.studenthreeCgsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeJhhgsj != null and studenthree.studenthreeJhhgsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_JHHGSJ =#{studenthree.studenthreeJhhgsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeSjhgsj != null and studenthree.studenthreeSjhgsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_SJHGSJ =#{studenthree.studenthreeSjhgsj}
+			 ]]>  
+	 </if>
+	 
+  
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+ 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	
+	
+order by z.STUDENT_AT desc
+
+ </select>
+ 
+   <!--总条数 -->
+ <select id="StudentCount" parameterType="com.ttgis.education.entity.Student" resultType="int">
+    select count(*)
+     from STUDENT z left join STUDENTONE t 
+  on z.STUDENTONE_ID=t.STUDENTONE_ID left join STUDENTTWO tt on z.STUDENTTWO_ID=tt.STUDENTTWO_ID
+  left join STUDENTHREE ttt on z.STUDENTHREE_ID=ttt.STUDENTHREE_ID 
+  LEFT JOIN DEPARTMENT d on z.STUDENT_DEPARTMENT=d.DEPARTMENT_ID
+  where  1=1
+         
+		
+      <if test="ys != 1 ">
+       <if test="studentCompanyid != null and studentCompanyid != ''">
+      <![CDATA[  
+			and	z.STUDENT_COMPANYID=#{studentCompanyid,jdbcType=VARCHAR}
+	   ]]>
+	   </if> 
+	</if>
+<!-- 	 <if test="ys == 1 ">
+      <![CDATA[  
+				1=1
+	   ]]> 
+	</if> -->
+	  <if test="courseId != null ">
+	      <![CDATA[  
+				and z.STUDENT_ID not in(select STUDENT_ID from
+	   COURSESTUDY where  COURSE_ID=#{courseId,jdbcType=VARCHAR} ) 
+		   ]]>  
+		</if>
+	 <if test="jop != 6 ">
+      <![CDATA[  
+				and STUDENT_TYPE = 1
+	   ]]> 
+	</if>
+	 <if test="jop == 6 ">
+      <![CDATA[  
+				and STUDENT_TYPE = 2
+	   ]]> 
+	</if>
+	 
+	
+			
+   
+   
+     <if test="studentDepartment != null and studentDepartment != ''">
+      <![CDATA[  
+				and   STUDENT_DEPARTMENT = #{studentDepartment,jdbcType=INTEGER}
+	   ]]> 
+	   
+	</if>
+	<if test="studentName != null and studentName != ''">
+	 <![CDATA[  
+			and STUDENT_NAME like '%${studentName}%'
+			 ]]>  
+	 </if>
+	<if test="studentTelephone != null and studentTelephone != ''">
+	 <![CDATA[  
+			and STUDENT_TELEPHONE like '%${studentTelephone}%'
+			 ]]>  
+	 </if>
+	 	<if test="studentEmail != null and studentEmail != ''">
+	 <![CDATA[  
+			and STUDENT_EMAIL like '%${studentEmail}%'
+			 ]]>  
+	 </if>
+	  <if test="studentCategory != null and studentCategory != ''">
+	 <![CDATA[  
+			and STUDENT_CATEGORY =#{studentCategory,jdbcType=INTEGER}
+			 ]]>  
+	 </if>
+	  <!-- 表1 studentone -->
+	   <if test="studentone != null and studentone.studentoneXb != null and studentone.studentoneXb != ''">
+	 <![CDATA[  
+			and STUDENTONE_XB =#{studentone.studentoneXb}
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneSfzh != null and studentone.studentoneSfzh != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SFZH like '%${studentone.studentoneSfzh}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneAge != null and studentone.studentoneAge != ''">
+	 <![CDATA[  
+	        and STUDENTONE_AGE like '%${studentone.studentoneAge}%'
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneXl != null and studentone.studentoneXl != ''">
+	 <![CDATA[  
+	       and STUDENTONE_XL =#{studentone.studentoneXl}
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneXw != null and studentone.studentoneXw != ''">
+	 <![CDATA[  
+	       and STUDENTONE_XW =#{studentone.studentoneXw}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneZzmm != null and studentone.studentoneZzmm != ''">
+	 <![CDATA[  
+	       and STUDENTONE_ZZMM =#{studentone.studentoneZzmm}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneYgxs != null and studentone.studentoneYgxs != ''">
+	 <![CDATA[  
+	       and STUDENTONE_YGXS =#{studentone.studentoneYgxs}
+			 ]]>  
+	 </if>
+  <if test="studentone != null and studentone.studentoneXzjb != null and studentone.studentoneXzjb != ''">
+	 <![CDATA[  
+	        and STUDENTONE_XZJB like '%${studentone.studentoneXzjb}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneZyjszw != null and studentone.studentoneZyjszw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_ZYJSZW like '%${studentone.studentoneZyjszw}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneGrjszw != null and studentone.studentoneGrjszw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_GRJSZW like '%${studentone.studentoneGrjszw}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneSxzy != null and studentone.studentoneSxzy != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SXZY like '%${studentone.studentoneSxzy}%'
+			 ]]>  
+	 </if>
+	 	 <if test="studentone != null and studentone.studentoneByy != null and studentone.studentoneByy != ''">
+	 <![CDATA[  
+	       and STUDENTONE_BYY =#{studentone.studentoneByy}
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneByyxx != null and studentone.studentoneByyxx != ''">
+	 <![CDATA[  
+	        and STUDENTONE_BYYXX like '%${studentone.studentoneByyxx}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneYx != null and studentone.studentoneYx != ''">
+	 <![CDATA[  
+	        and STUDENTONE_YX like '%${studentone.studentoneYx}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneXwsydw != null and studentone.studentoneXwsydw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_XWSYDW like '%${studentone.studentoneXwsydw}%'
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneQrzhzz != null and studentone.studentoneQrzhzz != ''">
+	 <![CDATA[  
+	        and STUDENTONE_QRZHZZ =#{studentone.studentoneQrzhzz}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneSfdqxl != null and studentone.studentoneSfdqxl != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SFDQXL =#{studentone.studentoneSfdqxl}
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneSfdqxw != null and studentone.studentoneSfdqxw != ''">
+	 <![CDATA[  
+	        and STUDENTONE_SFDQXW =#{studentone.studentoneSfdqxw}
+			 ]]>  
+	 </if>
+	  <if test="studentone != null and studentone.studentoneCsri != null and studentone.studentoneCsri != ''">
+	 <![CDATA[  
+	        and STUDENTONE_CSRI =#{studentone.studentoneCsri}
+			 ]]>  
+	 </if>
+	 	  <if test="studentone != null and studentone.studentoneCjgzsj != null and studentone.studentoneCjgzsj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_CJGZSJ =#{studentone.studentoneCjgzsj}
+			 ]]>  
+	 </if>
+	 	  <if test="studentone != null and studentone.studentoneXdwgzsj != null and studentone.studentoneXdwgzsj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_XDWGZSJ =#{studentone.studentoneXdwgzsj}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneRxsj != null and studentone.studentoneRxsj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_RXSJ =#{studentone.studentoneRxsj}
+			 ]]>  
+	 </if>
+	 <if test="studentone != null and studentone.studentoneByysj != null and studentone.studentoneByysj != ''">
+	 <![CDATA[  
+	        and STUDENTONE_BYYSJ =#{studentone.studentoneByysj}
+			 ]]>  
+	 </if>
+	 <!--  表2 studenttwo -->
+	  <if test="studenttwo != null and studenttwo.studenttwoDyjb != null and studenttwo.studenttwoDyjb != ''">
+	 <![CDATA[  
+			and  STUDENTTWO_DYJB = #{studenttwo.studenttwoDyjb,jdbcType=INTEGER}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZwlb != null and studenttwo.studenttwoZwlb != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZWLB =#{studenttwo.studenttwoZwlb}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoXzzwmc != null and studenttwo.studenttwoXzzwmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_XZZWMC =#{studenttwo.studenttwoXzzwmc}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoDnzwmc != null and studenttwo.studenttwoDnzwmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_DNZWMC =#{studenttwo.studenttwoDnzwmc}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZwsx != null and studenttwo.studenttwoZwsx != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZWSX =#{studenttwo.studenttwoZwsx}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoSfdqzw != null and studenttwo.studenttwoSfdqzw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_SFDQZW =#{studenttwo.studenttwoSfdqzw}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoSfzcrtzj != null and studenttwo.studenttwoSfzcrtzj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_SFZCRTZJ =#{studenttwo.studenttwoSfzcrtzj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZyjszgmc != null and studenttwo.studenttwoZyjszgmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZYJSZGMC like '%${studenttwo.studenttwoZyjszgmc}%'
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZyjsrzzg != null and studenttwo.studenttwoZyjsrzzg != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_ZYJSRZZG like '%${studenttwo.studenttwoZyjsrzzg}%'
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoZylb != null and studenttwo.studenttwoZylb != ''">
+	 <![CDATA[  
+	        and  STUDENTTWO_ZYLB=#{studenttwo.studenttwoZylb}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoPrzyjszwmc != null and studenttwo.studenttwoPrzyjszwmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRZYJSZWMC like '%${studenttwo.studenttwoPrzyjszwmc}%'
+			 ]]>  
+	 </if>
+	   <if test="studenttwo != null and studenttwo.studenttwoSfdqzyjszw != null and studenttwo.studenttwoSfdqzyjszw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_SFDQZYJSZW =#{studenttwo.studenttwoSfdqzyjszw}
+			 ]]>  
+	 </if>
+	 
+	 
+	  <if test="studenttwo != null and studenttwo.studenttwoGrjszg != null and studenttwo.studenttwoGrjszg != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GRJSZG =#{studenttwo.studenttwoGrjszg}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoPrgrjszw != null and studenttwo.studenttwoPrgrjszw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRGRJSZW like '%${studenttwo.studenttwoPrgrjszw}%'
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoCsgzhdrzw != null and studenttwo.studenttwoCsgzhdrzw != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_CSGZHDRZW like '%${studenttwo.studenttwoCsgzhdrzw}%'
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoYclb != null and studenttwo.studenttwoYclb != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_YCLB =#{studenttwo.studenttwoYclb}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoYcyy != null and studenttwo.studenttwoYcyy != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_YCYY like '%${studenttwo.studenttwoYcyy}%'
+			 ]]>  
+	 </if>
+	   <if test="studenttwo != null and studenttwo.studenttwoRzsj != null and studenttwo.studenttwoRzsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_RZSJ =#{studenttwo.studenttwoRzsj}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoMzsj != null and studenttwo.studenttwoMzsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_MZSJ =#{studenttwo.studenttwoMzsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoQdsj != null and studenttwo.studenttwoQdsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_QDSJ =#{studenttwo.studenttwoQdsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoPrqssj != null and studenttwo.studenttwoPrqssj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRQSSJ =#{studenttwo.studenttwoPrqssj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoPrzzsj != null and studenttwo.studenttwoPrzzsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRZZSJ =#{studenttwo.studenttwoPrzzsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoQdzgsj != null and studenttwo.studenttwoQdzgsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_QDZGSJ =#{studenttwo.studenttwoQdzgsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoPrsj != null and studenttwo.studenttwoPrsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_PRSJ =#{studenttwo.studenttwoPrsj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoGrjlqssj != null and studenttwo.studenttwoGrjlqssj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GRJLQSSJ =#{studenttwo.studenttwoGrjlqssj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoGrjljssj != null and studenttwo.studenttwoGrjljssj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GRJLJSSJ =#{studenttwo.studenttwoGrjljssj}
+			 ]]>  
+	 </if>
+	  <if test="studenttwo != null and studenttwo.studenttwoCjdpsj != null and studenttwo.studenttwoCjdpsj != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_CJDPSJ =#{studenttwo.studenttwoCjdpsj}
+			 ]]>  
+	 </if>
+	 <if test="studenttwo != null and studenttwo.studenttwoGzmc != null and studenttwo.studenttwoGzmc != ''">
+	 <![CDATA[  
+	        and STUDENTTWO_GZMC =#{studenttwo.studenttwoGzmc}
+			 ]]>  
+	 </if>
+	 
+	 <!--  表3 studenthree -->
+	  <if test="studenthree != null and studenthree.studenthreeLxzt != null and studenthree.studenthreeLxzt != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXZT =#{studenthree.studenthreeLxzt}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePcdw != null and studenthree.studenthreePcdw != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PCDW like '%${studenthree.studenthreePcdw}%'
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeZy != null and studenthree.studenthreeZy != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_ZY like '%${studenthree.studenthreeZy}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLxsf != null and studenthree.studenthreeLxsf != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXSF =#{studenthree.studenthreeLxsf}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeLxgb != null and studenthree.studenthreeLxgb != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXGB =#{studenthree.studenthreeLxgb}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePxxmmc != null and studenthree.studenthreePxxmmc != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXXMMC like '%${studenthree.studenthreePxxmmc}%'
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePxts != null and studenthree.studenthreePxts != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXTS like '%${studenthree.studenthreePxts}%'
+			 ]]>  
+	 </if>
+	   <if test="studenthree != null and studenthree.studenthreePxlx != null and studenthree.studenthreePxlx != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXLX =#{studenthree.studenthreePxlx}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreePxqd != null and studenthree.studenthreePxqd != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_PXQD =#{studenthree.studenthreePxqd}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLtlb != null and studenthree.studenthreeLtlb != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LTLB =#{studenthree.studenthreeLtlb}
+			 ]]>  
+	 </if>
+	 	 <if test="studenthree != null and studenthree.studenthreeGbjdq != null and studenthree.studenthreeGbjdq != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_GBJDQ =#{studenthree.studenthreeGbjdq}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeCgsy != null and studenthree.studenthreeCgsy != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGSY like '%${studenthree.studenthreeCgsy}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeCgsqdw != null and studenthree.studenthreeCgsqdw != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGSQDW like '%${studenthree.studenthreeCgsqdw}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeCgpcdw != null and studenthree.studenthreeCgpcdw != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGPCDW like '%${studenthree.studenthreeCgpcdw}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeBj != null and studenthree.studenthreeBj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_BJ like '%${studenthree.studenthreeBj}%'
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLdgbbz != null and studenthree.studenthreeLdgbbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LDGBBZ =#{studenthree.studenthreeLdgbbz}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeLdhbbz != null and studenthree.studenthreeLdhbbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LDHBBZ =#{studenthree.studenthreeLdhbbz}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeXhgbbz != null and studenthree.studenthreeXhgbbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_XHGBBZ =#{studenthree.studenthreeXhgbbz}
+			 ]]>  
+	 </if>
+	 <if test="studenthree != null and studenthree.studenthreeDjsbz != null and studenthree.studenthreeDjsbz != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_DJSBZ =#{studenthree.studenthreeDjsbz}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeLxsj != null and studenthree.studenthreeLxsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LXSJ =#{studenthree.studenthreeLxsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeLtxsj != null and studenthree.studenthreeLtxsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_LTXSJ =#{studenthree.studenthreeLtxsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeCgsj != null and studenthree.studenthreeCgsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_CGSJ =#{studenthree.studenthreeCgsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeJhhgsj != null and studenthree.studenthreeJhhgsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_JHHGSJ =#{studenthree.studenthreeJhhgsj}
+			 ]]>  
+	 </if>
+	  <if test="studenthree != null and studenthree.studenthreeSjhgsj != null and studenthree.studenthreeSjhgsj != ''">
+	 <![CDATA[  
+	        and STUDENTHREE_SJHGSJ =#{studenthree.studenthreeSjhgsj}
+			 ]]>  
+	 </if>
+
+  </select>
+  
+   <!--总条数 -->
+ <select id="StudentHistoryCount" parameterType="com.ttgis.education.entity.Student" resultType="int">
+    select count(*)
+     from STUDENT z left join STUDENTONE t 
+  on z.STUDENTONE_ID=t.STUDENTONE_ID left join STUDENTTWO tt on z.STUDENTTWO_ID=tt.STUDENTTWO_ID
+  left join STUDENTHREE ttt on z.STUDENTHREE_ID=ttt.STUDENTHREE_ID
+  where  STUDENT_DEL=1 and STUDENT_TYPE=1
+     and z.STUDENT_COMPANYID=#{studentCompanyid,jdbcType=VARCHAR}
+     <if test="studentDepartment != null and studentDepartment != ''">
+      <![CDATA[  
+				and   STUDENT_DEPARTMENT = #{studentDepartment,jdbcType=INTEGER}
+	   ]]>
+	    </if> 
+
+  </select>
+     <!--studentCompanyid查人员 -->
+
+ <select id="queryBystudentCompanyId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *  from STUDENT  where STUDENT_COMPANYID = #{studentCompanyId}
+  </select>
+   <!-- 分页显示 -->
+<select id="selectStudentHistory" parameterType="com.ttgis.education.entity.Student" resultMap="BaseResultMap">
+select top ${size}  *
+from STUDENT z
+left join STUDENTONE t 
+ on z.STUDENTONE_ID=t.STUDENTONE_ID left join STUDENTTWO tt on z.STUDENTTWO_ID=tt.STUDENTTWO_ID
+  left join STUDENTHREE ttt on z.STUDENTHREE_ID=ttt.STUDENTHREE_ID
+where z.STUDENT_ID not in
+(
+ select top ${page} STUDENT_ID from STUDENT z
+ left join STUDENTONE t 
+  on z.STUDENTONE_ID=t.STUDENTONE_ID left join STUDENTTWO tt on z.STUDENTTWO_ID=tt.STUDENTTWO_ID
+  left join STUDENTHREE ttt on z.STUDENTHREE_ID=ttt.STUDENTHREE_ID
+  where  STUDENT_DEL=1 and STUDENT_TYPE=1
+     and z.STUDENT_COMPANYID=#{studentCompanyid,jdbcType=VARCHAR}
+     <if test="studentDepartment != null and studentDepartment != ''">
+      <![CDATA[  
+				and   STUDENT_DEPARTMENT = #{studentDepartment,jdbcType=INTEGER}
+	   ]]> 
+	    </if>
+  
+
+  order by z.STUDENT_AT desc
+) 
+ and  STUDENT_DEL=1 and STUDENT_TYPE=1
+   and z.STUDENT_COMPANYID=#{studentCompanyid,jdbcType=VARCHAR}
+     <if test="studentDepartment != null and studentDepartment != ''">
+      <![CDATA[  
+				and   STUDENT_DEPARTMENT = #{studentDepartment,jdbcType=INTEGER}
+	   ]]> 
+	    </if>
+ 
+order by z.STUDENT_AT desc
+
+ </select>
+
+    <!--查询人员byId -->
+ <select id="queryStudentByStudentId" parameterType="com.ttgis.education.entity.Student" resultType="int">
+    select *  from STUDENT  where STUDENT_ID = #{studentId,jdbcType=VARCHAR}
+  </select>
+     <!--查询人员bySEQ -->
+ <select id="queryStudentByStudentSEQ" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *  from STUDENT  where STUDENT_SEQ = #{studentSeq,jdbcType=VARCHAR}
+  </select> 
+   <!-- 查询账号、学员是否存在  -->
+   <select id="studentByNameSeq" parameterType="com.ttgis.education.entity.Student" resultType="int">
+  		select 
+		count(*)
+		from STUDENT 
+		where 
+		STUDENT_SEQ = #{studentSeq,jdbcType=VARCHAR} 
+		AND STUDENT_DEL = 1
+  </select>
+  
+  
+  <!-- 根据身份证登录后台接口  -->
+   <select id="interfaceLogin" parameterType="java.lang.String" resultMap="BaseResultMap">
+  		select 
+		*
+		from STUDENT s ,ORGANIZATION o ,DEPARTMENT d ,STUDENTONE so
+		where  o.ORGANIZATION_ID=s.STUDENT_COMPANYID
+		and d.DEPARTMENT_ID = s.STUDENT_DEPARTMENT
+		and so.STUDENTONE_ID = s.STUDENTONE_ID
+		and STUDENTONE_SFZH = #{studentoneSfzh,jdbcType=VARCHAR} 
+		AND STUDENT_DEL = 1
+		AND STUDENTONE_DEL = 1
+  </select>
+
+  
+</mapper>

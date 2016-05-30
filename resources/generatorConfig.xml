@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- 指定数据连接驱动jar地址 -->
+	<classPathEntry location="D:\Workspaces\Education\WebRoot\WEB-INF\lib\sqljdbc4.jar" />
+	<!-- 一个数据库一个context --> 
+	<context id="context1">
+		<!-- 注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="false" /><!--是否取消注释 -->
+			<property name="suppressDate" value="true" /><!-- 是否生成注释代时间戳 -->
+		</commentGenerator>
+		<!-- jdbc连接 -->
+		<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+			connectionURL="jdbc:sqlserver:// :1433;DatabaseName=EDUVIDEO" userId="EDUVIDEO"
+			password="EDUVIDEO" />
+		<!-- 类型转换 -->
+		<javaTypeResolver>
+			<!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		
+		
+		<!-- 生成实体类地址 -->
+		<javaModelGenerator targetPackage="com.ttgis.education.entity" targetProject="Education">
+			<!-- 是否在当前路径下新加一层schema,eg：fase路径com.ttgis.education.model， true:com.ttgis.education.model.[schemaName] -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 是否针对string类型的字段在set的时候进行trim调用 <property name="trimStrings" value="true"/> -->
+		</javaModelGenerator>
+		
+		
+		<!-- 生成mapxml文件 -->
+		<sqlMapGenerator targetPackage="com.ttgis.education.mapper"
+			targetProject="Education">
+			<!-- 是否在当前路径下新加一层schema,eg：fase路径com.ttgis.education.mapper， true:com.ttgis.education.mapper.[schemaName] -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		
+		
+		<!-- 生成mapxml对应client，也就是接口dao -->
+		<javaClientGenerator targetPackage="com.ttgis.education.mapper"
+			targetProject="Education" type="XMLMAPPER">
+			<!-- 是否在当前路径下新加一层schema,eg：fase路径com.ttgis.education.model， true:com.ttgis.education.model.[schemaName] -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+
+
+
+		<!-- 要生成的表: schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample是否生成 
+			example类 -->
+			<!--  -->
+			<!--  <table tableName="ACCOUNT" domainObjectName="Account" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="ACCOUNT-ROLE" domainObjectName="AccountRole" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="ARTICLE" domainObjectName="Article" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="CLASSINFO" domainObjectName="Classinfo" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="CLASSRESOURCE" domainObjectName="Classresource" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="CLASTUDENT" domainObjectName="Clastudent" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="COLLECT" domainObjectName="Collect" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="COURSE" domainObjectName="Course" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="COURSENOTE" domainObjectName="Coursenote" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="COURSEPUSH" domainObjectName="Coursepush" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="COURSERESOURCE" domainObjectName="Courseresource" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="COURSESTUDY" domainObjectName="Coursestudy" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="DEPARTMENT" domainObjectName="Department" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="DICTIONARY" domainObjectName="Dictionary" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table>  -->
+			
+		<!-- 	<table tableName="ESTIMATE" domainObjectName="Estimate" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table>  -->
+			
+			<!-- <table tableName="FROUM" domainObjectName="Froum" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="FROUMREPLY" domainObjectName="Froumreply" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="FROUMSTUDENT" domainObjectName="Froumstudent" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="HOMEWORK" domainObjectName="Homework" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="KNOWLEDGE" domainObjectName="Knowledge" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="KNOWLEDGE_RESOURCE" domainObjectName="KnowledgeResource" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="LOG" domainObjectName="Log" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="LTBQ" domainObjectName="Ltbq" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table>  -->
+			
+			<!-- <table tableName="ORGANIZATION" domainObjectName="Organization" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="PERMISSION" domainObjectName="Permission" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table>  -->
+			
+	<!-- 		<table tableName="SORT" domainObjectName="Sort" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table>  -->
+			<!-- 
+			<table tableName="NEWS" domainObjectName="News" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+		 	<table tableName="NOTICE" domainObjectName="Notice" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="PROGRAMME" domainObjectName="Programme" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table>  --> 
+			
+			<!-- <table tableName="REPLY" domainObjectName="Reply" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="ROLE" domainObjectName="Role" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="STUDENT" domainObjectName="Student" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="STUDENTHREE" domainObjectName="Studenthree" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="STUDENTONE" domainObjectName="Studentone" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="STUDENTTWO" domainObjectName="Studenttwo" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="SUBJECT" domainObjectName="Subject" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="SYLLABUS" domainObjectName="Syllabus" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="TEACHER" domainObjectName="Teacher" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			<table tableName="TEACHERRESOURCE" domainObjectName="Teacherresource" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> -->
+			
+			<!-- <table tableName="TRANCLASS" domainObjectName="Tranclass" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table>   -->
+			
+				<table tableName="TEST" domainObjectName="Test" catalog="EDUVIDEO"
+			schema="dbo" enableCountByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" enableUpdateByExample="false"></table> 
+			
+			
+			
+			
+			
+			
+	</context>
+</generatorConfiguration>

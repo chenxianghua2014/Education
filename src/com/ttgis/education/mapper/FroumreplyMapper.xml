@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.FroumreplyMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Froumreply" >
+    <id column="FROUMREPLY_ID" property="froumreplyId" jdbcType="VARCHAR" />
+    <result column="FROUM_ID" property="froumId" jdbcType="VARCHAR" />
+    <result column="FROUMREPLY_USERID" property="froumreplyUserid" jdbcType="VARCHAR" />
+    <result column="FROUMREPLY_USERNAME" property="froumreplyUsername" jdbcType="VARCHAR" />
+    <result column="FROUMREPLY_REPLY_USERID" property="froumreplyReplyUserid" jdbcType="VARCHAR" />
+    <result column="FROUMREPLY_TIME" property="froumreplyTime" jdbcType="TIMESTAMP" />
+    <result column="FROUMREPLY_AT" property="froumreplyAt" jdbcType="TIMESTAMP" />
+    <result column="FROUMREPLY_DEL" property="froumreplyDel" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ttgis.education.entity.Froumreply" extends="BaseResultMap" >
+    <result column="FROUMREPLY_CONTENT" property="froumreplyContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FROUMREPLY_ID, FROUM_ID, FROUMREPLY_USERID, FROUMREPLY_USERNAME, FROUMREPLY_REPLY_USERID, 
+    FROUMREPLY_TIME, FROUMREPLY_AT, FROUMREPLY_DEL
+  </sql>
+  <sql id="Blob_Column_List" >
+    FROUMREPLY_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from FROUMREPLY
+    where FROUMREPLY_ID = #{froumreplyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from FROUMREPLY
+    where FROUMREPLY_ID = #{froumreplyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Froumreply" >
+    insert into FROUMREPLY (FROUMREPLY_ID, FROUM_ID, FROUMREPLY_USERID, 
+      FROUMREPLY_USERNAME, FROUMREPLY_REPLY_USERID, 
+      FROUMREPLY_TIME, FROUMREPLY_AT, FROUMREPLY_DEL, 
+      FROUMREPLY_CONTENT)
+    values (#{froumreplyId,jdbcType=VARCHAR}, #{froumId,jdbcType=VARCHAR}, #{froumreplyUserid,jdbcType=VARCHAR}, 
+      #{froumreplyUsername,jdbcType=VARCHAR}, #{froumreplyReplyUserid,jdbcType=VARCHAR}, 
+      #{froumreplyTime,jdbcType=TIMESTAMP}, #{froumreplyAt,jdbcType=TIMESTAMP}, #{froumreplyDel,jdbcType=INTEGER}, 
+      #{froumreplyContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Froumreply" >
+    insert into FROUMREPLY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="froumreplyId != null" >
+        FROUMREPLY_ID,
+      </if>
+      <if test="froumId != null" >
+        FROUM_ID,
+      </if>
+      <if test="froumreplyUserid != null" >
+        FROUMREPLY_USERID,
+      </if>
+      <if test="froumreplyUsername != null" >
+        FROUMREPLY_USERNAME,
+      </if>
+      <if test="froumreplyReplyUserid != null" >
+        FROUMREPLY_REPLY_USERID,
+      </if>
+      <if test="froumreplyTime != null" >
+        FROUMREPLY_TIME,
+      </if>
+      <if test="froumreplyAt != null" >
+        FROUMREPLY_AT,
+      </if>
+      <if test="froumreplyDel != null" >
+        FROUMREPLY_DEL,
+      </if>
+      <if test="froumreplyContent != null" >
+        FROUMREPLY_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="froumreplyId != null" >
+        #{froumreplyId,jdbcType=VARCHAR},
+      </if>
+      <if test="froumId != null" >
+        #{froumId,jdbcType=VARCHAR},
+      </if>
+      <if test="froumreplyUserid != null" >
+        #{froumreplyUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="froumreplyUsername != null" >
+        #{froumreplyUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="froumreplyReplyUserid != null" >
+        #{froumreplyReplyUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="froumreplyTime != null" >
+        #{froumreplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="froumreplyAt != null" >
+        #{froumreplyAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="froumreplyDel != null" >
+        #{froumreplyDel,jdbcType=INTEGER},
+      </if>
+      <if test="froumreplyContent != null" >
+        #{froumreplyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Froumreply" >
+    update FROUMREPLY
+    <set >
+      <if test="froumId != null" >
+        FROUM_ID = #{froumId,jdbcType=VARCHAR},
+      </if>
+      <if test="froumreplyUserid != null" >
+        FROUMREPLY_USERID = #{froumreplyUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="froumreplyUsername != null" >
+        FROUMREPLY_USERNAME = #{froumreplyUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="froumreplyReplyUserid != null" >
+        FROUMREPLY_REPLY_USERID = #{froumreplyReplyUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="froumreplyTime != null" >
+        FROUMREPLY_TIME = #{froumreplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="froumreplyAt != null" >
+        FROUMREPLY_AT = #{froumreplyAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="froumreplyDel != null" >
+        FROUMREPLY_DEL = #{froumreplyDel,jdbcType=INTEGER},
+      </if>
+      <if test="froumreplyContent != null" >
+        FROUMREPLY_CONTENT = #{froumreplyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where FROUMREPLY_ID = #{froumreplyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ttgis.education.entity.Froumreply" >
+    update FROUMREPLY
+    set FROUM_ID = #{froumId,jdbcType=VARCHAR},
+      FROUMREPLY_USERID = #{froumreplyUserid,jdbcType=VARCHAR},
+      FROUMREPLY_USERNAME = #{froumreplyUsername,jdbcType=VARCHAR},
+      FROUMREPLY_REPLY_USERID = #{froumreplyReplyUserid,jdbcType=VARCHAR},
+      FROUMREPLY_TIME = #{froumreplyTime,jdbcType=TIMESTAMP},
+      FROUMREPLY_AT = #{froumreplyAt,jdbcType=TIMESTAMP},
+      FROUMREPLY_DEL = #{froumreplyDel,jdbcType=INTEGER},
+      FROUMREPLY_CONTENT = #{froumreplyContent,jdbcType=LONGVARCHAR}
+    where FROUMREPLY_ID = #{froumreplyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Froumreply" >
+    update FROUMREPLY
+    set FROUM_ID = #{froumId,jdbcType=VARCHAR},
+      FROUMREPLY_USERID = #{froumreplyUserid,jdbcType=VARCHAR},
+      FROUMREPLY_USERNAME = #{froumreplyUsername,jdbcType=VARCHAR},
+      FROUMREPLY_REPLY_USERID = #{froumreplyReplyUserid,jdbcType=VARCHAR},
+      FROUMREPLY_TIME = #{froumreplyTime,jdbcType=TIMESTAMP},
+      FROUMREPLY_AT = #{froumreplyAt,jdbcType=TIMESTAMP},
+      FROUMREPLY_DEL = #{froumreplyDel,jdbcType=INTEGER}
+    where FROUMREPLY_ID = #{froumreplyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

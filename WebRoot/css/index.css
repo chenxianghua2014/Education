@@ -1,0 +1,57 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+ul,li{
+	list-style:none;
+}
+
+.clear{
+	clear:both;
+}
+
+/* .ssbox{
+	margin:0 125px;
+} */
+
+.ssbox .ssbox_h{
+	width:100%;  
+	height:24px;
+	background-color:#3a6ea5;
+	text-align:center;
+	line-height:24px;
+	position:relative;
+	margin-bottom:2px;
+	margin-top:2px;
+}
+.ssbox .ssbox_h a.ssbox_h_q{
+	font-size:15px;
+	text-decoration:none;
+	color:#fff;
+	display:inline-block;
+	width:80%;
+	height:35px;
+}
+.ssbox .ssbox_h a.ssbox_h_r{
+	position:absolute;
+	right:20px;
+	display:inline-block;
+	width:36px;
+	height:36px;
+	color:#fff;
+	font-size:18px;
+	text-decoration:none;
+}
+.ryxq_screening{ float:left; width:30%; margin-left:20px;}
+.ssbox div.ssbox_con_sele select{
+	 float:left;
+	margin:8px 8px; 
+	 /* float:left; width:30%; margin-left:20px; */
+}
+.ssbox ul li{
+	float:left;
+}
+.ssbox ul li input{
+	margin:8px 8px;
+	height:19px;
+}

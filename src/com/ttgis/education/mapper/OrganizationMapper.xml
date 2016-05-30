@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.OrganizationMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Organization" >
+    <id column="ORGANIZATION_ID" property="organizationId" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_DWMC" property="organizationDwmc" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_DWDM" property="organizationDwdm" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_DWZH" property="organizationDwzh" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_ZHMM" property="organizationZhmm" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_SJDW" property="organizationSjdw" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_DWJC" property="organizationDwjc" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_FWQX" property="organizationFwqx" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_DWFZR" property="organizationDwfzr" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_ZPLXR" property="organizationZplxr" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_LXRDH" property="organizationLxrdh" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_LXREMAIL" property="organizationLxremail" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_DWJJ" property="organizationDwjj" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_AT" property="organizationAt" jdbcType="TIMESTAMP" />
+    <result column="ORGANIZATION_DEL" property="organizationDel" jdbcType="INTEGER" />
+    <result column="SFJY" property="sfjy" jdbcType="VARCHAR" />
+    <result column="YJNFY" property="yjnfy" jdbcType="VARCHAR" />
+    <result column="YFFY" property="yffy" jdbcType="VARCHAR" />
+    <result column="CPCS" property="cpcs" jdbcType="INTEGER" />
+    <result column="ORGANIZATION_EJMM" property="organizationEjmm" jdbcType="VARCHAR" />
+    <result column="ORGANIZATION_ORDER" property="organizationOrder" jdbcType="INTEGER" />
+    <result column="ORGANIZATION_GZDH" property="organizationGzdh" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ORGANIZATION_ID, ORGANIZATION_DWMC, ORGANIZATION_DWDM, ORGANIZATION_DWZH, ORGANIZATION_ZHMM, 
+    ORGANIZATION_SJDW, ORGANIZATION_DWJC, ORGANIZATION_FWQX, ORGANIZATION_DWFZR, ORGANIZATION_ZPLXR, 
+    ORGANIZATION_LXRDH, ORGANIZATION_LXREMAIL, ORGANIZATION_DWJJ, ORGANIZATION_AT, ORGANIZATION_DEL, 
+    SFJY, YJNFY, YFFY, CPCS, ORGANIZATION_EJMM, ORGANIZATION_ORDER, ORGANIZATION_GZDH
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ORGANIZATION
+    where ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ORGANIZATION
+    where ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Organization" >
+    insert into ORGANIZATION (ORGANIZATION_ID, ORGANIZATION_DWMC, 
+      ORGANIZATION_DWDM, ORGANIZATION_DWZH, ORGANIZATION_ZHMM, 
+      ORGANIZATION_SJDW, ORGANIZATION_DWJC, ORGANIZATION_FWQX, 
+      ORGANIZATION_DWFZR, ORGANIZATION_ZPLXR, ORGANIZATION_LXRDH, 
+      ORGANIZATION_LXREMAIL, ORGANIZATION_DWJJ, 
+      ORGANIZATION_AT, ORGANIZATION_DEL, SFJY, 
+      YJNFY, YFFY, CPCS, 
+      ORGANIZATION_EJMM, ORGANIZATION_ORDER, ORGANIZATION_GZDH
+      )
+    values (#{organizationId,jdbcType=VARCHAR}, #{organizationDwmc,jdbcType=VARCHAR}, 
+      #{organizationDwdm,jdbcType=VARCHAR}, #{organizationDwzh,jdbcType=VARCHAR}, #{organizationZhmm,jdbcType=VARCHAR}, 
+      #{organizationSjdw,jdbcType=VARCHAR}, #{organizationDwjc,jdbcType=VARCHAR}, #{organizationFwqx,jdbcType=VARCHAR}, 
+      #{organizationDwfzr,jdbcType=VARCHAR}, #{organizationZplxr,jdbcType=VARCHAR}, #{organizationLxrdh,jdbcType=VARCHAR}, 
+      #{organizationLxremail,jdbcType=VARCHAR}, #{organizationDwjj,jdbcType=VARCHAR}, 
+      #{organizationAt,jdbcType=TIMESTAMP}, #{organizationDel,jdbcType=INTEGER}, #{sfjy,jdbcType=VARCHAR}, 
+      #{yjnfy,jdbcType=VARCHAR}, #{yffy,jdbcType=VARCHAR}, #{cpcs,jdbcType=INTEGER}, 
+      #{organizationEjmm,jdbcType=VARCHAR}, #{organizationOrder,jdbcType=INTEGER}, #{organizationGzdh,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Organization" >
+    insert into ORGANIZATION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="organizationId != null" >
+        ORGANIZATION_ID,
+      </if>
+      <if test="organizationDwmc != null" >
+        ORGANIZATION_DWMC,
+      </if>
+      <if test="organizationDwdm != null" >
+        ORGANIZATION_DWDM,
+      </if>
+      <if test="organizationDwzh != null" >
+        ORGANIZATION_DWZH,
+      </if>
+      <if test="organizationZhmm != null" >
+        ORGANIZATION_ZHMM,
+      </if>
+      <if test="organizationSjdw != null" >
+        ORGANIZATION_SJDW,
+      </if>
+      <if test="organizationDwjc != null" >
+        ORGANIZATION_DWJC,
+      </if>
+      <if test="organizationFwqx != null" >
+        ORGANIZATION_FWQX,
+      </if>
+      <if test="organizationDwfzr != null" >
+        ORGANIZATION_DWFZR,
+      </if>
+      <if test="organizationZplxr != null" >
+        ORGANIZATION_ZPLXR,
+      </if>
+      <if test="organizationLxrdh != null" >
+        ORGANIZATION_LXRDH,
+      </if>
+      <if test="organizationLxremail != null" >
+        ORGANIZATION_LXREMAIL,
+      </if>
+      <if test="organizationDwjj != null" >
+        ORGANIZATION_DWJJ,
+      </if>
+      <if test="organizationAt != null" >
+        ORGANIZATION_AT,
+      </if>
+      <if test="organizationDel != null" >
+        ORGANIZATION_DEL,
+      </if>
+      <if test="sfjy != null" >
+        SFJY,
+      </if>
+      <if test="yjnfy != null" >
+        YJNFY,
+      </if>
+      <if test="yffy != null" >
+        YFFY,
+      </if>
+      <if test="cpcs != null" >
+        CPCS,
+      </if>
+      <if test="organizationEjmm != null" >
+        ORGANIZATION_EJMM,
+      </if>
+      <if test="organizationOrder != null" >
+        ORGANIZATION_ORDER,
+      </if>
+      <if test="organizationGzdh != null" >
+        ORGANIZATION_GZDH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwmc != null" >
+        #{organizationDwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwdm != null" >
+        #{organizationDwdm,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwzh != null" >
+        #{organizationDwzh,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationZhmm != null" >
+        #{organizationZhmm,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationSjdw != null" >
+        #{organizationSjdw,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwjc != null" >
+        #{organizationDwjc,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationFwqx != null" >
+        #{organizationFwqx,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwfzr != null" >
+        #{organizationDwfzr,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationZplxr != null" >
+        #{organizationZplxr,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationLxrdh != null" >
+        #{organizationLxrdh,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationLxremail != null" >
+        #{organizationLxremail,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwjj != null" >
+        #{organizationDwjj,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationAt != null" >
+        #{organizationAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizationDel != null" >
+        #{organizationDel,jdbcType=INTEGER},
+      </if>
+      <if test="sfjy != null" >
+        #{sfjy,jdbcType=VARCHAR},
+      </if>
+      <if test="yjnfy != null" >
+        #{yjnfy,jdbcType=VARCHAR},
+      </if>
+      <if test="yffy != null" >
+        #{yffy,jdbcType=VARCHAR},
+      </if>
+      <if test="cpcs != null" >
+        #{cpcs,jdbcType=INTEGER},
+      </if>
+      <if test="organizationEjmm != null" >
+        #{organizationEjmm,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationOrder != null" >
+        #{organizationOrder,jdbcType=INTEGER},
+      </if>
+      <if test="organizationGzdh != null" >
+        #{organizationGzdh,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Organization" >
+    update ORGANIZATION
+    <set >
+      <if test="organizationDwmc != null" >
+        ORGANIZATION_DWMC = #{organizationDwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwdm != null" >
+        ORGANIZATION_DWDM = #{organizationDwdm,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwzh != null" >
+        ORGANIZATION_DWZH = #{organizationDwzh,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationZhmm != null" >
+        ORGANIZATION_ZHMM = #{organizationZhmm,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationSjdw != null" >
+        ORGANIZATION_SJDW = #{organizationSjdw,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwjc != null" >
+        ORGANIZATION_DWJC = #{organizationDwjc,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationFwqx != null" >
+        ORGANIZATION_FWQX = #{organizationFwqx,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwfzr != null" >
+        ORGANIZATION_DWFZR = #{organizationDwfzr,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationZplxr != null" >
+        ORGANIZATION_ZPLXR = #{organizationZplxr,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationLxrdh != null" >
+        ORGANIZATION_LXRDH = #{organizationLxrdh,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationLxremail != null" >
+        ORGANIZATION_LXREMAIL = #{organizationLxremail,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDwjj != null" >
+        ORGANIZATION_DWJJ = #{organizationDwjj,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationAt != null" >
+        ORGANIZATION_AT = #{organizationAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizationDel != null" >
+        ORGANIZATION_DEL = #{organizationDel,jdbcType=INTEGER},
+      </if>
+      <if test="sfjy != null" >
+        SFJY = #{sfjy,jdbcType=VARCHAR},
+      </if>
+      <if test="yjnfy != null" >
+        YJNFY = #{yjnfy,jdbcType=VARCHAR},
+      </if>
+      <if test="yffy != null" >
+        YFFY = #{yffy,jdbcType=VARCHAR},
+      </if>
+      <if test="cpcs != null" >
+        CPCS = #{cpcs,jdbcType=INTEGER},
+      </if>
+      <if test="organizationEjmm != null" >
+        ORGANIZATION_EJMM = #{organizationEjmm,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationOrder != null" >
+        ORGANIZATION_ORDER = #{organizationOrder,jdbcType=INTEGER},
+      </if>
+      <if test="organizationGzdh != null" >
+        ORGANIZATION_GZDH = #{organizationGzdh,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Organization" >
+    update ORGANIZATION
+    set ORGANIZATION_DWMC = #{organizationDwmc,jdbcType=VARCHAR},
+      ORGANIZATION_DWDM = #{organizationDwdm,jdbcType=VARCHAR},
+      ORGANIZATION_DWZH = #{organizationDwzh,jdbcType=VARCHAR},
+      ORGANIZATION_ZHMM = #{organizationZhmm,jdbcType=VARCHAR},
+      ORGANIZATION_SJDW = #{organizationSjdw,jdbcType=VARCHAR},
+      ORGANIZATION_DWJC = #{organizationDwjc,jdbcType=VARCHAR},
+      ORGANIZATION_FWQX = #{organizationFwqx,jdbcType=VARCHAR},
+      ORGANIZATION_DWFZR = #{organizationDwfzr,jdbcType=VARCHAR},
+      ORGANIZATION_ZPLXR = #{organizationZplxr,jdbcType=VARCHAR},
+      ORGANIZATION_LXRDH = #{organizationLxrdh,jdbcType=VARCHAR},
+      ORGANIZATION_LXREMAIL = #{organizationLxremail,jdbcType=VARCHAR},
+      ORGANIZATION_DWJJ = #{organizationDwjj,jdbcType=VARCHAR},
+      ORGANIZATION_AT = #{organizationAt,jdbcType=TIMESTAMP},
+      ORGANIZATION_DEL = #{organizationDel,jdbcType=INTEGER},
+      SFJY = #{sfjy,jdbcType=VARCHAR},
+      YJNFY = #{yjnfy,jdbcType=VARCHAR},
+      YFFY = #{yffy,jdbcType=VARCHAR},
+      CPCS = #{cpcs,jdbcType=INTEGER},
+      ORGANIZATION_EJMM = #{organizationEjmm,jdbcType=VARCHAR},
+      ORGANIZATION_ORDER = #{organizationOrder,jdbcType=INTEGER},
+      ORGANIZATION_GZDH = #{organizationGzdh,jdbcType=VARCHAR}
+    where ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR}
+  </update>
+   <!-- 查询组织架构 -->
+   <select id="selectAllOrganization" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from ORGANIZATION where ORGANIZATION_DEL = 1 
+    order by CPCS
+  </select>
+  <!-- 查询条数 -->
+  <select id="selectCourseBySyllabusIdRows" resultType="int" parameterType="com.ttgis.education.entity.page.CoursePage">
+  	select 
+    count(*)
+    from ORGANIZATION
+    where ORGANIZATION_DEL = 1 
+   <!--  <trim prefix="and">
+	    <if test="syllabusId != null">
+	    	SYLLABUS_ID = #{syllabusId,jdbcType=VARCHAR}
+	    </if>
+    </trim>
+    <trim prefix="and">
+    	<if test="courseType != null">
+	    	COURSE_TYPE = #{courseType,jdbcType=VARCHAR}
+	    </if>
+	</trim> -->
+  </select>
+  <!-- 分页查询 -->
+  <select id="selectCourseBySyllabusId" resultMap="BaseResultMap" parameterType="com.ttgis.education.entity.page.CoursePage">
+  	<!-- select 
+    <include refid="Base_Column_List" />
+    from COURSE
+    where COURSE_DEL = 1 
+    <trim prefix="and">
+    <if test="syllabusId != null">
+    	SYLLABUS_ID = #{syllabusId,jdbcType=VARCHAR}
+    </if>
+    </trim> -->
+    
+    <!-- SELECT TOP 15 * FROM [EDUVIDEO].[dbo].[COURSE]
+	WHERE [COURSE_ID] NOT IN(SELECT TOP 10 [COURSE_ID] FROM [EDUVIDEO].[dbo].[COURSE])
+	AND COURSE_DEL = 1 
+    <trim prefix="and">
+    <if test="syllabusId != null">
+    	SYLLABUS_ID = #{syllabusId,jdbcType=VARCHAR}
+    </if>
+    </trim> -->
+    
+     select 
+	<include refid="Base_Column_List" />
+		from (
+            select *,ROW_NUMBER() OVER (ORDER BY ORGANIZATION_AT) as r from ORGANIZATION
+            where ORGANIZATION_DEL = 1 
+<!--              <trim prefix="and">
+			    <if test="syllabusId != null">
+			    	SYLLABUS_ID = #{syllabusId,jdbcType=VARCHAR}
+			    </if>
+			    
+		    </trim>
+		    <trim prefix="and">
+		    	<if test="courseType != null">
+			    	COURSE_TYPE = #{courseType,jdbcType=VARCHAR}
+			    </if>
+			</trim> -->
+        )  as t 
+        <![CDATA[    
+            where r>#{begin} and r<=#{end}	
+        ]]>
+  </select>
+  <!-- 判断是否是二级单位 -->
+   <select id="judgeTwoUnits" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select count(*)
+    from ORGANIZATION
+    where ORGANIZATION_SJDW = #{organizationId,jdbcType=VARCHAR}
+  </select>
+  
+   <!-- 查询条数联动 -->
+  <select id="organizationByID"  resultMap="BaseResultMap" parameterType="com.ttgis.education.entity.Organization">
+  	select  * 
+    from ORGANIZATION
+    where ORGANIZATION_DEL = 1  
+	<if test="organizationOrder ==1 or organizationOrder==5">
+	 <![CDATA[  
+			and ORGANIZATION_SJDW = #{organizationId}
+			 ]]>  
+	 </if>
+	 <if test="organizationOrder ==2">
+	 <![CDATA[  
+			and ORGANIZATION_ID = #{organizationId}
+			 ]]>  
+	 </if>
+	  <if test="organizationOrder ==3">
+	 <![CDATA[  
+			and ORGANIZATION_ID = 
+			(	select  ORGANIZATION_SJDW  from ORGANIZATION  where ORGANIZATION_DEL = 1  and ORGANIZATION_ID = #{organizationId})
+			 ]]>  
+	 </if>
+	 order by CPCS
+  
+  </select>
+  
+  
+  <!-- 查询条数 -->
+  <select id="organizationMyID"  resultMap="BaseResultMap" parameterType="com.ttgis.education.entity.Organization">
+  	select  * 
+    from ORGANIZATION
+    where ORGANIZATION_DEL = 1  and ORGANIZATION_ID = #{organizationId} 
+	order by CPCS
+  
+  </select>
+  
+  
+  
+  
+  
+      <!-- 分页显示 -->
+<select id="selectPageAll" parameterType="com.ttgis.education.entity.Organization"   resultMap="BaseResultMap">
+select top ${size}  *
+from ORGANIZATION 
+where ORGANIZATION_ID not in
+(
+ select top ${page} ORGANIZATION_ID from ORGANIZATION  where 1=1 
+  <if test="organizationSjdw != null and organizationSjdw != ''">
+	 <![CDATA[  
+			and ORGANIZATION_SJDW = #{organizationSjdw} 
+			 ]]>  
+	 </if>
+	  <if test="organizationDwmc != null and organizationDwmc != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC  like '%${organizationDwmc}%'
+			 ]]>  
+	 </if>
+
+  order by CPCS
+) 
+ <if test="organizationSjdw != null and organizationSjdw != ''">
+	 <![CDATA[  
+			and ORGANIZATION_SJDW = #{organizationSjdw} 
+			 ]]>  
+	 </if>
+	  <if test="organizationDwmc != null and organizationDwmc != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC  like '%${organizationDwmc}%'
+			 ]]>  
+	 </if>
+ order by CPCS
+
+
+ </select>
+ 
+   <!--总条数 -->
+ <select id="OrganizationCount"  parameterType="com.ttgis.education.entity.Organization"  resultType="int">
+  	select  count(*)
+    from ORGANIZATION  where 1=1 
+     <if test="organizationSjdw != null and organizationSjdw != ''">
+	 <![CDATA[  
+			and ORGANIZATION_SJDW = #{organizationSjdw} 
+			 ]]>  
+	 </if>
+	 <if test="organizationDwmc != null and organizationDwmc != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC  like '%${organizationDwmc}%'
+			 ]]>  
+	 </if>
+  </select>
+  
+  
+  <!-- 查询下级 -->
+  <select id="organizationSJID"  resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select  * 
+    from ORGANIZATION
+    where ORGANIZATION_DEL = 1  and ORGANIZATION_SJDW = #{organizationId} 
+    order by CPCS
+  </select>
+  
+  
+  
+    <!-- 部门调转单位平级 -->
+  <select id="organizationHBSJID"  resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select  * 
+    from ORGANIZATION
+    where ORGANIZATION_DEL = 1  and ORGANIZATION_SJDW = (select ORGANIZATION_SJDW from ORGANIZATION where ORGANIZATION_ID=#{organizationId} )
+    order by CPCS
+  </select>
+  
+  
+  <!-- 组织合并修改 -->
+  <update id="updateHB" parameterType="com.ttgis.education.entity.Organization" >
+    update ORGANIZATION
+    set 
+      ORGANIZATION_SJDW = #{organizationSjdw,jdbcType=VARCHAR}
+    where ORGANIZATION_SJDW = #{organizationId,jdbcType=VARCHAR}
+  </update>
+  
+  <!--（课程推送） 查询组织架构 -->
+   <select id="selectOrganizationKe" parameterType="com.ttgis.education.entity.Organization"   resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from ORGANIZATION where ORGANIZATION_DEL = 1 
+     <if test="fwcj == 1">
+	 <![CDATA[  
+			and  ORGANIZATION_FWQX != #{organizationFwqx,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+	  <if test="fwcj == 2">
+	 <![CDATA[  
+			and  ORGANIZATION_FWQX = #{organizationFwqx,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+	  <if test="fwcj == 3">
+	 <![CDATA[ 
+			and ORGANIZATION_SJDW = #{organizationSjdw,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+    
+    order by CPCS
+  </select>
+  
+</mapper>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.PapersMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Papers" >
+    <id column="PAPERS_ID" property="papersId" jdbcType="VARCHAR" />
+    <result column="RULD_ID" property="ruldId" jdbcType="VARCHAR" />
+    <result column="SUBJECT_ID" property="subjectId" jdbcType="VARCHAR" />
+    <result column="COURSE_ID" property="courseId" jdbcType="VARCHAR" />
+    <result column="PAPERS_THE" property="papersThe" jdbcType="INTEGER" />
+    <result column="PAPERS_DEL" property="papersDel" jdbcType="INTEGER" />
+    <result column="PAPERS_AT" property="papersAt" jdbcType="TIMESTAMP" />
+     <collection property="subject" column="SUBJECT_ID" ofType="com.ttgis.education.entity.Subject">    
+            <id column="SUBJECT_ID" property="subjectId" jdbcType="VARCHAR" />
+		<result column="COURSE_ID" property="courseId" jdbcType="VARCHAR" />
+		<result column="SUBJECT_NAME" property="subjectName" jdbcType="VARCHAR" />
+		<result column="SUBJECT_STATE" property="subjectState"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_CATALOG" property="subjectCatalog"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_PRODUCER" property="subjectProducer"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_RANK" property="subjectRank" jdbcType="INTEGER" />
+		<result column="SUBJECT_TYPE" property="subjectType" jdbcType="VARCHAR" />
+		<result column="SUBJECT_TOPIC" property="subjectTopic"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_A" property="subjectA" jdbcType="VARCHAR" />
+		<result column="SUBJECT_B" property="subjectB" jdbcType="VARCHAR" />
+		<result column="SUBJECT_C" property="subjectC" jdbcType="VARCHAR" />
+		<result column="SUBJECT_D" property="subjectD" jdbcType="VARCHAR" />
+		<result column="SUBJECT_E" property="subjectE" jdbcType="VARCHAR" />
+		<result column="SUBJECT_F" property="subjectF" jdbcType="VARCHAR" />
+		<result column="SUBJECT_ANSWER" property="subjectAnswer"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_EXPLAIN" property="subjectExplain"
+			jdbcType="VARCHAR" />
+		<result column="SUBJECT_AT" property="subjectAt" jdbcType="TIMESTAMP" />
+		<result column="SUBJECT_DEL" property="subjectDel" jdbcType="INTEGER" />
+		<result column="SUBJECT_SCORE" property="subjectScore" jdbcType="DOUBLE" />
+     </collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PAPERS_ID, RULD_ID, SUBJECT_ID, COURSE_ID, PAPERS_THE, PAPERS_DEL, PAPERS_AT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PAPERS
+    where PAPERS_ID = #{papersId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from PAPERS
+    where PAPERS_ID = #{papersId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Papers" >
+    insert into PAPERS (PAPERS_ID, RULD_ID, SUBJECT_ID, 
+      COURSE_ID, PAPERS_THE, PAPERS_DEL, 
+      PAPERS_AT)
+    values (#{papersId,jdbcType=VARCHAR}, #{ruldId,jdbcType=VARCHAR}, #{subjectId,jdbcType=VARCHAR}, 
+      #{courseId,jdbcType=VARCHAR}, #{papersThe,jdbcType=INTEGER}, #{papersDel,jdbcType=INTEGER}, 
+      #{papersAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Papers" >
+    insert into PAPERS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="papersId != null" >
+        PAPERS_ID,
+      </if>
+      <if test="ruldId != null" >
+        RULD_ID,
+      </if>
+      <if test="subjectId != null" >
+        SUBJECT_ID,
+      </if>
+      <if test="courseId != null" >
+        COURSE_ID,
+      </if>
+      <if test="papersThe != null" >
+        PAPERS_THE,
+      </if>
+      <if test="papersDel != null" >
+        PAPERS_DEL,
+      </if>
+      <if test="papersAt != null" >
+        PAPERS_AT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="papersId != null" >
+        #{papersId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruldId != null" >
+        #{ruldId,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null" >
+        #{subjectId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="papersThe != null" >
+        #{papersThe,jdbcType=INTEGER},
+      </if>
+      <if test="papersDel != null" >
+        #{papersDel,jdbcType=INTEGER},
+      </if>
+      <if test="papersAt != null" >
+        #{papersAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Papers" >
+    update PAPERS
+    <set >
+      <if test="ruldId != null" >
+        RULD_ID = #{ruldId,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectId != null" >
+        SUBJECT_ID = #{subjectId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        COURSE_ID = #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="papersThe != null" >
+        PAPERS_THE = #{papersThe,jdbcType=INTEGER},
+      </if>
+      <if test="papersDel != null" >
+        PAPERS_DEL = #{papersDel,jdbcType=INTEGER},
+      </if>
+      <if test="papersAt != null" >
+        PAPERS_AT = #{papersAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PAPERS_ID = #{papersId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Papers" >
+    update PAPERS
+    set RULD_ID = #{ruldId,jdbcType=VARCHAR},
+      SUBJECT_ID = #{subjectId,jdbcType=VARCHAR},
+      COURSE_ID = #{courseId,jdbcType=VARCHAR},
+      PAPERS_THE = #{papersThe,jdbcType=INTEGER},
+      PAPERS_DEL = #{papersDel,jdbcType=INTEGER},
+      PAPERS_AT = #{papersAt,jdbcType=TIMESTAMP}
+    where PAPERS_ID = #{papersId,jdbcType=VARCHAR}
+  </update>
+  
+   <!--试卷套数 -->
+	<select id="selectCountByWhere" parameterType="com.ttgis.education.entity.Papers"
+		resultType="int">
+		select PAPERS_THE
+		from PAPERS where PAPERS_DEL = 1 
+		and RULD_ID=#{ruldId,jdbcType=VARCHAR}
+		and COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		 group by PAPERS_THE 
+		 ORDER BY PAPERS_THE
+	</select>
+	
+	
+	 <!--随机抽取试题 -->
+	<select id="thePapers" parameterType="com.ttgis.education.entity.Papers"
+		resultMap="BaseResultMap">
+		select top 1 PAPERS_THE
+		from PAPERS where PAPERS_DEL = 1 
+		and RULD_ID=#{ruldId,jdbcType=VARCHAR}
+		and COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		 group by PAPERS_THE 
+		  ORDER BY NEWID()
+	</select>
+	
+	
+	 <!--获取试卷 -->
+	<select id="MyPapersQuery" parameterType="com.ttgis.education.entity.Papers"
+		resultMap="BaseResultMap">
+		select *
+		from PAPERS as p , SUBJECT as s
+		where p.PAPERS_DEL = 1 
+		and s.SUBJECT_ID = p.SUBJECT_ID
+		and p.RULD_ID=#{ruldId,jdbcType=VARCHAR}
+		and p.COURSE_ID =#{courseId,jdbcType=VARCHAR} 
+		and p.PAPERS_THE=#{papersThe,jdbcType=VARCHAR}
+		ORDER BY s.SUBJECT_TYPE 
+	</select>
+	
+	  <!-- 删除试卷   -->
+  <update id="updatePid" parameterType="com.ttgis.education.entity.Papers">
+    update PAPERS
+    set
+  	PAPERS_DEL =  0
+    where RULD_ID=#{ruldId,jdbcType=VARCHAR}
+    <if test="papersThe != null" >
+    and PAPERS_THE=#{papersThe,jdbcType=VARCHAR}
+    </if>
+    and COURSE_ID =#{courseId,jdbcType=VARCHAR} 
+  </update>
+  
+  
+   <!--试卷最后一套 -->
+	<select id="PapersMySum" parameterType="com.ttgis.education.entity.Papers"
+		resultMap="BaseResultMap">
+		select top 1 *
+		from PAPERS 
+		where PAPERS_DEL = 1 
+		and RULD_ID=#{ruldId,jdbcType=VARCHAR}
+		and COURSE_ID =#{courseId,jdbcType=VARCHAR} 
+		ORDER BY PAPERS_THE desc
+	</select>
+  
+  	 <!--根据课程ID查询全部 -->
+	<select id="thePapersCourseId" parameterType="com.ttgis.education.entity.Papers"
+		resultMap="BaseResultMap">
+		select *
+		from PAPERS where PAPERS_DEL = 1 
+		and COURSE_ID =#{courseId,jdbcType=VARCHAR}
+		 order by PAPERS_AT desc
+	</select>
+</mapper>

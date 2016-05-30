@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="cacheEnabled" value="false" />
+        <setting name="lazyLoadingEnabled" value="false" />
+        <setting name="aggressiveLazyLoading" value="false" />
+        <setting name="multipleResultSetsEnabled" value="false" />
+        <setting name="useColumnLabel" value="true" />
+        <setting name="autoMappingBehavior" value="FULL" />
+        <setting name="defaultExecutorType" value="SIMPLE" />
+        <setting name="defaultStatementTimeout" value="25000" />
+    </settings>
+    <!-- 此处注册所有mybatis用到的domain别名 -->
+	<plugins>
+		<plugin interceptor="com.ttgis.education.plugin.PagePlugin">
+			<property name="dialect" value="Microsoft SQL Server"/>
+			<property name="pageSql" value=".*listPage.*"/>
+		</plugin>
+	</plugins>
+</configuration>

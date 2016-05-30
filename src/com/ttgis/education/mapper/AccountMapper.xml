@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Account" >
+    <id column="ACCOUNT_ID" property="accountId" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_LOGINID" property="accountLoginid" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_PASSWORD" property="accountPassword" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_CATALOG" property="accountCatalog" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_TYPE" property="accountType" jdbcType="INTEGER" />
+    <result column="ACCOUNT_RANK" property="accountRank" jdbcType="INTEGER" />
+    <result column="ACCOUNT_ADMIN" property="accountAdmin" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_AT" property="accountAt" jdbcType="TIMESTAMP" />
+    <result column="ACCOUNT_DEL" property="accountDel" jdbcType="INTEGER" />
+    <result column="ACCOUNT_NAME" property="accountName" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_PHONE" property="accountPhone" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_SFZH" property="accountSfzh" jdbcType="VARCHAR" />
+    <collection property="organization" column="accountCatalog" ofType="com.ttgis.education.entity.Organization">    
+            <id property="organizationId" column="ORGANIZATION_ID" />    
+            <result property="organizationDwmc" column="ORGANIZATION_DWMC" />    
+     </collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ACCOUNT_ID, ACCOUNT_LOGINID, ACCOUNT_PASSWORD, ACCOUNT_CATALOG, ACCOUNT_TYPE, ACCOUNT_RANK, 
+    ACCOUNT_ADMIN, ACCOUNT_AT, ACCOUNT_DEL,ACCOUNT_NAME,ACCOUNT_PHONE,ACCOUNT_SFZH
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ACCOUNT
+    where ACCOUNT_ID = #{accountId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ACCOUNT
+    where ACCOUNT_ID = #{accountId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Account" >
+    insert into ACCOUNT (ACCOUNT_ID, ACCOUNT_LOGINID, ACCOUNT_PASSWORD, 
+      ACCOUNT_CATALOG, ACCOUNT_TYPE, ACCOUNT_RANK, 
+      ACCOUNT_ADMIN, ACCOUNT_AT, ACCOUNT_DEL,ACCOUNT_NAME,ACCOUNT_PHONE,ACCOUNT_SFZH
+      )
+    values (#{accountId,jdbcType=VARCHAR}, #{accountLoginid,jdbcType=VARCHAR}, #{accountPassword,jdbcType=VARCHAR}, 
+      #{accountCatalog,jdbcType=VARCHAR}, #{accountType,jdbcType=INTEGER}, #{accountRank,jdbcType=INTEGER}, 
+      #{accountAdmin,jdbcType=VARCHAR}, #{accountAt,jdbcType=TIMESTAMP}, #{accountDel,jdbcType=INTEGER},
+      #{accountName,jdbcType=VARCHAR}, #{accountPhone,jdbcType=VARCHAR}, #{accountSfzh,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Account" >
+    insert into ACCOUNT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountId != null" >
+        ACCOUNT_ID,
+      </if>
+      <if test="accountLoginid != null" >
+        ACCOUNT_LOGINID,
+      </if>
+      <if test="accountPassword != null" >
+        ACCOUNT_PASSWORD,
+      </if>
+      <if test="accountCatalog != null" >
+        ACCOUNT_CATALOG,
+      </if>
+      <if test="accountType != null" >
+        ACCOUNT_TYPE,
+      </if>
+      <if test="accountRank != null" >
+        ACCOUNT_RANK,
+      </if>
+      <if test="accountAdmin != null" >
+        ACCOUNT_ADMIN,
+      </if>
+      <if test="accountAt != null" >
+        ACCOUNT_AT,
+      </if>
+      <if test="accountDel != null" >
+        ACCOUNT_DEL,
+      </if>
+       <if test="accountName != null" >
+        ACCOUNT_NAME,
+      </if>
+       <if test="accountPhone != null" >
+        ACCOUNT_PHONE,
+      </if>
+      <if test="accountSfzh != null" >
+        ACCOUNT_SFZH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountId != null" >
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountLoginid != null" >
+        #{accountLoginid,jdbcType=VARCHAR},
+      </if>
+      <if test="accountPassword != null" >
+        #{accountPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCatalog != null" >
+        #{accountCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="accountRank != null" >
+        #{accountRank,jdbcType=INTEGER},
+      </if>
+      <if test="accountAdmin != null" >
+        #{accountAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="accountAt != null" >
+        #{accountAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountDel != null" >
+        #{accountDel,jdbcType=INTEGER},
+      </if>
+       <if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+       <if test="accountPhone != null" >
+        #{accountPhone,jdbcType=VARCHAR},
+      </if>
+       <if test="accountSfzh != null" >
+        #{accountSfzh,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Account" >
+    update ACCOUNT
+    <set >
+      <if test="accountLoginid != null" >
+        ACCOUNT_LOGINID = #{accountLoginid,jdbcType=VARCHAR},
+      </if>
+      <if test="accountPassword != null" >
+        ACCOUNT_PASSWORD = #{accountPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCatalog != null" >
+        ACCOUNT_CATALOG = #{accountCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        ACCOUNT_TYPE = #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="accountRank != null" >
+        ACCOUNT_RANK = #{accountRank,jdbcType=INTEGER},
+      </if>
+      <if test="accountAdmin != null" >
+        ACCOUNT_ADMIN = #{accountAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="accountAt != null" >
+        ACCOUNT_AT = #{accountAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountDel != null" >
+        ACCOUNT_DEL = #{accountDel,jdbcType=INTEGER},
+      </if>
+      <if test="accountName != null" >
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountPhone != null" >
+        ACCOUNT_PHONE = #{accountPhone,jdbcType=VARCHAR},
+      </if>
+       <if test="accountSfzh != null" >
+        ACCOUNT_SFZH = #{accountSfzh,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ACCOUNT_ID = #{accountId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Account" >
+    update ACCOUNT
+    set ACCOUNT_LOGINID = #{accountLoginid,jdbcType=VARCHAR},
+      ACCOUNT_PASSWORD = #{accountPassword,jdbcType=VARCHAR},
+      ACCOUNT_CATALOG = #{accountCatalog,jdbcType=VARCHAR},
+      ACCOUNT_TYPE = #{accountType,jdbcType=INTEGER},
+      ACCOUNT_RANK = #{accountRank,jdbcType=INTEGER},
+      ACCOUNT_ADMIN = #{accountAdmin,jdbcType=VARCHAR},
+      ACCOUNT_AT = #{accountAt,jdbcType=TIMESTAMP},
+      ACCOUNT_DEL = #{accountDel,jdbcType=INTEGER},
+      ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      ACCOUNT_PHONE = #{accountPhone,jdbcType=VARCHAR},
+      ACCOUNT_SFZH = #{accountSfzh,jdbcType=VARCHAR}
+    where ACCOUNT_ID = #{accountId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 根据名称和密码登录后台  -->
+   <select id="checkLogin" resultMap="BaseResultMap" parameterType="com.ttgis.education.entity.Account">
+  		select * from ACCOUNT 
+		where ACCOUNT_LOGINID = #{accountLoginid,jdbcType=VARCHAR} 
+		AND ACCOUNT_PASSWORD = #{accountPassword,jdbcType=VARCHAR}
+		AND ACCOUNT_DEL = 1
+  </select>
+  
+    <!-- 分页显示 -->
+<select id="selectPageAll" parameterType="com.ttgis.education.entity.Account"   resultMap="BaseResultMap">
+select top ${size}  *
+from ACCOUNT a , ORGANIZATION o
+where ACCOUNT_ID not in
+(
+ select top ${page} ACCOUNT_ID from ACCOUNT where 1=1
+ <if test="accountType ==2 or accountType == 3">
+	 <![CDATA[  
+			and ACCOUNT_CATALOG=#{accountCatalog} 
+			 ]]>  
+	 </if>
+	 <if test="accountType ==5">
+	 <![CDATA[  
+			and ACCOUNT_TYPE<>4
+			 ]]>  
+	 </if>
+     <if test="accountLoginid != null and accountLoginid != ''">
+	 <![CDATA[  
+			and ACCOUNT_LOGINID  like '%${accountLoginid}%'
+			 ]]>  
+	 </if>
+
+  order by ACCOUNT_AT
+) 
+and o.ORGANIZATION_ID=a.ACCOUNT_CATALOG
+<if test="accountType ==2 or accountType == 3">
+	 <![CDATA[  
+			and ACCOUNT_CATALOG=#{accountCatalog} 
+			 ]]>  
+	 </if>
+	 <if test="accountType ==5">
+	 <![CDATA[  
+			and ACCOUNT_TYPE<>4
+			 ]]>  
+	 </if>
+	  <if test="accountLoginid != null and accountLoginid != ''">
+	 <![CDATA[  
+			and ACCOUNT_LOGINID  like '%${accountLoginid}%'
+			 ]]>  
+	 </if>
+ order by ACCOUNT_AT
+
+
+ </select>
+ 
+   <!--总条数 -->
+ <select id="AccountCount"  parameterType="com.ttgis.education.entity.Account"  resultType="int">
+  	select  count(*)
+    from ACCOUNT  where 1=1
+     <if test="accountType ==2 or accountType == 3">
+	 <![CDATA[  
+			and ACCOUNT_CATALOG=#{accountCatalog} 
+			 ]]>  
+	 </if>
+	 <if test="accountType ==5">
+	 <![CDATA[  
+			and ACCOUNT_TYPE<>4
+			 ]]>  
+	 </if>
+
+	  <if test="accountLoginid != null and accountLoginid != ''">
+	 <![CDATA[  
+			and ACCOUNT_LOGINID  like '%${accountLoginid}%'
+			 ]]>  
+	 </if>
+    
+
+  </select>
+  
+   <!--ID查询 -->
+ <select id="AccountById"  parameterType="com.ttgis.education.entity.Account"  resultMap="BaseResultMap">
+  	select *
+    from ACCOUNT
+    where ACCOUNT_ID=#{accountId} 
+  </select>
+  
+  <!--组织提升按ID查询需要提升用户 -->
+ <update id="updateAccountByOId"  parameterType="com.ttgis.education.entity.Account"  >
+    update ACCOUNT
+    set 
+    ACCOUNT_TYPE = 2
+    where ACCOUNT_CATALOG=#{accountCatalog}  and ACCOUNT_TYPE=3
+  </update>
+  
+   <!--合并组织结构，修改权限组织 -->
+ <update id="updateOId"  parameterType="com.ttgis.education.entity.Account"  >
+    update ACCOUNT
+    set 
+    ACCOUNT_CATALOG = #{accountCatalog} 
+    where ACCOUNT_CATALOG=#{accountId} 
+  </update>
+  
+  <!--组织ID查询 -->
+ <select id="AccountByOId"  parameterType="java.lang.String"  resultMap="BaseResultMap">
+  	select  * 
+    from ACCOUNT  a, ORGANIZATION o
+    where ACCOUNT_CATALOG=#{accountCatalog} 
+    and o.ORGANIZATION_ID=a.ACCOUNT_CATALOG
+    and ACCOUNT_DEL=1
+  </select>
+  
+   <!--组织上级ID查询 -->
+ <select id="AccountByOSJId"  parameterType="java.lang.String"  resultMap="BaseResultMap">
+  	select  * 
+    from ACCOUNT  a, ORGANIZATION o
+    where ORGANIZATION_SJDW=#{accountCatalog} 
+    and o.ORGANIZATION_ID=a.ACCOUNT_CATALOG
+    and ACCOUNT_TYPE!=4
+    and ACCOUNT_DEL=1
+    order by o.CPCS
+  </select>
+  
+  
+  <!--账号是否存在查询 -->
+  <select id="AccountByName"  parameterType="java.lang.String"  resultMap="BaseResultMap">
+  	select  * 
+    from ACCOUNT 
+    where ACCOUNT_LOGINID = #{accountLoginid,jdbcType=VARCHAR} 
+    and ACCOUNT_DEL=1
+  </select>
+  
+  <!--组织下是否有账号查询 -->
+  <select id="AccountByOName"  parameterType="java.lang.String"  resultMap="BaseResultMap">
+  	select  * 
+    from ACCOUNT  a, ORGANIZATION o
+    where o.ORGANIZATION_ID=#{accountCatalog} 
+    and o.ORGANIZATION_ID=a.ACCOUNT_CATALOG
+    and ACCOUNT_TYPE!=4
+    and ACCOUNT_DEL=1
+  </select>
+  
+  
+    <!--身份证是否存在查询 -->
+  <select id="AccountBySFZH"  parameterType="java.lang.String"  resultMap="BaseResultMap">
+  	select  * 
+    from ACCOUNT 
+    where ACCOUNT_SFZH = #{accountSfzh,jdbcType=VARCHAR} 
+    and ACCOUNT_DEL=1
+  </select>
+  
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.ShiftMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Shift" >
+    <result column="SHIFT_ID" property="shiftId" jdbcType="VARCHAR" />
+    <result column="TRANCLASS_ID" property="tranclassId" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_ID" property="accountId" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Shift" >
+    insert into SHIFT (SHIFT_ID, TRANCLASS_ID, ACCOUNT_ID
+      )
+    values (#{shiftId,jdbcType=VARCHAR}, #{tranclassId,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Shift" >
+    insert into SHIFT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shiftId != null" >
+        SHIFT_ID,
+      </if>
+      <if test="tranclassId != null" >
+        TRANCLASS_ID,
+      </if>
+      <if test="accountId != null" >
+        ACCOUNT_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shiftId != null" >
+        #{shiftId,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassId != null" >
+        #{tranclassId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SHIFT
+    where ACCOUNT_ID = #{accountId,jdbcType=VARCHAR}
+  </delete>
+  
+     <!--ID处理（用户ID查询） -->
+ <select id="ShiftByOId"  parameterType="com.ttgis.education.entity.Shift"  resultMap="BaseResultMap">
+  	select   *
+    from SHIFT
+    where ACCOUNT_ID=#{accountId} 
+  </select>
+  
+  
+  
+</mapper>

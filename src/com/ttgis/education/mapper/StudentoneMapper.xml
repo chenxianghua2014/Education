@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.StudentoneMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Studentone" >
+    <id column="STUDENTONE_ID" property="studentoneId" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_NAME" property="studentoneName" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_SFZH" property="studentoneSfzh" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XB" property="studentoneXb" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_AGE" property="studentoneAge" jdbcType="INTEGER" />
+    <result column="STUDENTONE_RYLB" property="studentoneRylb" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XL" property="studentoneXl" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XW" property="studentoneXw" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_ZZMM" property="studentoneZzmm" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_YGXS" property="studentoneYgxs" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XZJB" property="studentoneXzjb" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_ZYJSZW" property="studentoneZyjszw" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_GRJSZW" property="studentoneGrjszw" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_SXZY" property="studentoneSxzy" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_BYY" property="studentoneByy" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_BYYXX" property="studentoneByyxx" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_YX" property="studentoneYx" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XWSYDW" property="studentoneXwsydw" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_QRZHZZ" property="studentoneQrzhzz" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_SFDQXL" property="studentoneSfdqxl" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_SFDQXW" property="studentoneSfdqxw" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_AT" property="studentoneAt" jdbcType="TIMESTAMP" />
+    <result column="STUDENTONE_DEL" property="studentoneDel" jdbcType="INTEGER" />
+    <result column="STUDENTONE_CSRI" property="studentoneCsri" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_CJGZSJ" property="studentoneCjgzsj" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_XDWGZSJ" property="studentoneXdwgzsj" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_RXSJ" property="studentoneRxsj" jdbcType="VARCHAR" />
+    <result column="STUDENTONE_BYYSJ" property="studentoneByysj" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STUDENTONE_ID, STUDENTONE_NAME, STUDENTONE_SFZH, STUDENTONE_XB, STUDENTONE_AGE, STUDENTONE_RYLB, 
+    STUDENTONE_XL, STUDENTONE_XW, STUDENTONE_ZZMM, STUDENTONE_YGXS, STUDENTONE_XZJB, 
+    STUDENTONE_ZYJSZW, STUDENTONE_GRJSZW, STUDENTONE_SXZY, STUDENTONE_BYY, STUDENTONE_BYYXX, 
+    STUDENTONE_YX, STUDENTONE_XWSYDW, STUDENTONE_QRZHZZ, STUDENTONE_SFDQXL, STUDENTONE_SFDQXW, 
+    STUDENTONE_AT, STUDENTONE_DEL, STUDENTONE_CSRI, STUDENTONE_CJGZSJ, STUDENTONE_XDWGZSJ, 
+    STUDENTONE_RXSJ, STUDENTONE_BYYSJ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from STUDENTONE
+    where STUDENTONE_ID = #{studentoneId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from STUDENTONE
+    where STUDENTONE_ID = #{studentoneId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Studentone" >
+    insert into STUDENTONE (STUDENTONE_ID, STUDENTONE_NAME, STUDENTONE_SFZH, 
+      STUDENTONE_XB, STUDENTONE_AGE, STUDENTONE_RYLB, 
+      STUDENTONE_XL, STUDENTONE_XW, STUDENTONE_ZZMM, 
+      STUDENTONE_YGXS, STUDENTONE_XZJB, STUDENTONE_ZYJSZW, 
+      STUDENTONE_GRJSZW, STUDENTONE_SXZY, STUDENTONE_BYY, 
+      STUDENTONE_BYYXX, STUDENTONE_YX, STUDENTONE_XWSYDW, 
+      STUDENTONE_QRZHZZ, STUDENTONE_SFDQXL, STUDENTONE_SFDQXW, 
+      STUDENTONE_AT, STUDENTONE_DEL, STUDENTONE_CSRI, 
+      STUDENTONE_CJGZSJ, STUDENTONE_XDWGZSJ, STUDENTONE_RXSJ, 
+      STUDENTONE_BYYSJ)
+    values (#{studentoneId,jdbcType=VARCHAR}, #{studentoneName,jdbcType=VARCHAR}, #{studentoneSfzh,jdbcType=VARCHAR}, 
+      #{studentoneXb,jdbcType=VARCHAR}, #{studentoneAge,jdbcType=INTEGER}, #{studentoneRylb,jdbcType=VARCHAR}, 
+      #{studentoneXl,jdbcType=VARCHAR}, #{studentoneXw,jdbcType=VARCHAR}, #{studentoneZzmm,jdbcType=VARCHAR}, 
+      #{studentoneYgxs,jdbcType=VARCHAR}, #{studentoneXzjb,jdbcType=VARCHAR}, #{studentoneZyjszw,jdbcType=VARCHAR}, 
+      #{studentoneGrjszw,jdbcType=VARCHAR}, #{studentoneSxzy,jdbcType=VARCHAR}, #{studentoneByy,jdbcType=VARCHAR}, 
+      #{studentoneByyxx,jdbcType=VARCHAR}, #{studentoneYx,jdbcType=VARCHAR}, #{studentoneXwsydw,jdbcType=VARCHAR}, 
+      #{studentoneQrzhzz,jdbcType=VARCHAR}, #{studentoneSfdqxl,jdbcType=VARCHAR}, #{studentoneSfdqxw,jdbcType=VARCHAR}, 
+      #{studentoneAt,jdbcType=TIMESTAMP}, #{studentoneDel,jdbcType=INTEGER}, #{studentoneCsri,jdbcType=VARCHAR}, 
+      #{studentoneCjgzsj,jdbcType=VARCHAR}, #{studentoneXdwgzsj,jdbcType=VARCHAR}, #{studentoneRxsj,jdbcType=VARCHAR}, 
+      #{studentoneByysj,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Studentone" >
+    insert into STUDENTONE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentoneId != null" >
+        STUDENTONE_ID,
+      </if>
+      <if test="studentoneName != null" >
+        STUDENTONE_NAME,
+      </if>
+      <if test="studentoneSfzh != null" >
+        STUDENTONE_SFZH,
+      </if>
+      <if test="studentoneXb != null" >
+        STUDENTONE_XB,
+      </if>
+      <if test="studentoneAge != null" >
+        STUDENTONE_AGE,
+      </if>
+      <if test="studentoneRylb != null" >
+        STUDENTONE_RYLB,
+      </if>
+      <if test="studentoneXl != null" >
+        STUDENTONE_XL,
+      </if>
+      <if test="studentoneXw != null" >
+        STUDENTONE_XW,
+      </if>
+      <if test="studentoneZzmm != null" >
+        STUDENTONE_ZZMM,
+      </if>
+      <if test="studentoneYgxs != null" >
+        STUDENTONE_YGXS,
+      </if>
+      <if test="studentoneXzjb != null" >
+        STUDENTONE_XZJB,
+      </if>
+      <if test="studentoneZyjszw != null" >
+        STUDENTONE_ZYJSZW,
+      </if>
+      <if test="studentoneGrjszw != null" >
+        STUDENTONE_GRJSZW,
+      </if>
+      <if test="studentoneSxzy != null" >
+        STUDENTONE_SXZY,
+      </if>
+      <if test="studentoneByy != null" >
+        STUDENTONE_BYY,
+      </if>
+      <if test="studentoneByyxx != null" >
+        STUDENTONE_BYYXX,
+      </if>
+      <if test="studentoneYx != null" >
+        STUDENTONE_YX,
+      </if>
+      <if test="studentoneXwsydw != null" >
+        STUDENTONE_XWSYDW,
+      </if>
+      <if test="studentoneQrzhzz != null" >
+        STUDENTONE_QRZHZZ,
+      </if>
+      <if test="studentoneSfdqxl != null" >
+        STUDENTONE_SFDQXL,
+      </if>
+      <if test="studentoneSfdqxw != null" >
+        STUDENTONE_SFDQXW,
+      </if>
+      <if test="studentoneAt != null" >
+        STUDENTONE_AT,
+      </if>
+      <if test="studentoneDel != null" >
+        STUDENTONE_DEL,
+      </if>
+      <if test="studentoneCsri != null" >
+        STUDENTONE_CSRI,
+      </if>
+      <if test="studentoneCjgzsj != null" >
+        STUDENTONE_CJGZSJ,
+      </if>
+      <if test="studentoneXdwgzsj != null" >
+        STUDENTONE_XDWGZSJ,
+      </if>
+      <if test="studentoneRxsj != null" >
+        STUDENTONE_RXSJ,
+      </if>
+      <if test="studentoneByysj != null" >
+        STUDENTONE_BYYSJ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentoneId != null" >
+        #{studentoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneName != null" >
+        #{studentoneName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneSfzh != null" >
+        #{studentoneSfzh,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXb != null" >
+        #{studentoneXb,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneAge != null" >
+        #{studentoneAge,jdbcType=INTEGER},
+      </if>
+      <if test="studentoneRylb != null" >
+        #{studentoneRylb,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXl != null" >
+        #{studentoneXl,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXw != null" >
+        #{studentoneXw,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneZzmm != null" >
+        #{studentoneZzmm,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneYgxs != null" >
+        #{studentoneYgxs,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXzjb != null" >
+        #{studentoneXzjb,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneZyjszw != null" >
+        #{studentoneZyjszw,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneGrjszw != null" >
+        #{studentoneGrjszw,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneSxzy != null" >
+        #{studentoneSxzy,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneByy != null" >
+        #{studentoneByy,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneByyxx != null" >
+        #{studentoneByyxx,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneYx != null" >
+        #{studentoneYx,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXwsydw != null" >
+        #{studentoneXwsydw,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneQrzhzz != null" >
+        #{studentoneQrzhzz,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneSfdqxl != null" >
+        #{studentoneSfdqxl,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneSfdqxw != null" >
+        #{studentoneSfdqxw,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneAt != null" >
+        #{studentoneAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studentoneDel != null" >
+        #{studentoneDel,jdbcType=INTEGER},
+      </if>
+      <if test="studentoneCsri != null" >
+        #{studentoneCsri,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneCjgzsj != null" >
+        #{studentoneCjgzsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXdwgzsj != null" >
+        #{studentoneXdwgzsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneRxsj != null" >
+        #{studentoneRxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneByysj != null" >
+        #{studentoneByysj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Studentone" >
+    update STUDENTONE
+    <set >
+      <if test="studentoneName != null  and  studentoneName != ''" >
+        STUDENTONE_NAME = #{studentoneName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneSfzh != null  and  studentoneSfzh != ''" >
+        STUDENTONE_SFZH = #{studentoneSfzh,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXb != null  and  studentoneXb != ''" >
+        STUDENTONE_XB = #{studentoneXb,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneAge != null  and  studentoneAge != ''" >
+        STUDENTONE_AGE = #{studentoneAge,jdbcType=INTEGER},
+      </if>
+      <if test="studentoneRylb != null  and  studentoneRylb != ''" >
+        STUDENTONE_RYLB = #{studentoneRylb,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXl != null  and  studentoneXl != ''" >
+        STUDENTONE_XL = #{studentoneXl,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXw != null  and  studentoneXw != ''" >
+        STUDENTONE_XW = #{studentoneXw,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneZzmm != null  and  studentoneZzmm != ''" >
+        STUDENTONE_ZZMM = #{studentoneZzmm,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneYgxs != null  and  studentoneYgxs != ''" >
+        STUDENTONE_YGXS = #{studentoneYgxs,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXzjb != null  and  studentoneXzjb != ''" >
+        STUDENTONE_XZJB = #{studentoneXzjb,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneZyjszw != null  and  studentoneZyjszw != ''" >
+        STUDENTONE_ZYJSZW = #{studentoneZyjszw,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneGrjszw != null  and  studentoneGrjszw != ''" >
+        STUDENTONE_GRJSZW = #{studentoneGrjszw,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneSxzy != null  and  studentoneSxzy != ''" >
+        STUDENTONE_SXZY = #{studentoneSxzy,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneByy != null  and  studentoneByy != ''" >
+        STUDENTONE_BYY = #{studentoneByy,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneByyxx != null  and  studentoneByyxx != ''" >
+        STUDENTONE_BYYXX = #{studentoneByyxx,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneYx != null  and  studentoneYx != ''" >
+        STUDENTONE_YX = #{studentoneYx,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXwsydw != null  and  studentoneXwsydw != ''" >
+        STUDENTONE_XWSYDW = #{studentoneXwsydw,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneQrzhzz != null  and  studentoneQrzhzz != ''" >
+        STUDENTONE_QRZHZZ = #{studentoneQrzhzz,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneSfdqxl != null  and  studentoneSfdqxl != ''" >
+        STUDENTONE_SFDQXL = #{studentoneSfdqxl,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneSfdqxw != null  and  studentoneSfdqxw != ''" >
+        STUDENTONE_SFDQXW = #{studentoneSfdqxw,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneAt != null  and  studentoneAt != ''" >
+        STUDENTONE_AT = #{studentoneAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studentoneDel != null  and  studentoneDel != ''" >
+        STUDENTONE_DEL = #{studentoneDel,jdbcType=INTEGER},
+      </if>
+      <if test="studentoneCsri != null  and  studentoneCsri != ''" >
+        STUDENTONE_CSRI = #{studentoneCsri,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneCjgzsj != null  and  studentoneCjgzsj != ''" >
+        STUDENTONE_CJGZSJ = #{studentoneCjgzsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneXdwgzsj != null  and  studentoneXdwgzsj != ''" >
+        STUDENTONE_XDWGZSJ = #{studentoneXdwgzsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneRxsj != null  and  studentoneRxsj != ''" >
+        STUDENTONE_RXSJ = #{studentoneRxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="studentoneByysj != null  and  studentoneByysj != ''" >
+        STUDENTONE_BYYSJ = #{studentoneByysj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STUDENTONE_ID = #{studentoneId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Studentone" >
+    update STUDENTONE
+    set STUDENTONE_NAME = #{studentoneName,jdbcType=VARCHAR},
+      STUDENTONE_SFZH = #{studentoneSfzh,jdbcType=VARCHAR},
+      STUDENTONE_XB = #{studentoneXb,jdbcType=VARCHAR},
+      STUDENTONE_AGE = #{studentoneAge,jdbcType=INTEGER},
+      STUDENTONE_RYLB = #{studentoneRylb,jdbcType=VARCHAR},
+      STUDENTONE_XL = #{studentoneXl,jdbcType=VARCHAR},
+      STUDENTONE_XW = #{studentoneXw,jdbcType=VARCHAR},
+      STUDENTONE_ZZMM = #{studentoneZzmm,jdbcType=VARCHAR},
+      STUDENTONE_YGXS = #{studentoneYgxs,jdbcType=VARCHAR},
+      STUDENTONE_XZJB = #{studentoneXzjb,jdbcType=VARCHAR},
+      STUDENTONE_ZYJSZW = #{studentoneZyjszw,jdbcType=VARCHAR},
+      STUDENTONE_GRJSZW = #{studentoneGrjszw,jdbcType=VARCHAR},
+      STUDENTONE_SXZY = #{studentoneSxzy,jdbcType=VARCHAR},
+      STUDENTONE_BYY = #{studentoneByy,jdbcType=VARCHAR},
+      STUDENTONE_BYYXX = #{studentoneByyxx,jdbcType=VARCHAR},
+      STUDENTONE_YX = #{studentoneYx,jdbcType=VARCHAR},
+      STUDENTONE_XWSYDW = #{studentoneXwsydw,jdbcType=VARCHAR},
+      STUDENTONE_QRZHZZ = #{studentoneQrzhzz,jdbcType=VARCHAR},
+      STUDENTONE_SFDQXL = #{studentoneSfdqxl,jdbcType=VARCHAR},
+      STUDENTONE_SFDQXW = #{studentoneSfdqxw,jdbcType=VARCHAR},
+      STUDENTONE_AT = #{studentoneAt,jdbcType=TIMESTAMP},
+      STUDENTONE_DEL = #{studentoneDel,jdbcType=INTEGER},
+      STUDENTONE_CSRI = #{studentoneCsri,jdbcType=VARCHAR},
+      STUDENTONE_CJGZSJ = #{studentoneCjgzsj,jdbcType=VARCHAR},
+      STUDENTONE_XDWGZSJ = #{studentoneXdwgzsj,jdbcType=VARCHAR},
+      STUDENTONE_RXSJ = #{studentoneRxsj,jdbcType=VARCHAR},
+      STUDENTONE_BYYSJ = #{studentoneByysj,jdbcType=VARCHAR}
+    where STUDENTONE_ID = #{studentoneId,jdbcType=VARCHAR}
+  </update>
+  <!--查询人员studentoneId -->
+ <select id="queryStudentByStudentoneId" parameterType="com.ttgis.education.entity.Studentone" resultType="int">
+    select *  from STUDENTONE  where STUDENTONE_ID = #{studentoneId,jdbcType=VARCHAR}
+  </select>
+  
+    <!--查询身份证是否重复 -->
+ <select id="queryStudentBySFZH"  parameterType="com.ttgis.education.entity.Studentone"  resultMap="BaseResultMap">
+    select *  from STUDENTONE  where STUDENTONE_SFZH = #{studentoneSfzh,jdbcType=VARCHAR}
+    and STUDENTONE_DEL = 1 ;
+      <if test="studentoneId != null and studentoneId != ''">
+	 <![CDATA[  
+			and STUDENTONE_ID  != #{studentoneId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+  </select>
+</mapper>

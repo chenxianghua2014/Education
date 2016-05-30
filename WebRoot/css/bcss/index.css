@@ -1,0 +1,120 @@
+
+/* CSS Document reset style*/
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {padding: 0;margin: 0;}
+fieldset, img, html, body, iframe {border: 0;}
+table {border-collapse: collapse;border-spacing: 0;}
+li {list-style: none;}
+caption, th {font-weight: normal;font-style: normal;text-align: left;}
+em {font-style: normal;}
+strong {font-weight: bold;}
+body, textarea, select, input {font-size: 14px;color: #444;outline: none;border: 0;}
+textarea {resize: none;}
+input {vertical-align: middle;margin: 0px;}
+body {background-color: #fff;}
+h1, h2, h3, h4, h5, h6 {font-weight: normal;}
+a, button {cursor: pointer;}
+a {text-decoration: none;color: #000;}
+a:hover {color: #10ae58;}
+html, body {width: 100%;height: 100%;}
+html {overflow: auto;}
+body {text-align: left;background: #eee;}
+
+/* CSS Document body style*/
+body{ font-family:"微软雅黑","Arial"; font-size:14px; background:#FFF;}
+.concainer{ width:1200px; margin:auto;}
+
+.header{ width:100%;background:#fff url(../images/header_bg.jpg) no-repeat; background-size:cover; }
+.header_top{ position:relative; height:28px; line-height:28px;}
+.header_top_content{ position:absolute; right:40px;}
+.header_top_content a,.header_top_content span{ padding:10px 15px;color:#fff; font-size:12px;}
+.header_top_content a:hover{color:#44ccf5;}
+
+.header_menu{ padding-bottom:25px; overflow:hidden;}
+.header_menu .logo{ float:left; margin-left:40px;}
+.header_menu .logo h2{ width:450px; height:100px;}
+
+.header_menu .search{ float:left; margin:30px 0 0 280px; width:354px; height:24px; padding:10px 5px; background:#FFF; border:1px solid #ccc; border-radius:5px; position:relative;}
+.search .search_left{ width:70px; position:absolute; left:5px; top:10px; line-height:27px;}
+.search .search_left p{ color:#333; text-align:center; font-size:12px;}
+.search .search_right{  position:absolute; left:75px; top:10px;}
+.search .search_text{ float:left; width:200px; height:25px; border:1px solid #ccc; padding-left:10px;}
+.search .search_btn{ float:left; width:64px; height:27px; background:url(../images/search_bg.png) no-repeat;}
+
+.nav{ width:100%; height:37px; line-height:37px; background:#0c5daa;}
+.nav ul{ margin-left:60px;}
+.nav ul li{ float:left; display:inline-block; width:130px; text-align:center;}
+.nav .li_bg{ background:url(../images/nav_bg.png) no-repeat right center;}
+.nav ul li a{ color:#fff; }
+.nav ul li a:hover{ color:#44ccf5; }
+
+.banner{ height:380px; padding:20px 0; overflow:hidden;}
+.banner_menu{ float:left; width:724px; height:380px;}
+#full-screen-slider { width:100%; height:396px; float:left; position:relative}
+#slides { display:block; width:100%; height:380px; list-style:none; padding:0; margin:0; position:relative}
+#slides li { display:block; width:100%; height:100%; list-style:none; padding:0; margin:0; position:absolute}
+#slides li a { display:block; width:100%; height:100%; text-indent:-9999px}
+#pagination { display:block; list-style:none; position:absolute; left:30%; top:340px; z-index:9900;  padding:5px 15px 5px 0; margin:0}
+#pagination li { display:block; list-style:none; width:10px; height:10px; float:left; margin-left:15px; border-radius:5px; background:#FFF }
+#pagination li a { display:block; width:100%; height:100%; padding:0; margin:0;  text-indent:-9999px;}
+#pagination li.current { background:#0092CE}
+
+.new{ float:left; width:474px; height:363px; border:1px solid #ccc; padding-top:15px; border-left:0; background:#FFF;}
+.new h2,.Notice h2{ height:50px; line-height:50px; margin-left:30px; border-bottom:2px dashed #c3c3c3; font-size:24px; color:#000;}
+.new ul li{ height:62px; line-height:62px; padding-left:54px; background:url(../images/new_bg.png) no-repeat 38px center;}
+.new ul li a{ color:#666;}
+.new ul li a:hover,.Notice ul li a:hover{ color:#0c5daa; text-decoration:underline;}
+.new ul li:hover{ background:#e6e6e6;}
+.new ul span:hover{color:#0c5daa}
+
+.Notice_content{ width:1198px; height:146px; border:1px solid #cfcfcf;}
+.Notice_content ul{ float:left; padding-left:30px; width:546px;}
+.Notice_content ul li{ height:45px; line-height:45px;padding-left:20px; background:url(../images/new_bg.png) no-repeat 2px center;}
+.Notice_content .ul_bg{ background:url(../images/notice_bg.png) no-repeat right center;}
+
+.course{ padding:30px 0; background:#f8f8f8; margin-top:20px;}
+.course_content{ width:1200px;}
+.course_title h2{height:50px; line-height:45px; font-size:24px; color:#000;}
+.course_list{relative;z-index: 0;}
+.course_list_content{ float:left; width: 225px;height: 225px;float: left;margin: 0 0 30px 0px;background-color: #fff;}
+.course_list_bl,.course_list_bl a{width: 100%;height: 100%;display: block;position: relative;}
+.course_img{padding: 1px 1px 0;height: 124px;width: 223px;position: relative;}
+.img_pic{position: relative;overflow: hidden;height: 124px;width: 100%;}
+.img_pic,.imgPic{width: 223px;height: 124px;-moz-transition: all 1s ease 0s;-o-transition: all 1s ease 0s;-webkit-transition: all 1s ease 0s;transition: all 1s ease 0s;}
+.img_tit{color: #292929;padding: 0 10px;position: relative;margin-top: 15px;height: 25px;}
+.img_tit h3{line-height:25px;font-size: 14px;}
+.img_name{display: block;padding: 0 10px;line-height: 25px;height: 25px;color: #999;}
+.img_price{position:absolute; left:170px; bottom:-65px;}
+.course_img{ position:relative;}
+.course_margin{ margin-left:18px;}
+.course_list_bl a:hover{border:1px solid #0099e0;}
+
+.hot_course{ padding:20px 0; overflow:hidden;}
+.btn_list{ float:left;}
+.btn_list a:hover img{filter:alpha(opacity=50);  /* ie 有效*/-moz-opacity:0.5; /* Firefox  有效*/opacity: 0.5;}
+
+.course_show{float:left; width:830px; margin-left:10px;position: relative;z-index: 0;}
+.course_show_content{ float:left; width: 240px;height: 236px; margin: 0 0 30px 35px;background-color: #fff;}
+
+.course_show_bl,.course_show_bl a{width: 100%;height: 100%;display: block;position: relative;}
+.show_course_img{padding: 1px 1px 0;height: 157px;width: 240px;position: relative;}
+.show_img_pic{position: relative;overflow: hidden;height: 124px;width: 100%;}
+.show_img_pic,.show_imgPic{width: 238px;height: 157px;-moz-transition: all 1s ease 0s;-o-transition: all 1s ease 0s;-webkit-transition: all 1s ease 0s;transition: all 1s ease 0s; vertical-align:middle;}
+.show_img_name{display: block; padding:15px 10px;line-height: 25px;height: 25px;color: #666; font-size:14px;}
+.course_show_bl a:hover{ border:2px solid #0099e0;}
+
+.ad{ width:100%; padding:35px 0; background:#f8f8f8;}
+
+.footer{ padding:66px 0 80px 0; width:100%; background:url(../images/footer_bg.jpg) no-repeat center; background-size:cover;}
+.footer_nav{ width:100%; overflow:hidden;}
+.footer_nav_img{ text-align:center;}
+.footer_nav ul{ padding-top:20px; margin-left:20px;}
+.footer_nav ul li{ float:left; display:inline-block; width:146px; text-align:center;}
+.footer_nav .li_bg{ background:url(../images/nav_bg.png) no-repeat right center;}
+.footer_nav ul li a{ color:#fff; }
+.footer_nav ul li a:hover{ color:#44ccf5; }
+.copyright{ font-size:14px; color:#fff; text-align:center; padding-top:60px; line-height:30px;}
+.copyright h3{ font-size:12px;}
+
+.course_title{ position:relative;}
+.more{ position:absolute; right:25px; top:15px; color:#666;}

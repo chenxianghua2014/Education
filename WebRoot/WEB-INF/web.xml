@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/cfg/root-context.xml</param-value>
+    </context-param>
+    <!--通过spring 取得web根目录。webAppRootKey是web应用的根目录在环境变量名。 java中通过System.getProperty("web.root")获取了web根目录。-->
+    <context-param>
+            <param-name>webAppRootKey</param-name>
+            <param-value>web.root</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
+    </listener>
+	<listener>
+    	<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  	</listener>
+	<!-- 配置Shiro过滤器,先让Shiro过滤系统接收到的请求 -->  
+	<!-- 这里filter-name必须对应applicationContext.xml中定义的<bean id="shiroFilter"/> -->  
+	<!-- 使用[/*]匹配所有请求,保证所有的可控请求都经过Shiro的过滤 -->  
+	<!-- 通常会将此filter-mapping放置到最前面(即其他filter-mapping前面),以保证它是过滤器链中第一个起作用的 -->  
+	<!-- filter>  
+	    <filter-name>shiroFilter</filter-name>  
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
+	    <init-param-->  
+	    <!-- 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 -->  
+	    <!-- param-name>targetFilterLifecycle</param-name>  
+	    <param-value>true</param-value>  
+	    </init-param>  
+	</filter>  
+	<filter-mapping>  
+	        <filter-name>shiroFilter</filter-name>  
+	        <url-pattern>/*</url-pattern>  
+	</filter-mapping-->
+    <!-- encodingFilter -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+                <param-name>contextConfigLocation</param-name>
+                <param-value>/WEB-INF/cfg/servlet-context.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <!-- 图片上传的SERVLET  -->
+ <servlet>
+  <servlet-name>UploadImage</servlet-name>
+  <servlet-class>com.elkan.kindeditor.upload.UploadImage</servlet-class>
+  <!-- 上传图片保存的目录 -->
+  <init-param>
+   <param-name>UPLOAD_PATH</param-name>
+   <param-value>uploadImg/</param-value>
+  </init-param>
+  <!-- 限制上传图片的大小，单位字节(缺省值为1MB) -->
+  <init-param>
+   <param-name>MAX_SIZE</param-name>
+   <param-value>1024000</param-value>
+  </init-param>
+  <init-param>
+  <!-- 上传图片的类型(缺省值为gif, jpg, jpeg, png, bmp) -->
+   <param-name>IMAGETYPES</param-name>
+   <param-value>jpg,png,bmp,jpeg,gif</param-value>
+  </init-param>
+  <!-- 上传图片的宽度，大于此宽度时图片会被压缩(缺省为不限定) -->
+  <init-param>
+   <param-name>MAX_WIDTH</param-name>
+   <param-value>500</param-value>
+  </init-param>
+  <!-- 上传图片的高度，大于此高度时图片会被压缩(缺省为不限定) -->
+  <init-param>
+   <param-name>MAX_HEIGHT</param-name>
+   <param-value>500</param-value>
+  </init-param>
+ </servlet>
+  <!-- 图片上传管理的SERVLET  -->
+ <servlet>
+  <servlet-name>UploadImageManager</servlet-name>
+  <servlet-class>com.elkan.kindeditor.upload.UploadImageManager</servlet-class>
+   <!-- 上传图片保存的目录 -->
+  <init-param>
+   <param-name>UPLOAD_PATH</param-name>
+   <param-value>uploadImg/</param-value>
+  </init-param>
+ </servlet>
+  <!-- 附件上传的SERVLET  -->
+ <servlet>
+  <servlet-name>UploadAccessory</servlet-name>
+  <servlet-class>com.elkan.kindeditor.upload.UploadAccessory</servlet-class>
+  <!-- 上传附件保存的目录 -->
+  <init-param>
+   <param-name>UPLOAD_PATH</param-name>
+   <param-value>uploadAttach/</param-value>
+  </init-param>
+  <!-- 上传附件的大小，单位字节(缺省为1MB) -->
+  <init-param>
+   <param-name>MAX_SIZE</param-name>
+   <param-value>1000000</param-value>
+  </init-param>
+  <!-- 上传文件的类型(缺省为doc, xls, ppt, pdf, txt, rar, zip) -->
+  <init-param>
+   <param-name>FILETYPES</param-name>
+   <param-value>doc,xls,ppt,zip,rar,txt</param-value>
+  </init-param>
+ </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!--启动Web容器时，自动装配ApplicationContext的配置信息-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

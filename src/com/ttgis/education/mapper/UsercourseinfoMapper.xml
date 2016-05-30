@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.UsercourseinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Usercourseinfo" >
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="COURSE_ID" property="courseId" jdbcType="VARCHAR" />
+    <result column="SCO_ID" property="scoId" jdbcType="VARCHAR" />
+    <result column="COURSE_TIME" property="courseTime" jdbcType="VARCHAR" />
+    <result column="SCOSCORE" property="scoscore" jdbcType="INTEGER" />
+    <result column="VIEWTIME" property="viewtime" jdbcType="TIMESTAMP" />
+    <result column="ISFINISH" property="isfinish" jdbcType="INTEGER" />
+    <result column="STUDYTIME" property="studytime" jdbcType="VARCHAR" />
+    <result column="ISDELETE" property="isdelete" jdbcType="INTEGER" />
+    <result column="USER_AT" property="userAt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ttgis.education.entity.Usercourseinfo" extends="BaseResultMap" >
+    <result column="SCONOTE" property="sconote" jdbcType="LONGVARCHAR" />
+    <result column="LAUNCH" property="launch" jdbcType="LONGVARCHAR" />
+    <result column="SCOLOAD" property="scoload" jdbcType="LONGVARCHAR" />
+  </resultMap>
+    <sql id="Base_Column_List" >
+    USER_ID, COURSE_ID, SCO_ID, COURSE_TIME, SCOSCORE, VIEWTIME, ISFINISH, STUDYTIME, ISDELETE, USER_AT
+  </sql>
+  <sql id="Blob_Column_List" >
+    SCONOTE, LAUNCH, SCOLOAD
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select * from USERCOURSEINFO 
+    and USER_ID = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from USERCOURSEINFO
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Usercourseinfo" >
+    insert into USERCOURSEINFO (USER_ID, COURSE_ID, SCO_ID, 
+      COURSE_TIME, SCOSCORE, VIEWTIME, 
+      ISFINISH, STUDYTIME, ISDELETE, 
+      USER_AT, SCONOTE, LAUNCH, 
+      SCOLOAD)
+    values (#{userId,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, #{scoId,jdbcType=VARCHAR}, 
+      #{courseTime,jdbcType=VARCHAR}, #{scoscore,jdbcType=INTEGER}, #{viewtime,jdbcType=TIMESTAMP}, 
+      #{isfinish,jdbcType=INTEGER}, #{studytime,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER}, 
+      #{userAt,jdbcType=TIMESTAMP}, #{sconote,jdbcType=LONGVARCHAR}, #{launch,jdbcType=LONGVARCHAR}, 
+      #{scoload,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Usercourseinfo" >
+    insert into USERCOURSEINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="courseId != null" >
+        COURSE_ID,
+      </if>
+      <if test="scoId != null" >
+        SCO_ID,
+      </if>
+      <if test="courseTime != null" >
+        COURSE_TIME,
+      </if>
+      <if test="scoscore != null" >
+        SCOSCORE,
+      </if>
+      <if test="viewtime != null" >
+        VIEWTIME,
+      </if>
+      <if test="isfinish != null" >
+        ISFINISH,
+      </if>
+      <if test="studytime != null" >
+        STUDYTIME,
+      </if>
+      <if test="isdelete != null" >
+        ISDELETE,
+      </if>
+      <if test="userAt != null" >
+        USER_AT,
+      </if>
+      <if test="sconote != null" >
+        SCONOTE,
+      </if>
+      <if test="launch != null" >
+        LAUNCH,
+      </if>
+      <if test="scoload != null" >
+        SCOLOAD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="scoId != null" >
+        #{scoId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseTime != null" >
+        #{courseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="scoscore != null" >
+        #{scoscore,jdbcType=INTEGER},
+      </if>
+      <if test="viewtime != null" >
+        #{viewtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isfinish != null" >
+        #{isfinish,jdbcType=INTEGER},
+      </if>
+      <if test="studytime != null" >
+        #{studytime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="userAt != null" >
+        #{userAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sconote != null" >
+        #{sconote,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="launch != null" >
+        #{launch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scoload != null" >
+        #{scoload,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+    <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Usercourseinfo">
+    update USERCOURSEINFO
+    <set>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="scoId != null" >
+        #{scoId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseTime != null" >
+        #{courseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="scoscore != null" >
+        #{scoscore,jdbcType=INTEGER},
+      </if>
+      <if test="viewtime != null" >
+        #{viewtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isfinish != null" >
+        #{isfinish,jdbcType=INTEGER},
+      </if>
+      <if test="studytime != null" >
+        #{studytime,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="userAt != null" >
+        #{userAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sconote != null" >
+        #{sconote,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="launch != null" >
+        #{launch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="scoload != null" >
+        #{scoload,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+     where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttgis.education.mapper.NewsMapper">
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.News">
+    <id column="NEWS_ID" jdbcType="VARCHAR" property="newsId" />
+    <result column="NEWS_NAME" jdbcType="VARCHAR" property="newsName" />
+    <result column="NEWS_TYPE" jdbcType="VARCHAR" property="newsType" />
+    <result column="NEWS_CATALOG" jdbcType="VARCHAR" property="newsCatalog" />
+    <result column="NEWS_PRODUCER" jdbcType="VARCHAR" property="newsProducer" />
+    <result column="NEWS_RANK" jdbcType="INTEGER" property="newsRank" />
+    <result column="NEWS_IMAGE" jdbcType="VARCHAR" property="newsImage" />
+    <result column="NEWS_SORT" jdbcType="VARCHAR" property="newsSort" />
+    <result column="NEWS_AT" jdbcType="TIMESTAMP" property="newsAt" />
+    <result column="NEWS_DEL" jdbcType="INTEGER" property="newsDel" />
+    <result column="ORGANIZATION_ID" jdbcType="VARCHAR" property="organizationId" />
+    <result column="NEWS_TIME" jdbcType="VARCHAR" property="newsTime" />
+    <result column="NEWS_TOP" jdbcType="INTEGER" property="newsTop" />
+    <result column="NEWS_TOPTIME" jdbcType="VARCHAR" property="newsToptime" />
+    <collection property="organization" column="accountCatalog" ofType="com.ttgis.education.entity.Organization">    
+            <id property="organizationId" column="ORGANIZATION_ID" />    
+            <result property="organizationDwmc" column="ORGANIZATION_DWMC" />    
+     </collection>
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ttgis.education.entity.News">
+    <result column="NEWS_CONTENT" jdbcType="LONGVARCHAR" property="newsContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    NEWS_ID, NEWS_NAME, NEWS_TYPE, NEWS_CATALOG, NEWS_PRODUCER, NEWS_RANK, NEWS_IMAGE, 
+    NEWS_SORT, NEWS_AT, NEWS_DEL, ORGANIZATION_ID, NEWS_TIME, NEWS_TOP, NEWS_TOPTIME
+  </sql>
+  <sql id="Blob_Column_List">
+    NEWS_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select * from NEWS n,ORGANIZATION o 
+    where o.ORGANIZATION_ID=n.ORGANIZATION_ID
+    and NEWS_ID = #{newsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from NEWS
+    where NEWS_ID = #{newsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.News">
+    insert into NEWS (NEWS_ID, NEWS_NAME, NEWS_TYPE, 
+      NEWS_CATALOG, NEWS_PRODUCER, NEWS_RANK, 
+      NEWS_IMAGE, NEWS_SORT, NEWS_AT, 
+      NEWS_DEL, ORGANIZATION_ID, NEWS_TIME, 
+      NEWS_TOP, NEWS_TOPTIME, NEWS_CONTENT
+      )
+    values (#{newsId,jdbcType=VARCHAR}, #{newsName,jdbcType=VARCHAR}, #{newsType,jdbcType=VARCHAR}, 
+      #{newsCatalog,jdbcType=VARCHAR}, #{newsProducer,jdbcType=VARCHAR}, #{newsRank,jdbcType=INTEGER}, 
+      #{newsImage,jdbcType=VARCHAR}, #{newsSort,jdbcType=VARCHAR}, #{newsAt,jdbcType=TIMESTAMP}, 
+      #{newsDel,jdbcType=INTEGER}, #{organizationId,jdbcType=VARCHAR}, #{newsTime,jdbcType=VARCHAR}, 
+      #{newsTop,jdbcType=INTEGER}, #{newsToptime,jdbcType=VARCHAR}, #{newsContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.News">
+    insert into NEWS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="newsId != null">
+        NEWS_ID,
+      </if>
+      <if test="newsName != null">
+        NEWS_NAME,
+      </if>
+      <if test="newsType != null">
+        NEWS_TYPE,
+      </if>
+      <if test="newsCatalog != null">
+        NEWS_CATALOG,
+      </if>
+      <if test="newsProducer != null">
+        NEWS_PRODUCER,
+      </if>
+      <if test="newsRank != null">
+        NEWS_RANK,
+      </if>
+      <if test="newsImage != null">
+        NEWS_IMAGE,
+      </if>
+      <if test="newsSort != null">
+        NEWS_SORT,
+      </if>
+      <if test="newsAt != null">
+        NEWS_AT,
+      </if>
+      <if test="newsDel != null">
+        NEWS_DEL,
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID,
+      </if>
+      <if test="newsTime != null">
+        NEWS_TIME,
+      </if>
+      <if test="newsTop != null">
+        NEWS_TOP,
+      </if>
+      <if test="newsToptime != null">
+        NEWS_TOPTIME,
+      </if>
+      <if test="newsContent != null">
+        NEWS_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="newsId != null">
+        #{newsId,jdbcType=VARCHAR},
+      </if>
+      <if test="newsName != null">
+        #{newsName,jdbcType=VARCHAR},
+      </if>
+      <if test="newsType != null">
+        #{newsType,jdbcType=VARCHAR},
+      </if>
+      <if test="newsCatalog != null">
+        #{newsCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="newsProducer != null">
+        #{newsProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="newsRank != null">
+        #{newsRank,jdbcType=INTEGER},
+      </if>
+      <if test="newsImage != null">
+        #{newsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="newsSort != null">
+        #{newsSort,jdbcType=VARCHAR},
+      </if>
+      <if test="newsAt != null">
+        #{newsAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="newsDel != null">
+        #{newsDel,jdbcType=INTEGER},
+      </if>
+      <if test="organizationId != null">
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTime != null">
+        #{newsTime,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTop != null">
+        #{newsTop,jdbcType=INTEGER},
+      </if>
+      <if test="newsToptime != null">
+        #{newsToptime,jdbcType=VARCHAR},
+      </if>
+      <if test="newsContent != null">
+        #{newsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.News">
+    update NEWS
+    <set>
+      <if test="newsName != null">
+        NEWS_NAME = #{newsName,jdbcType=VARCHAR},
+      </if>
+      <if test="newsType != null">
+        NEWS_TYPE = #{newsType,jdbcType=VARCHAR},
+      </if>
+      <if test="newsCatalog != null">
+        NEWS_CATALOG = #{newsCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="newsProducer != null">
+        NEWS_PRODUCER = #{newsProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="newsRank != null">
+        NEWS_RANK = #{newsRank,jdbcType=INTEGER},
+      </if>
+      <if test="newsImage != null">
+        NEWS_IMAGE = #{newsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="newsSort != null">
+        NEWS_SORT = #{newsSort,jdbcType=VARCHAR},
+      </if>
+      <if test="newsAt != null">
+        NEWS_AT = #{newsAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="newsDel != null">
+        NEWS_DEL = #{newsDel,jdbcType=INTEGER},
+      </if>
+      <if test="organizationId != null">
+        ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTime != null">
+        NEWS_TIME = #{newsTime,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTop != null">
+        NEWS_TOP = #{newsTop,jdbcType=INTEGER},
+      </if>
+      <if test="newsToptime != null">
+        NEWS_TOPTIME = #{newsToptime,jdbcType=VARCHAR},
+      </if>
+      <if test="newsContent != null">
+        NEWS_CONTENT = #{newsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where NEWS_ID = #{newsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ttgis.education.entity.News">
+    update NEWS
+    set NEWS_NAME = #{newsName,jdbcType=VARCHAR},
+      NEWS_TYPE = #{newsType,jdbcType=VARCHAR},
+      NEWS_CATALOG = #{newsCatalog,jdbcType=VARCHAR},
+      NEWS_PRODUCER = #{newsProducer,jdbcType=VARCHAR},
+      NEWS_RANK = #{newsRank,jdbcType=INTEGER},
+      NEWS_IMAGE = #{newsImage,jdbcType=VARCHAR},
+      NEWS_SORT = #{newsSort,jdbcType=VARCHAR},
+      NEWS_AT = #{newsAt,jdbcType=TIMESTAMP},
+      NEWS_DEL = #{newsDel,jdbcType=INTEGER},
+      ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      NEWS_TIME = #{newsTime,jdbcType=VARCHAR},
+      NEWS_TOP = #{newsTop,jdbcType=INTEGER},
+      NEWS_TOPTIME = #{newsToptime,jdbcType=VARCHAR},
+      NEWS_CONTENT = #{newsContent,jdbcType=LONGVARCHAR}
+    where NEWS_ID = #{newsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.News">
+    update NEWS
+    set NEWS_NAME = #{newsName,jdbcType=VARCHAR},
+      NEWS_TYPE = #{newsType,jdbcType=VARCHAR},
+      NEWS_CATALOG = #{newsCatalog,jdbcType=VARCHAR},
+      NEWS_PRODUCER = #{newsProducer,jdbcType=VARCHAR},
+      NEWS_RANK = #{newsRank,jdbcType=INTEGER},
+      NEWS_IMAGE = #{newsImage,jdbcType=VARCHAR},
+      NEWS_SORT = #{newsSort,jdbcType=VARCHAR},
+      NEWS_AT = #{newsAt,jdbcType=TIMESTAMP},
+      NEWS_DEL = #{newsDel,jdbcType=INTEGER},
+      ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR},
+      NEWS_TIME = #{newsTime,jdbcType=VARCHAR},
+      NEWS_TOP = #{newsTop,jdbcType=INTEGER},
+      NEWS_TOPTIME = #{newsToptime,jdbcType=VARCHAR}
+    where NEWS_ID = #{newsId,jdbcType=VARCHAR}
+  </update>
+ 
+  
+  <select id="selectNewsByNUmber" parameterType="int" resultMap="BaseResultMap">
+  	select top (#{num})
+    <include refid="Base_Column_List" />
+    from NEWS
+    where NEWS_DEL = 1 AND NEWS_TYPE='可用' order by news_at desc
+  </select>
+  <select id="selectAllNews" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from NEWS
+    where NEWS_DEL = 1 AND NEWS_TYPE='可用' order by news_at desc
+  </select>
+  
+   <sql id="Base_One_Column_List">
+    NEWS_ID, NEWS_NAME, NEWS_TYPE, NEWS_CATALOG, NEWS_PRODUCER, NEWS_RANK, NEWS_IMAGE, 
+    NEWS_SORT, NEWS_AT, NEWS_DEL, n.ORGANIZATION_ID, NEWS_TIME, NEWS_TOP, NEWS_TOPTIME
+  </sql>
+  
+     <!-- 分页显示 -->
+<select id="selectPageAll" parameterType="com.ttgis.education.entity.Notice"   resultMap="BaseResultMap">
+select top ${size}  *
+from NEWS n,ORGANIZATION o
+where  o.ORGANIZATION_ID=n.ORGANIZATION_ID
+and NEWS_SORT = #{newsSort,jdbcType=VARCHAR} and NEWS_ID not in
+(
+ select top ${page} NEWS_ID from NEWS n,ORGANIZATION o
+  where  o.ORGANIZATION_ID=n.ORGANIZATION_ID
+   and NEWS_SORT = #{newsSort,jdbcType=VARCHAR}
+  
+   <if test="newsRank != null and newsRank != ''">
+      <![CDATA[  
+				and   NEWS_RANK = #{newsRank,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	<if test="newsTime != null and newsTime != ''">
+	<![CDATA[  
+			and   NEWS_TIME = #{newsTime,jdbcType=TIMESTAMP}
+			and NEWS_TYPE='可用'
+			 ]]>  
+	</if>
+	 <if test="newsCatalog != null and newsCatalog != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC like '%${newsCatalog}%'
+			 ]]>  
+	 </if>
+  
+  
+    <if test="type == 1 ">  
+    <if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    </if>  
+    
+    <if test="type == 2 ">  
+      		<if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+            </if>  
+            
+             <if test="cj == 1 ">  
+            <![CDATA[  
+             and (n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId}) or n.ORGANIZATION_ID = 'test001' )
+            ]]>  
+   			 </if>  
+
+    </if>  
+    
+    <if test="type == 3 ">  
+     <if test="cj == 1 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID = 'test001' or n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    <if test="cj == 2 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId}  )
+            ]]>  
+    </if>  
+    <if test="cj == 3 ">  
+            <![CDATA[  
+            and  n.ORGANIZATION_ID=#{organizationId}
+            ]]>  
+    </if>  
+    </if>  
+    
+    
+    
+    
+  order by NEWS_AT desc
+) 
+   <if test="newsRank != null and newsRank != ''">
+      <![CDATA[  
+				and   NEWS_RANK = #{newsRank,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	<if test="newsTime != null and newsTime != ''">
+	<![CDATA[  
+			and   NEWS_TIME = #{newsTime,jdbcType=TIMESTAMP}
+			and NEWS_TYPE='可用'
+			 ]]>  
+	</if>
+	 <if test="newsCatalog != null and newsCatalog != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC like '%${newsCatalog}%'
+			 ]]>  
+	 </if>
+
+
+    <if test="type == 1 ">  
+    <if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    </if>  
+    
+    <if test="type == 2 ">  
+      		<if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+            </if>  
+            
+             <if test="cj == 1 ">  
+            <![CDATA[  
+             and (n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId}) or n.ORGANIZATION_ID = 'test001' )
+            ]]>  
+   			 </if>  
+
+    </if>  
+    
+    <if test="type == 3 ">  
+     <if test="cj == 1 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID = 'test001' or n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    <if test="cj == 2 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId}  )
+            ]]>  
+    </if>  
+    <if test="cj == 3 ">  
+            <![CDATA[  
+            and  n.ORGANIZATION_ID=#{organizationId}
+            ]]>  
+    </if>  
+    </if>  
+    
+order by NEWS_AT desc
+
+ </select>
+ 
+   <!--总条数 -->
+ <select id="NewsCount"  parameterType="com.ttgis.education.entity.News"  resultType="int">
+  	select  count(*)
+    from NEWS n,ORGANIZATION o
+    where  o.ORGANIZATION_ID=n.ORGANIZATION_ID 
+    and NEWS_SORT = #{newsSort,jdbcType=VARCHAR}
+    
+     <if test="newsRank != null and newsRank != ''">
+      <![CDATA[  
+				and   NEWS_RANK = #{newsRank,jdbcType=INTEGER}
+	   ]]>  
+	</if>
+	<if test="newsTime != null and newsTime != ''">
+	<![CDATA[  
+			and   NEWS_TIME = #{newsTime,jdbcType=TIMESTAMP}
+			and NEWS_TYPE='可用'
+			 ]]>  
+	</if>
+	 <if test="newsCatalog != null and newsCatalog != ''">
+	 <![CDATA[  
+			and ORGANIZATION_DWMC like '%${newsCatalog}%'
+			 ]]>  
+	 </if>
+    
+    
+    
+   
+    <if test="type == 1 ">  
+    <if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    </if>  
+    
+    <if test="type == 2 ">  
+      		<if test="cj != 1 ">  
+            <![CDATA[  
+            and n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId})
+            ]]>  
+            </if>  
+            
+             <if test="cj == 1 ">  
+            <![CDATA[  
+             and (n.ORGANIZATION_ID in (select ORGANIZATION_ID from ORGANIZATION  where  ORGANIZATION_SJDW=#{organizationId}  or ORGANIZATION_ID=#{organizationId}) or n.ORGANIZATION_ID = 'test001' )
+            ]]>  
+   			 </if>  
+
+    </if>  
+    
+    <if test="type == 3 ">  
+     <if test="cj == 1 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID = 'test001' or n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId})
+            ]]>  
+    </if>  
+    <if test="cj == 2 ">  
+            <![CDATA[  
+            and (n.ORGANIZATION_ID= (select ORGANIZATION_SJDW from ORGANIZATION  where  ORGANIZATION_ID=#{organizationId}  ) or n.ORGANIZATION_ID=#{organizationId}  )
+            ]]>  
+    </if>  
+    <if test="cj == 3 ">  
+            <![CDATA[  
+            and  n.ORGANIZATION_ID=#{organizationId}
+            ]]>  
+    </if>  
+    </if>  
+    
+    
+    
+   
+  </select>
+  
+  
+  
+   <!-- 分页显示 -->
+<select id="collectionPageAll" parameterType="com.ttgis.education.entity.News"   resultMap="BaseResultMap">
+select top ${size}  *
+from NEWS n ,SORT s,ORGANIZATION o
+where  o.ORGANIZATION_ID=n.ORGANIZATION_ID
+and n.NEWS_ID not in
+(
+ select top ${page} n.NEWS_ID from NEWS n ,SORT s
+  where  n.NEWS_ID = s. SORT_INFOID 
+  	and n.NEWS_SORT = #{newsSort,jdbcType=VARCHAR}
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 1
+    order by  SORT_AT desc
+) 
+    and n.NEWS_SORT = #{newsSort,jdbcType=VARCHAR}
+    and n.NEWS_ID = s. SORT_INFOID 
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 1
+    order by  SORT_AT desc
+
+
+ </select>
+  
+  
+    <!--总条数 -->
+ <select id="collectionNewsCount"  parameterType="com.ttgis.education.entity.News"  resultType="int">
+  	select  count(*)
+    from NEWS n ,.SORT s
+    where n.NEWS_ID = s. SORT_INFOID 
+    and n.NEWS_SORT = #{newsSort,jdbcType=VARCHAR}
+    and s.SORT_DEL = 1 
+    and s.SORT_USERID = #{organizationId}  
+    and s.SORT_INFOSTATE = 1
+    
+  </select>
+  <!-- 设 本单位新闻稿序号 -->
+ <select id="newsNumber" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select top 1 * from NEWS where ORGANIZATION_ID = #{organizationId,jdbcType=VARCHAR} order by NEWS_AT desc  
+  </select> 
+  <!-- 新闻条件查询    -->
+    <select id="selectNews" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from NEWS
+    where NEWS_DEL = 1
+    <trim suffixOverrides=",">
+			<if test="newsRank != null and newsRank != ''">
+				and   NEWS_RANK = #{newsRank,jdbcType=INTEGER}
+			</if>
+			<if test="newsTime != null and newsTime != ''">
+				and   NEWS_TIME = #{newsTime,jdbcType=TIMESTAMP}
+				and NEWS_TYPE='可用'
+			</if>
+			<if test="newsCatalog != null and newsCatalog != ''">
+				and NEWS_CATALOG like '%${newsCatalog}%'
+			</if>
+	</trim>
+  </select> 
+  
+  
+  <!--  *****************************************前台**********************************************************  -->
+  
+  <select id="NewsByOIdAll" resultMap="BaseResultMap" parameterType="com.ttgis.education.entity.News">
+  	select 
+    top 10 * 
+    from NEWS
+    where NEWS_DEL = 1 AND NEWS_TYPE='可用' and  NEWS_SORT = #{newsSort,jdbcType=VARCHAR} and ORGANIZATION_ID=#{organizationId} order by NEWS_TIME desc
+  </select>
+  
+  
+     <!-- 分页显示 -->
+<select id="webPageAll" parameterType="com.ttgis.education.entity.News"   resultMap="BaseResultMap">
+select top ${size}  *
+from NEWS n 
+where   n.NEWS_ID not in
+(
+ select top ${page} NEWS_ID from NEWS 
+  where  NEWS_TYPE = '可用' 
+   <if test="type == 1 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID = #{organizationId}  
+            ]]>  
+    </if>  
+    <if test="type == 2 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in ( #{organizationId} , 'test001') 
+            ]]>  
+    </if>  
+    <if test="type == 3 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in (
+            select ORGANIZATION_ID from ORGANIZATION  where  
+            ORGANIZATION_ID=#{organizationId} 
+            or ORGANIZATION_SJDW=#{organizationId}
+            or ORGANIZATION_ID='test001'
+            ) 
+            ]]>  
+    </if>  
+     and NEWS_DEL = 1 
+     and NEWS_SORT = #{newsSort,jdbcType=VARCHAR}
+    order by  NEWS_RANK desc , NEWS_TOP desc , NEWS_TIME desc
+) 
+     <if test="type == 1 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID = #{organizationId}  
+            ]]>  
+    </if>  
+    <if test="type == 2 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in ( #{organizationId} , 'test001') 
+            ]]>  
+    </if>  
+    <if test="type == 3 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in (
+            select ORGANIZATION_ID from ORGANIZATION  where  
+            ORGANIZATION_ID=#{organizationId} 
+            or ORGANIZATION_SJDW=#{organizationId}
+            or ORGANIZATION_ID='test001'
+            ) 
+            ]]>  
+    </if>  
+     and NEWS_TYPE = '可用' 
+     and NEWS_DEL = 1 
+     and NEWS_SORT = #{newsSort,jdbcType=VARCHAR}
+ order by  NEWS_RANK desc , NEWS_TOP desc , NEWS_TIME desc
+
+
+ </select>
+  
+  
+    <!--总条数 -->
+ <select id="webNewsCount"  parameterType="com.ttgis.education.entity.News"  resultType="int">
+  	select  count(*)
+    from NEWS 
+    where  NEWS_TYPE = '可用' 
+     and NEWS_DEL = 1 
+     and NEWS_SORT = #{newsSort,jdbcType=VARCHAR}
+    <if test="type == 1 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID = #{organizationId}  
+            ]]>  
+    </if>  
+    <if test="type == 2 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in ( #{organizationId} , 'test001') 
+            ]]>  
+    </if>  
+    <if test="type == 3 ">  
+            <![CDATA[  
+            and ORGANIZATION_ID in (
+            select ORGANIZATION_ID from ORGANIZATION  where  
+            ORGANIZATION_ID=#{organizationId} 
+            or ORGANIZATION_SJDW=#{organizationId}
+            or ORGANIZATION_ID='test001'
+            ) 
+            ]]>  
+    </if>  
+
+    
+  </select>
+  
+    <!--查询置顶数据 -->
+ <select id="webNewsTOP"  parameterType="com.ttgis.education.entity.News"  resultMap="BaseResultMap">
+  	select  *
+    from NEWS 
+    where  ORGANIZATION_ID = #{organizationId}  
+     and NEWS_TYPE = '可用' 
+     and NEWS_DEL = 1 
+     and NEWS_TOP = 1
+     and NEWS_SORT = #{newsSort,jdbcType=VARCHAR}
+     and CONVERT(varchar(100), GETDATE(), 23) > NEWS_TOPTIME
+
+    
+  </select>
+  
+    <!-- 站内模糊查询新闻 -->
+  <select id="newsMyName" parameterType="com.ttgis.education.entity.News" resultMap="ResultMapWithBLOBs">
+    select * from NEWS where NEWS_NAME like '%${newsName}%' and NEWS_DEL = 1 AND NEWS_TYPE='可用'  order by NEWS_AT desc  
+  </select> 
+  
+</mapper>

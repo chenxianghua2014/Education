@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttgis.education.mapper.TranclassMapper">
+  <resultMap id="BaseResultMap" type="com.ttgis.education.entity.Tranclass">
+    <id column="TRANCLASS_ID" jdbcType="VARCHAR" property="tranclassId" />
+    <result column="CLASSRESOURCE_ID" jdbcType="VARCHAR" property="classresourceId" />
+    <result column="TRANCLASS_CATEGROY" jdbcType="VARCHAR" property="tranclassCategroy" />
+    <result column="TRANCLASS_NAME" jdbcType="VARCHAR" property="tranclassName" />
+    <result column="TRANCLASS_NUMBER" jdbcType="INTEGER" property="tranclassNumber" />
+    <result column="TRANCLASS_TEACHER" jdbcType="VARCHAR" property="tranclassTeacher" />
+    <result column="TRANCLASS_CATALOG" jdbcType="VARCHAR" property="tranclassCatalog" />
+    <result column="TRANCLASS_RANK" jdbcType="VARCHAR" property="tranclassRank" />
+    <result column="TRANCLASS_INCLUDE" jdbcType="VARCHAR" property="tranclassInclude" />
+    <result column="TRANCLASS_DETAILS" jdbcType="VARCHAR" property="tranclassDetails" />
+    <result column="TRANCLASS_FILE" jdbcType="VARCHAR" property="tranclassFile" />
+    <result column="TRANCLASS_STUDENT" jdbcType="VARCHAR" property="tranclassStudent" />
+    <result column="TRANCLASS_FACE" jdbcType="VARCHAR" property="tranclassFace" />
+    <result column="TRANCLASS_CONDITION" jdbcType="VARCHAR" property="tranclassCondition" />
+    <result column="TRANCLASS_AT" jdbcType="TIMESTAMP" property="tranclassAt" />
+    <result column="TRANCLASS_DEL" jdbcType="INTEGER" property="tranclassDel" />
+    <result column="TRANCLASS_TYPE" jdbcType="VARCHAR" property="tranclassType" />
+    <result column="TRANCLASS_SETUPTIME" jdbcType="VARCHAR" property="tranclassSetuptime" />
+    <result column="TRANCLASS_ENDTIME" jdbcType="VARCHAR" property="tranclassEndtime" />
+    <result column="TRANCLASS_APPLYTIME" jdbcType="VARCHAR" property="tranclassApplytime" />
+    <result column="TRANCLASS_APPLYENDTIME" jdbcType="VARCHAR" property="tranclassApplyendtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TRANCLASS_ID, CLASSRESOURCE_ID, TRANCLASS_CATEGROY, TRANCLASS_NAME, TRANCLASS_NUMBER, 
+    TRANCLASS_TEACHER, TRANCLASS_CATALOG, TRANCLASS_RANK, TRANCLASS_INCLUDE, TRANCLASS_DETAILS, 
+    TRANCLASS_FILE, TRANCLASS_STUDENT, TRANCLASS_FACE, TRANCLASS_CONDITION, TRANCLASS_AT, 
+    TRANCLASS_DEL, TRANCLASS_TYPE, TRANCLASS_SETUPTIME, TRANCLASS_ENDTIME, TRANCLASS_APPLYTIME, 
+    TRANCLASS_APPLYENDTIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TRANCLASS
+    where TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TRANCLASS
+    where TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ttgis.education.entity.Tranclass">
+    insert into TRANCLASS (TRANCLASS_ID, CLASSRESOURCE_ID, TRANCLASS_CATEGROY, 
+      TRANCLASS_NAME, TRANCLASS_NUMBER, TRANCLASS_TEACHER, 
+      TRANCLASS_CATALOG, TRANCLASS_RANK, TRANCLASS_INCLUDE, 
+      TRANCLASS_DETAILS, TRANCLASS_FILE, TRANCLASS_STUDENT, 
+      TRANCLASS_FACE, TRANCLASS_CONDITION, TRANCLASS_AT, 
+      TRANCLASS_DEL, TRANCLASS_TYPE, TRANCLASS_SETUPTIME, 
+      TRANCLASS_ENDTIME, TRANCLASS_APPLYTIME, TRANCLASS_APPLYENDTIME
+      )
+    values (#{tranclassId,jdbcType=VARCHAR}, #{classresourceId,jdbcType=VARCHAR}, #{tranclassCategroy,jdbcType=VARCHAR}, 
+      #{tranclassName,jdbcType=VARCHAR}, #{tranclassNumber,jdbcType=INTEGER}, #{tranclassTeacher,jdbcType=VARCHAR}, 
+      #{tranclassCatalog,jdbcType=VARCHAR}, #{tranclassRank,jdbcType=VARCHAR}, #{tranclassInclude,jdbcType=VARCHAR}, 
+      #{tranclassDetails,jdbcType=VARCHAR}, #{tranclassFile,jdbcType=VARCHAR}, #{tranclassStudent,jdbcType=VARCHAR}, 
+      #{tranclassFace,jdbcType=VARCHAR}, #{tranclassCondition,jdbcType=VARCHAR}, #{tranclassAt,jdbcType=TIMESTAMP}, 
+      #{tranclassDel,jdbcType=INTEGER}, #{tranclassType,jdbcType=VARCHAR}, #{tranclassSetuptime,jdbcType=VARCHAR}, 
+      #{tranclassEndtime,jdbcType=VARCHAR}, #{tranclassApplytime,jdbcType=VARCHAR}, #{tranclassApplyendtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ttgis.education.entity.Tranclass">
+    insert into TRANCLASS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tranclassId != null">
+        TRANCLASS_ID,
+      </if>
+      <if test="classresourceId != null">
+        CLASSRESOURCE_ID,
+      </if>
+      <if test="tranclassCategroy != null">
+        TRANCLASS_CATEGROY,
+      </if>
+      <if test="tranclassName != null">
+        TRANCLASS_NAME,
+      </if>
+      <if test="tranclassNumber != null">
+        TRANCLASS_NUMBER,
+      </if>
+      <if test="tranclassTeacher != null">
+        TRANCLASS_TEACHER,
+      </if>
+      <if test="tranclassCatalog != null">
+        TRANCLASS_CATALOG,
+      </if>
+      <if test="tranclassRank != null">
+        TRANCLASS_RANK,
+      </if>
+      <if test="tranclassInclude != null">
+        TRANCLASS_INCLUDE,
+      </if>
+      <if test="tranclassDetails != null">
+        TRANCLASS_DETAILS,
+      </if>
+      <if test="tranclassFile != null">
+        TRANCLASS_FILE,
+      </if>
+      <if test="tranclassStudent != null">
+        TRANCLASS_STUDENT,
+      </if>
+      <if test="tranclassFace != null">
+        TRANCLASS_FACE,
+      </if>
+      <if test="tranclassCondition != null">
+        TRANCLASS_CONDITION,
+      </if>
+      <if test="tranclassAt != null">
+        TRANCLASS_AT,
+      </if>
+      <if test="tranclassDel != null">
+        TRANCLASS_DEL,
+      </if>
+      <if test="tranclassType != null">
+        TRANCLASS_TYPE,
+      </if>
+      <if test="tranclassSetuptime != null">
+        TRANCLASS_SETUPTIME,
+      </if>
+      <if test="tranclassEndtime != null">
+        TRANCLASS_ENDTIME,
+      </if>
+      <if test="tranclassApplytime != null">
+        TRANCLASS_APPLYTIME,
+      </if>
+      <if test="tranclassApplyendtime != null">
+        TRANCLASS_APPLYENDTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tranclassId != null">
+        #{tranclassId,jdbcType=VARCHAR},
+      </if>
+      <if test="classresourceId != null">
+        #{classresourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassCategroy != null">
+        #{tranclassCategroy,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassName != null">
+        #{tranclassName,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassNumber != null">
+        #{tranclassNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tranclassTeacher != null">
+        #{tranclassTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassCatalog != null">
+        #{tranclassCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassRank != null">
+        #{tranclassRank,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassInclude != null">
+        #{tranclassInclude,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassDetails != null">
+        #{tranclassDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassFile != null">
+        #{tranclassFile,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassStudent != null">
+        #{tranclassStudent,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassFace != null">
+        #{tranclassFace,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassCondition != null">
+        #{tranclassCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassAt != null">
+        #{tranclassAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tranclassDel != null">
+        #{tranclassDel,jdbcType=INTEGER},
+      </if>
+      <if test="tranclassType != null">
+        #{tranclassType,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassSetuptime != null">
+        #{tranclassSetuptime,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassEndtime != null">
+        #{tranclassEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassApplytime != null">
+        #{tranclassApplytime,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassApplyendtime != null">
+        #{tranclassApplyendtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Tranclass">
+    update TRANCLASS
+    <set>
+      <if test="classresourceId != null">
+        CLASSRESOURCE_ID = #{classresourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassCategroy != null">
+        TRANCLASS_CATEGROY = #{tranclassCategroy,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassName != null">
+        TRANCLASS_NAME = #{tranclassName,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassNumber != null">
+        TRANCLASS_NUMBER = #{tranclassNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tranclassTeacher != null">
+        TRANCLASS_TEACHER = #{tranclassTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassCatalog != null">
+        TRANCLASS_CATALOG = #{tranclassCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassRank != null">
+        TRANCLASS_RANK = #{tranclassRank,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassInclude != null">
+        TRANCLASS_INCLUDE = #{tranclassInclude,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassDetails != null">
+        TRANCLASS_DETAILS = #{tranclassDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassFile != null">
+        TRANCLASS_FILE = #{tranclassFile,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassStudent != null">
+        TRANCLASS_STUDENT = #{tranclassStudent,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassFace != null">
+        TRANCLASS_FACE = #{tranclassFace,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassCondition != null">
+        TRANCLASS_CONDITION = #{tranclassCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassAt != null">
+        TRANCLASS_AT = #{tranclassAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tranclassDel != null">
+        TRANCLASS_DEL = #{tranclassDel,jdbcType=INTEGER},
+      </if>
+      <if test="tranclassType != null">
+        TRANCLASS_TYPE = #{tranclassType,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassSetuptime != null">
+        TRANCLASS_SETUPTIME = #{tranclassSetuptime,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassEndtime != null">
+        TRANCLASS_ENDTIME = #{tranclassEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassApplytime != null">
+        TRANCLASS_APPLYTIME = #{tranclassApplytime,jdbcType=VARCHAR},
+      </if>
+      <if test="tranclassApplyendtime != null">
+        TRANCLASS_APPLYENDTIME = #{tranclassApplyendtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Tranclass">
+    update TRANCLASS
+    set CLASSRESOURCE_ID = #{classresourceId,jdbcType=VARCHAR},
+      TRANCLASS_CATEGROY = #{tranclassCategroy,jdbcType=VARCHAR},
+      TRANCLASS_NAME = #{tranclassName,jdbcType=VARCHAR},
+      TRANCLASS_NUMBER = #{tranclassNumber,jdbcType=INTEGER},
+      TRANCLASS_TEACHER = #{tranclassTeacher,jdbcType=VARCHAR},
+      TRANCLASS_CATALOG = #{tranclassCatalog,jdbcType=VARCHAR},
+      TRANCLASS_RANK = #{tranclassRank,jdbcType=VARCHAR},
+      TRANCLASS_INCLUDE = #{tranclassInclude,jdbcType=VARCHAR},
+      TRANCLASS_DETAILS = #{tranclassDetails,jdbcType=VARCHAR},
+      TRANCLASS_FILE = #{tranclassFile,jdbcType=VARCHAR},
+      TRANCLASS_STUDENT = #{tranclassStudent,jdbcType=VARCHAR},
+      TRANCLASS_FACE = #{tranclassFace,jdbcType=VARCHAR},
+      TRANCLASS_CONDITION = #{tranclassCondition,jdbcType=VARCHAR},
+      TRANCLASS_AT = #{tranclassAt,jdbcType=TIMESTAMP},
+      TRANCLASS_DEL = #{tranclassDel,jdbcType=INTEGER},
+      TRANCLASS_TYPE = #{tranclassType,jdbcType=VARCHAR},
+      TRANCLASS_SETUPTIME = #{tranclassSetuptime,jdbcType=VARCHAR},
+      TRANCLASS_ENDTIME = #{tranclassEndtime,jdbcType=VARCHAR},
+      TRANCLASS_APPLYTIME = #{tranclassApplytime,jdbcType=VARCHAR},
+      TRANCLASS_APPLYENDTIME = #{tranclassApplyendtime,jdbcType=VARCHAR}
+    where TRANCLASS_ID = #{tranclassId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  
+  <!-- 分页显示 -->
+<select id="selectShiftPageAll" parameterType="com.ttgis.education.entity.Tranclass"   resultMap="BaseResultMap">
+<if test="qtId != 1 "> 
+ <if test="typese != 4 "> 
+select top ${size}  *
+from TRANCLASS
+where   TRANCLASS_ID not in
+(
+ select top ${page} TRANCLASS_ID from TRANCLASS
+ where  1=1 and  TRANCLASS_DEL = 1
+  <if test="classresourceId != null and classresourceId != ''">
+	 <![CDATA[  
+			and CLASSRESOURCE_ID = #{classresourceId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+	 <if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+  order by TRANCLASS_AT
+) 
+and  TRANCLASS_DEL = 1
+<if test="classresourceId != null and classresourceId != ''">
+	 <![CDATA[  
+			and CLASSRESOURCE_ID = #{classresourceId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+	 <if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+order by TRANCLASS_AT
+ </if>
+<if test="typese == 4 "> 
+select top ${size}  *
+from TRANCLASS t left join SHIFT s on t.TRANCLASS_ID=s.TRANCLASS_ID
+where   t.TRANCLASS_ID not in
+(
+ select top ${page} t.TRANCLASS_ID from TRANCLASS t left join SHIFT s on t.TRANCLASS_ID=s.TRANCLASS_ID
+ where s.ACCOUNT_ID=#{accountids,jdbcType=VARCHAR}
+ <if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+	 and  TRANCLASS_DEL = 1
+  order by TRANCLASS_AT
+) 
+and  TRANCLASS_DEL = 1
+and s.ACCOUNT_ID=#{accountids,jdbcType=VARCHAR}
+<if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+order by TRANCLASS_AT
+</if>
+</if>
+
+<if test="qtId == 1 "> 
+ <if test="typese != 4 "> 
+select top ${size}  *
+from TRANCLASS t left join
+   CLASSRESOURCE c on t.CLASSRESOURCE_ID=c.CLASSRESOURCE_ID
+where   TRANCLASS_ID not in
+(
+ select top ${page} TRANCLASS_ID from  TRANCLASS t left join
+   CLASSRESOURCE c on t.CLASSRESOURCE_ID=c.CLASSRESOURCE_ID 
+ where  1=1 and TRANCLASS_TYPE=1 and  TRANCLASS_DEL = 1
+  <if test="classresourceUpname != null and classresourceUpname != ''">
+	 <![CDATA[  
+			and c.CLASSRESOURCE_UPNAME = #{classresourceUpname}
+			 ]]>  
+	 </if>
+  <if test="classresourceId != null and classresourceId != ''">
+	 <![CDATA[  
+			and t.CLASSRESOURCE_ID = #{classresourceId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+	   <if test="organizationId != null and organizationId != ''">
+	 <![CDATA[  
+			and c.ORGANIZATION_ID = #{organizationId}
+			 ]]>  
+	 </if>
+	 <if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+  order by TRANCLASS_AT
+) 
+and TRANCLASS_TYPE=1 and  TRANCLASS_DEL = 1
+ <if test="classresourceUpname != null and classresourceUpname != ''">
+	 <![CDATA[  
+			and c.CLASSRESOURCE_UPNAME = #{classresourceUpname}
+			 ]]>  
+	 </if>
+<if test="classresourceId != null and classresourceId != ''">
+	 <![CDATA[  
+			and t.CLASSRESOURCE_ID = #{classresourceId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+	   <if test="organizationId != null and organizationId != ''">
+	 <![CDATA[  
+			and c.ORGANIZATION_ID = #{organizationId}
+			 ]]>  
+	 </if>
+	 <if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+order by TRANCLASS_AT
+ </if>
+<if test="typese == 4 "> 
+select top ${size}  *
+from TRANCLASS t left join SHIFT s on t.TRANCLASS_ID=s.TRANCLASS_ID
+where   t.TRANCLASS_ID not in
+(
+ select top ${page} t.TRANCLASS_ID from TRANCLASS t left join SHIFT s on t.TRANCLASS_ID=s.TRANCLASS_ID
+ where s.ACCOUNT_ID=#{accountids,jdbcType=VARCHAR} and  TRANCLASS_DEL = 1
+ <if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+  order by TRANCLASS_AT
+)  and  TRANCLASS_DEL = 1
+and s.ACCOUNT_ID=#{accountids,jdbcType=VARCHAR}
+<if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+order by TRANCLASS_AT
+</if>
+</if>
+ </select>
+  
+  
+    <!--总条数 -->
+ <select id="ShiftCount"  parameterType="com.ttgis.education.entity.Tranclass"  resultType="int">
+  <if test="qtId != 1 "> 
+ <if test="typese != 4 "> 
+  	select  count(*)
+    from TRANCLASS where 1=1 and  TRANCLASS_DEL = 1
+     <if test="classresourceId != null and classresourceId != ''">
+	 <![CDATA[  
+			and CLASSRESOURCE_ID = #{classresourceId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+	 
+	    <if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+	 
+    
+    </if>
+<if test="typese == 4 "> 
+    select  count(*)
+    from TRANCLASS t left join SHIFT s on t.TRANCLASS_ID=s.TRANCLASS_ID where s.ACCOUNT_ID=#{accountids,jdbcType=VARCHAR}
+    and  TRANCLASS_DEL = 1
+ <if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+ </if>
+ </if>
+   <if test="qtId == 1 "> 
+ <if test="typese != 4 "> 
+  	select  count(*)
+    from TRANCLASS t left join
+   CLASSRESOURCE c on t.CLASSRESOURCE_ID=c.CLASSRESOURCE_ID where 1=1 and TRANCLASS_TYPE=1 and  TRANCLASS_DEL = 1
+     <if test="classresourceUpname != null and classresourceUpname != ''">
+	 <![CDATA[  
+			and c.CLASSRESOURCE_UPNAME = #{classresourceUpname}
+			 ]]>  
+	 </if>
+    <if test="organizationId != null and organizationId != ''">
+	 <![CDATA[  
+			and c.ORGANIZATION_ID = #{organizationId}
+			 ]]>  
+	 </if>
+     <if test="classresourceId != null and classresourceId != ''">
+	 <![CDATA[  
+			and t.CLASSRESOURCE_ID = #{classresourceId,jdbcType=VARCHAR}
+			 ]]>  
+	 </if>
+	 
+	 <if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+    
+    </if>
+<if test="typese == 4 "> 
+    select  count(*)
+    from TRANCLASS t left join SHIFT s on t.TRANCLASS_ID=s.TRANCLASS_ID where s.ACCOUNT_ID=#{accountids,jdbcType=VARCHAR}
+    and  TRANCLASS_DEL = 1
+    <if test="tranclassName != null and tranclassName != ''">
+	 <![CDATA[  
+			and TRANCLASS_NAME like '%${tranclassName}%'
+			 ]]>  
+	 </if>
+ </if>
+ </if>
+  </select>
+  
+  
+  
+  
+    <!--党校     分页显示 -->
+<select id="selectShiftDxPage" parameterType="com.ttgis.education.entity.Tranclass"   resultMap="BaseResultMap">
+select top ${size}  *
+from TRANCLASS
+where   TRANCLASS_ID not in
+(
+ select top ${page} TRANCLASS_ID from TRANCLASS
+ where  1=1 and  TRANCLASS_DEL = 1 and TRANCLASS_CATEGROY = 3
+ 
+  order by TRANCLASS_AT
+) 
+and  TRANCLASS_DEL = 1  and TRANCLASS_CATEGROY = 3
+
+order by TRANCLASS_AT
+
+ </select>
+      <!--总条数   党校页面 -->
+ <select id="ShiftCountPage"  parameterType="com.ttgis.education.entity.Tranclass"  resultType="int">
+  	select  count(*)
+    from TRANCLASS where 1=1 and  TRANCLASS_DEL = 1 and TRANCLASS_CATEGROY = 3
+  </select>
+  
+  
+     <!--党校 页面  下方6条    分页显示 -->
+<select id="selectShiftDxSix" parameterType="com.ttgis.education.entity.Tranclass"   resultMap="BaseResultMap">
+SELECT
+	TOP 6 *
+FROM
+	TRANCLASS t ,CLASSRESOURCE c
+WHERE
+t.CLASSRESOURCE_ID=c.CLASSRESOURCE_ID
+and c.CLASSRESOURCE_DEL = 1
+AND TRANCLASS_DEL = 1
+AND TRANCLASS_CATEGROY = 3
+ORDER BY
+	TRANCLASS_AT
+
+   </select>
+  
+  
+ 
+  
+   <select id="selectByNum" parameterType="int" resultMap="BaseResultMap">
+  	select top (#{num,jdbcType=INTEGER})
+    <include refid="Base_Column_List" />
+    from TRANCLASS
+    where TRANCLASS_DEL = 1;
+  </select>
+  
+  
+   <!--ID处理（培训班ID查询） -->
+ <select id="TranclassByOId"  parameterType="com.ttgis.education.entity.Tranclass"  resultMap="BaseResultMap">
+  	select   *
+    from TRANCLASS
+    where TRANCLASS_DEL = 1 and CLASSRESOURCE_ID=#{classresourceId}  order by TRANCLASS_AT desc  
+  </select>
+  
+  
+  
+  
+  
+  
+  
+</mapper>

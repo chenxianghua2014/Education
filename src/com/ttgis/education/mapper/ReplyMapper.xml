@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttgis.education.mapper.ReplyMapper">
+	<resultMap id="BaseResultMap" type="com.ttgis.education.entity.Reply">
+		<id column="REPLY_ID" property="replyId" jdbcType="VARCHAR" />
+		<result column="STUDENT_ID" property="studentId" jdbcType="VARCHAR" />
+		<result column="BBS_ID" property="bbsId" jdbcType="VARCHAR" />
+		<result column="REPLY_PID" property="replyPid" jdbcType="VARCHAR" />
+		<result column="REPLY_PSTUDENTID" property="replyPstudentid"
+			jdbcType="VARCHAR" />
+		<result column="REPLY_AT" property="replyAt" jdbcType="NVARCHAR" />
+		<result column="REPLY_DEL" property="replyDel" jdbcType="NUMERIC" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.ttgis.education.entity.Reply"
+		extends="BaseResultMap">
+		<result column="REPLY_CONTENT" property="replyContent"
+			jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<resultMap id="replyList" type="com.ttgis.education.entity.Reply"
+		extends="ResultMapWithBLOBs">
+		<result column="student_name" property="studentName" jdbcType="VARCHAR" />
+		<result column="student_head" property="studentHead" jdbcType="VARCHAR" />
+		<result column="student_pname" property="studentPname"
+			jdbcType="VARCHAR" />
+		<result column="praise" property="praise" jdbcType="NUMERIC" />
+		<result column="praiseFlag" property="praiseFlag" jdbcType="NUMERIC" />
+		<result column="bbs_title" property="bbsTitle" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		REPLY_ID, STUDENT_ID, BBS_ID, REPLY_PID, REPLY_PSTUDENTID,
+		REPLY_AT, REPLY_DEL
+	</sql>
+	<sql id="Blob_Column_List">
+		REPLY_CONTENT
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.String">
+		select
+		r.*,
+		s.student_name,
+		'' student_head,
+		(select
+		student_name from
+		student where student_id = r.reply_pstudentid)
+		as
+		student_pname,
+		(select count(*)
+		from
+		statistical where
+		statistical_type = 1 ) as praise
+		from
+		reply r
+		left join
+		student s on s.student_id =
+		r.student_id where 1 = 1
+		and
+		r.reply_id = #{replyId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		REPLY
+		where REPLY_ID = #{replyId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.ttgis.education.entity.Reply">
+		insert into REPLY
+		(REPLY_ID,
+		STUDENT_ID, BBS_ID,
+		REPLY_PID, REPLY_PSTUDENTID, REPLY_AT,
+		REPLY_DEL,
+		REPLY_CONTENT)
+		values (#{replyId,jdbcType=VARCHAR},
+		#{studentId,jdbcType=VARCHAR},
+		#{bbsId,jdbcType=VARCHAR},
+		#{replyPid,jdbcType=VARCHAR}, #{replyPstudentid,jdbcType=VARCHAR},
+		#{replyAt,jdbcType=NVARCHAR},
+		#{replyDel,jdbcType=NUMERIC},
+		#{replyContent,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.ttgis.education.entity.Reply">
+		insert into REPLY
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="replyId != null">
+				REPLY_ID,
+			</if>
+			<if test="studentId != null">
+				STUDENT_ID,
+			</if>
+			<if test="bbsId != null">
+				BBS_ID,
+			</if>
+			<if test="replyPid != null">
+				REPLY_PID,
+			</if>
+			<if test="replyPstudentid != null">
+				REPLY_PSTUDENTID,
+			</if>
+			<if test="replyAt != null">
+				REPLY_AT,
+			</if>
+			<if test="replyDel != null">
+				REPLY_DEL,
+			</if>
+			<if test="replyContent != null">
+				REPLY_CONTENT,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="replyId != null">
+				#{replyId,jdbcType=VARCHAR},
+			</if>
+			<if test="studentId != null">
+				#{studentId,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsId != null">
+				#{bbsId,jdbcType=VARCHAR},
+			</if>
+			<if test="replyPid != null">
+				#{replyPid,jdbcType=VARCHAR},
+			</if>
+			<if test="replyPstudentid != null">
+				#{replyPstudentid,jdbcType=VARCHAR},
+			</if>
+			<if test="replyAt != null">
+				#{replyAt,jdbcType=NVARCHAR},
+			</if>
+			<if test="replyDel != null">
+				#{replyDel,jdbcType=NUMERIC},
+			</if>
+			<if test="replyContent != null">
+				#{replyContent,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ttgis.education.entity.Reply">
+		update REPLY
+		<set>
+			<if test="studentId != null">
+				STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+			</if>
+			<if test="bbsId != null">
+				BBS_ID = #{bbsId,jdbcType=VARCHAR},
+			</if>
+			<if test="replyPid != null">
+				REPLY_PID = #{replyPid,jdbcType=VARCHAR},
+			</if>
+			<if test="replyPstudentid != null">
+				REPLY_PSTUDENTID = #{replyPstudentid,jdbcType=VARCHAR},
+			</if>
+			<if test="replyAt != null">
+				REPLY_AT = #{replyAt,jdbcType=NVARCHAR},
+			</if>
+			<if test="replyDel != null">
+				REPLY_DEL = #{replyDel,jdbcType=NUMERIC},
+			</if>
+			<if test="replyContent != null">
+				REPLY_CONTENT = #{replyContent,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where REPLY_ID = #{replyId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ttgis.education.entity.Reply">
+		update
+		REPLY
+		set STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+		BBS_ID =
+		#{bbsId,jdbcType=VARCHAR},
+		REPLY_PID =
+		#{replyPid,jdbcType=VARCHAR},
+		REPLY_PSTUDENTID =
+		#{replyPstudentid,jdbcType=VARCHAR},
+		REPLY_AT =
+		#{replyAt,jdbcType=NVARCHAR},
+		REPLY_DEL = #{replyDel,jdbcType=NUMERIC},
+		REPLY_CONTENT = #{replyContent,jdbcType=LONGVARCHAR}
+		where REPLY_ID =
+		#{replyId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.ttgis.education.entity.Reply">
+		update
+		REPLY
+		set
+		STUDENT_ID = #{studentId,jdbcType=VARCHAR},
+		BBS_ID =
+		#{bbsId,jdbcType=VARCHAR},
+		REPLY_PID =
+		#{replyPid,jdbcType=VARCHAR},
+		REPLY_PSTUDENTID =
+		#{replyPstudentid,jdbcType=VARCHAR},
+		REPLY_AT =
+		#{replyAt,jdbcType=NVARCHAR},
+		REPLY_DEL = #{replyDel,jdbcType=NUMERIC}
+		where REPLY_ID = #{replyId,jdbcType=VARCHAR}
+	</update>
+	<select id="listPageInfo" resultMap="replyList"
+		parameterType="com.ttgis.education.entity.QueryReply">
+		select top 999999999
+		r.*,
+		s.student_name,
+		'' student_head,
+		(select count(*)
+		from
+		statistical where statistical_del = 1 and
+		statistical_type
+		= 1 and reply_id = r.reply_id ) as praise,
+		(select count(*) from
+		statistical where statistical_del = 1 and
+		statistical_type = 1
+		and reply_id = r.reply_id
+		and student_id =
+		#{studentId,jdbcType=VARCHAR}) as praiseFlag,
+		row_number() over (order by r.reply_at) as rn
+		from
+		reply r
+		left
+		join student s on s.student_id =
+		r.student_id where 1 = 1
+		and
+		r.bbs_id = #{bbsId,jdbcType=VARCHAR}
+		and
+		r.reply_pid is null
+		and r.REPLY_DEL = 1 
+		order
+		by
+		reply_at
+	</select>
+	<select id="meToInfo" resultMap="replyList" parameterType="String">
+		select
+		r.*,b.bbs_title,s.student_name,'' student_head,
+		(select
+		student_name from
+		student where student_id =
+		r.reply_pstudentid)
+		as
+		student_pname,
+		(select count(*) from
+		statistical where
+		statistical_del = 1 and
+		statistical_type = 1
+		and reply_id =
+		r.reply_id
+		) as praise,
+		(select
+		count(*) from
+		statistical where
+		statistical_del = 1 and
+		statistical_type = 1
+		and reply_id =
+		r.reply_id
+		and student_id =
+		#{studentId,jdbcType=VARCHAR}) as
+		praiseFlag
+		from
+		reply r
+		left join bbs b
+		on
+		b.bbs_id = r.bbs_id
+		left join student s
+		on
+		s.student_id
+		= r.student_id
+		where b.student_id =
+		#{studentId,jdbcType=VARCHAR}
+		and
+		r.reply_pid is
+		not null
+		and
+		r.reply_del = 1
+		and b.bbs_del = 1
+		order by
+		reply_at
+	</select>
+	<select id="listPageToMeInfo" resultMap="replyList"
+		parameterType="com.ttgis.education.entity.QueryReply">
+		select
+		r.*,b.bbs_title,s.student_name,'' student_head,
+		(select count(*) from
+		statistical
+		where
+		statistical_del = 1 and
+		statistical_type = 1 and reply_id =
+		r.reply_id ) as praise,
+		(select
+		count(*) from
+		statistical where
+		statistical_del = 1 and
+		statistical_type = 1 and reply_id =
+		r.reply_id and student_id =
+		#{studentId,jdbcType=VARCHAR}) as
+		praiseFlag
+		from
+		reply r
+		left join bbs b
+		on
+		b.bbs_id = r.bbs_id
+		left join student s
+		on
+		s.student_id = r.student_id
+		where b.student_id =
+		#{studentId,jdbcType=VARCHAR}
+		and
+		r.reply_pid is
+		null
+		and
+		r.reply_del
+		= 1
+		and b.bbs_del = 1
+		order by
+		reply_at
+		desc
+	</select>
+	<select id="selectSubReply" resultMap="replyList"
+		parameterType="com.ttgis.education.entity.QueryReply">
+		select
+		r.*,
+		s.student_name,
+		'' student_head,
+		(select
+		student_name from
+		student where student_id = r.reply_pstudentid)
+		as
+		student_pname,
+		(select count(*) from
+		statistical where
+		statistical_del = 1 and
+		statistical_type = 1 and reply_id =
+		r.reply_id ) as praise,
+		(select
+		count(*) from
+		statistical where
+		statistical_del = 1 and
+		statistical_type = 1 and reply_id =
+		r.reply_id and student_id = #{studentId,jdbcType=VARCHAR}) as
+		praiseFlag
+		from
+		reply r
+		left join
+		student s on s.student_id
+		=
+		r.student_id
+		where 1 = 1
+		and r.bbs_id
+		= #{bbsId,jdbcType=VARCHAR}
+		and
+		r.reply_pid is
+		not null
+		and r.REPLY_DEL = 1 
+		order
+		by
+		reply_at
+	</select>
+	<select id="selectLevel" resultMap="replyList" parameterType="java.lang.String">
+		select * from reply where reply_id = (select reply_pid from reply
+		where reply_id = #{replyId,jdbcType=VARCHAR}) and reply_pid is not
+		null 
+	</select>
+	<select id="selectBystudentId" resultMap="replyList"
+		parameterType="java.lang.String">
+		select * from reply
+		where student_id =
+		#{studentId,jdbcType=VARCHAR}
+		
+	</select>
+	
+	<!-- 主贴回复分页显示 -->
+<select id="queryReplyByPage" parameterType="com.ttgis.education.entity.Reply"   resultMap="ResultMapWithBLOBs">
+	select top ${size}  * from REPLY where  BBS_ID=#{bbsId} 
+	and REPLY_ID not in
+	(
+	 select top ${page} REPLY_ID from REPLY 
+	  where  BBS_ID=#{bbsId} 
+	  order by REPLY_AT desc
+	) 
+	and  REPLY_DEL = 1 
+	order by REPLY_AT desc
+</select>
+  <!--总条数 -->
+ <select id="replyCount" parameterType="com.ttgis.education.entity.Reply"  resultType="int">
+  	select  count(*) from REPLY where BBS_ID=#{bbsId}  and REPLY_DEL = 1
+  </select>
+ 
+  <!-- 回复贴分页显示 -->
+<select id="queryReplyByReplyPid" parameterType="com.ttgis.education.entity.Reply"   resultMap="ResultMapWithBLOBs">
+	select top ${size}  * from REPLY where  REPLY_PID=#{replyPid} 
+	and REPLY_ID not in
+	(
+	 select top ${page} REPLY_ID from REPLY 
+	  where  REPLY_PID=#{replyPid} 
+	  order by REPLY_AT desc
+	) 
+	and  REPLY_DEL = 1 
+	order by REPLY_AT desc
+</select>
+  <!--总条数 -->
+ <select id="replyCountByReplyPid" parameterType="com.ttgis.education.entity.Reply"  resultType="int">
+  	select  count(*) from REPLY where REPLY_PID=#{replyPid}   and REPLY_DEL = 1
+  </select>
+</mapper>
